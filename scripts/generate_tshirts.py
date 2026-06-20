@@ -3,7 +3,7 @@
 
 import os, math, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import reportlab_crest
+from logoutils import reportlab_crest, pillow_crest, BEBAS_PATH, MONTSERRAT_PATH
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm, cm
 from reportlab.lib.colors import HexColor, Color
@@ -11,7 +11,6 @@ from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from PIL import Image, ImageDraw, ImageFont
-from logoutils import pillow_crest
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "pdf")
 TMPL_DIR = os.path.join(OUT_DIR, "templates")
@@ -21,11 +20,8 @@ os.makedirs(TMPL_DIR, exist_ok=True)
 ACCENT = HexColor("#E85D3A")
 BLANC = HexColor("#FFFFFF")
 
-BEBAS_PATH = os.path.expanduser("~/Library/Fonts/BebasNeue-Regular.ttf")
-MONTS_PATH = os.path.expanduser("~/Library/Fonts/Montserrat-VariableFont_wght.ttf")
-
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
-pdfmetrics.registerFont(TTFont("Montserrat", MONTS_PATH))
+pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
 
 
 def draw_design(cv, cx, cy, sym_r, label=""):
@@ -125,7 +121,7 @@ def generate_mockup():
 
     font_bebas = ImageFont.truetype(BEBAS_PATH, 120)
     font_bebas_sub = ImageFont.truetype(BEBAS_PATH, 72)
-    font_mont = ImageFont.truetype(MONTS_PATH, 18)
+    font_mont = ImageFont.truetype(MONTSERRAT_PATH, 18)
 
     pillow_crest(draw, mw / 2, cy - 20, 2.8)
 

@@ -8,6 +8,9 @@ from reportlab.lib.colors import HexColor, Color
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+import sys, os
+sys.path.insert(0, os.path.dirname(__file__))
+from logoutils import BEBAS_PATH
 
 OUTPUT = os.path.join(os.path.dirname(__file__), "..", "pdf", "stickers.pdf")
 
@@ -16,7 +19,6 @@ VERT_EAU = HexColor("#4A9B8E")
 ACCENT = HexColor("#E85D3A")
 BLANC = HexColor("#FFFFFF")
 
-BEBAS_PATH = os.path.expanduser("~/Library/Fonts/BebasNeue-Regular.ttf")
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
 
 W, H = A4

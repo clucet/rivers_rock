@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Generate Rivers Rock t-shirt technical sheet for screen printer."""
 
-import os, math
+import os, math, sys
+sys.path.insert(0, os.path.dirname(__file__))
+from logoutils import BEBAS_PATH, MONTSERRAT_PATH
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.lib.colors import HexColor, Color
@@ -16,11 +18,8 @@ VERT_EAU = HexColor("#4A9B8E")
 ACCENT = HexColor("#E85D3A")
 BLANC = HexColor("#FFFFFF")
 
-BEBAS_PATH = os.path.expanduser("~/Library/Fonts/BebasNeue-Regular.ttf")
-MONTS_PATH = os.path.expanduser("~/Library/Fonts/Montserrat-VariableFont_wght.ttf")
-
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
-pdfmetrics.registerFont(TTFont("Montserrat", MONTS_PATH))
+pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
 
 W, H = A4
 

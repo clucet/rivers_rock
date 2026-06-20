@@ -5,7 +5,7 @@ import os
 from PIL import Image, ImageDraw, ImageFont
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import pillow_crest
+from logoutils import pillow_crest, BEBAS_PATH, MONTSERRAT_PATH
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "pdf", "templates")
 os.makedirs(OUT_DIR, exist_ok=True)
@@ -16,9 +16,6 @@ ACCENT = (232, 93, 58)
 VERT_REPERE = (45, 138, 110)
 BLANC = (255, 255, 255)
 GRIS = (200, 200, 200)
-
-BEBAS_PATH = os.path.expanduser("~/Library/Fonts/BebasNeue-Regular.ttf")
-MONTSERRAT_PATH = os.path.expanduser("~/Library/Fonts/Montserrat-VariableFont_wght.ttf")
 
 
 def lerp_color(c1, c2, t):

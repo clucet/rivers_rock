@@ -5,7 +5,7 @@ import os, math
 from PIL import Image, ImageDraw, ImageFont
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import pillow_crest
+from logoutils import pillow_crest, BEBAS_PATH_PATH, MONTSERRAT_PATH
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "pdf", "templates")
 os.makedirs(OUT_DIR, exist_ok=True)
@@ -15,9 +15,6 @@ VERT_EAU = (74, 155, 142)
 ACCENT = (232, 93, 58)
 BLANC = (255, 255, 255)
 GRIS = (200, 200, 200)
-
-BEBAS = os.path.expanduser("~/Library/Fonts/BebasNeue-Regular.ttf")
-MONTS = os.path.expanduser("~/Library/Fonts/Montserrat-VariableFont_wght.ttf")
 
 
 def lerp(c1, c2, t):
@@ -54,7 +51,7 @@ def make_banner(w, h, logo_size, sub_size, path):
     gradient(draw, w, h, BLEU_SEINE, VERT_EAU)
     wave(draw, w, h)
 
-    font_logo = ImageFont.truetype(BEBAS, logo_size)
+    font_logo = ImageFont.truetype(BEBAS_PATH, logo_size)
     font_sub = ImageFont.truetype(MONTS, sub_size)
 
     sym_r = logo_size * 0.45

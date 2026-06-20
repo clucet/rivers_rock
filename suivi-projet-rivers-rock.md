@@ -44,8 +44,13 @@
 | Nouveau logo écusson (RIVERS/ROCK intégré) + animation HTML | `logoutils.py`, tous les scripts generate_*, `generate_animated_logo.html` | 18/06 |
 | Stage plot / fiche technique son | `generate_stageplot.py`, `pdf/stage-plot.pdf` | 18/06 |
 | Songsheets (paroles) — 12 PDF | `generate_lyrics.py`, `pdf/lyrics/*.pdf` | 18/06 |
+| Polices — résolution automatique cross-platform | `logoutils.py` | 20/06 |
+| `requirements.txt` | `requirements.txt` | 20/06 |
+| Logo animé — ROCK slide depuis la droite | `generate_animated_logo.html`, `render_animation.py` | 20/06 |
+| Logo animé — RIVERS/ROCK sur arcs du cercle | `generate_animated_logo.html`, `render_animation.py` | 20/06 |
 
 ### 📋 À faire
+- [ ] Logo animé — retravailler le rendu (RIVERS/ROCK sur arcs du cercle)
 - [ ] Création comptes réseaux (Instagram, Facebook, YouTube)
 - [ ] Héberger le site sur GitHub Pages (`riversrock.github.io`)
 - [ ] Remplacer `[DATE]` `[LIEU]` dans les templates pour un vrai concert
@@ -83,8 +88,10 @@
 | `site/index.html` | Site one-page (GitHub Pages) |
 | `pdf/stage-plot.pdf` | Fiche technique son (stage plot + input list) |
 | `pdf/templates/logo-animated.mp4` | Logo animé (6s, 1080×1920) |
-| `scripts/generate_animated_logo.html` | Animation logo dans navigateur |
-| `scripts/logoutils.py` | Fonctions écusson partagées (ReportLab + Pillow) |
+| `scripts/generate_animated_logo.html` | Animation logo dans navigateur (arcs cercle) |
+| `scripts/render_animation.py` | Rendu MP6 du logo animé |
+| `scripts/logoutils.py` | Fonctions écusson + résolution polices cross-platform |
+| `requirements.txt` | Dépendances Python |
 
 ---
 
@@ -94,6 +101,7 @@
 setlist/
 ├── charte-graphique-rivers-rock.md
 ├── suivi-projet-rivers-rock.md
+├── requirements.txt
 ├── scripts/
 │   ├── logoutils.py
 │   ├── generate_setlist.py
@@ -154,7 +162,7 @@ setlist/
 - **QR code dynamique** : URL courte redirigeant vers la dernière version de la setlist
 - **Setlist interactive** : app web accessible depuis le QR, avec minuterie scène
 - **Fiche technique son** (stage plot) — ✅ fait
-- **Logo animé** pour Reels/Shorts — ✅ fait
+- **Logo animé** pour Reels/Shorts — ⚠️ en cours (rendu à retravailler)
 
 ---
 
@@ -166,6 +174,40 @@ setlist/
 - **Taille uniforme** noms de groupe : 29–31 pt Bebas Neue (calée sur "SMASHING PUMPKINS")
 - **Badges** : ∅24 pt blanc, numéro en couleur de carte (accent sur vert, vert repère sur rouge)
 - **QR code** : généré avec lib `qrcode`, encode URLs à définir
+
+### Polices — résolution cross-platform
+
+Les chemins de polices sont centralisés dans `scripts/logoutils.py`. La fonction `_find_font()` et `_ensure_font()` cherchent automatiquement dans :
+
+| OS | Chemins |
+|----|---------|
+| **macOS** | `~/Library/Fonts/` |
+| **Linux** | `~/.fonts/`, `~/.local/share/fonts/`, `/usr/share/fonts/` |
+| **Projet** | `scripts/` (dossier courant) |
+
+Si BebasNeue-Regular.ttf est introuvable, elle est **téléchargée automatiquement** depuis le dépôt Google Fonts GitHub vers `~/.fonts/`.
+
+**⚠️ Montserrat VF** — La police variable nécessite de préciser l'axe de poids en ReportLab :
+```python
+pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
+```
+Le poids par défaut correspond à Thin. Pour Regular, utiliser `wght=400`.
+
+### Logo animé
+
+- **HTML** : `scripts/generate_animated_logo.html` — animation SVG+CSS (cercles, vague, particules, texte sur arcs)
+- **MP4** : `scripts/render_animation.py` — rendu via Pillow + FFmpeg, synchronisé avec l'HTML
+  - Résolution de rendu : 540×960, upscalé à 1080×1920 par ffmpeg
+  - 30 FPS, 7 secondes
+  - ROCK slide depuis la droite, lettres individuelles (1.9s → 2.2s)
+
+### Dépendances
+
+```
+reportlab>=4.0
+Pillow>=10.0
+qrcode>=8.0
+```
 
 ---
 
@@ -195,4 +237,4 @@ setlist/
 
 ---
 
-*Document mis à jour le 18 juin 2026*
+*Document mis à jour le 20 juin 2026*

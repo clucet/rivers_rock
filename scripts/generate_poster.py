@@ -3,7 +3,7 @@
 
 import os, sys, math
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import reportlab_crest
+from logoutils import reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.colors import HexColor, Color
 from reportlab.pdfgen import canvas
@@ -16,9 +16,6 @@ BLEU_SEINE = HexColor("#1A3A5C")
 VERT_EAU = HexColor("#4A9B8E")
 ACCENT = HexColor("#E85D3A")
 BLANC = HexColor("#FFFFFF")
-
-BEBAS_PATH = os.path.expanduser("~/Library/Fonts/BebasNeue-Regular.ttf")
-MONTSERRAT_PATH = os.path.expanduser("~/Library/Fonts/Montserrat-VariableFont_wght.ttf")
 
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
 pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))

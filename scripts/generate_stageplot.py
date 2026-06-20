@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Generate Rivers Rock stage plot (A4 landscape, tech sheet for sound engineer)."""
 
-import os, math
+import os, math, sys
+sys.path.insert(0, os.path.dirname(__file__))
+from logoutils import BEBAS_PATH, MONTSERRAT_PATH
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.lib.colors import HexColor, Color
@@ -17,11 +19,8 @@ NOIR = HexColor("#222222")
 GRIS = HexColor("#888888")
 BLANC = HexColor("#FFFFFF")
 
-BEBAS_PATH = os.path.expanduser("~/Library/Fonts/BebasNeue-Regular.ttf")
-MONTS_PATH = os.path.expanduser("~/Library/Fonts/Montserrat-VariableFont_wght.ttf")
-
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
-pdfmetrics.registerFont(TTFont("Montserrat", MONTS_PATH))
+pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
 
 W, H = A4[1], A4[0]
 CX = W / 2

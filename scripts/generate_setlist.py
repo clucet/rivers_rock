@@ -3,7 +3,7 @@
 
 import os, sys, math
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import reportlab_crest
+from logoutils import reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.colors import HexColor, Color
 from reportlab.pdfgen import canvas
@@ -18,13 +18,8 @@ ACCENT = HexColor("#E85D3A")
 VERT_REPERE = HexColor("#2D8A6E")
 BLANC = HexColor("#FFFFFF")
 
-BEBAS_PATH = os.path.expanduser("~/Library/Fonts/BebasNeue-Regular.ttf")
-MONTSERRAT_PATH = os.path.expanduser("~/Library/Fonts/Montserrat-VariableFont_wght.ttf")
-MONTSERRAT_ITALIC_PATH = os.path.expanduser("~/Library/Fonts/Montserrat-Italic-VariableFont_wght.ttf")
-
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
 pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
-pdfmetrics.registerFont(TTFont("Montserrat-Italic", MONTSERRAT_ITALIC_PATH))
 
 SETLIST = [
     ("NIAGARA", "J'ai vu"),

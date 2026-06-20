@@ -21,9 +21,12 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400p
 .lE1{animation:dropTop .4s ease-out 1.3s forwards}
 .lR2{animation:dropTop .4s ease-out 1.4s forwards}
 .lS{animation:dropTop .4s ease-out 1.5s forwards}
-.lROCK{animation:dropBottom .4s ease-out 1.2s forwards}
+.lROCK_R{animation:slideRight .4s ease-out 1.9s forwards}
+.lROCK_O{animation:slideRight .4s ease-out 2.0s forwards}
+.lROCK_C{animation:slideRight .4s ease-out 2.1s forwards}
+.lROCK_K{animation:slideRight .4s ease-out 2.2s forwards}
 @keyframes dropTop{0%{opacity:0;transform:translateY(-40px)}100%{opacity:1;transform:translateY(0)}}
-@keyframes dropBottom{0%{opacity:0;transform:translateY(40px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes slideRight{0%{opacity:0;transform:translateX(200px)}100%{opacity:1;transform:translateX(0)}}
 </style>
 </head>
 <body>
@@ -37,13 +40,16 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400p
               M-72,0 Q-40,20 0,0 Q40,-20 72,0;
               M-72,0 Q-40,-20 0,0 Q40,20 72,0"/>
   </path>
-  <text x="0" y="-55" text-anchor="middle" class="letter lR">R</text>
-  <text x="24" y="-55" text-anchor="middle" class="letter lI">I</text>
-  <text x="48" y="-55" text-anchor="middle" class="letter lV">V</text>
-  <text x="72" y="-55" text-anchor="middle" class="letter lE1">E</text>
-  <text x="96" y="-55" text-anchor="middle" class="letter lR2">R</text>
-  <text x="120" y="-55" text-anchor="middle" class="letter lS">S</text>
-  <text x="0" y="106" text-anchor="middle" class="letter lROCK" font-size="26">ROCK</text>
+  <text x="-60" y="-52.9" text-anchor="middle" class="letter lR">R</text>
+  <text x="-36" y="-71.4" text-anchor="middle" class="letter lI">I</text>
+  <text x="-12" y="-79.1" text-anchor="middle" class="letter lV">V</text>
+  <text x="12" y="-79.1" text-anchor="middle" class="letter lE1">E</text>
+  <text x="36" y="-71.4" text-anchor="middle" class="letter lR2">R</text>
+  <text x="60" y="-52.9" text-anchor="middle" class="letter lS">S</text>
+  <text x="-30" y="74.2" text-anchor="middle" class="letter lROCK_R" font-size="26">R</text>
+  <text x="-10" y="79.4" text-anchor="middle" class="letter lROCK_O" font-size="26">O</text>
+  <text x="10" y="79.4" text-anchor="middle" class="letter lROCK_C" font-size="26">C</text>
+  <text x="30" y="74.2" text-anchor="middle" class="letter lROCK_K" font-size="26">K</text>
 </svg>
 <script>
 const c=document.getElementById('particles'),ctx=c.getContext('2d');

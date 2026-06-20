@@ -1,17 +1,69 @@
 #!/usr/bin/env python3
 """Shared Rivers Rock crest drawing functions for ReportLab and Pillow."""
 
-import math, os
+import math, os, urllib.request, zipfile, tempfile
 from reportlab.lib.colors import HexColor, Color
-from reportlab.pdfbase import pdfmetrics
 from PIL import ImageFont
+
+
+def _find_font(filename, alt_names=None):
+    """Search for a font file in common locations across OSes."""
+    search_paths = [
+        os.path.expanduser(f"~/Library/Fonts/{filename}"),
+        os.path.expanduser(f"~/.fonts/{filename}"),
+        os.path.expanduser(f"~/.local/share/fonts/{filename}"),
+        f"/usr/share/fonts/{filename}",
+        f"/usr/share/fonts/truetype/{filename}",
+        os.path.join(os.path.dirname(__file__), filename),
+    ]
+    for p in search_paths:
+        if os.path.exists(p):
+            return p
+    if alt_names:
+        for alt in alt_names:
+            for p in search_paths:
+                if os.path.exists(p):
+                    return p
+    return None
+
+
+def _ensure_font(filename, url):
+    """Download font if missing."""
+    dest = os.path.expanduser(f"~/.fonts/{filename}")
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    if not os.path.exists(dest):
+        try:
+            urllib.request.urlretrieve(url, dest)
+            print(f"Téléchargement : {dest}")
+        except Exception:
+            raise RuntimeError(
+                f"Police {filename} introuvable. Placez-la dans ~/.fonts/ "
+                f"ou téléchargez-la depuis : {url}"
+            )
+    return dest
+
+
+BEBAS_PATH = _find_font("BebasNeue-Regular.ttf")
+if not BEBAS_PATH:
+    BEBAS_PATH = _ensure_font(
+        "BebasNeue-Regular.ttf",
+        "https://github.com/google/fonts/raw/main/ofl/bebasneue/BebasNeue-Regular.ttf",
+    )
+
+MONTSERRAT_PATH = (
+    _find_font("Montserrat-VariableFont_wght.ttf")
+    or _find_font("Montserrat-VF.ttf")
+)
+if not MONTSERRAT_PATH:
+    MONTSERRAT_PATH = _ensure_font(
+        "Montserrat-VF.ttf",
+        "https://github.com/google/fonts/raw/main/ofl/montserrat/Montserrat-VariableFont_wght.ttf",
+    )
 
 ACCENT = HexColor("#E85D3A")
 BLANC = HexColor("#FFFFFF")
 ACCENT_PIL = (232, 93, 58)
 BLANC_PIL = (255, 255, 255)
-
-BEBAS_PATH = os.path.expanduser("~/Library/Fonts/BebasNeue-Regular.ttf")
 
 
 def reportlab_crest(cv, cx, cy, scale=1.0):

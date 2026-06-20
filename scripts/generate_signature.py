@@ -5,7 +5,7 @@ import os
 from PIL import Image, ImageDraw, ImageFont
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import pillow_crest
+from logoutils import pillow_crest, BEBAS_PATH_PATH, MONTSERRAT_PATHERRAT_PATH
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "pdf", "templates")
 OUTPUT = os.path.join(OUT_DIR, "email-signature.png")
@@ -16,9 +16,6 @@ VERT_EAU = (74, 155, 142)
 ACCENT = (232, 93, 58)
 BLANC = (255, 255, 255)
 GRIS = (200, 200, 200)
-
-BEBAS = os.path.expanduser("~/Library/Fonts/BebasNeue-Regular.ttf")
-MONTS = os.path.expanduser("~/Library/Fonts/Montserrat-VariableFont_wght.ttf")
 
 W, H = 600, 200
 
@@ -38,10 +35,10 @@ img = Image.new("RGB", (W, H))
 draw = ImageDraw.Draw(img)
 gradient(draw)
 
-font_logo = ImageFont.truetype(BEBAS, 18)
-font_name = ImageFont.truetype(MONTS, 11)
-font_info = ImageFont.truetype(MONTS, 9)
-font_link = ImageFont.truetype(MONTS, 8)
+font_logo = ImageFont.truetype(BEBAS_PATH, 18)
+font_name = ImageFont.truetype(MONTSERRAT_PATH, 11)
+font_info = ImageFont.truetype(MONTSERRAT_PATH, 9)
+font_link = ImageFont.truetype(MONTSERRAT_PATH, 8)
 
 sym_r = 18
 sym_cx = 35
