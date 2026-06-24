@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rivers Rock — Rock Brut</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0}
+body{width:1080px;height:1920px;overflow:hidden;background:#0A0A0A;display:flex;align-items:center;justify-content:center}
+canvas{position:absolute;top:0;left:0;width:1080px;height:1920px}
+svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;overflow:visible}
+.hex{fill:none;stroke:#fff;stroke-width:4;opacity:0;animation:fadeH .6s ease-out .3s forwards}
+.text-rr{font-family:'Anton','Helvetica Neue',sans-serif;font-size:36px;fill:#FF3B00;opacity:0;animation:fadeH .8s ease-out 1.0s forwards}
+.text-sub{font-family:'Inter Tight','Helvetica Neue',sans-serif;font-size:14px;fill:#fff;opacity:0;animation:fadeH .6s ease-out 2.0s forwards}
+@keyframes fadeH{to{opacity:1}}
+.chevron{fill:none;stroke:rgba(255,59,0,0.2);stroke-width:2;opacity:0;animation:fadeH .6s ease-out 1.5s forwards}
+@media(max-width:640px){
+  h1{font-size:42px}
+  .container{padding:40px 16px}
+  nav a{display:none}
+}
+</style>
+</head>
+<body>
+<canvas id="p"></canvas>
+<svg viewBox="-200 -200 400 400">
+  <polygon class="hex" points="0,-80 69.3,-40 69.3,40 0,80 -69.3,40 -69.3,-40"/>
+  <text x="0" y="12" text-anchor="middle" class="text-rr">RR</text>
+  <text x="0" y="120" text-anchor="middle" class="text-sub">RIVERS ROCK</text>
+  <polyline class="chevron" points="-120,180 -100,195 -80,180"/>
+  <polyline class="chevron" points="80,180 100,195 120,180"/>
+</svg>
+<script>
+const c=document.getElementById('p'),ctx=c.getContext('2d');
+c.width=1080;c.height=1920;
+const ps=[];
+for(let i=0;i<20;i++){ps.push({x:Math.random()*1080,y:Math.random()*1920,s:Math.random()*2+1,a:Math.random()*0.20+0.05})}
+function draw(){ctx.clearRect(0,0,1080,1920);
+ctx.fillStyle='#0A0A0A';ctx.fillRect(0,0,1080,1920);
+for(const p of ps){ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle='rgba(255,59,0,'+p.a+')';ctx.fill();p.y-=0.5;if(p.y<0){p.y=1920;p.x=Math.random()*1080}}
+requestAnimationFrame(draw)}draw();
+</script>
+</body>
+</html>

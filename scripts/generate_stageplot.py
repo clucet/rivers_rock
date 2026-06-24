@@ -61,7 +61,7 @@ def draw_stage(cv):
         cv.setFillColor(HexColor("#333333"))
         cv.roundRect(mx - mon_w / 2, my - mon_h / 2, mon_w, mon_h, 3, stroke=0, fill=1)
         cv.setFillColor(BLANC)
-        cv.setFont("Montserrat", 5)
+        cv.setFont("Montserrat", 7)
         cv.drawCentredString(mx, my - 2.5, f"MON {i+1}")
 
     positions = [
@@ -79,7 +79,7 @@ def draw_stage(cv):
             if line.startswith(("Rose", "Nico", "Chri", "Virg", "David")):
                 cv.setFont("Montserrat", 8)
             else:
-                cv.setFont("Montserrat", 6)
+                cv.setFont("Montserrat", 7)
                 cv.setFillColor(Color(0, 0, 0, alpha=0.6))
             cv.drawCentredString(px, by, line)
             by -= 10
@@ -117,7 +117,7 @@ def draw_stage(cv):
     headers = ["Can.", "Source", "Notes"]
     hx = [0, 30, 110]
     for i, h in enumerate(headers):
-        cv.setFont("Montserrat", 6)
+        cv.setFont("Montserrat", 7)
         cv.setFillColor(GRIS)
         cv.drawString(lx + hx[i], ly - 14, h)
 
@@ -129,7 +129,7 @@ def draw_stage(cv):
         cv.drawString(lx + hx[1], ry, entry[1])
         if len(entry) > 2:
             cv.setFillColor(ACCENT)
-            cv.setFont("Montserrat", 6)
+            cv.setFont("Montserrat", 7)
             cv.drawString(lx + hx[2], ry, entry[2])
 
     ry_footer = ly - 28 - len(input_list) * 12 - 15
@@ -137,7 +137,7 @@ def draw_stage(cv):
     cv.setFont("Montserrat", 8)
     cv.drawString(lx, ry_footer, "Monitors : 4 retours")
     cv.setFillColor(GRIS)
-    cv.setFont("Montserrat", 6)
+    cv.setFont("Montserrat", 7)
     cv.drawString(lx, ry_footer - 11, "MON 1 : Batterie (Rosaria)")
     cv.drawString(lx, ry_footer - 20, "MON 2 : Jardin (Nicolas + Christophe)")
     cv.drawString(lx, ry_footer - 29, "MON 3 : Cour (Virginie + David)")

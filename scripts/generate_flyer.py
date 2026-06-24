@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
-"""Generate Rivers Rock flyer A6 — 4 per A4, duplex recto/verso."""
+"""Generate Rivers Rock flyer A6 — Scène & Vintage."""
 
 import os, math, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH
+from logoutils import reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH, draw_qr_reportlab
+from palette import ACTIVE as CFG
 from reportlab.lib.pagesizes import A4, A6
-from reportlab.lib.colors import HexColor, Color
+from reportlab.lib.colors import Color
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 OUTPUT = os.path.join(os.path.dirname(__file__), "..", "pdf", "flyer-a6.pdf")
 
-BLEU_SEINE = HexColor("#1A3A5C")
-VERT_EAU = HexColor("#4A9B8E")
-ACCENT = HexColor("#E85D3A")
-BLANC = HexColor("#FFFFFF")
+BLEU_SEINE = CFG.rl("bleu_seine")
+TEAL_PROFOND = CFG.rl("teal_profond")
+ACCENT = CFG.rl("accent")
+OR_VIEILLI = CFG.rl("or_vieilli")
+BLANC = CFG.rl("blanc")
 
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
 pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
@@ -23,7 +25,6 @@ pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
 FW, FH = A6
 COLS = 2
 ROWS = 2
-MARGIN = 4
 
 
 def gradient(cv, x, y, w, h, c1, c2, steps=60):
@@ -37,8 +38,8 @@ def gradient(cv, x, y, w, h, c1, c2, steps=60):
         cv.rect(x, y + i * dh, w, dh + 0.5, stroke=0, fill=1)
 
 
-def wave(cv, x, y, w, h):
-    cv.setFillColor(Color(1, 1, 1, alpha=0.06))
+def wave_or(cv, x, y, w, h):
+    cv.setFillColor(OR_VIEILLI)
     for row in range(2):
         by = y + 8 + row * 18
         amp = 4 + row * 3
@@ -58,8 +59,8 @@ def wave(cv, x, y, w, h):
 
 
 def draw_recto(cv, ox, oy):
-    gradient(cv, ox, oy, FW, FH, BLEU_SEINE, VERT_EAU)
-    wave(cv, ox, oy, FW, FH)
+    gradient(cv, ox, oy, FW, FH, BLEU_SEINE, TEAL_PROFOND)
+    wave_or(cv, ox, oy, FW, FH)
 
     cx = ox + FW / 2
     reportlab_crest(cv, cx, oy + FH - 55, 1.0)
@@ -67,22 +68,22 @@ def draw_recto(cv, ox, oy):
     cv.setFont("BebasNeue", 28)
     cv.drawCentredString(cx, oy + FH - 110, "RIVERS ROCK")
 
-    cv.setFillColor(ACCENT)
+    cv.setFillColor(OR_VIEILLI)
     cv.setFont("BebasNeue", 34)
-    cv.drawCentredString(cx, oy + FH - 175, "[DATE]")
+    cv.drawCentredString(cx, oy + FH - 170, "[DATE]")
 
     cv.setFillColor(Color(1, 1, 1, alpha=0.7))
     cv.setFont("Montserrat", 10)
-    cv.drawCentredString(cx, oy + FH - 205, "[LIEU]")
+    cv.drawCentredString(cx, oy + FH - 200, "[LIEU]")
 
     cv.setFillColor(Color(1, 1, 1, alpha=0.3))
-    cv.setFont("Montserrat", 6)
+    cv.setFont("Montserrat", 7)
     cv.drawCentredString(cx, oy + 14, "RIVERS ROCK — Reprises rock — Rouen")
 
 
 def draw_verso(cv, ox, oy):
-    gradient(cv, ox, oy, FW, FH, BLEU_SEINE, VERT_EAU)
-    wave(cv, ox, oy, FW, FH)
+    gradient(cv, ox, oy, FW, FH, BLEU_SEINE, TEAL_PROFOND)
+    wave_or(cv, ox, oy, FW, FH)
 
     cx = ox + FW / 2
 
@@ -115,28 +116,41 @@ def draw_verso(cv, ox, oy):
     cv.setFont("Montserrat", 7)
     cv.drawCentredString(cx, y - 6, "Contactez-nous pour programmer un concert")
 
+    qr_size = 30
+    qr_x = cx - qr_size / 2
+    qr_y = y - 58
+    cv.setFillColor(BLANC)
+    cv.roundRect(qr_x, qr_y, qr_size, qr_size, 4, stroke=0, fill=1)
+    draw_qr_reportlab(cv, cx, qr_y + qr_size / 2, qr_size - 4, fill_color=BLEU_SEINE)
+
     cv.setFillColor(Color(1, 1, 1, alpha=0.4))
-    cv.setFont("Montserrat", 6)
-    cv.drawCentredString(cx, y - 22, "@riversrock.rouen — riversrock.fr")
+    cv.setFont("Montserrat", 7)
+    cv.drawCentredString(cx, qr_y - 8, "@riversrock.rouen — riversrock.fr")
 
     cv.setFillColor(Color(1, 1, 1, alpha=0.25))
-    cv.setFont("Montserrat", 5)
+    cv.setFont("Montserrat", 7)
     cv.drawCentredString(cx, oy + 10, "RIVERS ROCK")
 
 
-cv = canvas.Canvas(OUTPUT, pagesize=A4)
+def gen_flyer():
+    global cv
+    cv = canvas.Canvas(OUTPUT, pagesize=A4)
 
-for page in range(2):
-    for row in range(ROWS):
-        for col in range(COLS):
-            ox = col * FW
-            oy = (ROWS - 1 - row) * FH
-            if page == 0:
-                draw_recto(cv, ox, oy)
-            else:
-                draw_verso(cv, ox, oy)
-    if page == 0:
-        cv.showPage()
+    for page in range(2):
+        for row in range(ROWS):
+            for col in range(COLS):
+                ox = col * FW
+                oy = (ROWS - 1 - row) * FH
+                if page == 0:
+                    draw_recto(cv, ox, oy)
+                else:
+                    draw_verso(cv, ox, oy)
+        if page == 0:
+            cv.showPage()
 
-cv.save()
-print(f"Flyer généré : {OUTPUT}")
+    cv.save()
+    print(f"Flyer généré : {OUTPUT}")
+
+
+if __name__ == "__main__":
+    gen_flyer()

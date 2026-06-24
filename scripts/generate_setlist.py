@@ -1,25 +1,29 @@
 #!/usr/bin/env python3
-"""Generate Rivers Rock setlist PDF (A4 Portrait, refonte identitaire)."""
+"""Generate Rivers Rock setlist PDF (A4 Portrait, Scène & Vintage)."""
 
-import os, sys, math
+import os, sys, math, random
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH
+from logoutils import reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH, create_bleed_canvas, save_with_crop_marks
+from palette import ACTIVE as CFG
 from reportlab.lib.pagesizes import A4
-from reportlab.lib.colors import HexColor, Color
+from reportlab.lib.colors import Color
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 OUTPUT = os.path.join(os.path.dirname(__file__), "..", "pdf", "setlist-rivers-rock.pdf")
 
-BLEU_SEINE = HexColor("#1A3A5C")
-VERT_EAU = HexColor("#4A9B8E")
-ACCENT = HexColor("#E85D3A")
-VERT_REPERE = HexColor("#2D8A6E")
-BLANC = HexColor("#FFFFFF")
+BLEU_SEINE = CFG.rl("bleu_seine")
+TEAL_PROFOND = CFG.rl("teal_profond")
+ACCENT = CFG.rl("accent")
+TERRACOTTA = CFG.rl("terracotta")
+OR_VIEILLI = CFG.rl("or_vieilli")
+BLANC = CFG.rl("blanc")
 
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
 pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
+
+W, H = A4[0], A4[1]
 
 SETLIST = [
     ("NIAGARA", "J'ai vu"),
@@ -46,9 +50,8 @@ GAP = 8
 ARTIST_BASELINE = 5
 TITLE_BASELINE = -17
 BADGE_Y_OFFSET = 15
-SHADOW_OFFSET = 3
-SHADOW_ALPHA = 0.15
-BORDER_ALPHA = 0.35
+SHADOW_OFFSET = 4
+SHADOW_ALPHA = 0.20
 
 CARD_W = 250
 CARD_H = 74
@@ -64,15 +67,25 @@ def draw_gradient(cv):
     dh = H / steps
     for i in range(steps):
         t = i / (steps - 1)
-        r = BLEU_SEINE.red + (VERT_EAU.red - BLEU_SEINE.red) * t
-        g = BLEU_SEINE.green + (VERT_EAU.green - BLEU_SEINE.green) * t
-        b = BLEU_SEINE.blue + (VERT_EAU.blue - BLEU_SEINE.blue) * t
+        r = BLEU_SEINE.red + (TEAL_PROFOND.red - BLEU_SEINE.red) * t
+        g = BLEU_SEINE.green + (TEAL_PROFOND.green - BLEU_SEINE.green) * t
+        b = BLEU_SEINE.blue + (TEAL_PROFOND.blue - BLEU_SEINE.blue) * t
         cv.setFillColor(Color(r, g, b))
         cv.rect(0, i * dh, W, dh + 1, stroke=0, fill=1)
 
 
+def draw_grain(cv):
+    random.seed(42)
+    for _ in range(3000):
+        x = random.uniform(0, W)
+        y = random.uniform(0, H)
+        a = random.uniform(0.02, 0.06)
+        cv.setFillColor(Color(1, 1, 1, alpha=a))
+        cv.circle(x, y, random.uniform(0.3, 1.0), stroke=0, fill=1)
+
+
 def draw_waves(cv):
-    cv.setFillColor(Color(1, 1, 1, alpha=0.07))
+    cv.setFillColor(Color(1, 1, 1, alpha=0.06))
     for row in range(3):
         y_base = 20 + row * 30
         amp = 8 + row * 6
@@ -89,16 +102,16 @@ def draw_waves(cv):
         p.lineTo(0, 0)
         p.close()
         cv.drawPath(p, fill=1, stroke=0)
-    cv.setStrokeColor(Color(1, 1, 1, alpha=0.1))
-    cv.setLineWidth(2)
+    cv.setStrokeColor(OR_VIEILLI)
+    cv.setLineWidth(1.5)
     y_line = H - 45
-    segments = 300
+    segments = 200
     step_x = W / segments
     p = cv.beginPath()
     p.moveTo(0, y_line)
     for i in range(segments + 1):
         px = i * step_x
-        py = y_line + 10 * math.sin(i * 2 * math.pi / 36)
+        py = y_line + 8 * math.sin(i * 2 * math.pi / 32)
         p.lineTo(px, py)
     cv.drawPath(p, stroke=1, fill=0)
 
@@ -112,7 +125,7 @@ def draw_setlist_subtitle(cv):
     cv.setFillColor(ACCENT)
     cv.setFont("BebasNeue", 28)
     cv.drawCentredString(W / 2, H - 165, "SETLIST")
-    cv.setStrokeColor(Color(1, 1, 1, alpha=0.2))
+    cv.setStrokeColor(OR_VIEILLI)
     cv.setLineWidth(1.5)
     wave_len = 160
     wave_x0 = W / 2 - wave_len / 2
@@ -164,7 +177,7 @@ def draw_cards(cv):
         cx = COL_CENTERS[col]
         cy = ROWS_TOP - row * ROW_PITCH
         card_left = cx - CARD_W / 2
-        bg = VERT_REPERE if idx in GREEN_INDICES else ACCENT
+        bg = TEAL_PROFOND if idx in GREEN_INDICES else TERRACOTTA
         card_bottom = cy - CARD_H / 2
 
         cv.setFillColor(Color(0, 0, 0, alpha=SHADOW_ALPHA))
@@ -172,16 +185,20 @@ def draw_cards(cv):
 
         draw_card_bg(cv, card_left, cy, bg)
 
-        cv.setStrokeColor(Color(1, 1, 1, alpha=BORDER_ALPHA))
-        cv.setLineWidth(1)
+        cv.setStrokeColor(Color(1, 1, 1, alpha=0.5))
+        cv.setLineWidth(0.5)
         cv.roundRect(card_left, card_bottom, CARD_W, CARD_H, CARD_R, stroke=1, fill=0)
+
+        cv.setStrokeColor(OR_VIEILLI)
+        cv.setLineWidth(0.8)
+        cv.roundRect(card_left - 0.5, card_bottom - 0.5, CARD_W + 1, CARD_H + 1, CARD_R, stroke=1, fill=0)
 
         artist_width = pdfmetrics.stringWidth(artist, "BebasNeue", uniform_size)
         total_w = BADGE_R * 2 + GAP + artist_width
         start_x = cx - total_w / 2
 
         badge_cx = start_x + BADGE_R
-        num_color = ACCENT if idx in GREEN_INDICES else VERT_REPERE
+        num_color = OR_VIEILLI if idx in GREEN_INDICES else ACCENT
         badge_cy = cy + BADGE_Y_OFFSET
         cv.setFillColor(BLANC)
         cv.circle(badge_cx, badge_cy, BADGE_R, stroke=0, fill=1)
@@ -205,8 +222,9 @@ def draw_cards(cv):
 
 
 def create_pdf():
-    cv = canvas.Canvas(OUTPUT, pagesize=(W, H))
+    cv, _, _, bleed = create_bleed_canvas(OUTPUT, W, H)
     draw_gradient(cv)
+    draw_grain(cv)
     draw_waves(cv)
     draw_logo(cv)
     draw_setlist_subtitle(cv)
@@ -220,8 +238,8 @@ def create_pdf():
         w = pdfmetrics.stringWidth(c, "Montserrat", 7)
         cv.drawString(x, 14, c)
         x += w + tracking
-    cv.save()
-    print(f"PDF generé : {OUTPUT}")
+    save_with_crop_marks(cv, W, H, bleed)
+    print(f"PDF généré : {OUTPUT}")
 
 
 if __name__ == "__main__":

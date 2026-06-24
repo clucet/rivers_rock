@@ -1,27 +1,29 @@
 #!/usr/bin/env python3
-"""Generate Rivers Rock sticker sheet (6 x ∅80mm circles on A4)."""
+"""Generate Rivers Rock sticker sheet — Scène & Vintage (timbre variant)."""
 
 import os, math
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
-from reportlab.lib.colors import HexColor, Color
+from reportlab.lib.colors import Color
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-import sys, os
+import sys
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import BEBAS_PATH
+from logoutils import BEBAS_PATH, create_bleed_canvas, save_with_crop_marks
+from palette import ACTIVE as CFG
 
 OUTPUT = os.path.join(os.path.dirname(__file__), "..", "pdf", "stickers.pdf")
 
-BLEU_SEINE = HexColor("#1A3A5C")
-VERT_EAU = HexColor("#4A9B8E")
-ACCENT = HexColor("#E85D3A")
-BLANC = HexColor("#FFFFFF")
+TERRACOTTA = CFG.rl("terracotta")
+OR_VIEILLI = CFG.rl("or_vieilli")
+ACCENT = CFG.rl("accent")
+BLANC = CFG.rl("blanc")
 
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
 
 W, H = A4
+_SW, _SH = A4  # for bleed canvas
 STICKER_R = 40 * mm
 MARGIN_X = (W - 2 * STICKER_R * 2) / 3
 MARGIN_Y = (H - 3 * STICKER_R * 2) / 4
@@ -39,9 +41,9 @@ def draw_gradient_in_circle(cv, cx, cy, r):
     dh = r * 2 / steps
     for i in range(steps):
         t = i / (steps - 1)
-        rcol = BLEU_SEINE.red + (VERT_EAU.red - BLEU_SEINE.red) * t
-        gcol = BLEU_SEINE.green + (VERT_EAU.green - BLEU_SEINE.green) * t
-        bcol = BLEU_SEINE.blue + (VERT_EAU.blue - BLEU_SEINE.blue) * t
+        rcol = TERRACOTTA.red + (OR_VIEILLI.red - TERRACOTTA.red) * t
+        gcol = TERRACOTTA.green + (OR_VIEILLI.green - TERRACOTTA.green) * t
+        bcol = TERRACOTTA.blue + (OR_VIEILLI.blue - TERRACOTTA.blue) * t
         cv.setFillColor(Color(rcol, gcol, bcol))
         y = cy - r + i * dh
         cv.rect(cx - r, y, r * 2, dh + 0.5, stroke=0, fill=1)
@@ -50,8 +52,12 @@ def draw_gradient_in_circle(cv, cx, cy, r):
     cv.circle(cx, cy, r, stroke=1, fill=0)
 
 
-def draw_symbol(cv, cx, cy, r):
+def draw_symbol_timbre(cv, cx, cy, r):
+    ring_r = r + r * 0.15
     cv.setStrokeColor(BLANC)
+    cv.setLineWidth(0.8)
+    cv.circle(cx, cy, ring_r, stroke=1, fill=0)
+
     cv.setLineWidth(2)
     cv.circle(cx, cy, r, stroke=1, fill=0)
     cv.setStrokeColor(ACCENT)
@@ -67,6 +73,10 @@ def draw_symbol(cv, cx, cy, r):
         p.lineTo(px, py)
     cv.drawPath(p, stroke=1, fill=0)
 
+    cv.setFillColor(BLANC)
+    cv.setFont("BebasNeue", 8)
+    cv.drawCentredString(cx, cy + r + 6, "RIVERS ROCK")
+
 
 def draw_crop_marks(cv, cx, cy, r):
     ext = 4
@@ -80,17 +90,23 @@ def draw_crop_marks(cv, cx, cy, r):
                 cx + dx, cy + dy + ext * (1 if dy > 0 else -1))
 
 
-cv = canvas.Canvas(OUTPUT, pagesize=A4)
+def gen_stickers():
+    global cv, W, H, bleed
+    cv, _, _, bleed = create_bleed_canvas(OUTPUT, _SW, _SH)
 
-for i, (cx, cy) in enumerate(CENTERS):
-    draw_gradient_in_circle(cv, cx, cy, STICKER_R)
-    sym_r = STICKER_R * 0.55
-    draw_symbol(cv, cx, cy, sym_r)
-    draw_crop_marks(cv, cx, cy, STICKER_R)
+    for i, (cx, cy) in enumerate(CENTERS):
+        draw_gradient_in_circle(cv, cx, cy, STICKER_R)
+        sym_r = STICKER_R * 0.50
+        draw_symbol_timbre(cv, cx, cy, sym_r)
+        draw_crop_marks(cv, cx, cy, STICKER_R)
 
-    cv.setFillColor(BLANC)
-    cv.setFont("BebasNeue", 12)
-    cv.drawCentredString(cx, cy - STICKER_R - 10, f"Sticker {i + 1}")
+        cv.setFillColor(BLANC)
+        cv.setFont("BebasNeue", 10)
+        cv.drawCentredString(cx, cy - STICKER_R - 10, f"Sticker {i + 1}")
 
-cv.save()
-print(f"Stickers : {OUTPUT}")
+    save_with_crop_marks(cv, _SW, _SH, bleed)
+    print(f"Stickers : {OUTPUT}")
+
+
+if __name__ == "__main__":
+    gen_stickers()

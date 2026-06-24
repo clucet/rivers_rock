@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rivers Rock — Rock Brut</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter Tight','Montserrat',sans-serif;background:#0A0A0A;color:#fff;min-height:100vh}
+.accent-bar{position:fixed;top:0;left:0;width:100%;height:4px;background:#FF3B00;z-index:100}
+.container{max-width:680px;margin:0 auto;padding:80px 24px;text-align:center}
+.logo{margin-bottom:16px}
+.logo svg{width:90px;height:90px}
+.logo svg polygon{fill:none;stroke:#fff;stroke-width:4}
+.logo svg polyline{fill:none;stroke:#FF3B00;stroke-width:3}
+h1{font-family:'Anton','Helvetica Neue',sans-serif;font-size:72px;letter-spacing:3px;color:#fff;text-transform:uppercase;margin-bottom:4px}
+.tagline{font-family:'JetBrains Mono',monospace;font-size:12px;color:#FF3B00;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px}
+p,li{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.85)}
+h2{font-family:'Anton','Helvetica Neue',sans-serif;font-size:32px;letter-spacing:3px;color:#FF3B00;margin:48px 0 16px;text-transform:uppercase}
+h2::after{content:'';display:block;width:40px;height:3px;background:#FF3B00;margin:8px auto 0}
+.members{list-style:none;padding:0}
+.members li{padding:8px 0;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.04)}
+.members li:last-child{border-bottom:none}
+.highlight{color:#FF3B00;font-weight:600}
+.band{width:100%;height:4px;background:#FF3B00;margin:40px 0}
+.links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.links a{color:rgba(255,255,255,0.78);text-decoration:none;font-family:'Inter Tight',sans-serif;font-size:12px;padding:10px 20px;border:2px solid rgba(255,59,0,0.3);transition:.2s;text-transform:uppercase;letter-spacing:1px}
+.links a:hover{color:#fff;border-color:#FF3B00;background:rgba(255,59,0,0.15)}
+.footer{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.45);margin-top:48px;letter-spacing:4px;border-top:1px solid rgba(255,59,0,0.15);padding-top:24px}
+@media(max-width:640px){
+  h1{font-size:42px}
+  .container{padding:40px 16px}
+  nav a{display:none}
+}
+</style>
+</head>
+<body>
+<div class="accent-bar"></div>
+<div class="container">
+  <div class="logo">
+    <svg viewBox="0 0 100 100">
+      <polygon points="50,8 86.4,29 86.4,71 50,92 13.6,71 13.6,29"/>
+      <polyline points="35,60 50,45 65,60"/>
+    </svg>
+  </div>
+  <h1>Rivers Rock</h1>
+  <div class="tagline">Reprises rock — Rouen</div>
+  <p>Groupe rouennais formé en 2024. Rock, pop-rock, indé, alternatif.</p>
+  <div class="band"></div>
+  <h2>Les membres</h2>
+  <ul class="members">
+    <li><span class="highlight">Rosaria</span> — batterie</li>
+    <li><span class="highlight">Christophe</span> — basse</li>
+    <li><span class="highlight">Nicolas</span> — guitare</li>
+    <li><span class="highlight">David</span> — guitare / chant</li>
+    <li><span class="highlight">Virginie</span> — chant</li>
+  </ul>
+  <div class="band"></div>
+  <h2>Concerts</h2>
+  <p>Contactez-nous pour programmer un concert.</p>
+  <div class="band"></div>
+  <h2>Contact</h2>
+  <p>riversrockrouen@gmail.com</p>
+  <div class="links">
+    <a href="https://www.instagram.com/riversrockrouen" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/RiversRockRouen" target="_blank">Facebook</a>
+    <a href="https://www.youtube.com/@RiversRockRouen" target="_blank">YouTube</a>
+  </div>
+  <p class="footer">R O U E N</p>
+</div>
+</body>
+</html>

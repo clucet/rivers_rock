@@ -43,7 +43,7 @@ cv.setFillColor(BLANC)
 cv.setFont("BebasNeue", 14)
 cv.drawString(31 * mm, H - 16 * mm, "RIVERS ROCK")
 cv.setFillColor(Color(1, 1, 1, alpha=0.5))
-cv.setFont("Montserrat", 6)
+cv.setFont("Montserrat", 7)
 cv.drawString(31 * mm, H - 20 * mm, "Reprises rock — Rouen")
 
 cv.setFillColor(BLANC)
@@ -54,7 +54,7 @@ cv.drawString(33 * mm, contact_y - 4 * mm, "[Téléphone]")
 cv.drawString(33 * mm, contact_y - 8 * mm, "[Email]")
 
 cv.setFillColor(Color(1, 1, 1, alpha=0.5))
-cv.setFont("Montserrat", 6)
+cv.setFont("Montserrat", 7)
 cv.drawRightString(W - 5 * mm, 6 * mm, "riversrock.fr")
 
 cv.save()

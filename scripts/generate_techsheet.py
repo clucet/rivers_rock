@@ -103,7 +103,7 @@ for label, sym_r, cx, cy in sizes:
     cv.setFont("BebasNeue", max(8, int(sym_r * 0.3)))
     cv.drawCentredString(cx_design, y_design - 16, "ROCK")
     cv.setFillColor(Color(0, 0, 0, alpha=0.3))
-    cv.setFont("Montserrat", 6)
+    cv.setFont("Montserrat", 7)
     cv.drawCentredString(cx_design, y_design - 30, label)
     y_design += 90
 

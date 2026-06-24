@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rivers Rock — Fluid Wave</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital@0;1&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito','Montserrat',sans-serif;background:linear-gradient(135deg,#1A4A3A,#4A9B8E);color:#fff;min-height:100vh;overflow-x:hidden}
+.waves-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.07}
+.waves-bg svg{width:100%;height:100%}
+.container{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:80px 24px;text-align:center}
+.logo-wave{margin-bottom:8px}
+.logo-wave svg{width:120px;height:40px}
+h1{font-family:'Playfair Display',serif;font-size:52px;font-weight:400;color:#fff;margin-bottom:4px}
+.tagline{font-family:'Nunito',sans-serif;font-size:16px;color:#D4A843;margin-bottom:32px;letter-spacing:1px}
+p,li{font-size:15px;line-height:1.8;color:rgba(255,255,255,0.8)}
+h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:400;color:#D4A843;margin:48px 0 16px;text-align:center}
+h2::after{content:'';display:block;width:60px;height:1px;background:rgba(212,168,67,0.4);margin:8px auto 0}
+.members{list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.members li{padding:6px 16px;background:rgba(255,255,255,0.06);border-radius:20px;font-size:14px}
+.highlight{color:#D4A843;font-weight:600}
+hr{border:none;border-top:1px solid rgba(212,168,67,0.15);margin:40px 0}
+.links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.links a{color:rgba(255,255,255,0.78);text-decoration:none;font-family:'Nunito',sans-serif;font-size:13px;padding:10px 24px;border:1px solid rgba(212,168,67,0.3);border-radius:24px;transition:.3s}
+.links a:hover{color:#fff;border-color:#D4A843;background:rgba(212,168,67,0.1)}
+.footer{font-family:'Nunito',sans-serif;font-size:12px;color:rgba(255,255,255,0.3);margin-top:48px;letter-spacing:3px}
+@media(max-width:640px){
+  .container{padding:48px 16px}
+  h1{font-size:36px}
+  .members li{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+<div class="waves-bg">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="none">
+    <path d="M0,450 C360,300 720,600 1080,450 C1260,375 1440,450 1440,450 L1440,900 L0,900 Z" fill="rgba(255,255,255,0.03)"/>
+    <path d="M0,500 C360,650 720,350 1080,500 C1260,575 1440,500 1440,500 L1440,900 L0,900 Z" fill="rgba(255,255,255,0.02)"/>
+  </svg>
+</div>
+<div class="container">
+  <div class="logo-wave">
+    <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10,20 C40,0 70,40 100,20 C130,0 160,40 190,20" fill="none" stroke="#D4A843" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <h1>Rivers Rock</h1>
+  <div class="tagline">Reprises rock — Rouen</div>
+  <p>Groupe rouennais formé en 2024. Rock, pop-rock, indé, alternatif. La Seine qui coule derrière le 106.</p>
+  <hr>
+  <h2>Les membres</h2>
+  <ul class="members">
+    <li><span class="highlight">Rosaria</span> batterie</li>
+    <li><span class="highlight">Christophe</span> basse</li>
+    <li><span class="highlight">Nicolas</span> guitare</li>
+    <li><span class="highlight">David</span> guitare / chant</li>
+    <li><span class="highlight">Virginie</span> chant</li>
+  </ul>
+  <hr>
+  <h2>Concerts</h2>
+  <p>Contactez-nous pour programmer un concert.</p>
+  <hr>
+  <h2>Contact</h2>
+  <p>riversrockrouen@gmail.com</p>
+  <div class="links">
+    <a href="https://www.instagram.com/riversrockrouen" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/RiversRockRouen" target="_blank">Facebook</a>
+    <a href="https://www.youtube.com/@RiversRockRouen" target="_blank">YouTube</a>
+  </div>
+  <p class="footer">RIVERS ROCK — Rouen</p>
+</div>
+</body>
+</html>

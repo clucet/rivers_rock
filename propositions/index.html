@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rivers Rock — Choisissez votre identité</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;background:#0D1117;color:#fff;min-height:100vh}
+.bg-grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.03'/%3E%3C/svg%3E")}
+header{text-align:center;padding:60px 24px 20px;position:relative;z-index:1}
+header h1{font-family:'Anton',sans-serif;font-size:56px;letter-spacing:3px;color:#fff;text-transform:uppercase}
+header p{font-family:'Space Mono',monospace;font-size:13px;color:rgba(255,255,255,0.4);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:24px;max-width:1200px;margin:40px auto;padding:0 24px;position:relative;z-index:1}
+.card{background:rgba(255,255,255,0.04);border-radius:12px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;transition:.3s;text-decoration:none;color:#fff}
+.card:hover{transform:translateY(-4px);background:rgba(255,255,255,0.07)}
+.card-header{padding:20px 24px;display:flex;justify-content:space-between;align-items:center}
+.card-header .num{font-family:'Anton',sans-serif;font-size:14px;color:rgba(255,255,255,0.2)}
+.card-header .badge{font-size:10px;padding:3px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:1px}
+.badge-originale{background:rgba(232,93,58,0.15);color:#E85D3A}
+.badge-fluid{background:rgba(212,168,67,0.15);color:#D4A843}
+.badge-rock{background:rgba(255,59,0,0.15);color:#FF3B00}
+.badge-vintage{background:rgba(201,168,76,0.15);color:#C9A84C}
+.badge-ponts{background:rgba(255,183,3,0.15);color:#FFB703}
+.card-preview{height:160px;display:flex;align-items:center;justify-content:center;position:relative}
+.card-preview svg{max-width:120px;max-height:80px}
+.card-body{padding:20px 24px}
+.card-body h2{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:4px}
+.card-body .tag{font-size:11px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.card-body p{font-size:13px;line-height:1.6;color:rgba(255,255,255,0.6)}
+.card-footer{display:flex;gap:8px;padding:0 24px 20px;flex-wrap:wrap}
+.card-footer a{font-family:'Space Mono',monospace;font-size:11px;padding:6px 14px;border-radius:6px;text-decoration:none;transition:.2s;letter-spacing:0.5px}
+.card-footer .btn-site{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7)}
+.card-footer .btn-site:hover{background:rgba(255,255,255,0.15);color:#fff}
+.card-footer .btn-pdf{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.4)}
+.card-footer .btn-pdf:hover{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)}
+.legend{max-width:800px;margin:40px auto;padding:0 24px;text-align:center;position:relative;z-index:1}
+.legend table{width:100%;border-collapse:collapse;font-size:12px;color:rgba(255,255,255,0.5)}
+.legend th,.legend td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.04);text-align:left}
+.legend th{font-family:'Anton',sans-serif;font-size:11px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px}
+footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size:12px;position:relative;z-index:1}
+</style>
+</head>
+<body>
+<div class="bg-grain"></div>
+<header>
+  <h1>RIVERS ROCK</h1>
+  <p>Choisissez l'identité visuelle du groupe — 5 propositions</p>
+</header>
+
+<div class="grid">
+
+  <!-- 00 Originale -->
+  <a class="card" href="00-originale/assets/index.html" target="_blank">
+    <div class="card-header">
+      <span class="num">00</span>
+      <span class="badge badge-originale">Baseline</span>
+    </div>
+    <div class="card-preview" style="background:linear-gradient(135deg,#1A3A5C,#4A9B8E)">
+      <svg viewBox="0 0 100 100" width="100" height="100">
+        <circle cx="50" cy="50" r="42" fill="none" stroke="#fff" stroke-width="4"/>
+        <path d="M18,50 Q30,42 42,50 Q54,58 66,50 Q78,42 90,50" fill="none" stroke="#E85D3A" stroke-width="3.5"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h2>Originale</h2>
+      <div class="tag">Bebas Neue · Montserrat</div>
+      <p>Le design classique — bleu Seine, vert d'eau, écusson cercle+vague. Sobre et efficace.</p>
+    </div>
+    <div class="card-footer">
+      <span class="btn-site">Site</span>
+    </div>
+  </a>
+
+  <!-- 01 Fluid Wave -->
+  <a class="card" href="01-fluid-wave/assets/index.html" target="_blank">
+    <div class="card-header">
+      <span class="num">01</span>
+      <span class="badge badge-fluid">Organique</span>
+    </div>
+    <div class="card-preview" style="background:linear-gradient(135deg,#1A4A3A,#4A9B8E)">
+      <svg viewBox="0 0 200 40" width="140" height="30">
+        <path d="M10,20 C40,0 70,40 100,20 C130,0 160,40 190,20" fill="none" stroke="#D4A843" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h2>Fluid Wave</h2>
+      <div class="tag">Playfair Display · Nunito</div>
+      <p>Organique et contemporain — vert profond, ambre, vague seule. Élégant et fluide.</p>
+    </div>
+    <div class="card-footer">
+      <span class="btn-site">Site</span>
+    </div>
+  </a>
+
+  <!-- 02 Rock Brut -->
+  <a class="card" href="02-rock-brut/assets/index.html" target="_blank">
+    <div class="card-header">
+      <span class="num">02</span>
+      <span class="badge badge-rock">Industriel</span>
+    </div>
+    <div class="card-preview" style="background:#0A0A0A">
+      <svg viewBox="0 0 100 100" width="90" height="90">
+        <polygon points="50,8 86.4,29 86.4,71 50,92 13.6,71 13.6,29" fill="none" stroke="#FF3B00" stroke-width="4"/>
+        <polygon points="50,16 78.1,33.5 78.1,66.5 50,84 21.9,66.5 21.9,33.5" fill="none" stroke="#fff" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h2>Rock Brut</h2>
+      <div class="tag">Anton · Inter Tight · JetBrains Mono</div>
+      <p>Industriel et performatif — noir, orange vif, hexagone. Puissant et radical.</p>
+    </div>
+    <div class="card-footer">
+      <span class="btn-site">Site</span>
+    </div>
+  </a>
+
+  <!-- 03 Scène & Vintage -->
+  <a class="card" href="03-scene-vintage/assets/index.html" target="_blank" style="border-color:rgba(201,168,76,0.2)">
+    <div class="card-header">
+      <span class="num">03</span>
+      <span class="badge badge-vintage">⭐ Retenue</span>
+    </div>
+    <div class="card-preview" style="background:linear-gradient(135deg,#1A3A5C,#1A5C5C)">
+      <svg viewBox="0 0 100 100" width="100" height="100">
+        <circle cx="50" cy="50" r="42" fill="none" stroke="#fff" stroke-width="4" style="filter:drop-shadow(0 0 8px rgba(232,93,58,0.5))"/>
+        <path d="M18,50 Q30,42 42,50 Q54,58 66,50 Q78,42 90,50" fill="none" stroke="#E85D3A" stroke-width="3.5" style="filter:drop-shadow(0 0 6px rgba(232,93,58,0.6))"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h2>Scène &amp; Vintage</h2>
+      <div class="tag">Anton · Bebas Neue · Space Mono</div>
+      <p>Nostalgique et lumineux — teal, terracotta, or, écusson néon, timbre disque. La plus aboutie.</p>
+    </div>
+    <div class="card-footer">
+      <span class="btn-site">Site</span>
+      <span class="btn-pdf">PDF setlist</span>
+    </div>
+  </a>
+
+  <!-- 04 Ponts & Lumière -->
+  <a class="card" href="04-ponts-lumiere/assets/index.html" target="_blank">
+    <div class="card-header">
+      <span class="num">04</span>
+      <span class="badge badge-ponts">Architectural</span>
+    </div>
+    <div class="card-preview" style="background:linear-gradient(135deg,#0D1B2A,#1B263B)">
+      <svg viewBox="0 0 200 80" width="160" height="50">
+        <path d="M10,70 Q50,10 100,30 Q150,10 190,70" fill="none" stroke="#E0E1DD" stroke-width="2"/>
+        <path d="M10,76 Q50,16 100,36 Q150,16 190,76" fill="none" stroke="#FFB703" stroke-width="1.5"/>
+        <circle cx="100" cy="33" r="4" fill="#FFB703"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h2>Ponts &amp; Lumière</h2>
+      <div class="tag">Teko · Raleway · DM Mono</div>
+      <p>Architectural et nocturne — bleu nuit, acier, lumière, pont arc. Atmosphérique et cinématographique.</p>
+    </div>
+    <div class="card-footer">
+      <span class="btn-site">Site</span>
+    </div>
+  </a>
+
+</div>
+
+<div class="legend">
+  <table>
+    <tr><th></th><th>Palette</th><th>Logo</th><th>Font hero</th><th>Font corps</th><th>Ambiance</th></tr>
+    <tr><td><strong style="color:#E85D3A">00</strong></td><td>Bleu · Vert · Orange</td><td>🛡️ Écusson</td><td>Bebas Neue</td><td>Montserrat</td><td>Classique</td></tr>
+    <tr><td><strong style="color:#D4A843">01</strong></td><td>Vert profond · Ambre</td><td>🌊 Vague seule</td><td>Playfair Display</td><td>Nunito</td><td>Organique</td></tr>
+    <tr><td><strong style="color:#FF3B00">02</strong></td><td>Noir · Orange vif</td><td>⬡ Hexagone</td><td>Anton</td><td>Inter Tight</td><td>Industriel</td></tr>
+    <tr><td><strong style="color:#C9A84C">03</strong></td><td>Teal · Terracotta · Or</td><td>🎯 Écusson + timbre</td><td>Anton</td><td>Montserrat</td><td>Vintage</td></tr>
+    <tr><td><strong style="color:#FFB703">04</strong></td><td>Nuit · Acier · Lumière</td><td>🌉 Pont arc</td><td>Teko</td><td>Raleway</td><td>Architectural</td></tr>
+  </table>
+</div>
+
+<footer>
+  Rivers Rock — 5 propositions · 24 juin 2026
+</footer>
+</body>
+</html>

@@ -4,6 +4,7 @@
 import os, math, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from logoutils import reportlab_crest, pillow_crest, BEBAS_PATH, MONTSERRAT_PATH
+from palette import ACTIVE as CFG
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm, cm
 from reportlab.lib.colors import HexColor, Color
@@ -17,15 +18,16 @@ TMPL_DIR = os.path.join(OUT_DIR, "templates")
 os.makedirs(OUT_DIR, exist_ok=True)
 os.makedirs(TMPL_DIR, exist_ok=True)
 
-ACCENT = HexColor("#E85D3A")
-BLANC = HexColor("#FFFFFF")
+ACCENT = CFG.rl("accent")
+BLANC = CFG.rl("blanc")
 
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
 pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
 
 
 def draw_design(cv, cx, cy, sym_r, label=""):
-    reportlab_crest(cv, cx, cy, sym_r / 25.0)
+    from logoutils import reportlab_crest_vintage
+    reportlab_crest_vintage(cv, cx, cy, sym_r / 25.0)
     cv.setFillColor(BLANC)
     cv.setFont("BebasNeue", max(14, int(sym_r * 2.2)))
     cv.drawCentredString(cx, cy - sym_r - max(10, sym_r * 0.6), "RIVERS")
