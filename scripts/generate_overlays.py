@@ -5,7 +5,7 @@ import os, sys, math
 sys.path.insert(0, os.path.dirname(__file__))
 from PIL import Image, ImageDraw, ImageFont
 from logoutils import BEBAS_PATH, MONTSERRAT_PATH, ANTON_PATH, SPACE_MONO_PATH, NUNITO_PATH, INTERTIGHT_PATH, JETBRAINS_PATH, BLANC_PIL, ACCENT_PIL, OR_VIEILLI_PIL, TERRACOTTA_PIL, TEAL_PROFOND_PIL
-from palette import BASE, FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE, Config
+from palette import BASE, FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE, NEON_NIGHTS, Config
 
 OUT = os.path.join(os.path.dirname(__file__), "..", "propositions")
 
@@ -189,6 +189,7 @@ if __name__ == "__main__":
         (ROCK_BRUT, "02-rock-brut"),
         (SCENE_VINTAGE, "03-scene-vintage"),
         (PONTS_LUMIERE, "04-ponts-lumiere"),
+        (NEON_NIGHTS, "05-neon-nights"),
     ]
     for cfg, dirname in configs:
         print(f"Overlays pour {cfg.name}...")

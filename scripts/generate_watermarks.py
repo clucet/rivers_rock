@@ -5,7 +5,7 @@ import os, sys, math
 sys.path.insert(0, os.path.dirname(__file__))
 from PIL import Image, ImageDraw, ImageFont
 from logoutils import BEBAS_PATH, ANTON_PATH, NUNITO_PATH, INTERTIGHT_PATH, pillow_monogramme_rr
-from palette import BASE, FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE
+from palette import BASE, FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE, NEON_NIGHTS
 
 OUT = os.path.join(os.path.dirname(__file__), "..", "propositions")
 
@@ -38,6 +38,13 @@ def make_watermark(cfg, dirname, sizes=[(200, 200), (100, 100), (50, 50)]):
                     y1 = arc_y - h * 0.25 * ((t1 - 0.5) ** 2 - 0.25) * 4
                     draw.line([(i, y0), (i + 1, y1)], fill=c, width=1)
             draw.ellipse([w // 2 - 5, int(h * 0.3) - 5, w // 2 + 5, int(h * 0.3) + 5], fill=(224, 225, 221, 100))
+        elif cfg.name == "Neon Nights":
+            c = (255, 45, 149, 77)
+            draw.ellipse([w//2 - 8, h//2 - 8, w//2 + 8, h//2 + 8], outline=c, width=2)
+            draw.line([(w//2 + 8, h//2 - 4), (w//2 + 20, h//2 - 8)], fill=c, width=2)
+            draw.line([(w//2 + 8, h//2 + 4), (w//2 + 18, h//2 + 10)], fill=c, width=2)
+            draw.line([(w//2 - 8, h//2 - 4), (w//2 - 20, h//2 - 8)], fill=c, width=2)
+            draw.line([(w//2 - 8, h//2 + 4), (w//2 - 18, h//2 + 10)], fill=c, width=2)
         elif cfg.name == "Scène & Vintage" or cfg.name == "Originale":
             # Monogramme RR
             scale = w / 80
@@ -70,6 +77,7 @@ if __name__ == "__main__":
         (ROCK_BRUT, "02-rock-brut"),
         (SCENE_VINTAGE, "03-scene-vintage"),
         (PONTS_LUMIERE, "04-ponts-lumiere"),
+        (NEON_NIGHTS, "05-neon-nights"),
     ]
     for cfg, dirname in configs:
         print(f"Watermarks pour {cfg.name}...")

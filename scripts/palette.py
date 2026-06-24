@@ -321,6 +321,61 @@ PONTS_LUMIERE = Config(
     },
 )
 
+# ── Proposition 6 : Neon Nights ──
+NEON_NIGHTS = Config(
+    name="Neon Nights",
+    colors=_colors({
+        "nuit_profonde": "#0F0B1A",
+        "rose_neon":     "#FF2D95",
+        "cyan":          "#00F5FF",
+        "violet_fonce":  "#1A0B2E",
+        "blanc_bleute":  "#E8E0F0",
+        "blanc":         "#FFFFFF",
+        # Aliases
+        "bleu_seine":    "#0F0B1A",
+        "vert_eau":      "#1A0B2E",
+        "accent":        "#FF2D95",
+        "teal_profond":  "#1A0B2E",
+        "terracotta":    "#FF2D95",
+        "or_vieilli":    "#00F5FF",
+        "vert_repere":   "#1A0B2E",
+        "blanc_casse":   "#E8E0F0",
+        "gris_acier":    "#1A0B2E",
+    }),
+    fonts={
+        "hero":      "Orbitron",
+        "logo":      "Orbitron",
+        "body":      "Rajdhani",
+        "badge":     "Rajdhani",
+        "song":      "Rajdhani",
+        "data":      "JetBrainsMono",
+    },
+    tokens={
+        "card_w": 250, "card_h": 74, "card_r": 2,
+        "badge_r": 13, "badge_y": 15,
+        "shadow_off": 4, "shadow_alpha": 0.30,
+        "border_alpha": 0.50,
+        "gradient_steps": 120,
+        "wave_rows": 3, "wave_opacity": 0.05,
+        "grain_intensity": 0.03,
+        "logo_scale": 2.0,
+        "footer_tracking": 5,
+        "setlist_font_size": 24,
+        "badge_shape": "hexagon",
+        "wave_style": "zigzag",
+        "gradient_style": "radial",
+    },
+    flags={
+        "use_grain": True,
+        "use_halftone": True,
+        "use_flare": True,
+        "use_or_wave": False,
+        "use_duotone": True,
+        "use_glow": True,
+        "use_timbre": False,
+    },
+)
+
 # ── Helper : résolution de police dans logoutils ──
 FONT_MAP = {
     "BebasNeue":       "BebasNeue-Regular.ttf",
@@ -334,6 +389,8 @@ FONT_MAP = {
     "Teko":            "Teko[wght].ttf",
     "Raleway":         "Raleway[wght].ttf",
     "DMMono":          "DMMono-Regular.ttf",
+    "Orbitron":        "Orbitron[wght].ttf",
+    "Rajdhani":        "Rajdhani-Regular.ttf",
 }
 
 
@@ -354,6 +411,7 @@ def set_active(name):
         "rock-brut":    ROCK_BRUT,
         "scene-vintage": SCENE_VINTAGE,
         "ponts-lumiere": PONTS_LUMIERE,
+        "neon-nights":   NEON_NIGHTS,
     }
     ACTIVE = mapping.get(name, SCENE_VINTAGE)
     return ACTIVE
@@ -365,6 +423,7 @@ CONFIG_NAMES = {
     "rock-brut":    "02-rock-brut",
     "scene-vintage": "03-scene-vintage",
     "ponts-lumiere": "04-ponts-lumiere",
+    "neon-nights":   "05-neon-nights",
 }
 
 

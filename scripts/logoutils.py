@@ -6,7 +6,7 @@ from reportlab.lib.colors import HexColor, Color
 from PIL import Image, ImageFont, ImageDraw
 
 from palette import BASE, SCENE_VINTAGE, FLUID_WAVE, ROCK_BRUT, font_filename
-from palette import PONTS_LUMIERE
+from palette import PONTS_LUMIERE, NEON_NIGHTS
 
 
 def _find_font(filename, alt_names=None):
@@ -65,6 +65,16 @@ def _resolve_font(role, cfg=None):
         fnames.append("InterTight.ttf")
     elif fname == "JetBrainsMono[wght].ttf":
         fnames.append("JetBrainsMono.ttf")
+    elif fname == "Teko[wght].ttf":
+        fnames.append("Teko.ttf")
+    elif fname == "Raleway[wght].ttf":
+        fnames.append("Raleway.ttf")
+    elif fname == "DMMono-Regular.ttf":
+        fnames.append("DMMono.ttf")
+    elif fname == "Orbitron[wght].ttf":
+        fnames.append("Orbitron.ttf")
+    elif fname == "Rajdhani-Regular.ttf":
+        fnames.append("Rajdhani.ttf")
 
     path = None
     for fn in fnames:
@@ -85,6 +95,8 @@ def _resolve_font(role, cfg=None):
             "Teko[wght].ttf": "https://github.com/google/fonts/raw/main/ofl/teko/Teko%5Bwght%5D.ttf",
             "Raleway[wght].ttf": "https://github.com/google/fonts/raw/main/ofl/raleway/Raleway%5Bwght%5D.ttf",
             "DMMono-Regular.ttf": "https://github.com/google/fonts/raw/main/ofl/dmmono/DMMono-Regular.ttf",
+            "Orbitron[wght].ttf": "https://github.com/google/fonts/raw/main/ofl/orbitron/Orbitron%5Bwght%5D.ttf",
+            "Rajdhani-Regular.ttf": "https://github.com/google/fonts/raw/main/ofl/rajdhani/Rajdhani-Regular.ttf",
         }
         url = urls.get(fname, urls.get("Montserrat-VariableFont_wght.ttf"))
         path = _ensure_font(fname, url)
@@ -102,6 +114,8 @@ JETBRAINS_PATH = _resolve_font("data", ROCK_BRUT)
 TEKO_PATH = _resolve_font("hero", PONTS_LUMIERE)
 RALEWAY_PATH = _resolve_font("body", PONTS_LUMIERE)
 DMMONO_PATH = _resolve_font("data", PONTS_LUMIERE)
+ORBITRON_PATH = _resolve_font("hero", NEON_NIGHTS)
+RAJDHANI_PATH = _resolve_font("body", NEON_NIGHTS)
 
 # Default config for logoutils functions
 DEFAULT_CFG = SCENE_VINTAGE
