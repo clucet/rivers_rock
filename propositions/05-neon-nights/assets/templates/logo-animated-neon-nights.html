@@ -4,42 +4,52 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock — Neon Nights</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0}
 body{width:1080px;height:1920px;overflow:hidden;background:#0F0B1A;display:flex;align-items:center;justify-content:center}
 canvas{position:absolute;top:0;left:0;width:1080px;height:1920px}
 svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;overflow:visible}
-.circle{fill:none;stroke:#00F5FF;stroke-width:3;stroke-dasharray:200;stroke-dashoffset:200;animation:drawC .8s ease-out .3s forwards;filter:drop-shadow(0 0 12px rgba(0,245,255,0.6))}
-.lightning{fill:none;stroke:#FF2D95;stroke-width:3;stroke-linecap:round;opacity:0;animation:fadeL .5s ease-out 1.5s forwards;filter:drop-shadow(0 0 8px rgba(255,45,149,0.8))}
-.center{opacity:0;animation:fadeC .4s ease-out 1.3s forwards}
-@keyframes drawC{to{stroke-dashoffset:0}}
-@keyframes fadeL{to{opacity:1}}
-@keyframes fadeC{to{opacity:1}}
-.letter{font-family:'Orbitron','sans-serif';font-size:28px;fill:#E8E0F0;opacity:0}
-.lR{animation:drop .4s ease-out 2.0s forwards}
-.lI{animation:drop .4s ease-out 2.1s forwards}
-.lV{animation:drop .4s ease-out 2.2s forwards}
-.lE{animation:drop .4s ease-out 2.3s forwards}
-.lR2{animation:drop .4s ease-out 2.4s forwards}
-.lS{animation:drop .4s ease-out 2.5s forwards}
-.lROCK_R{animation:slide .4s ease-out 2.9s forwards}
-.lROCK_O{animation:slide .4s ease-out 3.0s forwards}
-.lROCK_C{animation:slide .4s ease-out 3.1s forwards}
-.lROCK_K{animation:slide .4s ease-out 3.2s forwards}
-@keyframes drop{0%{opacity:0;transform:translateY(-30px)}100%{opacity:1;transform:translateY(0)}}
-@keyframes slide{0%{opacity:0;transform:translateX(150px)}100%{opacity:1;transform:translateX(0)}}
+.flash{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.85);opacity:0;z-index:10;pointer-events:none;animation:flashBang .1s ease-out .9s forwards}
+@keyframes flashBang{0%{opacity:1}100%{opacity:0}}
+.buzz{animation:buzz .15s ease-in-out 5;transform-origin:center}
+@keyframes buzz{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+.circle{fill:none;stroke:#00F5FF;stroke-width:3;animation:fadeIn .2s ease-out .3s forwards;filter:drop-shadow(0 0 15px rgba(0,245,255,0.7))}
+@keyframes fadeIn{to{opacity:1}}
+.lightning{fill:none;stroke:#FFF;stroke-width:3;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;animation:strike .12s ease-out .95s forwards}
+.lightning-a{animation-delay:.95s}
+.lightning-b{animation-delay:.98s}
+@keyframes strike{to{stroke-dashoffset:0}}
+.lightning-fill{fill:none;stroke:#FF2D95;stroke-width:3;opacity:0;animation:glowOn .3s ease-out 1.15s forwards;filter:drop-shadow(0 0 10px rgba(255,45,149,0.9))}
+@keyframes glowOn{to{opacity:1}}
+.center-fill{opacity:0;animation:fadeIn .2s ease-out 1.3s forwards}
+.letter{font-family:'Orbitron',sans-serif;font-size:28px;fill:#E8E0F0;opacity:0}
+.lR{animation:flicker .6s ease-out 2.0s forwards}
+.lI{animation:flicker .6s ease-out 2.12s forwards}
+.lV{animation:flicker .6s ease-out 2.24s forwards}
+.lE{animation:flicker .6s ease-out 2.36s forwards}
+.lR2{animation:flicker .6s ease-out 2.48s forwards}
+.lS{animation:flicker .6s ease-out 2.6s forwards}
+@keyframes flicker{0%{opacity:1}15%{opacity:0}30%{opacity:1}45%{opacity:0}60%{opacity:1}70%{opacity:0.3}85%{opacity:1}100%{opacity:1}}
+.lROCK_R{animation:slideBlur .4s ease-out 3.0s forwards}
+.lROCK_O{animation:slideBlur .4s ease-out 3.12s forwards}
+.lROCK_C{animation:slideBlur .4s ease-out 3.24s forwards}
+.lROCK_K{animation:slideBlur .4s ease-out 3.36s forwards}
+@keyframes slideBlur{0%{opacity:0;transform:translateX(100px);filter:blur(6px)}100%{opacity:1;transform:translateX(0);filter:blur(0)}}
 </style>
 </head>
 <body>
+<div class="flash"></div>
 <canvas id="p"></canvas>
 <svg viewBox="-200 -200 400 400">
-  <circle class="circle" cx="0" cy="0" r="45"/>
-  <polyline class="lightning" points="35,-20 60,-10 45,5 55,10"/>
-  <polyline class="lightning" points="35,20 55,10 45,15 60,30"/>
-  <polyline class="lightning" points="-35,-20 -50,-10 -40,5 -55,10"/>
-  <polyline class="lightning" points="-35,20 -55,10 -45,15 -60,30"/>
-  <circle class="center" cx="0" cy="0" r="10" fill="#FF2D95"/>
+  <g class="buzz">
+    <circle class="circle" cx="0" cy="0" r="45"/>
+  </g>
+  <polyline class="lightning lightning-a" points="35,-20 55,-10 42,5 60,15"/>
+  <polyline class="lightning lightning-b" points="-35,-20 -50,-10 -40,5 -55,15"/>
+  <polyline class="lightning-fill" points="35,-20 55,-10 42,5 60,15"/>
+  <polyline class="lightning-fill" points="-35,-20 -50,-10 -40,5 -55,15"/>
+  <circle class="center-fill" cx="0" cy="0" r="10" fill="#FF2D95"/>
   <text x="-60" y="-52.9" text-anchor="middle" class="letter lR">R</text>
   <text x="-36" y="-71.4" text-anchor="middle" class="letter lI">I</text>
   <text x="-12" y="-79.1" text-anchor="middle" class="letter lV">V</text>
@@ -59,7 +69,7 @@ for(let i=0;i<30;i++){ps.push({x:Math.random()*1080,y:Math.random()*1920,s:Math.
 function draw(){ctx.clearRect(0,0,1080,1920);
 ctx.fillStyle='#0F0B1A';ctx.fillRect(0,0,1080,1920);
 const g=ctx.createRadialGradient(540,860,0,540,860,1200);
-g.addColorStop(0,'rgba(255,45,149,0.1)');g.addColorStop(0.5,'rgba(0,245,255,0.04)');g.addColorStop(1,'rgba(15,11,26,0)');
+g.addColorStop(0,'rgba(255,45,149,0.08)');g.addColorStop(0.5,'rgba(0,245,255,0.03)');g.addColorStop(1,'rgba(15,11,26,0)');
 ctx.fillStyle=g;ctx.fillRect(0,0,1080,1920);
 for(const p of ps){ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle='rgba(0,245,255,'+p.a+')';ctx.fill();p.y-=0.3;if(p.y<0){p.y=1920;p.x=Math.random()*1080}}
 requestAnimationFrame(draw)}draw();

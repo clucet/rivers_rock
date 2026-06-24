@@ -360,7 +360,7 @@ def gen_flyer():
         cv.roundRect(qx, qy2, qs, qs, 4, stroke=1, fill=0)
         cv.setFillColor(BLEU)
         cv.setFont("Montserrat", 7)
-        draw_qr_reportlab(cv, cx, qy2 + qs / 2, qs - 4, fill_color=BLEU_SEINE)
+        draw_qr_reportlab(cv, cx, qy2 + qs / 2, qs - 4, fill_color=BLEU)
 
         cv.setFillColor(Color(1, 1, 1, alpha=0.4))
         cv.setFont("Montserrat", 7)
@@ -628,25 +628,34 @@ def gen_animated():
 body{width:1080px;height:1920px;overflow:hidden;background:radial-gradient(ellipse at 50% 42%, #C96D4D 0%, #1A3A5C 55%, #1A5C5C 100%);display:flex;align-items:center;justify-content:center}
 canvas{position:absolute;top:0;left:0;width:1080px;height:1920px}
 svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:420px;height:420px;overflow:visible}
+.vinyl{opacity:0;animation:vinylAppear .3s ease-out .3s forwards}
+.vinyl-ring{fill:none;stroke:rgba(0,0,0,0.15);stroke-width:2}
+.vinyl-spin{animation:spin 1.2s linear .3s forwards;transform-origin:0 0}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes vinylAppear{to{opacity:1}}
+.vinyl-fade{opacity:0;animation:fadeVinyl .4s ease-out 1.3s forwards}
+@keyframes fadeVinyl{to{opacity:0}}
+.crest-group{opacity:0;animation:fadeCrest .5s ease-out 1.6s forwards}
+@keyframes fadeCrest{to{opacity:1}}
 .outer{fill:none;stroke:rgba(212,184,90,0.2);stroke-width:1.5}
-.inner{fill:none;stroke:#fff;stroke-width:5;stroke-dasharray:300;stroke-dashoffset:300;animation:drawC .8s ease-out .3s forwards;filter:drop-shadow(0 0 15px rgba(232,93,58,0.7))}
-.timbre{fill:none;stroke:rgba(255,255,255,0.15);stroke-width:1.5;stroke-dasharray:6 4;opacity:0;animation:fadeT .6s ease-out .6s forwards}
-.wave{fill:none;stroke:#E85D3A;stroke-width:4;stroke-linecap:round;opacity:0;animation:fadeW .5s ease-out 1.5s forwards;filter:drop-shadow(0 0 10px rgba(232,93,58,0.9))}
+.inner{fill:none;stroke:#fff;stroke-width:5;stroke-dasharray:300;stroke-dashoffset:300;animation:drawC .6s ease-out 1.6s forwards;filter:drop-shadow(0 0 15px rgba(232,93,58,0.7))}
+.timbre{fill:none;stroke:rgba(255,255,255,0.15);stroke-width:1.5;stroke-dasharray:6 4;opacity:0;animation:fadeT .4s ease-out 1.8s forwards}
+.wave{fill:none;stroke:#E85D3A;stroke-width:4;stroke-linecap:round;opacity:0;animation:fadeW .4s ease-out 2.0s forwards;filter:drop-shadow(0 0 10px rgba(232,93,58,0.9))}
 @keyframes drawC{to{stroke-dashoffset:0}}
 @keyframes fadeW{to{opacity:1}}
 @keyframes fadeT{to{opacity:1}}
-.letter{font-family:'Anton','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:36px;fill:#fff;opacity:0;filter:drop-shadow(0 0 4px rgba(255,255,255,0.3))}
-.lR{animation:drop .4s ease-out 1.0s forwards}
-.lI{animation:drop .4s ease-out 1.1s forwards}
-.lV{animation:drop .4s ease-out 1.2s forwards}
-.lE1{animation:drop .4s ease-out 1.3s forwards}
-.lR2{animation:drop .4s ease-out 1.4s forwards}
-.lS{animation:drop .4s ease-out 1.5s forwards}
-.lROCK_R{animation:slide .4s ease-out 1.9s forwards}
-.lROCK_O{animation:slide .4s ease-out 2.0s forwards}
-.lROCK_C{animation:slide .4s ease-out 2.1s forwards}
-.lROCK_K{animation:slide .4s ease-out 2.2s forwards}
-@keyframes drop{0%{opacity:0;transform:translateY(-40px)}100%{opacity:1;transform:translateY(0)}}
+.letter{font-family:'Anton',sans-serif;font-size:34px;fill:#fff;opacity:0;filter:drop-shadow(0 0 4px rgba(255,255,255,0.3))}
+.lR{animation:dropCurve .5s ease-out 2.2s forwards}
+.lI{animation:dropCurve .5s ease-out 2.35s forwards}
+.lV{animation:dropCurve .5s ease-out 2.5s forwards}
+.lE1{animation:dropCurve .5s ease-out 2.65s forwards}
+.lR2{animation:dropCurve .5s ease-out 2.8s forwards}
+.lS{animation:dropCurve .5s ease-out 2.95s forwards}
+@keyframes dropCurve{0%{opacity:0;transform:translateY(-50px) translateX(-10px)}100%{opacity:1;transform:translateY(0) translateX(0)}}
+.lROCK_R{animation:slide .4s ease-out 3.3s forwards}
+.lROCK_O{animation:slide .4s ease-out 3.45s forwards}
+.lROCK_C{animation:slide .4s ease-out 3.6s forwards}
+.lROCK_K{animation:slide .4s ease-out 3.75s forwards}
 @keyframes slide{0%{opacity:0;transform:translateX(200px)}100%{opacity:1;transform:translateX(0)}}
 .neon-pulse{animation:pulse 2s ease-in-out infinite alternate}
 @keyframes pulse{0%{filter:drop-shadow(0 0 8px rgba(232,93,58,0.4))}100%{filter:drop-shadow(0 0 25px rgba(232,93,58,0.9))}}
@@ -655,23 +664,35 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:420p
 <body>
 <canvas id="p"></canvas>
 <svg viewBox="-200 -200 400 400">
-  <circle class="outer" cx="0" cy="0" r="165"/>
-  <circle class="timbre" cx="0" cy="0" r="90"/>
-  <circle class="inner neon-pulse" cx="0" cy="0" r="80"/>
-  <path class="wave" d="M-72,0 Q-40,-20 0,0 Q40,20 72,0">
-    <animate attributeName="d" dur="3s" repeatCount="indefinite"
-      values="M-72,0 Q-40,-20 0,0 Q40,20 72,0;M-72,0 Q-40,20 0,0 Q40,-20 72,0;M-72,0 Q-40,-20 0,0 Q40,20 72,0"/>
-  </path>
-  <text x="-60" y="-52.9" text-anchor="middle" class="letter lR">R</text>
-  <text x="-36" y="-71.4" text-anchor="middle" class="letter lI">I</text>
-  <text x="-12" y="-79.1" text-anchor="middle" class="letter lV">V</text>
-  <text x="12" y="-79.1" text-anchor="middle" class="letter lE1">E</text>
-  <text x="36" y="-71.4" text-anchor="middle" class="letter lR2">R</text>
-  <text x="60" y="-52.9" text-anchor="middle" class="letter lS">S</text>
-  <text x="-30" y="74.2" text-anchor="middle" class="letter lROCK_R" font-size="28">R</text>
-  <text x="-10" y="79.4" text-anchor="middle" class="letter lROCK_O" font-size="28">O</text>
-  <text x="10" y="79.4" text-anchor="middle" class="letter lROCK_C" font-size="28">C</text>
-  <text x="30" y="74.2" text-anchor="middle" class="letter lROCK_K" font-size="28">K</text>
+  <g class="vinyl vinyl-fade">
+    <g class="vinyl-spin">
+      <circle class="vinyl-ring" cx="0" cy="0" r="140"/>
+      <circle class="vinyl-ring" cx="0" cy="0" r="120" stroke-dasharray="4 6"/>
+      <circle class="vinyl-ring" cx="0" cy="0" r="100" stroke-dasharray="2 8"/>
+      <circle class="vinyl-ring" cx="0" cy="0" r="80"/>
+      <circle cx="0" cy="0" r="30" fill="rgba(200,60,40,0.3)"/>
+      <circle cx="0" cy="0" r="6" fill="#333"/>
+    </g>
+  </g>
+  <g class="crest-group">
+    <circle class="outer" cx="0" cy="0" r="165"/>
+    <circle class="timbre" cx="0" cy="0" r="90"/>
+    <circle class="inner neon-pulse" cx="0" cy="0" r="80"/>
+    <path class="wave" d="M-72,0 Q-40,-20 0,0 Q40,20 72,0">
+      <animate attributeName="d" dur="3s" repeatCount="indefinite"
+        values="M-72,0 Q-40,-20 0,0 Q40,20 72,0;M-72,0 Q-40,20 0,0 Q40,-20 72,0;M-72,0 Q-40,-20 0,0 Q40,20 72,0"/>
+    </path>
+    <text x="-55" y="-52.9" text-anchor="middle" class="letter lR">R</text>
+    <text x="-33" y="-71.4" text-anchor="middle" class="letter lI">I</text>
+    <text x="-11" y="-79.1" text-anchor="middle" class="letter lV">V</text>
+    <text x="11" y="-79.1" text-anchor="middle" class="letter lE1">E</text>
+    <text x="33" y="-71.4" text-anchor="middle" class="letter lR2">R</text>
+    <text x="55" y="-52.9" text-anchor="middle" class="letter lS">S</text>
+    <text x="-30" y="74.2" text-anchor="middle" class="letter lROCK_R" font-size="28">R</text>
+    <text x="-10" y="79.4" text-anchor="middle" class="letter lROCK_O" font-size="28">O</text>
+    <text x="10" y="79.4" text-anchor="middle" class="letter lROCK_C" font-size="28">C</text>
+    <text x="30" y="74.2" text-anchor="middle" class="letter lROCK_K" font-size="28">K</text>
+  </g>
 </svg>
 <script>
 const c=document.getElementById('p'),ctx=c.getContext('2d');

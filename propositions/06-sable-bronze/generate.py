@@ -3,8 +3,10 @@
 
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
-from logoutils import pillow_grain_overlay,
-    draw_qr_pillow, BEBAS_PATH, MONTSERRAT_PATH, CINZEL_PATH, LATO_PATH, CORMORANT_PATH
+from logoutils import (
+    pillow_grain_overlay,
+    draw_qr_pillow, BEBAS_PATH, MONTSERRAT_PATH, CINZEL_PATH, LATO_PATH, CORMORANT_PATH,
+)
 from palette import SABLE_BRONZE as CFG
 from reportlab.lib.pagesizes import A4, A6
 from reportlab.lib.colors import Color
@@ -506,41 +508,59 @@ def gen_animated():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock — Sable &amp; Bronze</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0}
 body{width:1080px;height:1920px;overflow:hidden;background:linear-gradient(135deg,#D4A373,#FEFAE0);display:flex;align-items:center;justify-content:center}
 canvas{position:absolute;top:0;left:0;width:1080px;height:1920px}
 svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;overflow:visible}
-.sun{fill:#B5835A;opacity:0;animation:fadeSun .5s ease-out .3s forwards}
-.ring{fill:none;stroke:rgba(0,0,0,0.08);stroke-width:1.5;stroke-dasharray:4 3;opacity:0;animation:fadeSun .4s ease-out .6s forwards}
-.ray{fill:#B5835A;opacity:0;animation:rayFade .5s ease-out .8s forwards}
-@keyframes fadeSun{to{opacity:1}}
-@keyframes rayFade{to{opacity:1}}
-.letter{font-family:'Cinzel','serif';font-size:28px;fill:#2D6A4F;opacity:0}
-.lR{animation:drop .4s ease-out 2.0s forwards}
-.lI{animation:drop .4s ease-out 2.1s forwards}
-.lV{animation:drop .4s ease-out 2.2s forwards}
-.lE{animation:drop .4s ease-out 2.3s forwards}
-.lR2{animation:drop .4s ease-out 2.4s forwards}
-.lS{animation:drop .4s ease-out 2.5s forwards}
-.lROCK_R{animation:slide .4s ease-out 2.9s forwards}
-.lROCK_O{animation:slide .4s ease-out 3.0s forwards}
-.lROCK_C{animation:slide .4s ease-out 3.1s forwards}
-.lROCK_K{animation:slide .4s ease-out 3.2s forwards}
-@keyframes drop{0%{opacity:0;transform:translateY(-30px)}100%{opacity:1;transform:translateY(0)}}
+.sun-group{opacity:0;animation:sunRise .8s ease-out .3s forwards}
+@keyframes sunRise{0%{opacity:0;transform:translateY(120px)}100%{opacity:1;transform:translateY(0)}}
+.sun{fill:#B5835A}
+.ring{fill:none;stroke:rgba(0,0,0,0.06);stroke-width:1.5;stroke-dasharray:3 3}
+.ray{fill:#B5835A;opacity:0}
+.r1{animation:raySpread .5s ease-out .8s forwards}
+.r2{animation:raySpread .5s ease-out .95s forwards}
+.r3{animation:raySpread .5s ease-out 1.1s forwards}
+.r4{animation:raySpread .5s ease-out 1.25s forwards}
+@keyframes raySpread{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:scale(1)}}
+.glow{position:absolute;top:50%;left:50%;width:400px;height:400px;margin:-200px;background:radial-gradient(circle,rgba(255,255,255,0.12) 0%,transparent 70%);opacity:0;animation:glowSpread 1s ease-out 1.5s forwards}
+@keyframes glowSpread{0%{opacity:0;transform:scale(0.5)}100%{opacity:1;transform:scale(1)}}
+.letter{font-family:'Cinzel',serif;font-size:28px;fill:#2D6A4F;opacity:0}
+.lR{animation:riseBlur .5s ease-out 2.0s forwards}
+.lI{animation:riseBlur .5s ease-out 2.15s forwards}
+.lV{animation:riseBlur .5s ease-out 2.3s forwards}
+.lE{animation:riseBlur .5s ease-out 2.45s forwards}
+.lR2{animation:riseBlur .5s ease-out 2.6s forwards}
+.lS{animation:riseBlur .5s ease-out 2.75s forwards}
+@keyframes riseBlur{0%{opacity:0;transform:translateY(40px);filter:blur(8px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
+.lROCK_R{animation:slide .4s ease-out 3.1s forwards}
+.lROCK_O{animation:slide .4s ease-out 3.25s forwards}
+.lROCK_C{animation:slide .4s ease-out 3.4s forwards}
+.lROCK_K{animation:slide .4s ease-out 3.55s forwards}
 @keyframes slide{0%{opacity:0;transform:translateX(150px)}100%{opacity:1;transform:translateX(0)}}
+.rays-rotate{animation:spinSlow 25s linear infinite;transform-origin:0 0}
+@keyframes spinSlow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
+<div class="glow"></div>
 <canvas id="p"></canvas>
 <svg viewBox="-200 -200 400 400">
-  <circle class="sun" cx="0" cy="0" r="35" fill="#B5835A"/>
-  <circle class="ring" cx="0" cy="0" r="40"/>
-  <polygon class="ray" points="10,-10 40,-30 30,-5"/>
-  <polygon class="ray" points="10,10 30,40 5,30"/>
-  <polygon class="ray" points="-10,-10 -30,-40 -5,-30"/>
-  <polygon class="ray" points="-10,10 -40,30 -30,5"/>
+  <g class="sun-group">
+    <circle class="sun" cx="0" cy="0" r="35"/>
+    <circle class="ring" cx="0" cy="0" r="40"/>
+    <g class="rays-rotate">
+      <polygon class="ray r1" points="10,-10 45,-35 30,-5"/>
+      <polygon class="ray r2" points="-10,-10 -35,-45 -5,-30"/>
+      <polygon class="ray r3" points="10,10 35,45 5,30"/>
+      <polygon class="ray r4" points="-10,10 -45,35 -30,5"/>
+      <polygon class="ray r1" points="0,-15 0,-50 0,-30" style="animation-delay:1.0s"/>
+      <polygon class="ray r2" points="0,15 0,50 0,30" style="animation-delay:1.15s"/>
+      <polygon class="ray r3" points="15,0 50,0 30,0" style="animation-delay:1.0s"/>
+      <polygon class="ray r4" points="-15,0 -50,0 -30,0" style="animation-delay:1.15s"/>
+    </g>
+  </g>
   <text x="-60" y="-52.9" text-anchor="middle" class="letter lR">R</text>
   <text x="-36" y="-71.4" text-anchor="middle" class="letter lI">I</text>
   <text x="-12" y="-79.1" text-anchor="middle" class="letter lV">V</text>
@@ -560,7 +580,7 @@ for(let i=0;i<25;i++){ps.push({x:Math.random()*1080,y:Math.random()*1920,s:Math.
 function draw(){ctx.clearRect(0,0,1080,1920);
 ctx.fillStyle='#D4A373';ctx.fillRect(0,0,1080,1920);
 const g=ctx.createRadialGradient(540,860,0,540,860,1200);
-g.addColorStop(0,'rgba(204,107,73,0.08)');g.addColorStop(1,'rgba(212,163,115,0)');
+g.addColorStop(0,'rgba(204,107,73,0.06)');g.addColorStop(1,'rgba(212,163,115,0)');
 ctx.fillStyle=g;ctx.fillRect(0,0,1080,1920);
 for(const p of ps){ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle='rgba(204,107,73,'+p.a+')';ctx.fill();p.y-=0.2;if(p.y<0){p.y=1920;p.x=Math.random()*1080}}
 requestAnimationFrame(draw)}draw();
@@ -571,8 +591,6 @@ requestAnimationFrame(draw)}draw();
     with open(path, "w") as f:
         f.write(html)
     print(f"[Sable & Bronze] Animated logo → {path}")
-
-
 def gen_site():
     html = '''<!DOCTYPE html>
 <html lang="fr">

@@ -5,7 +5,8 @@ Usage: python3 scripts/render_animation.py [--render-scale 0.5] [--output path]"
 import os, math, subprocess, tempfile, sys, random, argparse
 sys.path.insert(0, os.path.dirname(__file__))
 from logoutils import BEBAS_PATH, ANTON_PATH
-from palette import SCENE_VINTAGE as CFG
+from palette import SCENE_VINTAGE as CFG_BASE
+from palette import set_active
 from PIL import Image, ImageDraw, ImageFont
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "pdf", "templates")
@@ -15,7 +16,11 @@ os.makedirs(OUT_DIR, exist_ok=True)
 parser = argparse.ArgumentParser()
 parser.add_argument("--render-scale", type=float, default=1.0, help="Render scale (0.5=540x960, 1.0=1080x1920)")
 parser.add_argument("--output", default=OUTPUT)
+parser.add_argument("--config", default="scene-vintage",
+                    choices=["scene-vintage", "fluid-wave", "rock-brut", "originale", "ponts-lumiere", "neon-nights", "sable-bronze"])
 args = parser.parse_args()
+
+CFG = set_active(args.config) if args.config else CFG_BASE
 
 SCALE = args.render_scale
 OUTPUT = args.output

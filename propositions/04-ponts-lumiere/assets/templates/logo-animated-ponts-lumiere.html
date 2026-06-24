@@ -3,55 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rivers Rock — Ponts &amp; Lumière</title>
-<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=DM+Mono&display=swap" rel="stylesheet">
+<title>Rivers Rock — Ponts &amp; Lumiere</title>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0}
 body{width:1080px;height:1920px;overflow:hidden;background:#0D1B2A;display:flex;align-items:center;justify-content:center}
 canvas{position:absolute;top:0;left:0;width:1080px;height:1920px}
 svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;overflow:visible}
-.bridge{fill:none;stroke:#E0E1DD;stroke-width:2;stroke-dasharray:600;stroke-dashoffset:600;animation:drawBridge 1.2s ease-out .3s forwards}
-.bridge-accent{fill:none;stroke:#FFB703;stroke-width:1.5;stroke-dasharray:600;stroke-dashoffset:600;animation:drawBridge 1.5s ease-out .6s forwards}
-.light{opacity:0;animation:pulseLight 1s ease-out 1.5s forwards}
-@keyframes drawBridge{to{stroke-dashoffset:0}}
-@keyframes pulseLight{0%{opacity:0;r:0}50%{opacity:1;r:5}100%{opacity:1;r:3}}
-@keyframes dropText{0%{opacity:0;transform:translateY(-30px)}100%{opacity:1;transform:translateY(0)}}
-@keyframes slideText{0%{opacity:0;transform:translateX(150px)}100%{opacity:1;transform:translateX(0)}}
-.letter{font-family:'Teko','sans-serif';font-weight:600;font-size:40px;fill:#fff;opacity:0}
-.lR{animation:dropText .4s ease-out 2.2s forwards}
-.lI{animation:dropText .4s ease-out 2.3s forwards}
-.lV{animation:dropText .4s ease-out 2.4s forwards}
-.lE{animation:dropText .4s ease-out 2.5s forwards}
-.lR2{animation:dropText .4s ease-out 2.6s forwards}
-.lS{animation:dropText .4s ease-out 2.7s forwards}
-.lROCK_R{animation:slideText .4s ease-out 3.0s forwards}
-.lROCK_O{animation:slideText .4s ease-out 3.1s forwards}
-.lROCK_C{animation:slideText .4s ease-out 3.2s forwards}
-.lROCK_K{animation:slideText .4s ease-out 3.3s forwards}
-@media(max-width:400px){
-  .hero h1{font-size:36px}
-  .member-card{flex:0 0 140px}
-  nav a{font-size:10px}
-  .section{padding:40px 12px}
-}
+.cable-l{fill:none;stroke:#E0E1DD;stroke-width:2;stroke-dasharray:300;stroke-dashoffset:300;animation:drawCableL 1s ease-out .3s forwards}
+.cable-r{fill:none;stroke:#E0E1DD;stroke-width:2;stroke-dasharray:300;stroke-dashoffset:300;animation:drawCableR 1s ease-out .3s forwards}
+.cable-accent-l{fill:none;stroke:#FFB703;stroke-width:1.5;stroke-dasharray:300;stroke-dashoffset:300;animation:drawCableL 1.2s ease-out .7s forwards}
+.cable-accent-r{fill:none;stroke:#FFB703;stroke-width:1.5;stroke-dasharray:300;stroke-dashoffset:300;animation:drawCableR 1.2s ease-out .7s forwards}
+@keyframes drawCableL{to{stroke-dashoffset:0}}
+@keyframes drawCableR{to{stroke-dashoffset:0}}
+.flare{opacity:0;animation:flareOn .4s ease-out 1.6s forwards}
+.flare circle{animation:pulseLight 2s ease-in-out infinite alternate}
+@keyframes flareOn{to{opacity:1}}
+@keyframes pulseLight{0%{r:3;opacity:1}100%{r:6;opacity:0.5}}
+.letter{font-family:'Teko',sans-serif;font-size:40px;font-weight:600;fill:#fff;opacity:0}
+.lRI{animation:slideFrom .5s ease-out 2.2s forwards}
+.lV{animation:slideFrom .5s ease-out 2.35s forwards}
+.lE{animation:slideFrom .5s ease-out 2.5s forwards}
+.lR2{animation:slideFrom .5s ease-out 2.65s forwards}
+.lS{animation:slideFromR .5s ease-out 2.2s forwards}
+.lR{animation:slideFromR .5s ease-out 2.35s forwards}
+@keyframes slideFrom{0%{opacity:0;transform:translateX(-60px)}100%{opacity:1;transform:translateX(0)}}
+@keyframes slideFromR{0%{opacity:0;transform:translateX(60px)}100%{opacity:1;transform:translateX(0)}}
+.lROCK_R{animation:slide .4s ease-out 2.9s forwards}
+.lROCK_O{animation:slide .4s ease-out 3.0s forwards}
+.lROCK_C{animation:slide .4s ease-out 3.1s forwards}
+.lROCK_K{animation:slide .4s ease-out 3.2s forwards}
+@keyframes slide{0%{opacity:0;transform:translateX(150px)}100%{opacity:1;transform:translateX(0)}}
 </style>
 </head>
 <body>
 <canvas id="p"></canvas>
 <svg viewBox="-200 -200 400 400">
-  <path class="bridge" d="M-160,60 Q-80,-60 0,20 Q80,-60 160,60"/>
-  <path class="bridge-accent" d="M-160,80 Q-80,-40 0,40 Q80,-40 160,80"/>
-  <circle class="light" cx="0" cy="30" r="3" fill="#FFB703"/>
-  <text x="-60" y="-52.9" text-anchor="middle" class="letter lR">R</text>
-  <text x="-36" y="-71.4" text-anchor="middle" class="letter lI">I</text>
-  <text x="-12" y="-79.1" text-anchor="middle" class="letter lV">V</text>
-  <text x="12" y="-79.1" text-anchor="middle" class="letter lE">E</text>
-  <text x="36" y="-71.4" text-anchor="middle" class="letter lR2">R</text>
-  <text x="60" y="-52.9" text-anchor="middle" class="letter lS">S</text>
-  <text x="-30" y="74.2" text-anchor="middle" class="letter lROCK_R" font-size="32">R</text>
-  <text x="-10" y="79.4" text-anchor="middle" class="letter lROCK_O" font-size="32">O</text>
-  <text x="10" y="79.4" text-anchor="middle" class="letter lROCK_C" font-size="32">C</text>
-  <text x="30" y="74.2" text-anchor="middle" class="letter lROCK_K" font-size="32">K</text>
+  <path class="cable-l" d="M-160,80 Q-80,-20 0,30"/>
+  <path class="cable-r" d="M160,80 Q80,-20 0,30"/>
+  <path class="cable-accent-l" d="M-160,90 Q-80,-10 0,40"/>
+  <path class="cable-accent-r" d="M160,90 Q80,-10 0,40"/>
+  <g class="flare">
+    <circle cx="0" cy="35" r="3" fill="#FFB703"/>
+    <circle cx="0" cy="35" r="8" fill="rgba(255,183,3,0.2)"/>
+  </g>
+  <text x="-80" y="-52.9" text-anchor="middle" class="letter lRI">R</text>
+  <text x="-45" y="-71.4" text-anchor="middle" class="letter lV">V</text>
+  <text x="-10" y="-79.1" text-anchor="middle" class="letter lE">E</text>
+  <text x="25" y="-71.4" text-anchor="middle" class="letter lR2">R</text>
+  <text x="50" y="-52.9" text-anchor="middle" class="letter lS">S</text>
+  <text x="-25" y="60" text-anchor="middle" class="letter lR">R</text>
+  <text x="0" y="65" text-anchor="middle" class="letter lI">I</text>
+  <text x="-30" y="80" text-anchor="middle" class="letter lROCK_R" font-size="32">R</text>
+  <text x="-10" y="84" text-anchor="middle" class="letter lROCK_O" font-size="32">O</text>
+  <text x="10" y="84" text-anchor="middle" class="letter lROCK_C" font-size="32">C</text>
+  <text x="30" y="80" text-anchor="middle" class="letter lROCK_K" font-size="32">K</text>
 </svg>
 <script>
 const c=document.getElementById('p'),ctx=c.getContext('2d');
@@ -61,7 +67,7 @@ for(let i=0;i<30;i++){ps.push({x:Math.random()*1080,y:Math.random()*1920,s:Math.
 function draw(){ctx.clearRect(0,0,1080,1920);
 ctx.fillStyle='#0D1B2A';ctx.fillRect(0,0,1080,1920);
 const g=ctx.createRadialGradient(540,860,0,540,860,1200);
-g.addColorStop(0,'rgba(255,183,3,0.12)');g.addColorStop(0.5,'rgba(65,90,119,0.06)');g.addColorStop(1,'rgba(13,27,42,0)');
+g.addColorStop(0,'rgba(255,183,3,0.08)');g.addColorStop(1,'rgba(13,27,42,0)');
 ctx.fillStyle=g;ctx.fillRect(0,0,1080,1920);
 for(const p of ps){ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle='rgba(255,183,3,'+p.a+')';ctx.fill();p.y-=0.3;if(p.y<0){p.y=1920;p.x=Math.random()*1080}}
 requestAnimationFrame(draw)}draw();
