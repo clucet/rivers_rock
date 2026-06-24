@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rivers Rock — Sable &amp; Bronze</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0}
+body{width:1080px;height:1920px;overflow:hidden;background:linear-gradient(135deg,#D4A373,#FEFAE0);display:flex;align-items:center;justify-content:center}
+canvas{position:absolute;top:0;left:0;width:1080px;height:1920px}
+svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;overflow:visible}
+.sun{fill:#B5835A;opacity:0;animation:fadeSun .5s ease-out .3s forwards}
+.ring{fill:none;stroke:rgba(0,0,0,0.08);stroke-width:1.5;stroke-dasharray:4 3;opacity:0;animation:fadeSun .4s ease-out .6s forwards}
+.ray{fill:#B5835A;opacity:0;animation:rayFade .5s ease-out .8s forwards}
+@keyframes fadeSun{to{opacity:1}}
+@keyframes rayFade{to{opacity:1}}
+.letter{font-family:'Cinzel','serif';font-size:28px;fill:#2D6A4F;opacity:0}
+.lR{animation:drop .4s ease-out 2.0s forwards}
+.lI{animation:drop .4s ease-out 2.1s forwards}
+.lV{animation:drop .4s ease-out 2.2s forwards}
+.lE{animation:drop .4s ease-out 2.3s forwards}
+.lR2{animation:drop .4s ease-out 2.4s forwards}
+.lS{animation:drop .4s ease-out 2.5s forwards}
+.lROCK_R{animation:slide .4s ease-out 2.9s forwards}
+.lROCK_O{animation:slide .4s ease-out 3.0s forwards}
+.lROCK_C{animation:slide .4s ease-out 3.1s forwards}
+.lROCK_K{animation:slide .4s ease-out 3.2s forwards}
+@keyframes drop{0%{opacity:0;transform:translateY(-30px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes slide{0%{opacity:0;transform:translateX(150px)}100%{opacity:1;transform:translateX(0)}}
+</style>
+</head>
+<body>
+<canvas id="p"></canvas>
+<svg viewBox="-200 -200 400 400">
+  <circle class="sun" cx="0" cy="0" r="35" fill="#B5835A"/>
+  <circle class="ring" cx="0" cy="0" r="40"/>
+  <polygon class="ray" points="10,-10 40,-30 30,-5"/>
+  <polygon class="ray" points="10,10 30,40 5,30"/>
+  <polygon class="ray" points="-10,-10 -30,-40 -5,-30"/>
+  <polygon class="ray" points="-10,10 -40,30 -30,5"/>
+  <text x="-60" y="-52.9" text-anchor="middle" class="letter lR">R</text>
+  <text x="-36" y="-71.4" text-anchor="middle" class="letter lI">I</text>
+  <text x="-12" y="-79.1" text-anchor="middle" class="letter lV">V</text>
+  <text x="12" y="-79.1" text-anchor="middle" class="letter lE">E</text>
+  <text x="36" y="-71.4" text-anchor="middle" class="letter lR2">R</text>
+  <text x="60" y="-52.9" text-anchor="middle" class="letter lS">S</text>
+  <text x="-30" y="74.2" text-anchor="middle" class="letter lROCK_R" font-size="22">R</text>
+  <text x="-10" y="79.4" text-anchor="middle" class="letter lROCK_O" font-size="22">O</text>
+  <text x="10" y="79.4" text-anchor="middle" class="letter lROCK_C" font-size="22">C</text>
+  <text x="30" y="74.2" text-anchor="middle" class="letter lROCK_K" font-size="22">K</text>
+</svg>
+<script>
+const c=document.getElementById('p'),ctx=c.getContext('2d');
+c.width=1080;c.height=1920;
+const ps=[];
+for(let i=0;i<25;i++){ps.push({x:Math.random()*1080,y:Math.random()*1920,s:Math.random()*3+1,a:Math.random()*0.04+0.01})}
+function draw(){ctx.clearRect(0,0,1080,1920);
+ctx.fillStyle='#D4A373';ctx.fillRect(0,0,1080,1920);
+const g=ctx.createRadialGradient(540,860,0,540,860,1200);
+g.addColorStop(0,'rgba(204,107,73,0.08)');g.addColorStop(1,'rgba(212,163,115,0)');
+ctx.fillStyle=g;ctx.fillRect(0,0,1080,1920);
+for(const p of ps){ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle='rgba(204,107,73,'+p.a+')';ctx.fill();p.y-=0.2;if(p.y<0){p.y=1920;p.x=Math.random()*1080}}
+requestAnimationFrame(draw)}draw();
+</script>
+</body>
+</html>

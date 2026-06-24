@@ -6,7 +6,7 @@ from reportlab.lib.colors import HexColor, Color
 from PIL import Image, ImageFont, ImageDraw
 
 from palette import BASE, SCENE_VINTAGE, FLUID_WAVE, ROCK_BRUT, font_filename
-from palette import PONTS_LUMIERE, NEON_NIGHTS
+from palette import PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE
 
 
 def _find_font(filename, alt_names=None):
@@ -75,6 +75,12 @@ def _resolve_font(role, cfg=None):
         fnames.append("Orbitron.ttf")
     elif fname == "Rajdhani-Regular.ttf":
         fnames.append("Rajdhani.ttf")
+    elif fname == "Cinzel[wght].ttf":
+        fnames.append("Cinzel.ttf")
+    elif fname == "Lato-Regular.ttf":
+        fnames.append("Lato.ttf")
+    elif fname == "Cormorant-VariableFont_wght.ttf":
+        fnames.append("Cormorant-VF.ttf")
 
     path = None
     for fn in fnames:
@@ -97,6 +103,9 @@ def _resolve_font(role, cfg=None):
             "DMMono-Regular.ttf": "https://github.com/google/fonts/raw/main/ofl/dmmono/DMMono-Regular.ttf",
             "Orbitron[wght].ttf": "https://github.com/google/fonts/raw/main/ofl/orbitron/Orbitron%5Bwght%5D.ttf",
             "Rajdhani-Regular.ttf": "https://github.com/google/fonts/raw/main/ofl/rajdhani/Rajdhani-Regular.ttf",
+            "Cinzel[wght].ttf": "https://github.com/google/fonts/raw/main/ofl/cinzel/Cinzel%5Bwght%5D.ttf",
+            "Lato-Regular.ttf": "https://github.com/google/fonts/raw/main/ofl/lato/Lato-Regular.ttf",
+            "Cormorant-VariableFont_wght.ttf": "https://github.com/google/fonts/raw/main/ofl/cormorant/Cormorant%5Bwght%5D.ttf",
         }
         url = urls.get(fname, urls.get("Montserrat-VariableFont_wght.ttf"))
         path = _ensure_font(fname, url)
@@ -116,6 +125,9 @@ RALEWAY_PATH = _resolve_font("body", PONTS_LUMIERE)
 DMMONO_PATH = _resolve_font("data", PONTS_LUMIERE)
 ORBITRON_PATH = _resolve_font("hero", NEON_NIGHTS)
 RAJDHANI_PATH = _resolve_font("body", NEON_NIGHTS)
+CINZEL_PATH = _resolve_font("hero", SABLE_BRONZE)
+LATO_PATH = _resolve_font("body", SABLE_BRONZE)
+CORMORANT_PATH = _resolve_font("quote", SABLE_BRONZE)
 
 # Default config for logoutils functions
 DEFAULT_CFG = SCENE_VINTAGE

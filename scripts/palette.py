@@ -376,6 +376,62 @@ NEON_NIGHTS = Config(
     },
 )
 
+# ── Proposition 6 : Sable & Bronze ──
+SABLE_BRONZE = Config(
+    name="Sable & Bronze",
+    colors=_colors({
+        "sable":         "#D4A373",
+        "terre_cuite":   "#CC6B49",
+        "bronze":        "#B5835A",
+        "vert_palmier":  "#2D6A4F",
+        "creme":         "#FEFAE0",
+        "blanc":         "#FFFFFF",
+        # Aliases
+        "bleu_seine":    "#2D6A4F",
+        "vert_eau":      "#D4A373",
+        "accent":        "#CC6B49",
+        "teal_profond":  "#B5835A",
+        "terracotta":    "#CC6B49",
+        "or_vieilli":    "#B5835A",
+        "vert_repere":   "#B5835A",
+        "blanc_casse":   "#FEFAE0",
+        "gris_acier":    "#D4A373",
+        "noir":          "#2D6A4F",
+    }),
+    fonts={
+        "hero":      "Cinzel",
+        "logo":      "Cinzel",
+        "body":      "Lato",
+        "badge":     "Lato",
+        "song":      "Lato",
+        "quote":     "Cormorant",
+    },
+    tokens={
+        "card_w": 250, "card_h": 74, "card_r": 8,
+        "badge_r": 12, "badge_y": 15,
+        "shadow_off": 3, "shadow_alpha": 0.12,
+        "border_alpha": 0.35,
+        "gradient_steps": 120,
+        "wave_rows": 2, "wave_opacity": 0.04,
+        "grain_intensity": 0.05,
+        "logo_scale": 2.0,
+        "footer_tracking": 3,
+        "setlist_font_size": 24,
+        "badge_shape": "circle",
+        "wave_style": "geometric",
+        "gradient_style": "linear",
+    },
+    flags={
+        "use_grain": True,
+        "use_halftone": True,
+        "use_flare": True,
+        "use_or_wave": False,
+        "use_duotone": False,
+        "use_glow": False,
+        "use_timbre": False,
+    },
+)
+
 # ── Helper : résolution de police dans logoutils ──
 FONT_MAP = {
     "BebasNeue":       "BebasNeue-Regular.ttf",
@@ -391,6 +447,9 @@ FONT_MAP = {
     "DMMono":          "DMMono-Regular.ttf",
     "Orbitron":        "Orbitron[wght].ttf",
     "Rajdhani":        "Rajdhani-Regular.ttf",
+    "Cinzel":          "Cinzel[wght].ttf",
+    "Lato":            "Lato-Regular.ttf",
+    "Cormorant":       "Cormorant-VariableFont_wght.ttf",
 }
 
 
@@ -412,6 +471,7 @@ def set_active(name):
         "scene-vintage": SCENE_VINTAGE,
         "ponts-lumiere": PONTS_LUMIERE,
         "neon-nights":   NEON_NIGHTS,
+        "sable-bronze":  SABLE_BRONZE,
     }
     ACTIVE = mapping.get(name, SCENE_VINTAGE)
     return ACTIVE
@@ -424,6 +484,7 @@ CONFIG_NAMES = {
     "scene-vintage": "03-scene-vintage",
     "ponts-lumiere": "04-ponts-lumiere",
     "neon-nights":   "05-neon-nights",
+    "sable-bronze":  "06-sable-bronze",
 }
 
 
