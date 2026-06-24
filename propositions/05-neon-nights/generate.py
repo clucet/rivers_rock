@@ -689,6 +689,13 @@ nav a:hover{color:var(--rose);text-shadow:0 0 8px rgba(255,45,149,0.4)}
   <p>Contactez-nous pour programmer un concert.</p>
   <ul class="concerts-list"><li><span class="date">A venir</span><span class="lieu">Contactez-nous</span><span class="status">Sur demande</span></li></ul>
 </section>
+<section id="musique" class"section">
+  <h2>Musique</h2>
+  <p>Decouvrez Rivers Rock en action &mdash; extraits live et playlist a venir.</p>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:16px">
+    <iframe src="https://www.youtube.com/embed/" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none" allowfullscreen></iframe>
+  </div>
+</section>
 <section id="contact" class="section section-alt">
   <h2>Contact</h2>
   <div class="contact-info"><p>Pour toute demande :</p><a class="email" href="mailto:riversrockrouen@gmail.com">riversrockrouen@gmail.com</a></div>

@@ -10,13 +10,15 @@
 > On est un groupe de reprises rock, pop-rock, indé et alternatif formé en 2024.
 > Notre nom ? La Seine qui coule derrière le 106, notre lieu de répétition.
 > 
+> Premier concert : **SAM 26 JUIN** à **Montigny** dans le cadre des **Soirées Nocturnes** 🎶
+> 
 > Au programme : AC/DC, Queen, Radiohead, White Stripes, Pixies, et bien d'autres…
 > 
-> 📍 Rouen — Normandie
+> 📍 Montigny · 19h30
 > 📧 riversrockrouen@gmail.com
 > 📷 @riversrockrouen
 > 
-> #RiversRock #Rouen #GroupeRouen #RockNormandie #ConcertRouen #ReprisesRock
+> #RiversRock #Rouen #SoiréesNocturnes #Montigny #Concert #ReprisesRock
 
 > **Visuel :** `propositions/03-scene-vintage/assets/templates/instagram-post.png`
 
@@ -34,12 +36,13 @@
 > 🎤 Virginie — Chant
 > 
 > Cinq styles, cinq personnalités, un seul son.
+> On vous attend nombreux le **SAM 26 JUIN** à **Montigny** !
 > 
-> 🎵 On vous donne rendez-vous très bientôt sur scène !
+> 🎵 **Les Soirées Nocturnes** — 19h30
 > 
-> #RiversRock #Rouen #GroupeRouen #MusiciensRouen #Batterie #Basse #Guitare #Chant
+> #RiversRock #Rouen #GroupeRouen #SoiréesNocturnes #Montigny
 
-> **Visuel :** photo du groupe (quand disponible) ou montage des 5 avatar-circle depuis `site/index.html`
+> **Visuel :** photo du groupe (quand disponible) ou montage des 5 avatar-circle depuis le site
 
 ---
 
@@ -61,14 +64,14 @@
 > 🔥 ROLLING STONES — Jumping jack flash
 > 🔥 WHITE STRIPES — Seven nation army
 > 
-> Du rock pur, des années 70 à aujourd'hui. 
-> Vous voulez nous voir en concert ? Contactez-nous !
+> À retrouver en live le **SAM 26 JUIN** aux **Soirées Nocturnes** de **Montigny** !
+> Contactez-nous pour tout renseignement.
 > 
 > 📧 riversrockrouen@gmail.com
 > 
-> #Setlist #ReprisesRock #Concert #Rouen #MusiqueLive
+> #Setlist #SoiréesNocturnes #Montigny #Concert #Rouen
 
-> **Visuel :** `propositions/03-scene-vintage/assets/pdf/setlist-scene-vintage.pdf` (capture d'écran de la 1ʳᵉ page)
+> **Visuel :** capture d'écran de la première page de la setlist PDF
 
 ---
 
@@ -85,25 +88,28 @@
 > 
 > Setlist modulable (45 min / 1h / 1h30). Sonorisation autonome possible.
 > 
+> Prochain concert : **SAM 26 JUIN** — **Montigny** (Soirées Nocturnes)
+> 
 > Contactez-nous pour un devis :
 > 📧 riversrockrouen@gmail.com
 > 📷 @riversrockrouen
 > 
-> #RiversRock #Rouen #Concert #Booking #GroupeNormandie #LocationGroupe #MusiqueLive
+> #RiversRock #Booking #GroupeNormandie #SoiréesNocturnes #Montigny
 
 > **Visuel :** `propositions/03-scene-vintage/assets/templates/facebook-banner.png`
 
 ---
 
-## Publication n°5 — Teaser vidéo
+## Publication n°5 — Rappel concert
 
 > **Texte :**
-> 🎥 **Ça donne quoi Rivers Rock en vrai ?**
+> 🎤 **Rappel — Rivers Rock en concert cette semaine !**
 > 
-> Petit extrait de notre set — stay tuned pour les vidéos complètes sur YouTube !
+> 📅 **SAM 26 JUIN 2026**
+> 📍 **Montigny — Les Soirées Nocturnes**
+> ⏰ **19h30**
 > 
-> ▶️ @RiversRockRouen
+> Rock, pop-rock, indé, alternatif. 12 titres qui dépotent.
+> Entrée libre — venez nombreux !
 > 
-> #RiversRock #Rouen #Rock #LiveMusic #Teaser #ConcertRouen
-
-> **Visuel :** vidéo courte (Reels/Shorts) ou `propositions/03-scene-vintage/assets/templates/logo-animated-fluid-wave.html` (capture de l'animation)
+> #RiversRock #Concert #Montigny #SoiréesNocturnes #Rock #MusiqueLive
