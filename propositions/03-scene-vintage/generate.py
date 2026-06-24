@@ -4,8 +4,11 @@
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
 from logoutils import (
+    draw_qr_pillow,
     reportlab_crest, pillow_crest, pillow_crest_timbre,
-    pillow_grain_overlay, pillow_monogramme_rr,
+    pillow_grain_overlay,
+    draw_qr_reportlab,
+    draw_qr_pillow, pillow_monogramme_rr,
     BEBAS_PATH, MONTSERRAT_PATH, SPACE_MONO_PATH, ANTON_PATH,
 )
 from palette import SCENE_VINTAGE as CFG
@@ -357,7 +360,7 @@ def gen_flyer():
         cv.roundRect(qx, qy2, qs, qs, 4, stroke=1, fill=0)
         cv.setFillColor(BLEU)
         cv.setFont("Montserrat", 7)
-        cv.drawCentredString(cx, qy2 + qs / 2 - 2, "QR")
+        draw_qr_reportlab(cv, cx, qy2 + qs / 2, qs - 4, fill_color=BLEU_SEINE)
 
         cv.setFillColor(Color(1, 1, 1, alpha=0.4))
         cv.setFont("Montserrat", 7)
@@ -420,7 +423,10 @@ def gen_social():
 
     qx, qy, qs = w / 2 - 60, 680, 120
     draw.rounded_rectangle([qx, qy, qx + qs, qy + qs], radius=12, fill=BLANC_PIL, outline=TERRA_PIL, width=3)
-    bbox = draw.textbbox((0, 0), "QR", font=font_space)
+    qr_img = draw_qr_pillow(None, 0, 0, qs - 12, fill_color=BLEU_PIL)
+    if qr_img:
+        img.paste(qr_img, (int(qx + 6), int(qy + 6)), qr_img if qr_img.mode == "RGBA" else None)
+
     tw = bbox[2] - bbox[0]
     th = bbox[3] - bbox[1]
     draw.text((qx + (qs - tw) / 2, qy + (qs - th) / 2), "QR", fill=BLEU_PIL, font=font_space)

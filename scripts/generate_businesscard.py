@@ -3,7 +3,7 @@
 
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH
+from logoutils import create_bleed_canvas, save_with_crop_marks, reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH
 from reportlab.lib.units import mm
 from reportlab.lib.colors import HexColor, Color
 from reportlab.pdfgen import canvas
@@ -35,7 +35,7 @@ def draw_gradient(cv, steps=60):
         cv.rect(0, i * dh, W, dh + 1, stroke=0, fill=1)
 
 
-cv = canvas.Canvas(OUTPUT, pagesize=(W, H))
+cv, W, H, bleed = create_bleed_canvas(OUTPUT, W, H)
 draw_gradient(cv)
 
 reportlab_crest(cv, 24 * mm, H / 2 + 4, 0.45)
@@ -57,5 +57,5 @@ cv.setFillColor(Color(1, 1, 1, alpha=0.5))
 cv.setFont("Montserrat", 7)
 cv.drawRightString(W - 5 * mm, 6 * mm, "riversrock.fr")
 
-cv.save()
+save_with_crop_marks(cv, W, H, bleed)
 print(f"Carte de visite : {OUTPUT}")

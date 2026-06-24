@@ -4,8 +4,10 @@
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
 from logoutils import (
+    draw_qr_pillow,
     pillow_monogramme_wave,
     pillow_crest, pillow_grain_overlay,
+    draw_qr_pillow,
     BEBAS_PATH, NUNITO_PATH, PLAYFAIR_PATH,
 )
 from palette import FLUID_WAVE as CFG
@@ -413,7 +415,10 @@ def gen_social():
 
     qx, qy, qs = w / 2 - 60, 650, 120
     draw.rounded_rectangle([qx, qy, qx + qs, qy + qs], radius=16, fill=BLANC_PIL, outline=AMBRE_PIL, width=3)
-    bbox = draw.textbbox((0, 0), "QR", font=font_nunito)
+    qr_img = draw_qr_pillow(None, 0, 0, qs - 12, fill_color=VERT_P_PIL)
+    if qr_img:
+        img.paste(qr_img, (int(qx + 6), int(qy + 6)), qr_img if qr_img.mode == "RGBA" else None)
+
     tw = bbox[2] - bbox[0]
     th = bbox[3] - bbox[1]
     draw.text((qx + (qs - tw) / 2, qy + (qs - th) / 2), "QR", fill=VERT_P_PIL, font=font_nunito)
@@ -696,6 +701,12 @@ hr{border:none;border-top:1px solid rgba(212,168,67,0.15);margin:40px 0}
   <hr>
   <h2>Concerts</h2>
   <p>Contactez-nous pour programmer un concert.</p>
+  <hr>
+  <h2>Musique</h2>
+  <p>Decouvrez Rivers Rock en action &mdash; extraits live et playlist a venir.</p>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:16px">
+    <iframe src="https://www.youtube.com/embed/" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none" allowfullscreen></iframe>
+  </div>
   <hr>
   <h2>Contact</h2>
   <p>riversrockrouen@gmail.com</p>

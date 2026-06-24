@@ -3,7 +3,7 @@
 
 import os, math, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import BEBAS_PATH, MONTSERRAT_PATH
+from logoutils import create_bleed_canvas, save_with_crop_marks, BEBAS_PATH, MONTSERRAT_PATH
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.lib.colors import HexColor, Color
@@ -148,7 +148,7 @@ def draw_stage(cv):
     cv.drawRightString(W - 30, ry_footer, "Contact : c.lucet@gmail.com / 06 75 29 99 37")
 
 
-cv = canvas.Canvas(OUTPUT, pagesize=(W, H))
+cv, W, H, bleed = create_bleed_canvas(OUTPUT, W, H)
 draw_stage(cv)
-cv.save()
+save_with_crop_marks(cv, W, H, bleed)
 print(f"Stage plot : {OUTPUT}")

@@ -4,8 +4,10 @@
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
 from logoutils import (
+    draw_qr_pillow,
     pillow_bridge_silhouette,
-    pillow_grain_overlay, BEBAS_PATH, MONTSERRAT_PATH,
+    pillow_grain_overlay,
+    draw_qr_pillow, BEBAS_PATH, MONTSERRAT_PATH,
     TEKO_PATH, RALEWAY_PATH, DMMONO_PATH,
 )
 from palette import PONTS_LUMIERE as CFG
@@ -418,7 +420,10 @@ def gen_social():
 
     qx, qy, qs = w / 2 - 60, 660, 120
     draw.rectangle([qx, qy, qx + qs, qy + qs], fill=BLANC_PIL, outline=LUMIERE_PIL, width=3)
-    bbox = draw.textbbox((0, 0), "QR", font=font_raleway)
+    qr_img = draw_qr_pillow(None, 0, 0, qs - 12, fill_color=NUIT_PIL)
+    if qr_img:
+        img.paste(qr_img, (int(qx + 6), int(qy + 6)), qr_img if qr_img.mode == "RGBA" else None)
+
     tw = bbox[2] - bbox[0]
     th = bbox[3] - bbox[1]
     draw.text((qx + (qs - tw) / 2, qy + (qs - th) / 2), "QR", fill=NUIT_PIL, font=font_raleway)
@@ -744,6 +749,13 @@ nav a:hover{color:var(--lumiere)}
   <h2>Concerts</h2>
   <p>Contactez-nous pour programmer un concert.</p>
   <ul class="concerts-list"><li><span class="date">À venir</span><span class="lieu">Contactez-nous</span><span class="status">Sur demande</span></li></ul>
+</section>
+<section id="musique" class="section">
+  <h2>Musique</h2>
+  <p>Decouvrez Rivers Rock en action &mdash; extraits live et playlist a venir.</p>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:16px">
+    <iframe src="https://www.youtube.com/embed/" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none" allowfullscreen></iframe>
+  </div>
 </section>
 <section id="contact" class="section section-alt">
   <h2>Contact</h2>

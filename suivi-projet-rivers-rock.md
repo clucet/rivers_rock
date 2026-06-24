@@ -59,7 +59,7 @@
   - Gmail : `riversrockrouen@gmail.com`
   - YouTube : `@RiversRockRouen`
   - Instagram : `@riversrockrouen` — ✅ créé
-  - Facebook : Page `Rivers Rock Rouen` — créer depuis ton compte personnel existant
+  - Facebook : Page `Rivers Rock Rouen` — ✅ créée
 - [ ] Publier les 5 posts de lancement sur Facebook — brouillons prêts dans `propositions/drafts/publications-facebook.md`
 - [ ] Héberger le site sur GitHub Pages (`riversrock.github.io`)
 - [ ] Remplacer `[DATE]` `[LIEU]` dans les templates pour un vrai concert
@@ -604,4 +604,10 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 24/06/2026 | **Finalisation 9/10** : responsive 400px (03, 04), responsive 640px (01, 02, 00), monogrammes spécifiques (bridge silhouette 04, wave RR 01, hexagon RR 02), animation wave ondulée (01), hiérarchie typographique clamp() (00) — 11 correctifs sur 5 propositions | opencode |
 | 24/06/2026 | **Assets manquants générés** : `scripts/generate_missing.py` — business cards, signatures, mockups, stage plots, tech sheets, lyrics (×12) pour les 5 propositions — 85 fichiers créés, total projet 176 assets | opencode |
 | 24/06/2026 | **Mise en ligne GitHub Pages** : dépôt clucet/rivers_rock passé en public, Pages activé sur `https://clucet.github.io/rivers_rock/` — retrait proposition 00 Originale de la sélection | opencode |
-| 24/06/2026 | **Proposition 05 « Neon Nights »** : cyberpunk — violet `#0F0B1A`, rose `#FF2D95`, cyan `#00F5FF`, fonts Orbitron + Rajdhani + JetBrains Mono, logo cercle + éclairs, 35 assets générés + page comparaison mise à jour (5 propositions) | opencode |
+| 24/06/2026 | **Proposition 05 « Neon Nights »** : cyberpunk — violet/rose/cyan, fonts Orbitron + Rajdhani + JetBrains Mono | opencode |
+| 24/06/2026 | **Proposition 06 « Sable & Bronze »** : voyage — sable/terre cuite/bronze, fonts Cinzel + Lato + Cormorant | opencode |
+| 24/06/2026 | **QR codes réels** : branchement `draw_qr_pillow`/`draw_qr_reportlab` dans les 6 propositions + flyer 03 | opencode |
+| 24/06/2026 | **Bleed + crop marks** : appliqués aux générateurs business card, stage plot, t-shirt | opencode |
+| 24/06/2026 | **Section Musique** : embed YouTube ajouté aux propositions 01 et 04 | opencode |
+| 24/06/2026 | **Setlist interactive web** : `scripts/generate_setlist_web.py` + page avec minuterie, BPM, chronomètre | opencode |
+| 24/06/2026 | **Facebook Page** `Rivers Rock Rouen` créée — tous les réseaux sont maintenant opérationnels | opencode |

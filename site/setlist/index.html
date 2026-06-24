@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Rivers Rock — Setlist</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0c;color:#e0e0e0;min-height:100svh;display:flex;flex-direction:column;user-select:none;-webkit-user-select:none}
+header{position:sticky;top:0;padding:12px 16px 8px;background:#0a0a0c;border-bottom:1px solid rgba(255,255,255,0.06);z-index:10}
+.header-row{display:flex;justify-content:space-between;align-items:center}
+h1{font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.timer{font-family:monospace;font-size:28px;font-weight:300;letter-spacing:2px;color:#E85D3A}
+.progress-bar{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;margin-top:8px;overflow:hidden}
+.progress-fill{height:100%;background:#E85D3A;border-radius:2px;transition:width .3s;width:0%}
+.stats{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.3);margin-top:4px}
+#list{flex:1;overflow-y:auto;padding:8px 0 100px}
+.song{display:flex;align-items:center;padding:10px 16px;gap:10px;border-bottom:1px solid rgba(255,255,255,0.03);transition:.15s;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.song:active{background:rgba(232,93,58,0.08)}
+.song.played{opacity:0.35}
+.song.playing{background:rgba(232,93,58,0.1);border-left:3px solid #E85D3A;padding-left:13px}
+.num{font-size:12px;font-weight:600;color:rgba(255,255,255,0.2);width:24px;text-align:right;flex-shrink:0}
+.info{flex:1;min-width:0}
+.artist{font-size:15px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song.played .artist{color:rgba(255,255,255,0.4)}
+.title{font-size:12px;color:rgba(255,255,255,0.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.title:empty{display:none}
+.meta{text-align:right;flex-shrink:0;font-size:11px;color:rgba(255,255,255,0.2)}
+.bpm{font-family:monospace}
+.lower{color:#4A9B8E;font-size:9px;text-transform:uppercase;letter-spacing:0.5px}
+.btn-play{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.1);background:transparent;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn-play:active{background:rgba(232,93,58,0.15);border-color:#E85D3A}
+.song.played .btn-play{border-color:rgba(255,255,255,0.05);color:rgba(255,255,255,0.15)}
+.song.playing .btn-play{background:#E85D3A;border-color:#E85D3A}
+footer{position:fixed;bottom:0;width:100%;padding:10px 16px 20px;background:linear-gradient(transparent,#0a0a0c 40%);text-align:center;font-size:11px;color:rgba(255,255,255,0.15)}
+footer a{color:rgba(232,93,58,0.6);text-decoration:none}
+@media(prefers-color-scheme:light){body{background:#f5f5f0;color:#333}header{background:#f5f5f0;border-color:rgba(0,0,0,0.06)}.artist{color:#111}.btn-play{border-color:rgba(0,0,0,0.15)}.song.playing{background:rgba(232,93,58,0.06)}footer{background:linear-gradient(transparent,#f5f5f0 40%)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-row">
+    <h1>RIVERS ROCK</h1>
+    <div class="timer" id="timer">00:00</div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+  <div class="stats">
+    <span id="played">0/12 joues</span>
+    <span id="remaining">Reste: ~45:00</span>
+  </div>
+</header>
+<div id="list">
+<div class="song" data-idx="0">
+    <span class="num">01</span>
+    <div class="info">
+      <div class="artist">NIAGARA</div>
+      <div class='title'>J'ai vu</div>
+    </div>
+    <div class="meta">
+      <div class="bpm">120</div>
+    </div>
+    <button class="btn-play" onclick="toggle(0)">▶</button>
+  </div>
+<div class="song" data-idx="1">
+    <span class="num">02</span>
+    <div class="info">
+      <div class="artist">AC/DC</div>
+      <div class='title'>You shook me all night long</div>
+    </div>
+    <div class="meta">
+      <div class="bpm">132</div>
+    </div>
+    <button class="btn-play" onclick="toggle(1)">▶</button>
+  </div>
+<div class="song" data-idx="2">
+    <span class="num">03</span>
+    <div class="info">
+      <div class="artist">DOLLY</div>
+      <div class='title'>Je n'veux pas rester sage</div>
+    </div>
+    <div class="meta">
+      <div class="bpm">115</div>
+    </div>
+    <button class="btn-play" onclick="toggle(2)">▶</button>
+  </div>
+<div class="song" data-idx="3">
+    <span class="num">04</span>
+    <div class="info">
+      <div class="artist">THE PIXIES</div>
+      <div class='title'>Where is my mind</div>
+    </div>
+    <div class="meta">
+      <div class="bpm">80</div>
+    </div>
+    <button class="btn-play" onclick="toggle(3)">▶</button>
+  </div>
+<div class="song" data-idx="4">
+    <span class="num">05</span>
+    <div class="info">
+      <div class="artist">PJ HARVEY</div>
+      <div class='title'>Good fortune</div>
+    </div>
+    <div class="meta">
+      <div class="bpm">110</div>
+    </div>
+    <button class="btn-play" onclick="toggle(4)">▶</button>
+  </div>
+<div class="song" data-idx="5">
+    <span class="num">06</span>
+    <div class="info">
+      <div class="artist">BELLA CIAO</div>
+      
+    </div>
+    <div class="meta">
+      <div class="bpm">100</div>
+    </div>
+    <button class="btn-play" onclick="toggle(5)">▶</button>
+  </div>
+<div class="song" data-idx="6">
+    <span class="num">07</span>
+    <div class="info">
+      <div class="artist">SMASHING PUMPKINS <span class='lower'>1/2 ton</span></div>
+      <div class='title'>Today</div>
+    </div>
+    <div class="meta">
+      <div class="bpm">135</div>
+    </div>
+    <button class="btn-play" onclick="toggle(6)">▶</button>
+  </div>
+<div class="song" data-idx="7">
+    <span class="num">08</span>
+    <div class="info">
+      <div class="artist">RADIOHEAD</div>
+      <div class='title'>Creep</div>
+    </div>
+    <div class="meta">
+      <div class="bpm">90</div>
+    </div>
+    <button class="btn-play" onclick="toggle(7)">▶</button>
+  </div>
+<div class="song" data-idx="8">
+    <span class="num">09</span>
+    <div class="info">
+      <div class="artist">DESIRELESS</div>
+      <div class='title'>Voyage, voyage</div>
+    </div>
+    <div class="meta">
+      <div class="bpm">125</div>
+    </div>
+    <button class="btn-play" onclick="toggle(8)">▶</button>
+  </div>
+<div class="song" data-idx="9">
+    <span class="num">10</span>
+    <div class="info">
+      <div class="artist">QUEEN</div>
+      <div class='title'>We will rock you</div>
+    </div>
+    <div class="meta">
+      <div class="bpm">88</div>
+    </div>
+    <button class="btn-play" onclick="toggle(9)">▶</button>
+  </div>
+<div class="song" data-idx="10">
+    <span class="num">11</span>
+    <div class="info">
+      <div class="artist">ROLLING STONES <span class='lower'>1/2 ton</span></div>
+      <div class='title'>Jumping jack flash</div>
+    </div>
+    <div class="meta">
+      <div class="bpm">140</div>
+    </div>
+    <button class="btn-play" onclick="toggle(10)">▶</button>
+  </div>
+<div class="song" data-idx="11">
+    <span class="num">12</span>
+    <div class="info">
+      <div class="artist">WHITE STRIPES</div>
+      <div class='title'>Seven nation army</div>
+    </div>
+    <div class="meta">
+      <div class="bpm">124</div>
+    </div>
+    <button class="btn-play" onclick="toggle(11)">▶</button>
+  </div>
+</div>
+<footer>
+  <span id="duration">Duree totale: ~45:00</span> &middot; <a href="https://clucet.github.io/rivers_rock" target="_blank">Rivers Rock</a>
+</footer>
+<script>
+const songs = document.querySelectorAll('.song');
+const timer = document.getElementById('timer');
+const progress = document.getElementById('progress');
+const playedEl = document.getElementById('played');
+const remainingEl = document.getElementById('remaining');
+let startTime = null;
+let playedCount = 0;
+
+// Estimate durations from BPM (seconds = roughly 60/BPM * typical song length ~180 beats)
+const durations = [120, 120, 120, 135, 120, 120, 120, 120, 120, 122, 120, 120];
+
+function toggle(idx) {
+  const s = songs[idx];
+  const btn = s.querySelector('.btn-play');
+  if (s.classList.contains('played')) {
+    s.classList.remove('played');
+    if (s.classList.contains('playing')) s.classList.remove('playing');
+    playedCount--;
+  } else {
+    s.classList.add('played');
+    s.classList.add('playing');
+    setTimeout(() => s.classList.remove('playing'), 600);
+    playedCount++;
+    if (!startTime) startTime = Date.now();
+  }
+  updateStats();
+}
+
+function updateStats() {
+  playedEl.textContent = playedCount + '/12 joues';
+  const pct = (playedCount / 12) * 100;
+  progress.style.width = pct + '%';
+  if (startTime) {
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    timer.textContent = formatTime(elapsed);
+    let remaining = 0;
+    for (let i = 0; i < 12; i++) {
+      if (!songs[i].classList.contains('played')) remaining += durations[i];
+    }
+    remainingEl.textContent = 'Reste: ' + formatTime(remaining);
+  }
+}
+
+function formatTime(s) {
+  const m = String(Math.floor(s / 60)).padStart(2, '0');
+  const sec = String(s % 60).padStart(2, '0');
+  return m + ':' + sec;
+}
+
+// Timer update every second
+setInterval(() => {
+  if (startTime) {
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    timer.textContent = formatTime(elapsed);
+  }
+}, 1000);
+</script>
+</body>
+</html>

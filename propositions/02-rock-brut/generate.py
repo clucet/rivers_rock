@@ -4,8 +4,10 @@
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
 from logoutils import (
+    draw_qr_pillow,
     pillow_hexagon_monogramme,
     pillow_crest, pillow_grain_overlay,
+    draw_qr_pillow,
     BEBAS_PATH, ANTON_PATH, INTERTIGHT_PATH, JETBRAINS_PATH,
 )
 from palette import ROCK_BRUT as CFG
@@ -382,7 +384,10 @@ def gen_social():
 
     qx, qy, qs = w / 2 - 60, 650, 120
     draw.rectangle([qx, qy, qx + qs, qy + qs], fill=BLANC_PIL, outline=ACCENT_PIL, width=4)
-    bbox = draw.textbbox((0, 0), "QR", font=font_inter)
+    qr_img = draw_qr_pillow(None, 0, 0, qs - 12, fill_color=NOIR_PIL)
+    if qr_img:
+        img.paste(qr_img, (int(qx + 6), int(qy + 6)), qr_img if qr_img.mode == "RGBA" else None)
+
     tw = bbox[2] - bbox[0]
     th = bbox[3] - bbox[1]
     draw.text((qx + (qs - tw) / 2, qy + (qs - th) / 2), "QR", fill=NOIR_PIL, font=font_inter)

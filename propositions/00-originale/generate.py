@@ -4,6 +4,7 @@
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
 from logoutils import (
+    draw_qr_pillow,
     reportlab_crest, pillow_crest,
     BEBAS_PATH, MONTSERRAT_PATH,
 )
@@ -352,7 +353,10 @@ def gen_social():
 
     qr_x, qr_y, qr_s = w / 2 - 60, 680, 120
     draw.rounded_rectangle([qr_x, qr_y, qr_x + qr_s, qr_y + qr_s], radius=12, fill=BLANC_PIL, outline=ACCENT_PIL, width=3)
-    bbox = draw.textbbox((0, 0), "QR", font=font_mont)
+    qr_img = draw_qr_pillow(None, 0, 0, qs - 12, fill_color=BLEU_PIL)
+    if qr_img:
+        img.paste(qr_img, (int(qx + 6), int(qy + 6)), qr_img if qr_img.mode == "RGBA" else None)
+
     tw = bbox[2] - bbox[0]
     th = bbox[3] - bbox[1]
     draw.text((qr_x + (qr_s - tw) / 2, qr_y + (qr_s - th) / 2), "QR", fill=BLEU_PIL, font=font_mont)

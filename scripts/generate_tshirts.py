@@ -3,7 +3,7 @@
 
 import os, math, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import reportlab_crest, pillow_crest, BEBAS_PATH, MONTSERRAT_PATH
+from logoutils import create_bleed_canvas, save_with_crop_marks, reportlab_crest, pillow_crest, BEBAS_PATH, MONTSERRAT_PATH
 from palette import ACTIVE as CFG
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm, cm
@@ -26,7 +26,7 @@ pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
 
 
 def draw_design(cv, cx, cy, sym_r, label=""):
-    from logoutils import reportlab_crest_vintage
+    from logoutils import create_bleed_canvas, save_with_crop_marks, reportlab_crest_vintage
     reportlab_crest_vintage(cv, cx, cy, sym_r / 25.0)
     cv.setFillColor(BLANC)
     cv.setFont("BebasNeue", max(14, int(sym_r * 2.2)))
@@ -62,7 +62,7 @@ def generate_print():
         ("XL", 40 * mm, x_col2, y_row2),
     ]
 
-    cv = canvas.Canvas(os.path.join(OUT_DIR, "t-shirt-print.pdf"), pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(os.path.join(OUT_DIR, "t-shirt-print.pdf"), A4[0], A4[1])
 
     cv.setFillColor(Color(0, 0, 0, alpha=0.04))
     cv.rect(0, 0, w, h, stroke=0, fill=1)
@@ -82,7 +82,7 @@ def generate_print():
     cv.drawString(10, y_info - 10, "Impression blanc + rouge #E85D3A")
     cv.drawString(10, y_info - 20, "Centrer à ~5 cm sous le col")
 
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"T-shirt print : {os.path.join(OUT_DIR, 't-shirt-print.pdf')}")
 
 

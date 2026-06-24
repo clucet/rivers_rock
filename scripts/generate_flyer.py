@@ -3,7 +3,7 @@
 
 import os, math, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH, draw_qr_reportlab
+from logoutils import create_bleed_canvas, save_with_crop_marks, reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH, draw_qr_reportlab
 from palette import ACTIVE as CFG
 from reportlab.lib.pagesizes import A4, A6
 from reportlab.lib.colors import Color

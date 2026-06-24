@@ -3,7 +3,8 @@
 
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
-from logoutils import pillow_grain_overlay, BEBAS_PATH, MONTSERRAT_PATH, CINZEL_PATH, LATO_PATH, CORMORANT_PATH
+from logoutils import pillow_grain_overlay,
+    draw_qr_pillow, BEBAS_PATH, MONTSERRAT_PATH, CINZEL_PATH, LATO_PATH, CORMORANT_PATH
 from palette import SABLE_BRONZE as CFG
 from reportlab.lib.pagesizes import A4, A6
 from reportlab.lib.colors import Color
@@ -352,7 +353,10 @@ def gen_social():
 
     qx, qy, qs = w / 2 - 60, 660, 120
     draw.rectangle([qx, qy, qx + qs, qy + qs], fill=BLANC_PIL, outline=TERRE_PIL, width=3)
-    bbox = draw.textbbox((0, 0), "QR", font=font_lato)
+    qr_img = draw_qr_pillow(None, 0, 0, qs - 12, fill_color=VERT_PIL)
+    if qr_img:
+        img.paste(qr_img, (int(qx + 6), int(qy + 6)), qr_img if qr_img.mode == "RGBA" else None)
+
     tw = bbox[2] - bbox[0]
     th = bbox[3] - bbox[1]
     draw.text((qx + (qs - tw) / 2, qy + (qs - th) / 2), "QR", fill=VERT_PIL, font=font_lato)
