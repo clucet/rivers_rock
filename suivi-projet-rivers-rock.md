@@ -53,19 +53,27 @@
 | Logo animé — RIVERS/ROCK sur arcs du cercle | `generate_animated_logo.html`, `render_animation.py` | 20/06 |
 | Développement proposition Fluid Wave (setlist, poster, flyer, social, banners, avatar, stickers, t-shirt, logo, site) | `propositions/01-fluid-wave/generate.py`, `propositions/01-fluid-wave/assets/` | 24/06 |
 | Développement proposition Rock Brut (setlist, poster, flyer, social, banners, avatar, stickers, t-shirt, logo, site) | `propositions/02-rock-brut/generate.py`, `propositions/02-rock-brut/assets/` | 24/06 |
+| Propositions 05 « Neon Nights » et 06 « Sable & Bronze » (palette, fonts, assets, overlays) | `propositions/05-neon-nights/`, `propositions/06-sable-bronze/` | 24/06 |
+| QR codes réels (draw_qr_pillow + draw_qr_reportlab) dans les 6 propositions | Tous les `generate.py` | 24/06 |
+| Bleed + crop marks (business card, stage plot, t-shirt) | `scripts/generate_businesscard.py`, `stageplot.py`, `tshirts.py` | 24/06 |
+| Section Musique YouTube (propositions 01 et 04) | `propositions/01-fluid-wave/generate.py`, `04-ponts-lumiere/generate.py` | 24/06 |
+| Setlist interactive web (minuteur, BPM, chronomètre) | `scripts/generate_setlist_web.py`, `site/setlist/index.html` | 24/06 |
+| GitHub Pages activé + page comparaison 6 propositions | `propositions/index.html` | 24/06 |
+| Facebook Page « Rivers Rock Rouen » créée | — | 24/06 |
 
 ### 📋 À faire
-- [x] Création comptes réseaux — Gmail + YouTube + Instagram faits
+- [x] Création comptes réseaux — Gmail + YouTube + Instagram + Facebook faits
   - Gmail : `riversrockrouen@gmail.com`
   - YouTube : `@RiversRockRouen`
-  - Instagram : `@riversrockrouen` — ✅ créé
-  - Facebook : Page `Rivers Rock Rouen` — ✅ créée
+  - Instagram : `@riversrockrouen`
+  - Facebook : `Rivers Rock Rouen`
 - [ ] Publier les 5 posts de lancement sur Facebook — brouillons prêts dans `propositions/drafts/publications-facebook.md`
-- [ ] Héberger le site sur GitHub Pages (`riversrock.github.io`)
 - [ ] Remplacer `[DATE]` `[LIEU]` dans les templates pour un vrai concert
-- [ ] Setlist interactive web
 - [ ] Merchandising (t-shirts)
 - [ ] Session photo promo du groupe
+- [ ] Choisir la proposition définitive parmi les 6
+- [ ] Nettoyer les propositions non retenues
+- [ ] Lancer le rendu MP4 final (`python3 scripts/render_animation.py`)
 
 ---
 
