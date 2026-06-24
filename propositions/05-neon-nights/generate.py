@@ -244,13 +244,13 @@ def gen_poster():
     cv.drawCentredString(W / 2, H - 250, "RIVERS ROCK")
     cv.setFillColor(ROSE)
     cv.setFont("Rajdhani", 12)
-    cv.drawCentredString(W / 2, H - 275, "PROCHAIN CONCERT")
+    cv.drawCentredString(W / 2, H - 275, "LES SOIREES NOCTURNES")
     cv.setFillColor(BLANC)
     cv.setFont("Orbitron", 48)
-    cv.drawCentredString(W / 2, H - 340, "[DATE]")
+    cv.drawCentredString(W / 2, H - 340, "SAM 26 JUIN 2026")
     cv.setFillColor(Color(1, 1, 1, alpha=0.7))
     cv.setFont("Rajdhani", 16)
-    cv.drawCentredString(W / 2, H - 375, "[LIEU]")
+    cv.drawCentredString(W / 2, H - 375, "Montigny · 19h30")
 
     cv.setStrokeColor(ROSE)
     cv.setLineWidth(0.8)
@@ -291,10 +291,10 @@ def gen_flyer():
         cv.drawCentredString(cx, oy + FH - 80, "RIVERS ROCK")
         cv.setFillColor(ROSE)
         cv.setFont("Orbitron", 28)
-        cv.drawCentredString(cx, oy + FH - 145, "[DATE]")
+        cv.drawCentredString(cx, oy + FH - 145, "SAM 26 JUIN 2026")
         cv.setFillColor(Color(1, 1, 1, alpha=0.7))
         cv.setFont("Rajdhani", 10)
-        cv.drawCentredString(cx, oy + FH - 175, "[LIEU]")
+        cv.drawCentredString(cx, oy + FH - 175, "Montigny · 19h30")
 
     def draw_verso(cv, ox, oy):
         grad(cv, ox, oy, FW, FH)
@@ -356,15 +356,15 @@ def gen_social():
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 155), "RIVERS ROCK", fill=ROSE_PIL, font=font_orb)
 
-    bbox = draw.textbbox((0, 0), "PROCHAIN CONCERT", font=font_raj)
+    bbox = draw.textbbox((0, 0), "LES SOIREES NOCTURNES", font=font_raj)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 380), "PROCHAIN CONCERT", fill=CYAN_PIL, font=font_raj)
-    bbox = draw.textbbox((0, 0), "[DATE]", font=font_orb_m)
+    draw.text(((w - tw) / 2, 380), "LES SOIREES NOCTURNES", fill=CYAN_PIL, font=font_raj)
+    bbox = draw.textbbox((0, 0), "SAM 26 JUIN 2026", font=font_orb_m)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 440), "[DATE]", fill=BLANC_PIL, font=font_orb_m)
-    bbox = draw.textbbox((0, 0), "[LIEU]", font=font_raj)
+    draw.text(((w - tw) / 2, 440), "SAM 26 JUIN 2026", fill=BLANC_PIL, font=font_orb_m)
+    bbox = draw.textbbox((0, 0), "Montigny · 19h30", font=font_raj)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 520), "[LIEU]", fill=(180, 180, 200), font=font_raj)
+    draw.text(((w - tw) / 2, 520), "Montigny · 19h30", fill=(180, 180, 200), font=font_raj)
 
     qx, qy, qs = w / 2 - 60, 660, 120
     draw.rectangle([qx, qy, qx + qs, qy + qs], fill=BLANC_PIL, outline=CYAN_PIL, width=3)
@@ -405,12 +405,12 @@ def gen_social():
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2 + 20, 195), "RIVERS ROCK", fill=ROSE_PIL, font=font_orb)
 
-    bbox = draw.textbbox((0, 0), "[DATE]", font=font_orb_d)
+    bbox = draw.textbbox((0, 0), "SAM 26 JUIN 2026", font=font_orb_d)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 650), "[DATE]", fill=ROSE_PIL, font=font_orb_d)
-    bbox = draw.textbbox((0, 0), "[LIEU]", font=font_raj)
+    draw.text(((w - tw) / 2, 650), "SAM 26 JUIN 2026", fill=ROSE_PIL, font=font_orb_d)
+    bbox = draw.textbbox((0, 0), "Montigny · 19h30", font=font_raj)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 840), "[LIEU]", fill=BLANC_PIL, font=font_raj)
+    draw.text(((w - tw) / 2, 840), "Montigny · 19h30", fill=BLANC_PIL, font=font_raj)
 
     bbox = draw.textbbox((0, 0), "@riversrockrouen", font=font_tag)
     tw = bbox[2] - bbox[0]

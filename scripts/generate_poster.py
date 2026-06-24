@@ -98,15 +98,15 @@ def draw_waves(cv):
 def draw_poster_info(cv):
     cv.setFillColor(OR_VIEILLI)
     cv.setFont("Montserrat", 12)
-    cv.drawCentredString(W / 2, H - 270, "PROCHAIN CONCERT")
+    cv.drawCentredString(W / 2, H - 270, "LES SOIREES NOCTURNES")
 
     cv.setFillColor(BLANC)
     cv.setFont("BebasNeue", 56)
-    cv.drawCentredString(W / 2, H - 340, "[DATE]")
+    cv.drawCentredString(W / 2, H - 340, "SAM 26 JUIN 2026")
 
     cv.setFillColor(Color(1, 1, 1, alpha=0.7))
     cv.setFont("Montserrat", 18)
-    cv.drawCentredString(W / 2, H - 385, "[LIEU]")
+    cv.drawCentredString(W / 2, H - 385, "Montigny · 19h30")
 
     cv.setStrokeColor(OR_VIEILLI)
     cv.setLineWidth(1.5)
