@@ -421,3 +421,66 @@ def pillow_hexagon_monogramme(draw, cx, cy, scale=1.0):
     draw.text((cx - tw / 2, cy - bbox[1] * 0.5), "RR", fill=BLANC_PIL, font=font)
     draw.line([(cx - r * 0.6, cy + r * 0.5), (cx, cy + r * 0.2), (cx + r * 0.6, cy + r * 0.5)],
               fill=BLANC_PIL, width=max(1, int(2 * scale)))
+
+
+def pillow_neon_logo(draw, cx, cy, scale=1.0):
+    """Neon Nights: circle + lightning bolts."""
+    r = 20 * scale
+    draw.ellipse([cx - r, cy - r, cx + r, cy + r], outline=(0, 245, 255), width=max(1, int(2 * scale)))
+    for dx, dy, dx2, dy2 in [(r*0.7, -r*0.3, r*1.6, -r*0.8), (r*0.9, r*0.2, r*1.4, r*1.0),
+                              (-r*0.7, -r*0.5, -r*1.5, -r*0.2), (-r*0.8, r*0.3, -r*1.3, r*0.9)]:
+        draw.line([(cx+dx, cy+dy), (cx+dx2, cy+dy2)], fill=(255, 45, 149), width=max(1, int(2*scale)))
+    draw.ellipse([cx - r*0.25, cy - r*0.25, cx + r*0.25, cy + r*0.25], fill=(255, 45, 149))
+
+
+def pillar_neon_logo(cv, cx, cy, scale=1.0):
+    """Neon Nights ReportLab: circle + lightning bolts."""
+    from reportlab.lib.colors import Color
+    r = 20 * scale
+    cv.setStrokeColor(Color(0, 245/255, 1))
+    cv.setLineWidth(2 * scale)
+    cv.circle(cx, cy, r, stroke=1, fill=0)
+    cv.setStrokeColor(Color(1, 45/255, 149/255))
+    cv.setLineWidth(2 * scale)
+    for dx, dy, dx2, dy2 in [(r*0.7, -r*0.3, r*1.6, -r*0.8), (r*0.9, r*0.2, r*1.4, r*1.0),
+                              (-r*0.7, -r*0.5, -r*1.5, -r*0.2), (-r*0.8, r*0.3, -r*1.3, r*0.9)]:
+        cv.line(cx+dx, cy+dy, cx+dx2, cy+dy2)
+    cv.setFillColor(Color(1, 45/255, 149/255))
+    cv.circle(cx, cy, r*0.25, stroke=0, fill=1)
+
+
+def pillow_sun_logo(draw, cx, cy, scale=1.0):
+    """Sable & Bronze: sun circle with rays."""
+    r = 20 * scale
+    draw.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(181, 131, 90))
+    draw.ellipse([cx - r - 3*scale, cy - r - 3*scale, cx + r + 3*scale, cy + r + 3*scale],
+                 outline=(255, 255, 255, 100), width=max(1, int(scale)))
+    for i in range(8):
+        a = math.radians(45 * i)
+        pts = [(cx + r*0.6*math.cos(a), cy + r*0.6*math.sin(a)),
+               (cx + r*2.0*math.cos(a-0.15), cy + r*2.0*math.sin(a-0.15)),
+               (cx + r*2.0*math.cos(a+0.15), cy + r*2.0*math.sin(a+0.15))]
+        draw.polygon(pts, fill=(181, 131, 90))
+
+
+def pillar_sun_logo(cv, cx, cy, scale=1.0):
+    """Sable & Bronze ReportLab: sun circle with rays."""
+    from reportlab.lib.colors import Color
+    r = 20 * scale
+    cv.setFillColor(Color(181/255, 131/255, 90/255))
+    cv.circle(cx, cy, r, stroke=0, fill=1)
+    cv.setStrokeColor(Color(1, 1, 1, alpha=0.4))
+    cv.setLineWidth(0.5 * scale)
+    cv.circle(cx, cy, r + 3*scale, stroke=1, fill=0)
+    for i in range(8):
+        a = math.radians(45 * i)
+        pts = [(cx + r*0.6*math.cos(a), cy + r*0.6*math.sin(a)),
+               (cx + r*2.0*math.cos(a-0.2), cy + r*2.0*math.sin(a-0.2)),
+               (cx + r*2.0*math.cos(a+0.2), cy + r*2.0*math.sin(a+0.2))]
+        cv.setFillColor(Color(181/255, 131/255, 90/255))
+        p = cv.beginPath()
+        p.moveTo(pts[0][0], pts[0][1])
+        p.lineTo(pts[1][0], pts[1][1])
+        p.lineTo(pts[2][0], pts[2][1])
+        p.close()
+        cv.drawPath(p, fill=1, stroke=0)

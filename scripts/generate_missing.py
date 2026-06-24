@@ -14,6 +14,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from logoutils import (
     reportlab_crest, pillow_crest, pillow_crest_timbre, pillow_monogramme_rr,
     pillow_bridge_silhouette, pillow_monogramme_wave, pillow_hexagon_monogramme,
+    pillow_neon_logo, pillar_neon_logo, pillow_sun_logo, pillar_sun_logo,
     pillow_grain_overlay,
     BEBAS_PATH, MONTSERRAT_PATH, ANTON_PATH, SPACE_MONO_PATH,
     NUNITO_PATH, INTERTIGHT_PATH, JETBRAINS_PATH,
@@ -90,6 +91,10 @@ def _draw_logo_rl(cv, cfg, cx, cy, scale=1.0):
         _hexagon_logo_rl(cv, cx, cy, 25 * scale)
     elif name == "Ponts & Lumiere":
         _bridge_logo_rl(cv, cx, cy, scale)
+    elif name == "Neon Nights":
+        pillar_neon_logo(cv, cx, cy, scale)
+    elif name == "Sable & Bronze":
+        pillar_sun_logo(cv, cx, cy, scale)
     else:
         reportlab_crest(cv, cx, cy, scale)
 
@@ -102,6 +107,10 @@ def _draw_logo_pil(draw, cfg, cx, cy, scale=1.0):
         pillow_hexagon_monogramme(draw, cx, cy, scale)
     elif name == "Ponts & Lumiere":
         pillow_bridge_silhouette(draw, cx, cy, scale)
+    elif name == "Neon Nights":
+        pillow_neon_logo(draw, cx, cy, scale)
+    elif name == "Sable & Bronze":
+        pillow_sun_logo(draw, cx, cy, scale)
     else:
         pillow_crest(draw, cx, cy, scale)
 
