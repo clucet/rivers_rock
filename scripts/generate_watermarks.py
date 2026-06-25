@@ -5,7 +5,7 @@ import os, sys, math
 sys.path.insert(0, os.path.dirname(__file__))
 from PIL import Image, ImageDraw, ImageFont
 from logoutils import BEBAS_PATH, ANTON_PATH, NUNITO_PATH, INTERTIGHT_PATH, pillow_monogramme_rr
-from palette import BASE, FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE
+from palette import BASE, FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE, NORDIK, GRUNGE, JAZZ_CLUB
 
 OUT = os.path.join(os.path.dirname(__file__), "..", "propositions")
 
@@ -87,6 +87,9 @@ if __name__ == "__main__":
         (SCENE_VINTAGE, "03-scene-vintage"),
         (PONTS_LUMIERE, "04-ponts-lumiere"),
         (NEON_NIGHTS, "05-neon-nights"),
+    (NORDIK, "07-nordik"),
+    (GRUNGE, "08-grunge"),
+    (JAZZ_CLUB, "09-jazz-club"),
         (SABLE_BRONZE, "06-sable-bronze"),
     ]
     for cfg, dirname in configs:

@@ -449,7 +449,11 @@ FONT_MAP = {
     "Rajdhani":        "Rajdhani-Regular.ttf",
     "Cinzel":          "Cinzel[wght].ttf",
     "Lato":            "Lato-Regular.ttf",
-    "Cormorant":       "Cormorant-VariableFont_wght.ttf",
+    "Cormorant": "Cormorant-VariableFont_wght.ttf",
+    "Inter":           "Inter[opsz,wght].ttf",
+    "RubikGlitch":     "RubikGlitch-Regular.ttf",
+    "SyneMono":        "SyneMono-Regular.ttf",
+    "Karla":           "Karla[wght].ttf",
 }
 
 
@@ -470,7 +474,9 @@ def set_active(name):
         "rock-brut":    ROCK_BRUT,
         "scene-vintage": SCENE_VINTAGE,
         "ponts-lumiere": PONTS_LUMIERE,
-        "neon-nights":   NEON_NIGHTS,
+        "neon-nights":   NEON_NIGHTS,    "nordik":        NORDIK,
+    "grunge":        GRUNGE,
+    "jazz-club":     JAZZ_CLUB,
         "sable-bronze":  SABLE_BRONZE,
     }
     ACTIVE = mapping.get(name, SCENE_VINTAGE)
@@ -484,6 +490,9 @@ CONFIG_NAMES = {
     "scene-vintage": "03-scene-vintage",
     "ponts-lumiere": "04-ponts-lumiere",
     "neon-nights":   "05-neon-nights",
+    "nordik":        "07-nordik",
+    "grunge":        "08-grunge",
+    "jazz-club":     "09-jazz-club",
     "sable-bronze":  "06-sable-bronze",
 }
 
@@ -491,3 +500,168 @@ CONFIG_NAMES = {
 def proposition_dir(name):
     """Return the proposition assets directory for a config name."""
     return os.path.join(os.path.dirname(__file__), "..", "propositions", CONFIG_NAMES.get(name, "03-scene-vintage"), "assets")
+
+# ── Proposition 7 : Nordik ──
+NORDIK = Config(
+    name="Nordik",
+    colors=_colors({
+        "blanc_pur":     "#FAFAFA",
+        "gris_nuage":    "#E8E8E4",
+        "gris_ardoise":  "#4A4A4A",
+        "noir_doux":     "#2B2B2B",
+        "accent_lin":    "#B8B5A8",
+        "blanc":         "#FFFFFF",
+        # Aliases
+        "bleu_seine":    "#FAFAFA",
+        "vert_eau":      "#E8E8E4",
+        "accent":        "#B8B5A8",
+        "teal_profond":  "#E8E8E4",
+        "terracotta":    "#B8B5A8",
+        "or_vieilli":    "#4A4A4A",
+        "vert_repere":   "#E8E8E4",
+        "blanc_casse":   "#F5F0EB",
+        "gris_acier":    "#8C9196",
+    }),
+    fonts={
+        "hero":      "Inter",
+        "logo":      "Inter",
+        "body":      "Inter",
+        "badge":     "Inter",
+        "song":      "Inter",
+        "data":      "Inter",
+    },
+    tokens={
+        "card_w": 250, "card_h": 74, "card_r": 2,
+        "badge_r": 10, "badge_y": 15,
+        "shadow_off": 2, "shadow_alpha": 0.05,
+        "border_alpha": 0.15,
+        "gradient_steps": 0,
+        "wave_rows": 0, "wave_opacity": 0.0,
+        "grain_intensity": 0.0,
+        "logo_scale": 1.8,
+        "footer_tracking": 8,
+        "setlist_font_size": 22,
+        "badge_shape": "circle",
+        "wave_style": "none",
+        "gradient_style": "flat",
+    },
+    flags={
+        "use_grain": False,
+        "use_halftone": False,
+        "use_flare": False,
+        "use_or_wave": False,
+        "use_duotone": False,
+        "use_glow": False,
+        "use_timbre": False,
+    },
+)
+
+# ── Proposition 8 : Grunge ──
+GRUNGE = Config(
+    name="Grunge",
+    colors=_colors({
+        "papier":        "#F5EADD",
+        "toner":         "#1A1A1A",
+        "marqueur":      "#FF3366",
+        "correcteur":    "#FFFFFF",
+        "agrafes":       "#8C9196",
+        "blanc":         "#FFFFFF",
+        # Aliases
+        "bleu_seine":    "#F5EADD",
+        "vert_eau":      "#F5EADD",
+        "accent":        "#FF3366",
+        "teal_profond":  "#F5EADD",
+        "terracotta":    "#FF3366",
+        "or_vieilli":    "#8C9196",
+        "vert_repere":   "#1A1A1A",
+        "blanc_casse":   "#F5EADD",
+        "gris_acier":    "#8C9196",
+    }),
+    fonts={
+        "hero":      "RubikGlitch",
+        "logo":      "RubikGlitch",
+        "body":      "SpaceMono",
+        "badge":     "SyneMono",
+        "song":      "SpaceMono",
+        "data":      "SyneMono",
+    },
+    tokens={
+        "card_w": 250, "card_h": 74, "card_r": 0,
+        "badge_r": 12, "badge_y": 15,
+        "shadow_off": 0, "shadow_alpha": 0.0,
+        "border_alpha": 1.0,
+        "gradient_steps": 0,
+        "wave_rows": 0, "wave_opacity": 0.0,
+        "grain_intensity": 0.15,
+        "logo_scale": 2.0,
+        "footer_tracking": 3,
+        "setlist_font_size": 24,
+        "badge_shape": "square",
+        "wave_style": "none",
+        "gradient_style": "flat",
+    },
+    flags={
+        "use_grain": True,
+        "use_halftone": False,
+        "use_flare": False,
+        "use_or_wave": False,
+        "use_duotone": False,
+        "use_glow": False,
+        "use_timbre": False,
+    },
+)
+
+# ── Proposition 9 : Jazz Club ──
+JAZZ_CLUB = Config(
+    name="Jazz Club",
+    colors=_colors({
+        "nuit":          "#0A0A0A",
+        "or_bruni":      "#C9A86C",
+        "cuivre":        "#B87333",
+        "rouge_velours": "#8B1A1A",
+        "blanc_ivoire":  "#F5F0E8",
+        "blanc":         "#FFFFFF",
+        # Aliases
+        "bleu_seine":    "#0A0A0A",
+        "vert_eau":      "#0A0A0A",
+        "accent":        "#C9A86C",
+        "teal_profond":  "#0A0A0A",
+        "terracotta":    "#C9A86C",
+        "or_vieilli":    "#C9A86C",
+        "vert_repere":   "#8B1A1A",
+        "blanc_casse":   "#F5F0E8",
+        "gris_acier":    "#8B1A1A",
+    }),
+    fonts={
+        "hero":      "PlayfairDisplay",
+        "logo":      "PlayfairDisplay",
+        "body":      "Karla",
+        "badge":     "Karla",
+        "song":      "Karla",
+        "data":      "DMMono",
+    },
+    tokens={
+        "card_w": 250, "card_h": 74, "card_r": 6,
+        "badge_r": 12, "badge_y": 15,
+        "shadow_off": 3, "shadow_alpha": 0.20,
+        "border_alpha": 0.35,
+        "gradient_steps": 120,
+        "wave_rows": 2, "wave_opacity": 0.04,
+        "grain_intensity": 0.08,
+        "logo_scale": 2.0,
+        "footer_tracking": 6,
+        "setlist_font_size": 24,
+        "badge_shape": "circle",
+        "wave_style": "sine",
+        "gradient_style": "radial",
+    },
+    flags={
+        "use_grain": True,
+        "use_halftone": False,
+        "use_flare": True,
+        "use_or_wave": True,
+        "use_duotone": False,
+        "use_glow": True,
+        "use_timbre": True,
+    },
+)

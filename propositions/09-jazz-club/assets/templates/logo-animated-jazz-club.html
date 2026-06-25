@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rivers Rock — Jazz Club</title>
+<style>
+*{margin:0;padding:0}
+body{width:1080px;height:1920px;overflow:hidden;background:#0A0A0A;display:flex;align-items:center;justify-content:center}
+canvas{position:absolute;top:0;left:0;width:1080px;height:1920px}
+svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;overflow:visible}
+.spolight{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%, rgba(201,168,108,0.04) 0%, transparent 60%);pointer-events:none;z-index:0}
+.circle{fill:none;stroke:#C9A86C;stroke-width:2.5;stroke-dasharray:250;stroke-dashoffset:250;animation:drawC 1.5s ease-out .3s forwards;filter:drop-shadow(0 0 15px rgba(201,168,108,0.3))}
+.inner{fill:none;stroke:rgba(255,255,255,0.08);stroke-width:1;stroke-dasharray:4 4;opacity:0;animation:fadeT .6s ease-out 1.2s forwards}
+@keyframes drawC{to{stroke-dashoffset:0}}
+@keyframes fadeT{to{opacity:1}}
+.letter{font-family:'Playfair Display','Georgia',serif;font-size:32px;fill:#F5F0E8;opacity:0}
+.lR{animation:drop .3s ease-out 2.0s forwards}
+.lI{animation:drop .3s ease-out 2.15s forwards}
+.lV{animation:drop .3s ease-out 2.3s forwards}
+.lE{animation:drop .3s ease-out 2.45s forwards}
+.lR2{animation:drop .3s ease-out 2.6s forwards}
+.lS{animation:drop .3s ease-out 2.75s forwards}
+.lROCK_R{animation:slide .4s ease-out 3.0s forwards}
+.lROCK_O{animation:slide .4s ease-out 3.15s forwards}
+.lROCK_C{animation:slide .4s ease-out 3.3s forwards}
+.lROCK_K{animation:slide .4s ease-out 3.45s forwards}
+@keyframes drop{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes slide{0%{opacity:0;transform:translateX(120px)}100%{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="spolight"></div>
+<canvas id="p"></canvas>
+<svg viewBox="-200 -200 400 400">
+  <circle class="circle" cx="0" cy="0" r="50"/>
+  <circle class="inner" cx="0" cy="0" r="56"/>
+  <line x1="-65" y1="0" x2="65" y2="0" stroke="#C9A86C" stroke-width="1.5" opacity="0"/>
+  <text x="-60" y="-52.9" text-anchor="middle" class="letter lR">R</text>
+  <text x="-36" y="-71.4" text-anchor="middle" class="letter lI">I</text>
+  <text x="-12" y="-79.1" text-anchor="middle" class="letter lV">V</text>
+  <text x="12" y="-79.1" text-anchor="middle" class="letter lE">E</text>
+  <text x="36" y="-71.4" text-anchor="middle" class="letter lR2">R</text>
+  <text x="60" y="-52.9" text-anchor="middle" class="letter lS">S</text>
+  <text x="-30" y="74.2" text-anchor="middle" class="letter lROCK_R" font-size="26">R</text>
+  <text x="-10" y="79.4" text-anchor="middle" class="letter lROCK_O" font-size="26">O</text>
+  <text x="10" y="79.4" text-anchor="middle" class="letter lROCK_C" font-size="26">C</text>
+  <text x="30" y="74.2" text-anchor="middle" class="letter lROCK_K" font-size="26">K</text>
+</svg>
+<script>
+const c=document.getElementById('p'),ctx=c.getContext('2d');
+c.width=1080;c.height=1920;
+const ps=[];
+for(let i=0;i<15;i++){ps.push({x:Math.random()*1080,y:Math.random()*1920,s:Math.random()*1+0.3,a:Math.random()*0.04+0.01})}
+function draw(){ctx.clearRect(0,0,1080,1920);
+ctx.fillStyle='#0A0A0A';ctx.fillRect(0,0,1080,1920);
+for(const p of ps){ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle='rgba(201,168,108,'+p.a+')';ctx.fill();p.y-=0.1;if(p.y<0){p.y=1920;p.x=Math.random()*1080}}
+requestAnimationFrame(draw)}draw();
+</script>
+</body>
+</html>

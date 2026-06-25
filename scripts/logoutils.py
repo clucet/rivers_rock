@@ -6,7 +6,7 @@ from reportlab.lib.colors import HexColor, Color
 from PIL import Image, ImageFont, ImageDraw
 
 from palette import BASE, SCENE_VINTAGE, FLUID_WAVE, ROCK_BRUT, font_filename
-from palette import PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE
+from palette import PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE, NORDIK, GRUNGE, JAZZ_CLUB
 
 
 def _find_font(filename, alt_names=None):
@@ -75,6 +75,15 @@ def _resolve_font(role, cfg=None):
         fnames.append("Orbitron.ttf")
     elif fname == "Rajdhani-Regular.ttf":
         fnames.append("Rajdhani.ttf")
+    elif fname == "Inter[opsz,wght].ttf":
+        fnames.append("Inter.ttf")
+    elif fname == "Karla[wght].ttf":
+        fnames.append("Karla.ttf")
+    elif fname == "RubikGlitch-Regular.ttf":
+        fnames.append("RubikGlitch.ttf")
+    elif fname == "SyneMono-Regular.ttf":
+        fnames.append("SyneMono.ttf")
+        fnames.append("Rajdhani.ttf")
     elif fname == "Cinzel[wght].ttf":
         fnames.append("Cinzel.ttf")
     elif fname == "Lato-Regular.ttf":
@@ -101,6 +110,10 @@ def _resolve_font(role, cfg=None):
             "Teko[wght].ttf": "https://github.com/google/fonts/raw/main/ofl/teko/Teko%5Bwght%5D.ttf",
             "Raleway[wght].ttf": "https://github.com/google/fonts/raw/main/ofl/raleway/Raleway%5Bwght%5D.ttf",
             "DMMono-Regular.ttf": "https://github.com/google/fonts/raw/main/ofl/dmmono/DMMono-Regular.ttf",
+            "Inter[opsz,wght].ttf": "https://github.com/google/fonts/raw/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf",
+            "Karla[wght].ttf": "https://github.com/google/fonts/raw/main/ofl/karla/Karla%5Bwght%5D.ttf",
+            "RubikGlitch-Regular.ttf": "https://github.com/google/fonts/raw/main/ofl/rubikglitch/RubikGlitch-Regular.ttf",
+            "SyneMono-Regular.ttf": "https://github.com/google/fonts/raw/main/ofl/synemono/SyneMono-Regular.ttf",
             "Orbitron[wght].ttf": "https://github.com/google/fonts/raw/main/ofl/orbitron/Orbitron%5Bwght%5D.ttf",
             "Rajdhani-Regular.ttf": "https://github.com/google/fonts/raw/main/ofl/rajdhani/Rajdhani-Regular.ttf",
             "Cinzel[wght].ttf": "https://github.com/google/fonts/raw/main/ofl/cinzel/Cinzel%5Bwght%5D.ttf",
@@ -125,7 +138,13 @@ RALEWAY_PATH = _resolve_font("body", PONTS_LUMIERE)
 DMMONO_PATH = _resolve_font("data", PONTS_LUMIERE)
 ORBITRON_PATH = _resolve_font("hero", NEON_NIGHTS)
 RAJDHANI_PATH = _resolve_font("body", NEON_NIGHTS)
+INTER_PATH = _resolve_font("hero", NORDIK)
+KARLA_PATH = _resolve_font("body", JAZZ_CLUB)
+RUBIK_PATH = _resolve_font("hero", GRUNGE)
+SYNEMONO_PATH = _resolve_font("data", GRUNGE)
 CINZEL_PATH = _resolve_font("hero", SABLE_BRONZE)
+LATO_PATH = _resolve_font("body", SABLE_BRONZE)
+CORMORANT_PATH = _resolve_font("quote", SABLE_BRONZE)
 LATO_PATH = _resolve_font("body", SABLE_BRONZE)
 CORMORANT_PATH = _resolve_font("quote", SABLE_BRONZE)
 

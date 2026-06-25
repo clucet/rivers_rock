@@ -20,7 +20,7 @@ from logoutils import (
     NUNITO_PATH, INTERTIGHT_PATH, JETBRAINS_PATH,
     TEKO_PATH, RALEWAY_PATH, DMMONO_PATH,
 )
-from palette import BASE, FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE
+from palette import BASE, FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE, NORDIK, GRUNGE, JAZZ_CLUB
 
 PROPS = [
     (BASE,          "00-originale"),
@@ -29,6 +29,9 @@ PROPS = [
     (SCENE_VINTAGE, "03-scene-vintage"),
     (PONTS_LUMIERE, "04-ponts-lumiere"),
     (NEON_NIGHTS, "05-neon-nights"),
+    (NORDIK, "07-nordik"),
+    (GRUNGE, "08-grunge"),
+    (JAZZ_CLUB, "09-jazz-club"),
     (SABLE_BRONZE, "06-sable-bronze"),
 ]
 
