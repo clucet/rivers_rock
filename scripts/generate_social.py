@@ -65,9 +65,9 @@ def generate_post():
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 400), "PROCHAIN CONCERT", fill=BLANC, font=font_space)
 
-    bbox = draw.textbbox((0, 0), "SAM 26 JUIN 2026", font=font_anton_date)
+    bbox = draw.textbbox((0, 0), "VEN 26 JUIN 2026", font=font_anton_date)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 470), "SAM 26 JUIN 2026", fill=OR, font=font_anton_date)
+    draw.text(((w - tw) / 2, 470), "VEN 26 JUIN 2026", fill=OR, font=font_anton_date)
 
     bbox = draw.textbbox((0, 0), "Montigny · 19h30", font=font_mont)
     tw = bbox[2] - bbox[0]
@@ -103,7 +103,7 @@ def generate_story():
     from logoutils import pillow_crest_timbre
     pillow_crest_timbre(draw, 180, 200, 1.6)
 
-    date_text = "SAM 26 JUIN 2026"
+    date_text = "VEN 26 JUIN 2026"
     bbox = draw.textbbox((0, 0), date_text, font=font_anton_date)
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 650), date_text, fill=ACCENT, font=font_anton_date)

@@ -70,7 +70,7 @@ def draw_recto(cv, ox, oy):
 
     cv.setFillColor(OR_VIEILLI)
     cv.setFont("BebasNeue", 34)
-    cv.drawCentredString(cx, oy + FH - 170, "SAM 26 JUIN 2026")
+    cv.drawCentredString(cx, oy + FH - 170, "VEN 26 JUIN 2026")
 
     cv.setFillColor(Color(1, 1, 1, alpha=0.7))
     cv.setFont("Montserrat", 10)

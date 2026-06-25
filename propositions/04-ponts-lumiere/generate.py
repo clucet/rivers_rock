@@ -284,7 +284,7 @@ def gen_poster():
     cv.drawCentredString(W / 2, H - 270, "LES SOIREES NOCTURNES")
     cv.setFillColor(BLANC)
     cv.setFont("Teko", 52)
-    cv.drawCentredString(W / 2, H - 340, "SAM 26 JUIN 2026")
+    cv.drawCentredString(W / 2, H - 340, "VEN 26 JUIN 2026")
     cv.setFillColor(Color(1, 1, 1, alpha=0.7))
     cv.setFont("Raleway", 16)
     cv.drawCentredString(W / 2, H - 385, "Montigny · 19h30")
@@ -341,7 +341,7 @@ def gen_flyer():
         cv.drawCentredString(cx, oy + FH - 75, "RIVERS ROCK")
         cv.setFillColor(LUMIERE)
         cv.setFont("Teko", 34)
-        cv.drawCentredString(cx, oy + FH - 145, "SAM 26 JUIN 2026")
+        cv.drawCentredString(cx, oy + FH - 145, "VEN 26 JUIN 2026")
         cv.setFillColor(Color(1, 1, 1, alpha=0.7))
         cv.setFont("Raleway", 10)
         cv.drawCentredString(cx, oy + FH - 175, "Montigny · 19h30")
@@ -412,9 +412,9 @@ def gen_social():
     bbox = draw.textbbox((0, 0), "LES SOIREES NOCTURNES", font=font_raleway)
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 380), "LES SOIREES NOCTURNES", fill=LUMIERE_PIL, font=font_raleway)
-    bbox = draw.textbbox((0, 0), "SAM 26 JUIN 2026", font=font_teko_m)
+    bbox = draw.textbbox((0, 0), "VEN 26 JUIN 2026", font=font_teko_m)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 440), "SAM 26 JUIN 2026", fill=BLANC_PIL, font=font_teko_m)
+    draw.text(((w - tw) / 2, 440), "VEN 26 JUIN 2026", fill=BLANC_PIL, font=font_teko_m)
     bbox = draw.textbbox((0, 0), "Montigny · 19h30", font=font_raleway)
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 520), "Montigny · 19h30", fill=(180, 180, 180), font=font_raleway)
@@ -456,9 +456,9 @@ def gen_social():
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 195), "RIVERS ROCK", fill=LUMIERE_PIL, font=font_teko)
 
-    bbox = draw.textbbox((0, 0), "SAM 26 JUIN 2026", font=font_teko_d)
+    bbox = draw.textbbox((0, 0), "VEN 26 JUIN 2026", font=font_teko_d)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 650), "SAM 26 JUIN 2026", fill=LUMIERE_PIL, font=font_teko_d)
+    draw.text(((w - tw) / 2, 650), "VEN 26 JUIN 2026", fill=LUMIERE_PIL, font=font_teko_d)
     bbox = draw.textbbox((0, 0), "Montigny · 19h30", font=font_raleway)
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 840), "Montigny · 19h30", fill=BLANC_PIL, font=font_raleway)
@@ -767,6 +767,9 @@ nav a:hover{color:var(--lumiere)}
   <h2>Concerts</h2>
   <p>Contactez-nous pour programmer un concert.</p>
   <ul class="concerts-list"><li><span class="date">À venir</span><span class="lieu">Contactez-nous</span><span class="status">Sur demande</span></li></ul>
+  <div style="margin-top:20px;border-radius:8px;overflow:hidden;max-width:400px;margin-left:auto;margin-right:auto">
+    <img src="../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block;border-radius:8px" alt="Affiche Soirees Nocturnes - VEN 26 JUIN 2026 - Montigny">
+  </div>
 </section>
 <section id="musique" class="section">
   <h2>Musique</h2>

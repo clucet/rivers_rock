@@ -123,7 +123,7 @@ def gen_poster():
     cv.drawCentredString(W / 2, H - 270, "concert")
     cv.setFillColor(NOIR)
     cv.setFont("Inter", 42)
-    cv.drawCentredString(W / 2, H - 340, "SAM 26 JUIN 2026")
+    cv.drawCentredString(W / 2, H - 340, "VEN 26 JUIN 2026")
     cv.setFillColor(Color(0, 0, 0, alpha=0.4))
     cv.setFont("Inter", 14)
     cv.drawCentredString(W / 2, H - 380, "Montigny . 19h30")
@@ -155,7 +155,7 @@ def gen_flyer():
         cv.setFont("Inter", 14)
         cv.drawCentredString(cx, oy + FH - 80, "rivers rock")
         cv.setFont("Inter", 28)
-        cv.drawCentredString(cx, oy + FH - 145, "SAM 26 JUIN")
+        cv.drawCentredString(cx, oy + FH - 145, "VEN 26 JUIN")
         cv.setFillColor(Color(0, 0, 0, alpha=0.4))
         cv.setFont("Inter", 10)
         cv.drawCentredString(cx, oy + FH - 175, "Montigny . 19h30")
@@ -205,8 +205,8 @@ def gen_social():
     nordik_logo_pillow(draw, w / 2, 140, 2.5)
     bbox = draw.textbbox((0,0), "rivers rock", font=font_l); tw=bbox[2]-bbox[0]
     draw.text(((w-tw)/2,150), "rivers rock", fill=NOIR_PIL, font=font_l)
-    bbox = draw.textbbox((0,0), "SAM 26 JUIN 2026", font=font_m); tw=bbox[2]-bbox[0]
-    draw.text(((w-tw)/2,440), "SAM 26 JUIN 2026", fill=NOIR_PIL, font=font_m)
+    bbox = draw.textbbox((0,0), "VEN 26 JUIN 2026", font=font_m); tw=bbox[2]-bbox[0]
+    draw.text(((w-tw)/2,440), "VEN 26 JUIN 2026", fill=NOIR_PIL, font=font_m)
     bbox = draw.textbbox((0,0), "Montigny . 19h30", font=font_s); tw=bbox[2]-bbox[0]
     draw.text(((w-tw)/2,520), "Montigny . 19h30", fill=GRIS_PIL, font=font_s)
     bbox = draw.textbbox((0,0), "@riversrockrouen", font=font_s); tw=bbox[2]-bbox[0]
@@ -219,8 +219,8 @@ def gen_social():
     nordik_logo_pillow(draw, w / 2, 180, 3.0)
     bbox = draw.textbbox((0,0), "rivers rock", font=font_l); tw=bbox[2]-bbox[0]
     draw.text(((w-tw)/2,190), "rivers rock", fill=NOIR_PIL, font=font_l)
-    bbox = draw.textbbox((0,0), "SAM 26 JUIN", font=font_big); tw=bbox[2]-bbox[0]
-    draw.text(((w-tw)/2,650), "SAM 26 JUIN", fill=NOIR_PIL, font=font_big)
+    bbox = draw.textbbox((0,0), "VEN 26 JUIN", font=font_big); tw=bbox[2]-bbox[0]
+    draw.text(((w-tw)/2,650), "VEN 26 JUIN", fill=NOIR_PIL, font=font_big)
     bbox = draw.textbbox((0,0), "Montigny . 19h30", font=font_s); tw=bbox[2]-bbox[0]
     draw.text(((w-tw)/2,840), "Montigny . 19h30", fill=GRIS_PIL, font=font_s)
     img.save(os.path.join(TMPL, "instagram-story.png"))
@@ -392,7 +392,8 @@ footer p{font-weight:200;font-size:10px;color:var(--a);letter-spacing:8px;text-t
 <div class="mcard"><h3>David</h3><p>guitare / chant</p></div>
 <div class="mcard"><h3>Virginie</h3><p>chant</p></div></div></section>
 <section id="concerts" class="section"><h2>concerts</h2>
-<ul class="clist"><li><span class="date">SAM 26 JUIN 2026</span><span class="lieu">Montigny . 19h30</span></li></ul></section>
+<ul class="clist"><li><span class="date">VEN 26 JUIN 2026</span><span class="lieu">Montigny . 19h30</span></li></ul>
+<div style="margin-top:16px;max-width:300px;margin-left:auto;margin-right:auto"><img src="../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block" alt="Affiche"></div></section>
 <section id="musique" class="section"><h2>musique</h2>
 <p>Decouvrez Rivers Rock en action</p>
 <div style="position:relative;padding-bottom:56.25%;height:0;background:var(--g);margin-top:16px"><div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--a);font-weight:200">Video a venir</div></div></section>

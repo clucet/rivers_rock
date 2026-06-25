@@ -121,7 +121,7 @@ def gen_poster():
     cv.drawCentredString(W / 2, H - 275, ">> concert <<")
     cv.setFillColor(TONER)
     cv.setFont("RubikGlitch", 44)
-    cv.drawCentredString(W / 2, H - 340, "SAM 26 JUIN")
+    cv.drawCentredString(W / 2, H - 340, "VEN 26 JUIN")
     cv.setFillColor(Color(0, 0, 0, alpha=0.6))
     cv.setFont("SpaceMono", 14)
     cv.drawCentredString(W / 2, H - 380, "Montigny / 19h30")
@@ -188,7 +188,7 @@ def gen_social():
     logo_grunge_pil(draw, w / 2, 140, 2.5)
     bbox = draw.textbbox((0,0), "rIVERS rOCK", font=font_glitch); tw=bbox[2]-bbox[0]
     draw.text(((w-tw)/2,155), "rIVERS rOCK", fill=TONER_PIL, font=font_glitch)
-    draw.text((200,400), "SAM 26 JUIN", fill=MARQ_PIL, font=font_mono)
+    draw.text((200,400), "VEN 26 JUIN", fill=MARQ_PIL, font=font_mono)
     draw.text((200,440), "Montigny 19h30", fill=TONER_PIL, font=font_mono)
     draw.text((200,860), "@riversrockrouen", fill=(150,150,150), font=font_tag)
     img.save(os.path.join(TMPL, "instagram-post.png"))
@@ -199,7 +199,7 @@ def gen_social():
     logo_grunge_pil(draw, w / 2, 180, 3.0)
     bbox = draw.textbbox((0,0), "rIVERS rOCK", font=font_glitch); tw=bbox[2]-bbox[0]
     draw.text(((w-tw)/2+20,195), "rIVERS rOCK", fill=TONER_PIL, font=font_glitch)
-    draw.text((200,650), "SAM 26 JUIN", fill=MARQ_PIL, font=ImageFont.truetype(SPACE_MONO_PATH, 80))
+    draw.text((200,650), "VEN 26 JUIN", fill=MARQ_PIL, font=ImageFont.truetype(SPACE_MONO_PATH, 80))
     draw.text((200,750), "Montigny 19h30", fill=TONER_PIL, font=font_mono)
     draw.text((200,1750), "@riversrockrouen", fill=(150,150,150), font=font_tag)
     img.save(os.path.join(TMPL, "instagram-story.png"))
@@ -359,7 +359,8 @@ footer{padding:30px;text-align:center;font-size:10px;color:#999;position:relativ
 <div><h4>David</h4><p>guitare/chant</p></div>
 <div><h4>Virginie</h4><p>chant</p></div></div></section>
 <section id="c" class="section"><h3>concerts</h3>
-<ul class="cl"><li><span class="d">SAM 26 JUIN 2026</span> - Montigny . 19h30</li></ul></section>
+<ul class="cl"><li><span class="d">VEN 26 JUIN 2026</span> - Montigny . 19h30</li></ul>
+<div style="margin-top:16px;max-width:300px;margin-left:auto;margin-right:auto;border:2px dashed #1A1A1A;padding:4px"><img src="../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block" alt="Affiche"></div></section>
 <section id="m" class="section"><h3>musique</h3>
 <p>Decouvrez Rivers Rock en action</p>
 <div style="padding:20px;text-align:center;border:2px dashed #1A1A1A;margin-top:10px">Video a venir</div></section>

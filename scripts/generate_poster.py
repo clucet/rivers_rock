@@ -102,7 +102,7 @@ def draw_poster_info(cv):
 
     cv.setFillColor(BLANC)
     cv.setFont("BebasNeue", 56)
-    cv.drawCentredString(W / 2, H - 340, "SAM 26 JUIN 2026")
+    cv.drawCentredString(W / 2, H - 340, "VEN 26 JUIN 2026")
 
     cv.setFillColor(Color(1, 1, 1, alpha=0.7))
     cv.setFont("Montserrat", 18)

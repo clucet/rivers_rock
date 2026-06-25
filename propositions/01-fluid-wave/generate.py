@@ -277,7 +277,7 @@ def gen_poster():
 
     cv.setFillColor(BLANC)
     cv.setFont("BebasNeue", 48)
-    cv.drawCentredString(W / 2, H - 340, "SAM 26 JUIN 2026")
+    cv.drawCentredString(W / 2, H - 340, "VEN 26 JUIN 2026")
 
     cv.setFillColor(Color(1, 1, 1, alpha=0.7))
     cv.setFont("Nunito", 16)
@@ -333,7 +333,7 @@ def gen_flyer():
         cv.drawCentredString(cx, oy + FH - 75, "RIVERS ROCK")
         cv.setFillColor(AMBRE)
         cv.setFont("BebasNeue", 34)
-        cv.drawCentredString(cx, oy + FH - 145, "SAM 26 JUIN 2026")
+        cv.drawCentredString(cx, oy + FH - 145, "VEN 26 JUIN 2026")
         cv.setFillColor(Color(1, 1, 1, alpha=0.7))
         cv.setFont("Nunito", 10)
         cv.drawCentredString(cx, oy + FH - 175, "Montigny · 19h30")
@@ -406,9 +406,9 @@ def gen_social():
     bbox = draw.textbbox((0, 0), "LES SOIREES NOCTURNES", font=font_play)
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 380), "LES SOIREES NOCTURNES", fill=AMBRE_PIL, font=font_play)
-    bbox = draw.textbbox((0, 0), "SAM 26 JUIN 2026", font=font_bebas_m)
+    bbox = draw.textbbox((0, 0), "VEN 26 JUIN 2026", font=font_bebas_m)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 440), "SAM 26 JUIN 2026", fill=BLANC_PIL, font=font_bebas_m)
+    draw.text(((w - tw) / 2, 440), "VEN 26 JUIN 2026", fill=BLANC_PIL, font=font_bebas_m)
     bbox = draw.textbbox((0, 0), "Montigny · 19h30", font=font_nunito)
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 510), "Montigny · 19h30", fill=(200, 200, 200), font=font_nunito)
@@ -446,9 +446,9 @@ def gen_social():
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 200), "RIVERS ROCK", fill=ACCENT_PIL, font=font_bebas)
 
-    bbox = draw.textbbox((0, 0), "SAM 26 JUIN 2026", font=font_bebas_d)
+    bbox = draw.textbbox((0, 0), "VEN 26 JUIN 2026", font=font_bebas_d)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 650), "SAM 26 JUIN 2026", fill=AMBRE_PIL, font=font_bebas_d)
+    draw.text(((w - tw) / 2, 650), "VEN 26 JUIN 2026", fill=AMBRE_PIL, font=font_bebas_d)
     bbox = draw.textbbox((0, 0), "Montigny · 19h30", font=font_play_l)
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 830), "Montigny · 19h30", fill=BLANC_PIL, font=font_play_l)
@@ -762,7 +762,8 @@ nav a:hover{color:var(--ambre);background:rgba(212,168,67,0.08)}
 <section id="concerts" class="section section-alt">
   <h2>Concerts</h2>
   <p>Contactez-nous pour programmer un concert. Notre setlist de 12 titres traverse les époques.</p>
-  <div class="concerts-list"><li><span class="date">SAM 26 JUIN 2026</span><span class="lieu">Montigny · 19h30</span><span class="status">Concert</span></li></div>
+  <div class="concerts-list"><li><span class="date">VEN 26 JUIN 2026</span><span class="lieu">Montigny · 19h30</span><span class="status">Concert</span></li></div>
+  <div style="margin-top:16px;border-radius:8px;overflow:hidden;max-width:400px;margin-left:auto;margin-right:auto"><img src="../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block;border-radius:8px" alt="Affiche"></div>
 </section>
 <section id="musique" class="section">
   <h2>Musique</h2>
