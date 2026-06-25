@@ -25,9 +25,13 @@
 
 | Champ | Valeur |
 |-------|--------|
-| **Pseudo** | `@riversrockrouen` |
-| **Lien** | `https://www.instagram.com/riversrockrouen` |
+| **Pseudo** | `@riversrockrouen` (🔴 **désactivé** — en appel) |
+| **Pseudo de secours** | `@riversrock_rouen` |
+| **Lien** | `https://www.instagram.com/riversrock_rouen` |
 | **Email lié** | `riversrockrouen@gmail.com` |
+
+> ⚠️ Le compte `@riversrockrouen` a été désactivé par Instagram le 25/06/2026.
+> Appel en cours. Si l'appel échoue, le handle de secours est `@riversrock_rouen`.
 
 ---
 

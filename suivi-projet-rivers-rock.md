@@ -65,7 +65,7 @@
 - [x] Création comptes réseaux — Gmail + YouTube + Instagram + Facebook faits
   - Gmail : `riversrockrouen@gmail.com`
   - YouTube : `@RiversRockRouen`
-  - Instagram : `@riversrockrouen`
+  - Instagram : `@riversrockrouen` — 🔴 désactivé (appel en cours, secours `@riversrock_rouen`)
   - Facebook : `Rivers Rock Rouen`
 - [ ] Publier les 5 posts de lancement sur Facebook — brouillons prêts dans `propositions/drafts/publications-facebook.md`
 - [ ] Merchandising (t-shirts)
@@ -690,3 +690,5 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 25/06/2026 | **Lot 1 — 9 logos SVG vectoriels** : grilles précises, proportions professionnelles, coordonnées mathématiques | opencode |
 | 25/06/2026 | **Lot 2 — 36 déclinaisons SVG** : mono, icône, compact, watermark × 9 propositions | opencode |
 | 25/06/2026 | **Lot 3-5 — Chartes enrichies** : grilles de construction, règles d'usage pro, preload SVG dans générateurs | opencode |
+| 25/06/2026 | **Instagram `@riversrockrouen` désactivé** — appel en cours. Handle de secours : `@riversrock_rouen` | opencode |
+| 25/06/2026 | **Chartes PDF avec logos + assets** : cairosvg installé, rendu SVG, miniatures templates | opencode |
