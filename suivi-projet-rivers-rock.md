@@ -186,10 +186,37 @@ setlist/
 │   │           ├── instagram-post.png
 │   │           ├── instagram-story.png
 │   │           └── logo-animated-rock-brut.html
+│   ├── 04-ponts-lumiere/
+│   │   ├── spec.md
+│   │   ├── generate.py
+│   │   └── assets/
+│   │       ├── index.html
+│   │       ├── pdf/ (5 fichiers)
+│   │       └── templates/ (15 fichiers)
+│   ├── 05-neon-nights/
+│   │   ├── spec.md
+│   │   ├── generate.py
+│   │   └── assets/ (35 fichiers)
+│   ├── 06-sable-bronze/
+│   │   ├── spec.md
+│   │   ├── generate.py
+│   │   └── assets/ (35 fichiers)
+│   ├── 07-nordik/
+│   │   ├── spec.md, charte-graphique.md, generate.py
+│   │   └── assets/ (35 fichiers)
+│   ├── 08-grunge/
+│   │   ├── spec.md, charte-graphique.md, generate.py
+│   │   └── assets/ (35 fichiers)
+│   ├── 09-jazz-club/
+│   │   ├── spec.md, charte-graphique.md, generate.py
+│   │   └── assets/ (35 fichiers)
+│   ├── drafts/
+│   │   └── publications-facebook.md
 │   └── 03-scene-vintage/
-│       ├── spec.md
-│       ├── generate.py
-│       └── assets/
+│   ├── 03-scene-vintage/
+│   │   ├── spec.md
+│   │   ├── generate.py
+│   │   └── assets/
 │           ├── index.html
 │           ├── pdf/
 │           │   ├── setlist-scene-vintage.pdf
