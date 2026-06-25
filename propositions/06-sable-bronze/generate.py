@@ -602,7 +602,7 @@ def gen_site():
 <title>Rivers Rock — Sable &amp; Bronze</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400;600&family=Cormorant:ital@1&display=swap" rel="stylesheet">
 <style>
-:root{--sable:#D4A373;--terre:#CC6B49;--bronze:#B5835A;--vert:#2D6A4F;--creme:#FEFAE0}
+:root{--sable:#D4A373;--terre:#CC6B49;--bronze:#B5835A;--vert:#2D6A4F;--creme:#FEFAE0}@media(prefers-color-scheme:dark){:root{--sable:#A07440;--creme:#D4C8A0;--terre:#A04D3D}}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Lato',sans-serif;font-weight:300;color:#1A4A3A;min-height:100vh;background:linear-gradient(135deg,var(--creme),var(--sable))}
@@ -624,7 +624,7 @@ nav a:hover{color:var(--terre)}
 .section-alt{background:rgba(212,163,115,0.12);border-top:1px solid rgba(45,106,79,0.06);border-bottom:1px solid rgba(45,106,79,0.06)}
 .members-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:20px}
 .member-card{flex:0 0 180px;text-align:center;padding:24px 12px;background:rgba(254,250,224,0.3);border-radius:8px;border:1px solid rgba(181,131,90,0.15);transition:.25s}
-.member-card:hover{background:rgba(254,250,224,0.5)}
+.member-card:hover{background:rgba(254,250,224,0.5);transform:scale(1.03)}
 .member-card .avatar-circle{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--bronze),var(--terre));margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:24px;color:var(--creme)}
 .member-card h3{font-family:'Cinzel',serif;font-size:15px;letter-spacing:1px;color:var(--terre);margin-bottom:3px}
 .member-card p{font-family:'Lato',sans-serif;font-size:13px;color:#3A5A4A}
@@ -642,6 +642,22 @@ nav a:hover{color:var(--terre)}
 .links-social a:hover{color:var(--vert);border-color:var(--terre);background:rgba(204,107,73,0.04)}
 .footer{position:relative;z-index:1;text-align:center;padding:44px 24px;border-top:1px solid rgba(45,106,79,0.06)}
 .footer p{font-family:'Cormorant',serif;font-size:11px;letter-spacing:3px;color:#3A5A4A}
+.footer .logo-footer svg{width:60px;height:60px;margin-bottom:8px;opacity:0.3}
+.scroll-indicator{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);width:24px;height:40px;border:2px solid rgba(0,0,0,0.12);border-radius:12px}
+.scroll-indicator::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:8px;background:var(--bronze);border-radius:2px;animation:scrollDown 2s infinite}
+@keyframes scrollDown{0%{opacity:1;transform:translateX(-50%) translateY(0)}100%{opacity:0;transform:translateX(-50%) translateY(16px)}}
+@media(max-width:640px){
+  nav{padding:12px 16px}
+  nav a{font-size:11px;padding:4px 10px}
+  .hero{padding:100px 16px 60px}
+  .section{padding:60px 16px}
+  .member-card{flex:0 0 150px}
+}
+@media(max-width:400px){
+  .hero h1{font-size:36px}
+  .member-card{flex:0 0 140px}
+  .section{padding:40px 12px}
+}
 @media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -652,6 +668,7 @@ nav a:hover{color:var(--terre)}
   <div>
     <a href="#groupe">Groupe</a>
     <a href="#concerts">Concerts</a>
+    <a href="#musique">Musique</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -669,6 +686,7 @@ nav a:hover{color:var(--terre)}
   <h1>RIVERS ROCK</h1>
   <div class="tagline">Reprises rock — Rouen</div>
   <p>Groupe rouennais formé en 2024. Rock, pop-rock, indé et alternatif. Chaleur et évasion.</p>
+  <a href="#groupe" style="text-decoration:none;color:inherit"><div class="scroll-indicator"></div></a>
 </section>
 <section id="groupe" class="section">
   <h2>Le groupe</h2>
@@ -703,6 +721,15 @@ nav a:hover{color:var(--terre)}
   </div>
 </section>
 <footer class="footer">
+  <div class="logo-footer">
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="28" fill="#B5835A"/>
+      <polygon points="50,22 58,40 42,40" fill="#B5835A"/>
+      <polygon points="50,78 42,60 58,60" fill="#B5835A"/>
+      <polygon points="22,50 40,42 40,58" fill="#B5835A"/>
+      <polygon points="78,50 60,42 60,58" fill="#B5835A"/>
+    </svg>
+  </div>
   <p>R O U E N</p>
 </footer>
 </body>

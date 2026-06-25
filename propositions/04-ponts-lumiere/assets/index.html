@@ -6,7 +6,7 @@
 <title>Rivers Rock — Ponts &amp; Lumière</title>
 <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Raleway:wght@300;400;600&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
-:root{--nuit:#0D1B2A;--acier:#415A77;--lumiere:#FFB703;--seine:#1B263B;--brouillard:#E0E1DD;--blanc:#fff}
+:root{--nuit:#0D1B2A;--acier:#415A77;--lumiere:#FFB703;--seine:#1B263B;--brouillard:#E0E1DD;--blanc:#fff}@media(prefers-color-scheme:dark){:root{--nuit:#070D14;--acier:#1A2A3A;--seine:#0D1520}}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Raleway',sans-serif;font-weight:300;color:var(--blanc);min-height:100vh;background:linear-gradient(135deg,var(--nuit),var(--seine))}
@@ -47,7 +47,18 @@ nav a:hover{color:var(--lumiere)}
 .links-social a:hover{color:var(--blanc);border-color:var(--lumiere);background:rgba(255,183,3,0.06)}
 .footer{position:relative;z-index:1;text-align:center;padding:44px 24px;border-top:1px solid rgba(255,183,3,0.06)}
 .footer svg{width:120px;height:40px;margin-bottom:10px;opacity:0.3}
-.footer p{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:4px;color:rgba(255,255,255,0.45)}@media(max-width:400px){
+.footer p{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:4px;color:rgba(255,255,255,0.45)}
+.scroll-indicator{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);width:24px;height:40px;border:2px solid rgba(255,255,255,0.15);border-radius:12px}
+.scroll-indicator::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:8px;background:var(--lumiere);border-radius:2px;animation:scrollDown 2s infinite}
+@keyframes scrollDown{0%{opacity:1;transform:translateX(-50%) translateY(0)}100%{opacity:0;transform:translateX(-50%) translateY(16px)}}
+@media(max-width:640px){
+  nav{padding:12px 16px}
+  nav a{font-size:11px;padding:4px 10px}
+  .hero{padding:100px 16px 60px}
+  .section{padding:60px 16px}
+  .member-card{flex:0 0 150px}
+}
+@media(max-width:400px){
   .hero h1{font-size:36px}
   .member-card{flex:0 0 140px}
   nav a{font-size:10px}
@@ -66,6 +77,7 @@ nav a:hover{color:var(--lumiere)}
   <div>
     <a href="#groupe">Le groupe</a>
     <a href="#concerts">Concerts</a>
+    <a href="#musique">Musique</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -76,6 +88,7 @@ nav a:hover{color:var(--lumiere)}
   <h1>RIVERS ROCK</h1>
   <div class="tagline">Reprises rock — Rouen</div>
   <p>Groupe rouennais formé en 2024. Rock, pop-rock, indé et alternatif. La Seine et ses ponts, la nuit.</p>
+  <a href="#groupe" style="text-decoration:none;color:inherit"><div class="scroll-indicator"></div></a>
 </section>
 <section id="groupe" class="section">
   <h2>Le groupe</h2>

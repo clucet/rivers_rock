@@ -655,42 +655,89 @@ def gen_site():
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital@0;1&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
+:root{--vert:#1A4A3A;--eau:#4A9B8E;--ambre:#D4A843;--accent:#E85D3A;--blanc:#fff}@media(prefers-color-scheme:dark){:root{--vert:#0A2A1A;--eau:#2A5A5A}}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Nunito','Montserrat',sans-serif;background:linear-gradient(135deg,#1A4A3A,#4A9B8E);color:#fff;min-height:100vh;overflow-x:hidden}
-.waves-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.07}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Nunito','Montserrat',sans-serif;background:linear-gradient(135deg,var(--vert),var(--eau));color:var(--blanc);min-height:100vh;overflow-x:hidden}
+.bg-grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E")}
+nav{position:fixed;top:0;width:100%;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(26,74,58,0.9);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,168,67,0.15)}
+nav .logo-small{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--blanc)}
+nav .logo-small svg{width:28px;height:20px}
+nav .logo-small span{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;text-transform:uppercase}
+nav a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:12px;font-weight:400;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:4px;transition:.3s}
+nav a:hover{color:var(--ambre);background:rgba(212,168,67,0.08)}
+.waves-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0.05}
 .waves-bg svg{width:100%;height:100%}
-.container{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:80px 24px;text-align:center}
-.logo-wave{margin-bottom:8px}
-.logo-wave svg{width:120px;height:40px}
-h1{font-family:'Playfair Display',serif;font-size:52px;font-weight:400;color:#fff;margin-bottom:4px}
-.tagline{font-family:'Nunito',sans-serif;font-size:16px;color:#D4A843;margin-bottom:32px;letter-spacing:1px}
-p,li{font-size:15px;line-height:1.8;color:rgba(255,255,255,0.8)}
-h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:400;color:#D4A843;margin:48px 0 16px;text-align:center}
-h2::after{content:'';display:block;width:60px;height:1px;background:rgba(212,168,67,0.4);margin:8px auto 0}
-.members{list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
-.members li{padding:6px 16px;background:rgba(255,255,255,0.06);border-radius:20px;font-size:14px}
-.highlight{color:#D4A843;font-weight:600}
-hr{border:none;border-top:1px solid rgba(212,168,67,0.15);margin:40px 0}
+.hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;background:radial-gradient(ellipse at 50% 38%, rgba(212,168,67,0.1) 0%, transparent 60%)}
+.hero .logo-wave svg{width:140px;height:40px;margin-bottom:8px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,8vw,52px);font-weight:400;color:var(--blanc);margin-bottom:4px}
+.hero .tagline{font-family:'Nunito',sans-serif;font-size:16px;color:var(--ambre);margin-bottom:24px;letter-spacing:1px}
+.hero p{font-size:15px;line-height:1.7;color:rgba(255,255,255,0.78);max-width:500px}
+.section{position:relative;z-index:2;padding:80px 24px;max-width:700px;margin:0 auto}
+.section h2{font-family:'Playfair Display',serif;font-size:clamp(24px,5vw,30px);font-weight:400;color:var(--ambre);margin-bottom:32px;text-align:center}
+.section h2::after{content:'';display:block;width:60px;height:1px;background:rgba(212,168,67,0.4);margin:8px auto 0}
+.section p{font-size:15px;line-height:1.8;color:rgba(255,255,255,0.75);margin-bottom:20px}
+.section-alt{background:rgba(74,155,142,0.08);border-top:1px solid rgba(212,168,67,0.06);border-bottom:1px solid rgba(212,168,67,0.06)}
+.members-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:20px}
+.member-card{flex:0 0 180px;text-align:center;padding:24px 12px;background:rgba(255,255,255,0.04);border-radius:20px;border:1px solid rgba(255,255,255,0.06);transition:.25s}
+.member-card:hover{background:rgba(255,255,255,0.08);transform:scale(1.03)}
+.member-card .avatar-circle{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--ambre),var(--accent));margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:26px;color:var(--blanc)}
+.member-card h3{font-family:'Playfair Display',serif;font-size:17px;color:var(--accent);margin-bottom:3px}
+.member-card p{font-family:'Nunito',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase}
+.concerts-list{list-style:none;padding:0}
+.concerts-list li{padding:14px 20px;margin-bottom:10px;background:rgba(255,255,255,0.04);border-radius:12px;border-left:3px solid var(--ambre);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.concerts-list .date{font-family:'Nunito',sans-serif;font-weight:600;font-size:14px;color:var(--ambre)}
+.concerts-list .lieu{font-size:14px;color:rgba(255,255,255,0.5)}
+.concerts-list .status{font-size:11px;padding:3px 10px;border-radius:12px;background:rgba(232,93,58,0.12);color:var(--accent)}
+.contact-info{text-align:center;margin-top:16px}
+.contact-info p{font-size:15px;margin-bottom:6px}
+.contact-info .email{font-family:'Nunito',sans-serif;font-size:16px;color:var(--ambre);text-decoration:none;transition:.2s}
+.contact-info .email:hover{color:var(--accent)}
 .links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-.links a{color:rgba(255,255,255,0.78);text-decoration:none;font-family:'Nunito',sans-serif;font-size:13px;padding:10px 24px;border:1px solid rgba(212,168,67,0.3);border-radius:24px;transition:.3s}
-.links a:hover{color:#fff;border-color:#D4A843;background:rgba(212,168,67,0.1)}
-.footer{font-family:'Nunito',sans-serif;font-size:12px;color:rgba(255,255,255,0.3);margin-top:48px;letter-spacing:3px}
+.links a{color:rgba(255,255,255,0.7);text-decoration:none;font-family:'Nunito',sans-serif;font-size:13px;padding:10px 24px;border:1px solid rgba(212,168,67,0.3);border-radius:24px;transition:.3s}
+.links a:hover{color:#fff;border-color:var(--ambre);background:rgba(212,168,67,0.1)}
+.footer{position:relative;z-index:2;text-align:center;padding:44px 24px;border-top:1px solid rgba(212,168,67,0.08)}
+.footer .logo-footer svg{width:80px;height:24px;margin-bottom:8px;opacity:0.3}
+.footer p{font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:3px}
+.scroll-indicator{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);width:24px;height:40px;border:2px solid rgba(255,255,255,0.15);border-radius:12px}
+.scroll-indicator::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:8px;background:var(--ambre);border-radius:2px;animation:scrollDown 2s infinite}
+@keyframes scrollDown{0%{opacity:1;transform:translateX(-50%) translateY(0)}100%{opacity:0;transform:translateX(-50%) translateY(16px)}}
 @media(max-width:640px){
-  .container{padding:48px 16px}
-  h1{font-size:36px}
-  .members li{flex:1 1 100%}
+  nav{padding:12px 16px}
+  nav a{font-size:11px;padding:4px 10px}
+  .hero{padding:100px 16px 60px}
+  .section{padding:60px 16px}
+  .member-card{flex:0 0 150px}
+}
+@media(max-width:400px){
+  .hero h1{font-size:36px}
+  .member-card{flex:0 0 140px}
+  .section{padding:40px 12px}
 }
 @media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<div class="bg-grain"></div>
 <div class="waves-bg">
   <svg viewBox="0 0 1440 900" preserveAspectRatio="none">
     <path d="M0,450 C360,300 720,600 1080,450 C1260,375 1440,450 1440,450 L1440,900 L0,900 Z" fill="rgba(255,255,255,0.03)"/>
     <path d="M0,500 C360,650 720,350 1080,500 C1260,575 1440,500 1440,500 L1440,900 L0,900 Z" fill="rgba(255,255,255,0.02)"/>
   </svg>
 </div>
-<div class="container">
+<nav>
+  <a href="#" class="logo-small">
+    <svg viewBox="0 0 80 24"><path d="M5,12 C20,5 35,19 50,12 C65,5 80,12 80,12" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round"/></svg>
+    <span>Rivers Rock</span>
+  </a>
+  <div>
+    <a href="#groupe">Le groupe</a>
+    <a href="#concerts">Concerts</a>
+    <a href="#musique">Musique</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+<section class="hero">
   <div class="logo-wave">
     <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
       <path d="M10,20 C40,0 70,40 100,20 C130,0 160,40 190,20" fill="none" stroke="#D4A843" stroke-width="3" stroke-linecap="round"/>
@@ -699,34 +746,46 @@ hr{border:none;border-top:1px solid rgba(212,168,67,0.15);margin:40px 0}
   <h1>Rivers Rock</h1>
   <div class="tagline">Reprises rock — Rouen</div>
   <p>Groupe rouennais formé en 2024. Rock, pop-rock, indé, alternatif. La Seine qui coule derrière le 106.</p>
-  <hr>
+  <a href="#groupe" style="text-decoration:none;color:inherit"><div class="scroll-indicator"></div></a>
+</section>
+<section id="groupe" class="section">
   <h2>Les membres</h2>
-  <ul class="members">
-    <li><span class="highlight">Rosaria</span> batterie</li>
-    <li><span class="highlight">Christophe</span> basse</li>
-    <li><span class="highlight">Nicolas</span> guitare</li>
-    <li><span class="highlight">David</span> guitare / chant</li>
-    <li><span class="highlight">Virginie</span> chant</li>
-  </ul>
-  <hr>
-  <h2>Concerts</h2>
-  <p>Contactez-nous pour programmer un concert.</p>
-  <hr>
-  <h2>Musique</h2>
-  <p>Decouvrez Rivers Rock en action &mdash; extraits live et playlist a venir.</p>
-  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:16px">
-    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.05);border-radius:8px;font-family:sans-serif;font-size:16px;color:rgba(0,0,0,0.3)">Video a venir</div>
+  <p>Cinq musiciens, une passion commune : faire vibrer la scène rouennaise.</p>
+  <div class="members-grid">
+    <div class="member-card"><div class="avatar-circle">R</div><h3>Rosaria</h3><p>Batterie</p></div>
+    <div class="member-card"><div class="avatar-circle">C</div><h3>Christophe</h3><p>Basse</p></div>
+    <div class="member-card"><div class="avatar-circle">N</div><h3>Nicolas</h3><p>Guitare</p></div>
+    <div class="member-card"><div class="avatar-circle">D</div><h3>David</h3><p>Guitare / Chant</p></div>
+    <div class="member-card"><div class="avatar-circle">V</div><h3>Virginie</h3><p>Chant</p></div>
   </div>
-  <hr>
+</section>
+<section id="concerts" class="section section-alt">
+  <h2>Concerts</h2>
+  <p>Contactez-nous pour programmer un concert. Notre setlist de 12 titres traverse les époques.</p>
+  <div class="concerts-list"><li><span class="date">SAM 26 JUIN 2026</span><span class="lieu">Montigny · 19h30</span><span class="status">Concert</span></li></div>
+</section>
+<section id="musique" class="section">
+  <h2>Musique</h2>
+  <p>Decouvrez Rivers Rock en action — extraits live et playlist a venir.</p>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin-top:16px">
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.05);border-radius:12px;font-family:sans-serif;font-size:16px;color:rgba(0,0,0,0.3)">Video a venir</div>
+  </div>
+</section>
+<section id="contact" class="section section-alt">
   <h2>Contact</h2>
-  <p>riversrockrouen@gmail.com</p>
+  <div class="contact-info"><p>Pour toute demande :</p><a class="email" href="mailto:riversrockrouen@gmail.com">riversrockrouen@gmail.com</a></div>
   <div class="links">
     <a href="https://www.instagram.com/riversrockrouen" target="_blank">Instagram</a>
     <a href="https://www.facebook.com/RiversRockRouen" target="_blank">Facebook</a>
     <a href="https://www.youtube.com/@RiversRockRouen" target="_blank">YouTube</a>
   </div>
-  <p class="footer">RIVERS ROCK — Rouen</p>
-</div>
+</section>
+<footer class="footer">
+  <div class="logo-footer">
+    <svg viewBox="0 0 80 24"><path d="M5,12 C20,5 35,19 50,12 C65,5 80,12 80,12" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </div>
+  <p>RIVERS ROCK — Rouen</p>
+</footer>
 </body>
 </html>'''
     path = os.path.join(OUT, "index.html")

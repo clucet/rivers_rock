@@ -610,7 +610,7 @@ def gen_site():
 <title>Rivers Rock — Neon Nights</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
 <style>
-:root{--nuit:#0F0B1A;--rose:#FF2D95;--cyan:#00F5FF;--violet:#1A0B2E;--blanc:#E8E0F0}
+:root{--nuit:#0F0B1A;--rose:#FF2D95;--cyan:#00F5FF;--violet:#1A0B2E;--blanc:#E8E0F0}@media(prefers-color-scheme:dark){:root{--nuit:#06030A;--violet:#0B0415}}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Rajdhani',sans-serif;font-weight:300;color:var(--blanc);min-height:100vh;background:linear-gradient(135deg,var(--nuit),var(--violet))}
@@ -650,6 +650,22 @@ nav a:hover{color:var(--rose);text-shadow:0 0 8px rgba(255,45,149,0.4)}
 .links-social a:hover{color:var(--blanc);border-color:var(--rose);background:rgba(255,45,149,0.06)}
 .footer{position:relative;z-index:1;text-align:center;padding:44px 24px;border-top:1px solid rgba(255,45,149,0.06)}
 .footer p{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:rgba(232,224,240,0.2)}
+.footer .logo-footer svg{width:50px;height:50px;margin-bottom:8px;opacity:0.3}
+.scroll-indicator{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);width:24px;height:40px;border:2px solid rgba(255,255,255,0.15);border-radius:12px}
+.scroll-indicator::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:8px;background:var(--rose);border-radius:2px;animation:scrollDown 2s infinite}
+@keyframes scrollDown{0%{opacity:1;transform:translateX(-50%) translateY(0)}100%{opacity:0;transform:translateX(-50%) translateY(16px)}}
+@media(max-width:640px){
+  nav{padding:12px 16px}
+  nav a{font-size:11px;padding:4px 10px}
+  .hero{padding:100px 16px 60px}
+  .section{padding:60px 16px}
+  .member-card{flex:0 0 150px}
+}
+@media(max-width:400px){
+  .hero h1{font-size:36px}
+  .member-card{flex:0 0 140px}
+  .section{padding:40px 12px}
+}
 @media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -660,6 +676,7 @@ nav a:hover{color:var(--rose);text-shadow:0 0 8px rgba(255,45,149,0.4)}
   <div>
     <a href="#groupe">Groupe</a>
     <a href="#concerts">Concerts</a>
+    <a href="#musique">Musique</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -675,6 +692,7 @@ nav a:hover{color:var(--rose);text-shadow:0 0 8px rgba(255,45,149,0.4)}
   <h1>RIVERS ROCK</h1>
   <div class="tagline">Reprises rock - Rouen</div>
   <p>Groupe rouennais forme en 2024. Rock, pop-rock, inde et alternatif. La Seine la nuit.</p>
+  <a href="#groupe" style="text-decoration:none;color:inherit"><div class="scroll-indicator"></div></a>
 </section>
 <section id="groupe" class="section">
   <h2>Le groupe</h2>
@@ -709,6 +727,13 @@ nav a:hover{color:var(--rose);text-shadow:0 0 8px rgba(255,45,149,0.4)}
   </div>
 </section>
 <footer class="footer">
+  <div class="logo-footer">
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="35" fill="none" stroke="#00F5FF" stroke-width="2"/>
+      <polyline points="68,28 78,20 74,35 80,42" fill="none" stroke="#FF2D95" stroke-width="2"/>
+      <circle cx="50" cy="50" r="8" fill="#FF2D95"/>
+    </svg>
+  </div>
   <p>R O U E N</p>
 </footer>
 </body>
