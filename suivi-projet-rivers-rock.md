@@ -1,4 +1,4 @@
-<!-- AUTO-UPDATE: Dernière mise à jour automatique par opencode (24/06/2026) -->
+<!-- AUTO-UPDATE: Dernière mise à jour automatique par opencode (25/06/2026) -->
 <!-- Sections gérées automatiquement : Propositions design, Tâches, Journal. Toute modification manuelle de ces sections sera écrasée. -->
 
 # Rivers Rock — Suivi de projet
@@ -113,10 +113,11 @@
 | `scripts/generate_overlays.py` | Overlays vidéo (lower-third, bumper intro/outro) |
 | `scripts/generate_watermarks.py` | Filigranes vidéo semi-transparents (200/100/50px) |
 | `scripts/generate_setlist_web.py` | Setlist interactive web (minuteur, BPM) |
-| `propositions/09-jazz-club/generate.py` | Générateur proposition Jazz Club |
-| `propositions/09-jazz-club/spec.md` | Spec proposition Jazz Club |
-| `propositions/09-jazz-club/charte-graphique.md` | Charte graphique Jazz Club |
+| `scripts/generate_charte_pdf.py` | PDF chartes graphiques (logos + assets) |
 | `propositions/index.html` | Page comparaison des 9 propositions |
+| `propositions/drafts/publications-facebook.md` | Brouillons Facebook (5 posts) |
+| `propositions/infos-comptes-reseaux.md` | Accès réseaux sociaux du groupe |
+| `site/setlist/index.html` | Setlist interactive (minuteur concert) |
 | `scripts/generate_animated_logo.html` | Animation logo dans navigateur (arcs cercle) |
 | `scripts/render_animation.py` | Rendu MP6 du logo animé |
 | `scripts/logoutils.py` | Fonctions écusson + résolution polices cross-platform |
@@ -287,10 +288,11 @@ setlist/
 
 ## Améliorations possibles
 
-- **QR code dynamique** : URL courte redirigeant vers la dernière version de la setlist
-- **Setlist interactive** : app web accessible depuis le QR, avec minuterie scène
+- **QR code dynamique** : URL courte redirigeant vers la dernière version de la setlist — ✅ fait, QR réels branchés
+- **Setlist interactive** : app web accessible depuis le QR, avec minuterie scène — ✅ fait, `site/setlist/index.html`
 - **Fiche technique son** (stage plot) — ✅ fait
-- **Logo animé** pour Reels/Shorts — ⚠️ en cours (rendu à retravailler)
+- **Logo animé** pour Reels/Shorts — ✅ fait, `render_animation.py` paramétrable
+- **PDF chartes graphiques** — à créer, avec aperçus des assets et logos SVG
 
 ---
 
@@ -679,11 +681,12 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 24/06/2026 | **Facebook Page** `Rivers Rock Rouen` créée — tous les réseaux sont maintenant opérationnels | opencode |
 | 24/06/2026 | **Correctifs 9/10** : WCAG 05/06, dark mode 03, YouTube placeholders, `prefers-reduced-motion`, multi-favicon, scroll indicator cliquable, bleed + crop marks sur les scripts principaux | opencode |
 | 24/06/2026 | **Audit complet web/print/vidéo** : 25 correctifs identifiés, priorités établies | opencode |
-| 24/06/2026 | **Correctifs 9/10** : WCAG 05/06, dark mode 03, YouTube placeholders, `prefers-reduced-motion`, multi-favicon, bleed + crop marks | opencode |
 | 24/06/2026 | **Enrichissement 5 propositions** : sticky nav, member cards, scroll indicator, footer logo, responsive, dark mode pour 01, 02, 04, 05, 06 | opencode |
-| 24/06/2026 | **Propositions 07 Nordik, 08 Grunge, 09 Jazz Club** : 3 nouvelles identités complètes (palette, fonts, generate.py, 35 assets chacune) | opencode |
 | 24/06/2026 | **Correctifs 10/10** : favicons, formulaires de contact, animations, contrastes, halftone dots, double bordures | opencode |
 | 25/06/2026 | **Formulaires de contact** ajoutés dans les 9 propositions (nom/email/message) | opencode |
 | 25/06/2026 | **Favicons inline** ajoutés aux propositions 01, 02, 04, 05, 06 | opencode |
 | 25/06/2026 | **Photos placeholders** intégrés dans les cartes membres des 9 propositions | opencode |
 | 25/06/2026 | **Audit évolutions futures** : 10 suggestions identifiées (PWA, NFC, Spotify, vote setlist, merch, newsletter, EPK, planning, CI/CD, analytics) | opencode |
+| 25/06/2026 | **Lot 1 — 9 logos SVG vectoriels** : grilles précises, proportions professionnelles, coordonnées mathématiques | opencode |
+| 25/06/2026 | **Lot 2 — 36 déclinaisons SVG** : mono, icône, compact, watermark × 9 propositions | opencode |
+| 25/06/2026 | **Lot 3-5 — Chartes enrichies** : grilles de construction, règles d'usage pro, preload SVG dans générateurs | opencode |
