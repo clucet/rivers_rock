@@ -710,7 +710,7 @@ nav a:hover{color:var(--rose);text-shadow:0 0 8px rgba(255,45,149,0.4)}
   <p>Contactez-nous pour programmer un concert.</p>
   <ul class="concerts-list"><li><span class="date">A venir</span><span class="lieu">Contactez-nous</span><span class="status">Sur demande</span></li></ul>
   <div style="margin-top:20px;border-radius:8px;overflow:hidden;max-width:400px;margin-left:auto;margin-right:auto">
-    <img src="../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block;border-radius:8px" alt="Affiche Soirees Nocturnes - VEN 26 JUIN 2026 - Montigny">
+    <img src="../../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block;border-radius:8px" alt="Affiche Soirees Nocturnes - VEN 26 JUIN 2026 - Montigny">
   </div>
 </section>
 <section id="musique" class="section">

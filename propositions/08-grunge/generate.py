@@ -360,7 +360,7 @@ footer{padding:30px;text-align:center;font-size:10px;color:#999;position:relativ
 <div><h4>Virginie</h4><p>chant</p></div></div></section>
 <section id="c" class="section"><h3>concerts</h3>
 <ul class="cl"><li><span class="d">VEN 26 JUIN 2026</span> - Montigny . 19h30</li></ul>
-<div style="margin-top:16px;max-width:300px;margin-left:auto;margin-right:auto;border:2px dashed #1A1A1A;padding:4px"><img src="../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block" alt="Affiche"></div></section>
+<div style="margin-top:16px;max-width:300px;margin-left:auto;margin-right:auto;border:2px dashed #1A1A1A;padding:4px"><img src="../../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block" alt="Affiche"></div></section>
 <section id="m" class="section"><h3>musique</h3>
 <p>Decouvrez Rivers Rock en action</p>
 <div style="padding:20px;text-align:center;border:2px dashed #1A1A1A;margin-top:10px">Video a venir</div></section>
