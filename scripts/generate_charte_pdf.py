@@ -2,7 +2,8 @@
 """Generate professional PDF chartes graphiques for all 9 propositions.
 Each PDF includes: logo, palette, typography, logo variants, graphic elements, and asset previews."""
 
-import os, sys, math
+import os, sys, math, io, re, tempfile
+import cairosvg
 sys.path.insert(0, os.path.dirname(__file__))
 from PIL import Image, ImageDraw, ImageFont
 from reportlab.lib.pagesizes import A4, landscape
@@ -178,7 +179,7 @@ def generate_charte(cfg, dirname):
     cv.setFont("Helvetica", 22)
     cv.drawString(40, H - 50, "LOGOS & VARIANTES")
 
-    # Try to load SVG logos — use inline SVG reference
+    # Render SVG logos using cairosvg
     svg_dir = os.path.join(prop_dir, "assets")
     logo_variants = [
         ("logo.svg", "Standard couleur"),
@@ -192,35 +193,42 @@ def generate_charte(cfg, dirname):
     for fname, label in logo_variants:
         svg_path = os.path.join(svg_dir, fname)
         if os.path.exists(svg_path):
+            # Get SVG viewBox for aspect ratio
             with open(svg_path, "r") as f:
                 svg_content = f.read()
-            # Extract viewBox for display
-            import re
             vb_match = re.search(r'viewBox="([^"]+)"', svg_content)
             vb = vb_match.group(1) if vb_match else "0 0 100 100"
             vb_parts = list(map(float, vb.split()))
             svg_w, svg_h = vb_parts[2], vb_parts[3]
             aspect = svg_h / svg_w if svg_w > 0 else 1
 
-            # Draw placeholder rectangle for SVG
-            display_w = min(120, (W - 80) / 3)
+            display_w = min(140, (W - 80) / 3)
             display_h = display_w * aspect
 
-            cv.setStrokeColor(Color(0, 0, 0, alpha=0.08))
-            cv.setLineWidth(0.5)
-            cv.rect(x, y - display_h, display_w, display_h, stroke=1, fill=0)
-            cv.setFillColor(Color(0, 0, 0, alpha=0.03))
-            cv.rect(x, y - display_h, display_w, display_h, stroke=0, fill=1)
+            # Convert SVG to PNG via cairosvg
+            try:
+                png_data = cairosvg.svg2png(url=svg_path, output_width=int(display_w * 3))
+                img = Image.open(io.BytesIO(png_data))
+                tmp_path = f"/tmp/charte_{dirname}_{fname.replace('.svg','')}.png"
+                img.save(tmp_path)
+
+                cv.drawImage(tmp_path, x, y - display_h, display_w, display_h)
+                os.remove(tmp_path)
+            except Exception as e:
+                # Fallback: draw placeholder
+                cv.setStrokeColor(Color(0, 0, 0, alpha=0.08))
+                cv.setLineWidth(0.5)
+                cv.rect(x, y - display_h, display_w, display_h, stroke=1, fill=0)
 
             cv.setFillColor(HexColor("#2B2B2B"))
-            cv.setFont("Helvetica", 8)
-            cv.drawString(x, y - display_h - 14, label)
-            cv.drawString(x, y - display_h - 24, f"{svg_path.split('/assets/')[1]}")
+            cv.setFont("Helvetica", 7)
+            cv.drawString(x, y - display_h - 12, label)
+            cv.drawString(x, y - display_h - 21, fname)
 
-            x += display_w + 30
+            x += display_w + 25
             if x > W - 100:
                 x = 40
-                y -= max(display_h, 60) + 60
+                y -= max(display_h + 30, 90)
 
     # ── Page 4: Éléments graphiques + Assets aperçu ──
     cv.showPage()
@@ -246,14 +254,39 @@ def generate_charte(cfg, dirname):
         cv.drawString(40, y, f"  {f}  ({size // 1024} Ko)")
         y -= 16
 
-    # Template files
+    # Template thumbnails
     tmpl_dir = os.path.join(prop_dir, "assets", "templates")
     if os.path.exists(tmpl_dir):
         cv.drawString(40, y - 10, "Templates :")
         y -= 26
-        for f in sorted(os.listdir(tmpl_dir))[:10]:
-            cv.drawString(40, y, f"  {f}")
-            y -= 14
+        # Show key templates as small thumbnails
+        preview_files = []
+        for key in ["avatar.png", "instagram-post.png", "instagram-story.png", "facebook-banner.png", "youtube-banner.png", "lowerthird.png"]:
+            tp = os.path.join(tmpl_dir, key)
+            if os.path.exists(tp):
+                preview_files.append(tp)
+
+        tx, ty = 40, y
+        for pf in preview_files[:3]:
+            try:
+                img = Image.open(pf)
+                iw, ih = img.size
+                # Scale to fit ~80px height
+                ratio = 80 / ih
+                dw, dh = int(iw * ratio), 80
+                if dw > 150:
+                    ratio = 150 / iw
+                    dw, dh = 150, int(ih * ratio)
+                cv.drawImage(pf, tx, ty - dh, dw, dh)
+                tx += dw + 15
+            except:
+                pass
+        
+        y2 = ty - 95
+        cv.setFont("Helvetica", 7)
+        for f in sorted(os.listdir(tmpl_dir))[:8]:
+            cv.drawString(40, y2, f"  {f}")
+            y2 -= 12
 
     cv.save()
     print(f"  Charte PDF : {out_path}")
