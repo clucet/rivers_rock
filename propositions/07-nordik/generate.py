@@ -105,7 +105,7 @@ def gen_setlist():
         w = pdfmetrics.stringWidth(c, "Inter", 6)
         cv.drawString(x, 14, c)
         x += w + tr
-    save_with_crop_marks(cv, W, H, bleed)
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Nordik] Setlist > {path}")
 
 def gen_poster():
@@ -138,14 +138,14 @@ def gen_poster():
         w = pdfmetrics.stringWidth(c, "Inter", 6)
         cv.drawString(x, 14, c)
         x += w + tr
-    save_with_crop_marks(cv, W, H, bleed)
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Nordik] Poster > {path}")
 
 # Remaining generators: flyer, social, banners, avatar, stickers, tshirt, animated, site
 def gen_flyer():
     FW, FH = A6
     path = os.path.join(PDF, "flyer-nordik.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
     def draw_recto(cv, ox, oy):
         cv.setFillColor(BLANC)
         cv.rect(ox, oy, FW, FH, stroke=0, fill=1)
@@ -257,7 +257,7 @@ def gen_stickers():
     W, H = A4; SR = 40*mm; MX = (W-2*SR*2)/3; MY = (H-3*SR*2)/4
     centers = [(MX+SR+c*(MX+SR*2), MY+SR+r*(MY+SR*2)) for c in range(2) for r in range(3)]
     path = os.path.join(PDF, "stickers-nordik.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
     for cx, cy in centers:
         cv.setFillColor(BLANC)
         cv.circle(cx, cy, SR, stroke=0, fill=1)
@@ -277,7 +277,7 @@ def gen_tshirt():
     w, h = A4
     sizes = [("S",22*mm,w/4,h-200),("M",28*mm,w*3/4,h-200),("L",34*mm,w/4,h-440),("XL",40*mm,w*3/4,h-440)]
     path = os.path.join(PDF, "tshirt-nordik.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
     cv.setFillColor(Color(0,0,0,alpha=0.04))
     cv.rect(0,0,w,h,stroke=0,fill=1)
     for label, sr, cx, cy in sizes:

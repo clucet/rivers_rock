@@ -224,7 +224,7 @@ SCENE_VINTAGE = Config(
         "vert_eau":      "#4A9B8E",
         "accent":        "#E85D3A",
         "terracotta":    "#C96D4D",
-        "or_vieilli":    "#C9A84C",
+        "or_vieilli":    "#D4B84C",
         "vert_repere":   "#2D8A6E",
         "gris_acier":    "#8C9196",
         "blanc_casse":   "#F5F5F0",

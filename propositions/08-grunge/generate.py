@@ -138,7 +138,7 @@ def gen_poster():
 
 def gen_flyer():
     FW, FH = A6; path = os.path.join(PDF, "flyer-grunge.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
     def draw_recto(cv, ox, oy):
         cv.setFillColor(PAPIER); cv.rect(ox, oy, FW, FH, stroke=0, fill=1)
         cx = ox + FW / 2
@@ -146,7 +146,7 @@ def gen_flyer():
         cv.setFillColor(TONER); cv.setFont("RubikGlitch", 14)
         cv.drawCentredString(cx, oy + FH - 80, "rIVERS rOCK")
         cv.setFillColor(MARQ); cv.setFont("RubikGlitch", 28)
-        cv.drawCentredString(cx, oy + FH - 145, "SAM 26")
+        cv.drawCentredString(cx, oy + FH - 145, "VEN 26 JUIN 2026")
         cv.setFillColor(Color(0, 0, 0, alpha=0.5))
         cv.setFont("SpaceMono", 10)
         cv.drawCentredString(cx, oy + FH - 175, "Montigny 19h30")
@@ -234,7 +234,7 @@ def gen_stickers():
     W, H = A4; SR = 40*mm; MX=(W-2*SR*2)/3; MY=(H-3*SR*2)/4
     centers = [(MX+SR+c*(MX+SR*2), MY+SR+r*(MY+SR*2)) for c in range(2) for r in range(3)]
     path = os.path.join(PDF, "stickers-grunge.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
     for cx, cy in centers:
         cv.setFillColor(PAPIER); cv.circle(cx, cy, SR, stroke=0, fill=1)
         cv.setStrokeColor(TONER); cv.setLineWidth(3); cv.circle(cx, cy, SR, stroke=1, fill=0)

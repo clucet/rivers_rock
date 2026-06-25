@@ -172,7 +172,7 @@ def gen_setlist():
         w = pdfmetrics.stringWidth(c, "DMMono", 7)
         cv.drawString(x, 14, c)
         x += w + tr
-    save_with_crop_marks(cv, W, H, bleed)
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Jazz Club] Setlist → {path}")
 
 
@@ -216,14 +216,14 @@ def gen_poster():
         w = pdfmetrics.stringWidth(c, "DMMono", 7)
         cv.drawString(x, 14, c)
         x += w + tr
-    save_with_crop_marks(cv, W, H, bleed)
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Jazz Club] Poster → {path}")
 
 
 def gen_flyer():
     FW, FH = A6
     path = os.path.join(PDF, "flyer-jazz-club.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
     def grad(cv, x, y, w, h):
         for i in range(60):
             t = i / 59
@@ -256,7 +256,7 @@ def gen_flyer():
         bio = ["Groupe rouennais forme en 2024", "au centre Education et Formation", "du Petit-Quevilly.",
                "", "Rosaria - batterie", "Christophe - basse", "Nicolas - guitare",
                "David - guitare / chant", "Virginie - chant", "", "Rock - Pop-Rock - Inde - Alternatif"]
-        cv.setFillColor(Color(0, 0, 0, alpha=0.7))
+        cv.setFillColor(Color(1, 1, 1, alpha=0.7))
         cv.setFont("Karla", 7)
         y = oy + FH - 80
         for line in bio:
@@ -412,7 +412,7 @@ def gen_stickers():
     MY = (H - 3 * SR * 2) / 4
     centers = [(MX + SR + c * (MX + SR * 2), MY + SR + r * (MY + SR * 2)) for c in range(2) for r in range(3)]
     path = os.path.join(PDF, "stickers-jazz-club.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
     for cx, cy in centers:
         for i in range(60):
             t = i / 59
@@ -443,7 +443,7 @@ def gen_tshirt():
     sizes = [("S", 22 * mm, w / 4, h - 200), ("M", 28 * mm, w * 3 / 4, h - 200),
              ("L", 34 * mm, w / 4, h - 440), ("XL", 40 * mm, w * 3 / 4, h - 440)]
     path = os.path.join(PDF, "tshirt-jazz-club.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
     cv.setFillColor(Color(0, 0, 0, alpha=0.04))
     cv.rect(0, 0, w, h, stroke=0, fill=1)
     for label, sr, cx, cy in sizes:

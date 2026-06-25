@@ -365,7 +365,7 @@ def gen_flyer():
 
         cv.setFillColor(Color(1, 1, 1, alpha=0.4))
         cv.setFont("Montserrat", 7)
-        cv.drawCentredString(cx, qy2 - 8, "@riversrock.rouen — riversrock.fr")
+        cv.drawCentredString(cx, qy2 - 8, "@riversrockrouen — riversrock.fr")
 
     for page in range(2):
         for row in range(2):
@@ -432,9 +432,9 @@ def gen_social():
     th = bbox[3] - bbox[1]
     draw.text((qx + (qs - tw) / 2, qy + (qs - th) / 2), "QR", fill=BLEU_PIL, font=font_space)
 
-    bbox = draw.textbbox((0, 0), "@riversrock.rouen", font=font_tag)
+    bbox = draw.textbbox((0, 0), "@riversrockrouen", font=font_tag)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 870), "@riversrock.rouen", fill=BLANC_PIL, font=font_tag)
+    draw.text(((w - tw) / 2, 870), "@riversrockrouen", fill=BLANC_PIL, font=font_tag)
 
     img = pillow_grain_overlay(img, 0.04, seed=10)
     img.save(os.path.join(TMPL, "instagram-post.png"))
@@ -466,9 +466,9 @@ def gen_social():
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 850), "Montigny · 19h30", fill=BLANC_PIL, font=font_space_l)
 
-    bbox = draw.textbbox((0, 0), "@riversrock.rouen", font=font_space_l)
+    bbox = draw.textbbox((0, 0), "@riversrockrouen", font=font_space_l)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 1750), "@riversrock.rouen", fill=BLANC_PIL, font=font_space_l)
+    draw.text(((w - tw) / 2, 1750), "@riversrockrouen", fill=BLANC_PIL, font=font_space_l)
 
     img = pillow_grain_overlay(img, 0.04, seed=20)
     img.save(os.path.join(TMPL, "instagram-story.png"))
