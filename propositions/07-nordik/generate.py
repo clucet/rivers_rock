@@ -299,6 +299,7 @@ def gen_animated():
 <html lang="fr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock \u2014 Nordik</title>
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAMlJREFUWEft1rENwjAQBdD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4kiWLNnxnU8UKZLr/Pd9thMEAf4PQAiAEAChIyA6AgI7ArLWPuc8zjnnC85a+5xzHgEgBEAIAOrA3Xsf9z17ZgBIfYAx5hVjrN77z3ffH4DVByClBICttV+t3bee1gcgpQQAay0B7L0TAOYcBPAcB3NODPCe0DHG5xhjA0AIgBAAoSMgOgICOwKy1j7nnMec8wsnhHDOeRxjjACEEADhCAgBEB0BgR0BWWufc85jzvmFE8Kccx5jjACEEADhCEgIAOgICAEQHQH/Ab3+V/+tKtRsAAAAAElFTkSuQmCC">
 <style>
 *{margin:0;padding:0}
 body{width:1080px;height:1920px;overflow:hidden;background:#FAFAFA;display:flex;align-items:center;justify-content:center}
@@ -342,6 +343,7 @@ def gen_site():
 <html lang="fr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock \u2014 Nordik</title>
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAMlJREFUWEft1rENwjAQBdD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4kiWLNnxnU8UKZLr/Pd9thMEAf4PQAiAEAChIyA6AgI7ArLWPuc8zjnnC85a+5xzHgEgBEAIAOrA3Xsf9z17ZgBIfYAx5hVjrN77z3ffH4DVByClBICttV+t3bee1gcgpQQAay0B7L0TAOYcBPAcB3NODPCe0DHG5xhjA0AIgBAAoSMgOgICOwKy1j7nnMec8wsnhHDOeRxjjACEEADhCAgBEB0BgR0BWWufc85jzvmFE8Kccx5jjACEEADhCEgIAOgICAEQHQH/Ab3+V/+tKtRsAAAAAElFTkSuQmCC">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
 <style>
 :root{--b:#FAFAFA;--g:#E8E8E4;--a:#4A4A4A;--n:#2B2B2B;--l:#B8B5A8}

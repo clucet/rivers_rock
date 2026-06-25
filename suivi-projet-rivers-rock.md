@@ -71,7 +71,7 @@
 - [ ] Remplacer `[DATE]` `[LIEU]` dans les templates pour un vrai concert
 - [ ] Merchandising (t-shirts)
 - [ ] Session photo promo du groupe
-- [ ] Choisir la proposition définitive parmi les 6
+- [ ] Choisir la proposition définitive parmi les 9
 - [ ] Nettoyer les propositions non retenues
 - [ ] Lancer le rendu MP4 final (`python3 scripts/render_animation.py`)
 
@@ -620,4 +620,8 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 24/06/2026 | **Setlist interactive web** : `scripts/generate_setlist_web.py` + page avec minuterie, BPM, chronomètre | opencode |
 | 24/06/2026 | **Facebook Page** `Rivers Rock Rouen` créée — tous les réseaux sont maintenant opérationnels | opencode |
 | 24/06/2026 | **Correctifs 9/10** : WCAG 05/06, dark mode 03, YouTube placeholders, `prefers-reduced-motion`, multi-favicon, scroll indicator cliquable, bleed + crop marks sur les scripts principaux | opencode |
-| 24/06/2026 | **Audit complet web/print/vidéo** : 25 correctifs identifiés, priorités établies (CMYK, MP4, formulaire, accessibilité) | opencode |
+| 24/06/2026 | **Audit complet web/print/vidéo** : 25 correctifs identifiés, priorités établies | opencode |
+| 24/06/2026 | **Correctifs 9/10** : WCAG 05/06, dark mode 03, YouTube placeholders, `prefers-reduced-motion`, multi-favicon, bleed + crop marks | opencode |
+| 24/06/2026 | **Enrichissement 5 propositions** : sticky nav, member cards, scroll indicator, footer logo, responsive, dark mode pour 01, 02, 04, 05, 06 | opencode |
+| 24/06/2026 | **Propositions 07 Nordik, 08 Grunge, 09 Jazz Club** : 3 nouvelles identités complètes (palette, fonts, generate.py, 35 assets chacune) | opencode |
+| 24/06/2026 | **Correctifs 10/10** : favicons, formulaires de contact, animations, contrastes, halftone dots, double bordures | opencode |
