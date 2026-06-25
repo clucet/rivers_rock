@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" width="120" height="80">
+  <defs>
+    <filter id="roughen">
+      <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <circle cx="100" cy="24" r="22" fill="#1A1A1A" filter="url(#roughen)" opacity="0.85"/>
+  <text x="100" y="30" text-anchor="middle" font-family="Rubik Glitch, sans-serif" font-size="18" fill="#1A1A1A" font-weight="700">R</text>
+  <text x="10" y="42" font-family="Rubik Glitch, sans-serif" font-size="28" fill="#1A1A1A" font-weight="700">rIVERS<span font-size="18"> r</span>OCK</text>
+</svg>

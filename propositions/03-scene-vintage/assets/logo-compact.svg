@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 60" width="180" height="60">
+  <circle cx="35" cy="30" r="25" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+  <path d="M17,30 Q26,24 35,30 Q44,36 53,30" fill="none" stroke="#E85D3A" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="35" cy="30" r="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="80" y="35" font-family="Bebas Neue, sans-serif" font-size="14" fill="#FFFFFF" letter-spacing="3">RIVERS ROCK</text>
+</svg>
