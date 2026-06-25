@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Generate all Fluid Wave assets — Proposition n°1 (refonte identitaire)."""
+# SVG logo available at: ../propositions/XXX/assets/logo.svg
+
 
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
@@ -653,6 +655,7 @@ def gen_site():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock — Fluid Wave</title>
+<link rel="preload" href="assets/logo.svg" as="image" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAONJREFUWEft1r0NgzAQBeD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4khBtuWf+CJFJMqV3vfpneMEAf4PQAiAEAChIyA6AqIj4D8AlNJ3rfU2TdNr2/dfPn+PcRzBmga01gBQSgEAtVaMMQAAay0A5JyL53meIYQAAJxzAECTJAHGGADUWk3T3QFKKQDAWosxxhCCz/N8TdP0zvN83/u+xBjfi8Jrreb7PgC01ng8Hk3TfI/j+AFCSvmZpunVdd0r5/ytlPoqpV5KKRBCAEBKCQApJQCEENbaW84Z5pz3AFrrb845zjkjhAAAnHMQQvjvfQFCCOGHEEIIIRBC+I/vB0RPRM90HYzWAAAAAElFTkSuQmCC">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital@0;1&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">

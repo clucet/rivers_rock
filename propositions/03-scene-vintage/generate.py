@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Generate all Scène & Vintage assets — Proposition 03 (retenue)."""
+# SVG logo available at: ../propositions/XXX/assets/logo.svg
+
 
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
@@ -726,6 +728,7 @@ def gen_site():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rivers Rock — Scène &amp; Vintage</title>
+<link rel="preload" href="assets/logo.svg" as="image" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" sizes="32x32" href="templates/monogramme-rr.png">
 <link rel="icon" type="image/png" sizes="16x16" href="templates/monogramme-rr.png">

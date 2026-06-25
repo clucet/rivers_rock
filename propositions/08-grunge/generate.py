@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Generate all Grunge assets — Proposition n°8."""
+# SVG logo available at: ../propositions/XXX/assets/logo.svg
+
 
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
@@ -320,6 +322,7 @@ def gen_site():
     with open(path, "w") as f:
         f.write('''<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock \u2014 Grunge</title>
+<link rel="preload" href="assets/logo.svg" as="image" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAMlJREFUWEft1rENwjAQBdD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4kiWLNnxnU8UKZLr/Pd9thMEAf4PQAiAEAChIyA6AgI7ArLWPuc8zjnnC85a+5xzHgEgBEAIAOrA3Xsf9z17ZgBIfYAx5hVjrN77z3ffH4DVByClBICttV+t3bee1gcgpQQAay0B7L0TAOYcBPAcB3NODPCe0DHG5xhjA0AIgBAAoSMgOgICOwKy1j7nnMec8wsnhHDOeRxjjACEEADhCAgBEB0BgR0BWWufc85jzvmFE8Kccx5jjACEEADhCEgIAOgICAEQHQH/Ab3+V/+tKtRsAAAAAElFTkSuQmCC">
 <style>
 *{margin:0;padding:0}
