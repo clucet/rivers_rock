@@ -6,11 +6,13 @@
 <title>Rivers Rock — Scène &amp; Vintage</title>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" sizes="32x32" href="templates/monogramme-rr.png">
+<link rel="icon" type="image/png" sizes="16x16" href="templates/monogramme-rr.png">
+<link rel="apple-touch-icon" href="templates/monogramme-rr.png">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Montserrat:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet">
 <style>
-:root{--bleu:#1A3A5C;--teal:#1A5C5C;--accent:#E85D3A;--or:#C9A84C;--terracotta:#C96D4D;--blanc:#fff}
+:root{--bleu:#1A3A5C;--teal:#1A5C5C;--accent:#E85D3A;--or:#C9A84C;--terracotta:#C96D4D;--blanc:#fff}@media(prefers-color-scheme:dark){:root{--bleu:#0A1A2A;--teal:#0A2A2A;--accent:#E85D3A;--or:#B8943A;--terracotta:#A04D3D;--blanc:#E0E0E0}}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{font-family:'Montserrat',system-ui,sans-serif;font-weight:300;color:var(--blanc);min-height:100vh;background:linear-gradient(135deg,var(--bleu),var(--teal))}
 .bg-grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.05'/%3E%3C/svg%3E")}
 nav{position:fixed;top:0;width:100%;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(26,58,92,0.88);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,168,76,0.15)}
@@ -78,6 +80,7 @@ nav a:hover{color:var(--or);background:rgba(201,168,76,0.08)}
   .section{padding:40px 12px}
   .section h2{font-size:26px}
 }
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -101,7 +104,7 @@ nav a:hover{color:var(--or);background:rgba(201,168,76,0.08)}
   <h1>RIVERS ROCK</h1>
   <div class="tagline">Reprises rock — Rouen</div>
   <p>Groupe rouennais formé en 2024. Rock, pop-rock, indé et alternatif. La Seine qui coule derrière le 106.</p>
-  <div class="scroll-indicator"></div>
+  <a href="#groupe" style="text-decoration:none;color:inherit"><div class="scroll-indicator"></div></a>
 </section>
 <section id="groupe" class="section">
   <h2>Le groupe</h2>
@@ -124,7 +127,7 @@ nav a:hover{color:var(--or);background:rgba(201,168,76,0.08)}
   <h2>Musique</h2>
   <p>Découvrez Rivers Rock en action — extraits live et playlist à venir.</p>
   <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:16px">
-    <iframe src="https://www.youtube.com/embed/" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none" allowfullscreen></iframe>
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.05);border-radius:8px;font-family:sans-serif;font-size:16px;color:rgba(0,0,0,0.3)">Video a venir</div>
   </div>
 </section>
 <section id="contact" class="section section-alt">

@@ -41,6 +41,7 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:420p
 @keyframes slide{0%{opacity:0;transform:translateX(200px)}100%{opacity:1;transform:translateX(0)}}
 .neon-pulse{animation:pulse 2s ease-in-out infinite alternate}
 @keyframes pulse{0%{filter:drop-shadow(0 0 8px rgba(232,93,58,0.4))}100%{filter:drop-shadow(0 0 25px rgba(232,93,58,0.9))}}
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>

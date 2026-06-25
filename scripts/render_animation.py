@@ -97,7 +97,7 @@ def make_frame(t):
     outer_r = 165 * SCALE
     timbre_prog = min(1, max(0, (t - 0.6) / 0.6))
     if timbre_prog > 0:
-        for ang in range(0, 360 * timbre_prog, 8):
+        for ang in range(0, int(360 * timbre_prog), 8):
             a1 = math.radians(ang)
             a2 = math.radians(min(ang + 4, 360 * timbre_prog))
             draw.arc([CX - outer_r, CY - outer_r, CX + outer_r, CY + outer_r],

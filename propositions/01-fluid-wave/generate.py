@@ -599,6 +599,7 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400p
 .lS{animation:floatUp .5s ease-out 2.55s forwards}
 @keyframes floatUp{0%{opacity:0;transform:translateY(80px)}100%{opacity:1;transform:translateY(0)}}
 .text-roc{font-family:'Bebas Neue',sans-serif;font-size:28px;fill:#E85D3A;opacity:0;animation:fadeW .6s ease-out 2.8s forwards}
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -679,6 +680,7 @@ hr{border:none;border-top:1px solid rgba(212,168,67,0.15);margin:40px 0}
   h1{font-size:36px}
   .members li{flex:1 1 100%}
 }
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -713,7 +715,7 @@ hr{border:none;border-top:1px solid rgba(212,168,67,0.15);margin:40px 0}
   <h2>Musique</h2>
   <p>Decouvrez Rivers Rock en action &mdash; extraits live et playlist a venir.</p>
   <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:16px">
-    <iframe src="https://www.youtube.com/embed/" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none" allowfullscreen></iframe>
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.05);border-radius:8px;font-family:sans-serif;font-size:16px;color:rgba(0,0,0,0.3)">Video a venir</div>
   </div>
   <hr>
   <h2>Contact</h2>

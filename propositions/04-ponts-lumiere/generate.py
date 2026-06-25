@@ -613,6 +613,7 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400p
 .lROCK_C{animation:slide .4s ease-out 3.1s forwards}
 .lROCK_K{animation:slide .4s ease-out 3.2s forwards}
 @keyframes slide{0%{opacity:0;transform:translateX(150px)}100%{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -713,6 +714,7 @@ nav a:hover{color:var(--lumiere)}
   nav a{font-size:10px}
   .section{padding:40px 12px}
 }
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -756,7 +758,7 @@ nav a:hover{color:var(--lumiere)}
   <h2>Musique</h2>
   <p>Decouvrez Rivers Rock en action &mdash; extraits live et playlist a venir.</p>
   <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:16px">
-    <iframe src="https://www.youtube.com/embed/" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none" allowfullscreen></iframe>
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.05);border-radius:8px;font-family:sans-serif;font-size:16px;color:rgba(0,0,0,0.3)">Video a venir</div>
   </div>
 </section>
 <section id="contact" class="section section-alt">

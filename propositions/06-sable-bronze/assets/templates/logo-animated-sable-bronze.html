@@ -37,6 +37,7 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400p
 @keyframes slide{0%{opacity:0;transform:translateX(150px)}100%{opacity:1;transform:translateX(0)}}
 .rays-rotate{animation:spinSlow 25s linear infinite;transform-origin:0 0}
 @keyframes spinSlow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>

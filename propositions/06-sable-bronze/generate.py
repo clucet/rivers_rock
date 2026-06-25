@@ -541,6 +541,7 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400p
 @keyframes slide{0%{opacity:0;transform:translateX(150px)}100%{opacity:1;transform:translateX(0)}}
 .rays-rotate{animation:spinSlow 25s linear infinite;transform-origin:0 0}
 @keyframes spinSlow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -603,43 +604,44 @@ def gen_site():
 :root{--sable:#D4A373;--terre:#CC6B49;--bronze:#B5835A;--vert:#2D6A4F;--creme:#FEFAE0}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Lato',sans-serif;font-weight:300;color:var(--vert);min-height:100vh;background:linear-gradient(135deg,var(--sable),var(--creme))}
+body{font-family:'Lato',sans-serif;font-weight:300;color:#1A4A3A;min-height:100vh;background:linear-gradient(135deg,var(--creme),var(--sable))}
 .bg-grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E")}
 nav{position:fixed;top:0;width:100%;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(254,250,224,0.9);backdrop-filter:blur(8px);border-bottom:1px solid rgba(45,106,79,0.1)}
 nav .logo-small{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--vert)}
 nav .logo-small span{font-family:'Cinzel',serif;font-size:14px;letter-spacing:1px}
-nav a{color:rgba(45,106,79,0.5);text-decoration:none;font-size:12px;font-weight:400;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;transition:.3s}
+nav a{color:#1A4A3A;text-decoration:none;font-size:12px;font-weight:400;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;transition:.3s}
 nav a:hover{color:var(--terre)}
 .hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px}
 .hero .logo-hero svg{width:120px;height:120px;margin-bottom:12px}
-.hero h1{font-family:'Cinzel',serif;font-size:clamp(36px,8vw,72px);letter-spacing:3px;color:var(--vert);margin-bottom:4px}
-.hero .tagline{font-family:'Cormorant',serif;font-style:italic;font-size:18px;color:var(--terre);margin-bottom:28px}
-.hero p{font-size:16px;line-height:1.7;color:rgba(45,106,79,0.6);max-width:500px}
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(36px,8vw,72px);letter-spacing:3px;color:#1A3A2A;margin-bottom:4px}
+.hero .tagline{font-family:'Cormorant',serif;font-style:italic;font-size:18px;color:#8B4513;margin-bottom:28px}
+.hero p{font-size:16px;line-height:1.7;color:#1A4A3A;max-width:500px}
 .section{position:relative;z-index:1;padding:80px 24px;max-width:700px;margin:0 auto}
-.section h2{font-family:'Cinzel',serif;font-size:26px;letter-spacing:2px;color:var(--terre);margin-bottom:32px;text-align:center}
+.section h2{font-family:'Cinzel',serif;font-size:26px;letter-spacing:2px;color:#8B4513;margin-bottom:32px;text-align:center}
 .section h2::after{content:'';display:block;width:60px;height:1px;background:var(--bronze);margin:8px auto 0}
-.section p{font-size:16px;line-height:1.8;color:rgba(45,106,79,0.7);margin-bottom:20px}
+.section p{font-size:16px;line-height:1.8;color:#1A4A3A;margin-bottom:20px}
 .section-alt{background:rgba(212,163,115,0.12);border-top:1px solid rgba(45,106,79,0.06);border-bottom:1px solid rgba(45,106,79,0.06)}
 .members-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:20px}
 .member-card{flex:0 0 180px;text-align:center;padding:24px 12px;background:rgba(254,250,224,0.3);border-radius:8px;border:1px solid rgba(181,131,90,0.15);transition:.25s}
 .member-card:hover{background:rgba(254,250,224,0.5)}
 .member-card .avatar-circle{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--bronze),var(--terre));margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:24px;color:var(--creme)}
 .member-card h3{font-family:'Cinzel',serif;font-size:15px;letter-spacing:1px;color:var(--terre);margin-bottom:3px}
-.member-card p{font-family:'Lato',sans-serif;font-size:13px;color:rgba(45,106,79,0.4)}
+.member-card p{font-family:'Lato',sans-serif;font-size:13px;color:#3A5A4A}
 .concerts-list{list-style:none;padding:0}
 .concerts-list li{padding:14px 20px;margin-bottom:10px;background:rgba(254,250,224,0.3);border-radius:6px;border-left:3px solid var(--bronze);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .concerts-list .date{font-family:'Cormorant',serif;font-size:15px;color:var(--terre)}
-.concerts-list .lieu{font-size:14px;color:rgba(45,106,79,0.5)}
+.concerts-list .lieu{font-size:14px;color:#1A4A3A}
 .concerts-list .status{font-size:10px;padding:3px 10px;border-radius:10px;background:rgba(204,107,73,0.1);color:var(--terre)}
 .contact-info{text-align:center;margin-top:16px}
 .contact-info p{font-size:16px;margin-bottom:6px}
 .contact-info .email{font-family:'Lato',sans-serif;font-size:16px;color:var(--terre);text-decoration:none;transition:.2s}
 .contact-info .email:hover{color:var(--vert)}
 .links-social{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-.links-social a{color:rgba(45,106,79,0.5);text-decoration:none;font-family:'Lato',sans-serif;font-size:12px;padding:8px 18px;border:1px solid rgba(181,131,90,0.2);border-radius:6px;transition:.3s;letter-spacing:1px;text-transform:uppercase}
+.links-social a{color:#1A4A3A;text-decoration:none;font-family:'Lato',sans-serif;font-size:12px;padding:8px 18px;border:1px solid rgba(181,131,90,0.2);border-radius:6px;transition:.3s;letter-spacing:1px;text-transform:uppercase}
 .links-social a:hover{color:var(--vert);border-color:var(--terre);background:rgba(204,107,73,0.04)}
 .footer{position:relative;z-index:1;text-align:center;padding:44px 24px;border-top:1px solid rgba(45,106,79,0.06)}
-.footer p{font-family:'Cormorant',serif;font-size:11px;letter-spacing:3px;color:rgba(45,106,79,0.25)}
+.footer p{font-family:'Cormorant',serif;font-size:11px;letter-spacing:3px;color:#3A5A4A}
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -687,7 +689,7 @@ nav a:hover{color:var(--terre)}
   <h2>Musique</h2>
   <p>Decouvrez Rivers Rock en action &mdash; extraits live et playlist a venir.</p>
   <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:16px">
-    <iframe src="https://www.youtube.com/embed/" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none" allowfullscreen></iframe>
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.05);border-radius:8px;font-family:sans-serif;font-size:16px;color:rgba(0,0,0,0.3)">Video a venir</div>
   </div>
 </section>
 <section id="contact" class="section section-alt">

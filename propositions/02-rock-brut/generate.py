@@ -559,6 +559,7 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400p
 .chev{fill:none;stroke:rgba(255,59,0,0.3);stroke-width:2.5;stroke-linecap:round;opacity:0;animation:fadeH .3s ease-out 1.9s forwards}
 .chev2{fill:none;stroke:rgba(255,59,0,0.15);stroke-width:1.5;opacity:0;animation:fadeH .4s ease-out 2.1s forwards}
 .text-sub{font-family:'Inter Tight',sans-serif;font-size:14px;fill:#fff;opacity:0;animation:fadeH .5s ease-out 2.4s forwards}
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -630,6 +631,7 @@ h2::after{content:'';display:block;width:40px;height:3px;background:#FF3B00;marg
   .container{padding:40px 16px}
   nav a{display:none}
 }
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -660,7 +662,7 @@ h2::after{content:'';display:block;width:40px;height:3px;background:#FF3B00;marg
   <h2>Musique</h2>
   <p>Decouvrez Rivers Rock en action &mdash; extraits live et playlist a venir.</p>
   <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:16px">
-    <iframe src="https://www.youtube.com/embed/" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none" allowfullscreen></iframe>
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.05);border-radius:8px;font-family:sans-serif;font-size:16px;color:rgba(0,0,0,0.3)">Video a venir</div>
   </div>
   <div class="band"></div>
   <h2>Contact</h2>
