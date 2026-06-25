@@ -4,10 +4,10 @@
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
 from logoutils import (
+    create_bleed_canvas, save_with_crop_marks,
     draw_qr_pillow,
     pillow_hexagon_monogramme,
     pillow_crest, pillow_grain_overlay,
-    draw_qr_pillow,
     BEBAS_PATH, ANTON_PATH, INTERTIGHT_PATH, JETBRAINS_PATH,
 )
 from palette import ROCK_BRUT as CFG
@@ -128,7 +128,7 @@ def pictogram_badge(cv, cx, cy, r, num):
 def gen_setlist():
     W, H = int(A4[0]), int(A4[1])
     path = os.path.join(PDF, "setlist-rock-brut.pdf")
-    cv = canvas.Canvas(path, pagesize=(W, H))
+    cv, _, _, bleed = create_bleed_canvas(path, W, H)
 
     cv.setFillColor(NOIR)
     cv.rect(0, 0, W, H, stroke=0, fill=1)
@@ -225,7 +225,7 @@ def gen_setlist():
         w = pdfmetrics.stringWidth(c, "JetBrainsMono", 7)
         cv.drawString(x, 14, c)
         x += w + tr
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Rock Brut] Setlist → {path}")
 
 
@@ -234,7 +234,7 @@ def gen_setlist():
 def gen_poster():
     W, H = int(A4[0]), int(A4[1])
     path = os.path.join(PDF, "poster-rock-brut.pdf")
-    cv = canvas.Canvas(path, pagesize=(W, H))
+    cv, _, _, bleed = create_bleed_canvas(path, W, H)
 
     cv.setFillColor(NOIR)
     cv.rect(0, 0, W, H, stroke=0, fill=1)
@@ -280,7 +280,7 @@ def gen_poster():
         w = pdfmetrics.stringWidth(c, "JetBrainsMono", 7)
         cv.drawString(x, 14, c)
         x += w + tr
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Rock Brut] Poster → {path}")
 
 
@@ -289,7 +289,7 @@ def gen_poster():
 def gen_flyer():
     FW, FH = A6
     path = os.path.join(PDF, "flyer-rock-brut.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
 
     def draw_recto(cv, ox, oy):
         cv.setFillColor(NOIR)
@@ -348,7 +348,7 @@ def gen_flyer():
                     draw_verso(cv, ox, oy)
         if page == 0:
             cv.showPage()
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Rock Brut] Flyer → {path}")
 
 
@@ -488,7 +488,7 @@ def gen_stickers():
     centers = [(MX + SR + c * (MX + SR * 2), MY + SR + r * (MY + SR * 2)) for c in range(2) for r in range(3)]
 
     path = os.path.join(PDF, "stickers-rock-brut.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
 
     for cx, cy in centers:
         cv.setFillColor(NOIR)
@@ -501,7 +501,7 @@ def gen_stickers():
         cv.setFillColor(BLANC)
         cv.setFont("Anton", 7)
         cv.drawCentredString(cx, cy + sr * 0.9 + 8, "RIVERS ROCK")
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Rock Brut] Stickers → {path}")
 
 
@@ -513,7 +513,7 @@ def gen_tshirt():
     sizes = [("S", 22 * mm, w / 4, h - 200), ("M", 28 * mm, w * 3 / 4, h - 200),
              ("L", 34 * mm, w / 4, h - 440), ("XL", 40 * mm, w * 3 / 4, h - 440)]
     path = os.path.join(PDF, "tshirt-rock-brut.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
     cv.setFillColor(Color(0, 0, 0, alpha=0.04))
     cv.rect(0, 0, w, h, stroke=0, fill=1)
     for label, sr, cx, cy in sizes:
@@ -525,7 +525,7 @@ def gen_tshirt():
             cv.setFillColor(Color(0, 0, 0, alpha=0.3))
             cv.setFont("InterTight", 7)
             cv.drawCentredString(cx, cy + sr + 60, label)
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Rock Brut] T-shirt → {path}")
 
 
@@ -629,7 +629,7 @@ h2::after{content:'';display:block;width:40px;height:3px;background:#FF3B00;marg
 @media(max-width:640px){
   h1{font-size:42px}
   .container{padding:40px 16px}
-  nav a{display:none}
+  nav a{font-size:10px;padding:4px 8px}
 }
 @media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
 </style>

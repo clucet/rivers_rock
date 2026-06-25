@@ -4,10 +4,10 @@
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
 from logoutils import (
+    create_bleed_canvas, save_with_crop_marks,
     draw_qr_pillow,
     pillow_monogramme_wave,
     pillow_crest, pillow_grain_overlay,
-    draw_qr_pillow,
     BEBAS_PATH, NUNITO_PATH, PLAYFAIR_PATH,
 )
 from palette import FLUID_WAVE as CFG
@@ -126,7 +126,7 @@ def draw_droplet_badge(cv, cx, cy, r, num, color):
 def gen_setlist():
     W, H = A4
     path = os.path.join(PDF, "setlist-fluid-wave.pdf")
-    cv = canvas.Canvas(path, pagesize=(W, H))
+    cv, _, _, bleed = create_bleed_canvas(path, W, H)
 
     for i in range(120):
         t = i / 119
@@ -239,7 +239,7 @@ def gen_setlist():
         w = pdfmetrics.stringWidth(c, "Nunito", 6)
         cv.drawString(x, 14, c)
         x += w + tr
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Fluid Wave] Setlist → {path}")
 
 
@@ -248,7 +248,7 @@ def gen_setlist():
 def gen_poster():
     W, H = A4
     path = os.path.join(PDF, "poster-fluid-wave.pdf")
-    cv = canvas.Canvas(path, pagesize=(W, H))
+    cv, _, _, bleed = create_bleed_canvas(path, W, H)
 
     for i in range(120):
         t = i / 119
@@ -304,7 +304,7 @@ def gen_poster():
         w = pdfmetrics.stringWidth(c, "Nunito", 7)
         cv.drawString(x, 14, c)
         x += w + tr
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Fluid Wave] Poster → {path}")
 
 
@@ -313,7 +313,7 @@ def gen_poster():
 def gen_flyer():
     FW, FH = A6
     path = os.path.join(PDF, "flyer-fluid-wave.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
 
     def grad(cv, x, y, w, h):
         for i in range(60):
@@ -371,7 +371,7 @@ def gen_flyer():
                     draw_verso(cv, ox, oy)
         if page == 0:
             cv.showPage()
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Fluid Wave] Flyer → {path}")
 
 
@@ -518,7 +518,7 @@ def gen_stickers():
     centers = [(MX + SR + c * (MX + SR * 2), MY + SR + r * (MY + SR * 2)) for c in range(2) for r in range(3)]
 
     path = os.path.join(PDF, "stickers-fluid-wave.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
 
     for cx, cy in centers:
         for i in range(60):
@@ -537,7 +537,7 @@ def gen_stickers():
         cv.setFillColor(BLANC)
         cv.setFont("BebasNeue", 7)
         cv.drawCentredString(cx, cy + sr + 8, "RIVERS ROCK")
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Fluid Wave] Stickers → {path}")
 
 
@@ -549,7 +549,7 @@ def gen_tshirt():
     sizes = [("S", 22 * mm, w / 4, h - 200), ("M", 28 * mm, w * 3 / 4, h - 200),
              ("L", 34 * mm, w / 4, h - 440), ("XL", 40 * mm, w * 3 / 4, h - 440)]
     path = os.path.join(PDF, "tshirt-fluid-wave.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
     cv.setFillColor(Color(0, 0, 0, alpha=0.04))
     cv.rect(0, 0, w, h, stroke=0, fill=1)
     for label, sr, cx, cy in sizes:
@@ -561,7 +561,7 @@ def gen_tshirt():
             cv.setFillColor(Color(0, 0, 0, alpha=0.3))
             cv.setFont("Nunito", 7)
             cv.drawCentredString(cx, cy + sr + 60, label)
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Fluid Wave] T-shirt → {path}")
 
 

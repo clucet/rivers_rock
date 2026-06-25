@@ -4,6 +4,7 @@
 import os, sys, math, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"))
 from logoutils import (
+    create_bleed_canvas, save_with_crop_marks,
     pillow_grain_overlay,
     draw_qr_pillow, BEBAS_PATH, MONTSERRAT_PATH, CINZEL_PATH, LATO_PATH, CORMORANT_PATH,
 )
@@ -103,7 +104,7 @@ def draw_geometric_waves(cv, W, H):
 def gen_setlist():
     W, H = A4
     path = os.path.join(PDF, "setlist-sable-bronze.pdf")
-    cv = canvas.Canvas(path, pagesize=(W, H))
+    cv, _, _, bleed = create_bleed_canvas(path, W, H)
 
     for i in range(120):
         t = i / 119
@@ -205,14 +206,14 @@ def gen_setlist():
         w = pdfmetrics.stringWidth(c, "Cormorant", 7)
         cv.drawString(x, 14, c)
         x += w + tr
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Sable & Bronze] Setlist → {path}")
 
 
 def gen_poster():
     W, H = A4
     path = os.path.join(PDF, "poster-sable-bronze.pdf")
-    cv = canvas.Canvas(path, pagesize=(W, H))
+    cv, _, _, bleed = create_bleed_canvas(path, W, H)
 
     for i in range(120):
         t = i / 119
@@ -251,14 +252,14 @@ def gen_poster():
         w = pdfmetrics.stringWidth(c, "Cormorant", 7)
         cv.drawString(x, 14, c)
         x += w + tr
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Sable & Bronze] Poster → {path}")
 
 
 def gen_flyer():
     FW, FH = A6
     path = os.path.join(PDF, "flyer-sable-bronze.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
 
     def grad(cv, x, y, w, h):
         for i in range(60):
@@ -289,9 +290,9 @@ def gen_flyer():
         cv.setFillColor(VERT)
         cv.setFont("Cinzel", 14)
         cv.drawCentredString(cx, oy + FH - 40, "RIVERS ROCK")
-        bio = ["Groupe rouennais forme en 2024", "au centre Education et Formation", "du Petit-Quevilly.",
+        bio = ["Groupe rouennais formé en 2024", "au centre Éducation et Formation", "du Petit-Quevilly.",
                "", "Rosaria - batterie", "Christophe - basse", "Nicolas - guitare",
-               "David - guitare / chant", "Virginie - chant", "", "Rock - Pop-Rock - Inde - Alternatif"]
+               "David - guitare / chant", "Virginie - chant", "", "Rock - Pop-Rock - Indé - Alternatif"]
         cv.setFillColor(Color(0, 0, 0, alpha=0.65))
         cv.setFont("Lato", 7)
         y = oy + FH - 80
@@ -302,7 +303,7 @@ def gen_flyer():
         cv.setFont("Lato", 7)
         cv.drawCentredString(cx, y - 6, "Contactez-nous pour programmer un concert")
         cv.setFillColor(Color(0, 0, 0, alpha=0.35))
-        cv.setFont("Cormorant", 6)
+        cv.setFont("Cormorant", 7)
         cv.drawCentredString(cx, y - 22, "@riversrockrouen - riversrockrouen@gmail.com")
 
     for page in range(2):
@@ -316,7 +317,7 @@ def gen_flyer():
                     draw_verso(cv, ox, oy)
         if page == 0:
             cv.showPage()
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Sable & Bronze] Flyer → {path}")
 
 
@@ -456,7 +457,7 @@ def gen_stickers():
     centers = [(MX + SR + c * (MX + SR * 2), MY + SR + r * (MY + SR * 2)) for c in range(2) for r in range(3)]
 
     path = os.path.join(PDF, "stickers-sable-bronze.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
 
     for cx, cy in centers:
         for i in range(60):
@@ -475,7 +476,7 @@ def gen_stickers():
         cv.setFillColor(VERT)
         cv.setFont("Cinzel", 7)
         cv.drawCentredString(cx, cy + sr + 8, "RIVERS ROCK")
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Sable & Bronze] Stickers → {path}")
 
 
@@ -485,7 +486,7 @@ def gen_tshirt():
     sizes = [("S", 22 * mm, w / 4, h - 200), ("M", 28 * mm, w * 3 / 4, h - 200),
              ("L", 34 * mm, w / 4, h - 440), ("XL", 40 * mm, w * 3 / 4, h - 440)]
     path = os.path.join(PDF, "tshirt-sable-bronze.pdf")
-    cv = canvas.Canvas(path, pagesize=A4)
+    cv, _, _, bleed = create_bleed_canvas(path, A4[0], A4[1])
     cv.setFillColor(Color(0, 0, 0, alpha=0.04))
     cv.rect(0, 0, w, h, stroke=0, fill=1)
     for label, sr, cx, cy in sizes:
@@ -497,7 +498,7 @@ def gen_tshirt():
             cv.setFillColor(Color(0, 0, 0, alpha=0.3))
             cv.setFont("Lato", 7)
             cv.drawCentredString(cx, cy + sr + 60, label)
-    cv.save()
+    save_with_crop_marks(cv, _, _, bleed)
     print(f"[Sable & Bronze] T-shirt → {path}")
 
 
@@ -685,7 +686,7 @@ nav a:hover{color:var(--terre)}
   <p>Contactez-nous pour programmer un concert.</p>
   <ul class="concerts-list"><li><span class="date">À venir</span><span class="lieu">Contactez-nous</span><span class="status">Sur demande</span></li></ul>
 </section>
-<section id="musique" class"section">
+<section id="musique" class="section">
   <h2>Musique</h2>
   <p>Decouvrez Rivers Rock en action &mdash; extraits live et playlist a venir.</p>
   <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:16px">

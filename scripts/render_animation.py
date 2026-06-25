@@ -72,6 +72,24 @@ def qbezier(p0, p1, p2, t):
 
 
 def make_frame(t):
+    """Dispatch to the correct render function based on config."""
+    name = CFG.name
+    if name == "Fluid Wave":
+        return _frame_fluid_wave(t)
+    elif name == "Rock Brut":
+        return _frame_rock_brut(t)
+    elif name == "Ponts & Lumiere":
+        return _frame_ponts_lumiere(t)
+    elif name == "Neon Nights":
+        return _frame_neon_nights(t)
+    elif name == "Sable & Bronze":
+        return _frame_sable_bronze(t)
+    else:
+        return _frame_scene_vintage(t)
+
+
+def _frame_scene_vintage(t):
+    """Scene & Vintage MP4 frame render."""
     img = Image.new("RGBA", (W, H), (0, 0, 0, 255))
     draw = ImageDraw.Draw(img)
 
@@ -216,3 +234,135 @@ if __name__ == "__main__":
     still_path = OUTPUT.replace(".mp4", ".png")
     still.save(still_path, "PNG")
     print(f"Still frame : {still_path}")
+
+def _frame_fluid_wave(t):
+    """Fluid Wave MP4 frame: wave + bubbles + float-up letters."""
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 255))
+    draw = ImageDraw.Draw(img)
+    # Gradient
+    for i in range(100):
+        rt = i / 99
+        r = math.sqrt(CX**2 + CY**2) * rt
+        c = lerp((26, 74, 58), (74, 155, 142), rt)
+        draw.ellipse([CX - r, CY - r, CX + r, CY + r], fill=c + (255,))
+    # Particles
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.25) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(212, 168, 67, int(255 * p['a'])))
+    # Wave
+    prog = min(1, max(0, (t - 0.5) / 0.8))
+    if prog > 0:
+        offset = math.sin(t * 2) * 12
+        pts = []
+        for i in range(30):
+            x = CX - 80 + i * 160 / 30
+            y = CY + offset + 20 * math.sin(i / 30 * 2 * math.pi * 2.5)
+            pts.append((int(x), int(y)))
+        for i in range(len(pts) - 1):
+            draw.line([pts[i], pts[i + 1]], fill=(212, 168, 67, int(255 * prog)), width=3)
+    # RIVERS letters float up
+    for ch_i, (ch, sx, start) in enumerate([("R", -60, 1.8), ("I", -36, 1.95), ("V", -12, 2.1), ("E", 12, 2.25), ("R", 36, 2.4), ("S", 60, 2.55)]):
+        prog_l = min(1, max(0, (t - start) / 0.5))
+        if prog_l > 0:
+            ep = ease_out(prog_l)
+            tx = CX + sx
+            ty = CY + 20 + 30 * (1 - ep)
+            font = ImageFont.truetype(BEBAS_PATH, max(8, int(28 * SCALE)))
+            draw.text((tx, ty), ch, fill=(255, 255, 255, int(255 * ep)), font=font, anchor="mm")
+    return img.convert("RGB")
+
+
+def _frame_rock_brut(t):
+    """Rock Brut MP4 frame: hexagon + shake + RR clap."""
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.5) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(255, 59, 0, int(255 * p['a'])))
+    # Hexagon draw
+    prog = min(1, max(0, (t - 0.3) / 0.6))
+    if prog > 0:
+        r = 60 * SCALE
+        pts = [(CX + r * math.cos(math.radians(60 * i - 30)), CY + r * math.sin(math.radians(60 * i - 30))) for i in range(6)]
+        draw_prog = int(len(pts) * prog)
+        for i in range(draw_prog - 1):
+            draw.line([pts[i], pts[(i + 1) % 6]], fill=(255, 255, 255), width=3)
+    # RR letters
+    prog_r = min(1, max(0, (t - 1.4) / 0.4))
+    if prog_r > 0:
+        font = ImageFont.truetype(ANTON_PATH, max(8, int(32 * SCALE)))
+        ep = ease_out(prog_r)
+        draw.text((CX - 15, CY), "R", fill=(255, 255, 255, int(255 * ep)), font=font, anchor="mm")
+        draw.text((CX + 15, CY), "R", fill=(255, 255, 255, int(255 * ep)), font=font, anchor="mm")
+    return img.convert("RGB")
+
+
+def _frame_ponts_lumiere(t):
+    """Ponts & Lumière MP4 frame: cables from both sides + flare."""
+    img = Image.new("RGBA", (W, H), (13, 27, 42, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.3) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(255, 183, 3, int(255 * p['a'])))
+    # Cables from both sides
+    prog = min(1, max(0, (t - 0.3) / 1.2))
+    for side, color in [(-1, (224, 225, 221)), (1, (255, 183, 3))]:
+        pts = []
+        for i in range(int(30 * prog)):
+            t0 = i / 30
+            x = CX + side * (160 - t0 * 160)
+            y = CY - 40 + 60 * ((t0 - 0.5) ** 2 - 0.25) * 4
+            pts.append((int(x), int(y)))
+        for i in range(len(pts) - 1):
+            draw.line([pts[i], pts[i + 1]], fill=color, width=2)
+    # Flare
+    if t > 1.6:
+        alpha = int(200 * min(1, t - 1.6))
+        draw.ellipse([CX - 6, CY - 40 - 6, CX + 6, CY - 40 + 6], fill=(255, 183, 3, alpha))
+    return img.convert("RGB")
+
+
+def _frame_neon_nights(t):
+    """Neon Nights MP4 frame: circle + lightning + flicker."""
+    img = Image.new("RGBA", (W, H), (15, 11, 26, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.3) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(0, 245, 255, int(255 * p['a'])))
+    # Circle
+    prog = min(1, max(0, (t - 0.3) / 0.8))
+    if prog > 0:
+        r = 40 * SCALE
+        end_a = int(-90 + 360 * prog)
+        draw.arc([CX - r, CY - r, CX + r, CY + r], -90, end_a, fill=(0, 245, 255), width=3)
+    # Lightning (after flash at 0.9s)
+    if t > 0.9:
+        for pts, color in [
+            ([(35, -20), (55, -10), (42, 5), (60, 15)], (255, 45, 149)),
+            ([(-35, -20), (-50, -10), (-40, 5), (-55, 15)], (255, 45, 149)),
+        ]:
+            scaled = [(CX + x * SCALE, CY + y * SCALE) for x, y in pts]
+            for i in range(len(scaled) - 1):
+                draw.line([scaled[i], scaled[i + 1]], fill=color, width=2)
+    return img.convert("RGB")
+
+
+def _frame_sable_bronze(t):
+    """Sable & Bronze MP4 frame: sun rise + rays."""
+    img = Image.new("RGBA", (W, H), (212, 163, 115, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.2) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(204, 107, 73, int(255 * p['a'])))
+    # Sun rise
+    prog = min(1, max(0, (t - 0.3) / 0.8))
+    if prog > 0:
+        offset_y = int(60 * (1 - prog))
+        r = 30 * SCALE
+        draw.ellipse([CX - r, CY - r + offset_y, CX + r, CY + r + offset_y], fill=(181, 131, 90))
+    return img.convert("RGB")

@@ -619,3 +619,5 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 24/06/2026 | **Section Musique** : embed YouTube ajouté aux propositions 01 et 04 | opencode |
 | 24/06/2026 | **Setlist interactive web** : `scripts/generate_setlist_web.py` + page avec minuterie, BPM, chronomètre | opencode |
 | 24/06/2026 | **Facebook Page** `Rivers Rock Rouen` créée — tous les réseaux sont maintenant opérationnels | opencode |
+| 24/06/2026 | **Correctifs 9/10** : WCAG 05/06, dark mode 03, YouTube placeholders, `prefers-reduced-motion`, multi-favicon, scroll indicator cliquable, bleed + crop marks sur les scripts principaux | opencode |
+| 24/06/2026 | **Audit complet web/print/vidéo** : 25 correctifs identifiés, priorités établies (CMYK, MP4, formulaire, accessibilité) | opencode |
