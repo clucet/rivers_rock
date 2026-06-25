@@ -294,6 +294,21 @@ setlist/
 
 ---
 
+## Prochaines évolutions possibles (25 juin 2026)
+
+| # | Suggestion | Effort | Impact | Description |
+|---|-----------|--------|--------|-------------|
+| 1 | **PWA Setlist** | 🟢 Faible | 🟠 Moyen | Convertir `site/setlist/` en PWA offline (service worker + manifest) pour utilisation sur scène sans connexion |
+| 2 | **Cartes NFC** | 🟡 Moyen | 🟠 Moyen | Générer des cartes de visite NFC compatibles Apple Wallet / Google Wallet avec les designs existants |
+| 3 | **Spotify / Apple Music** | 🟢 Faible | 🔴 Élevé | Playlists publiques des 12 titres, embed widgets dans les sites des propositions |
+| 4 | **Vote setlist** | 🟡 Moyen | 🔴 Élevé | Page publique où les fans votent pour les chansons du prochain concert ; admin drag-to-reorder |
+| 5 | **Merch store** | 🟡 Moyen | 🟠 Moyen | Page merch liée à Printful/Spreadshirt avec les designs t-shirt et stickers existants |
+| 6 | **Mailing list** | 🟢 Faible | 🟡 Moyen | Formulaire newsletter + envoi d'emails automatiques pour les annonces de concerts |
+| 7 | **EPK / Press Kit** | 🟢 Faible | 🔴 Élevé | Page EPK professionnelle avec bio, photos, rider technique, stages plot, lien de booking |
+| 8 | **Planning répétitions** | 🟢 Faible | 🟡 Moyen | Outil interne pour les 5 membres pour coordonner les créneaux au 106 |
+| 9 | **CI/CD GitHub Actions** | 🟡 Moyen | 🔴 Élevé | Pipeline de validation + génération automatique + déploiement à chaque push |
+| 10 | **Dashboard analytics** | 🟡 Moyen | 🟢 Faible | Tableau de bord privé avec stats Instagram, YouTube, QR scans, vues setlist |
+
 ## Propositions design (24 juin 2026)
 
 ### Proposition n°1 — « Fluid Wave » (Organique & Contemporain)
@@ -668,3 +683,7 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 24/06/2026 | **Enrichissement 5 propositions** : sticky nav, member cards, scroll indicator, footer logo, responsive, dark mode pour 01, 02, 04, 05, 06 | opencode |
 | 24/06/2026 | **Propositions 07 Nordik, 08 Grunge, 09 Jazz Club** : 3 nouvelles identités complètes (palette, fonts, generate.py, 35 assets chacune) | opencode |
 | 24/06/2026 | **Correctifs 10/10** : favicons, formulaires de contact, animations, contrastes, halftone dots, double bordures | opencode |
+| 25/06/2026 | **Formulaires de contact** ajoutés dans les 9 propositions (nom/email/message) | opencode |
+| 25/06/2026 | **Favicons inline** ajoutés aux propositions 01, 02, 04, 05, 06 | opencode |
+| 25/06/2026 | **Photos placeholders** intégrés dans les cartes membres des 9 propositions | opencode |
+| 25/06/2026 | **Audit évolutions futures** : 10 suggestions identifiées (PWA, NFC, Spotify, vote setlist, merch, newsletter, EPK, planning, CI/CD, analytics) | opencode |
