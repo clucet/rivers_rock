@@ -68,7 +68,6 @@
   - Instagram : `@riversrockrouen`
   - Facebook : `Rivers Rock Rouen`
 - [ ] Publier les 5 posts de lancement sur Facebook — brouillons prêts dans `propositions/drafts/publications-facebook.md`
-- [ ] Remplacer `[DATE]` `[LIEU]` dans les templates pour un vrai concert
 - [ ] Merchandising (t-shirts)
 - [ ] Session photo promo du groupe
 - [ ] Choisir la proposition définitive parmi les 9
@@ -106,6 +105,18 @@
 | `site/index.html` | Site one-page (GitHub Pages) |
 | `pdf/stage-plot.pdf` | Fiche technique son (stage plot + input list) |
 | `pdf/templates/logo-animated.mp4` | Logo animé (6s, 1080×1920) |
+| `scripts/palette.py` | Palette centralisée — 9 configurations (Config dataclass) |
+| `scripts/logoutils.py` | Fonctions partagées (création logo, QR, bleed, crop marks) |
+| `scripts/generate_all.py` | Générateur multi-config (`--config`) |
+| `scripts/generate_site.py` | Génération du site live |
+| `scripts/generate_missing.py` | Assets manquants (business card, lyrics, stage plot, tech sheet) |
+| `scripts/generate_overlays.py` | Overlays vidéo (lower-third, bumper intro/outro) |
+| `scripts/generate_watermarks.py` | Filigranes vidéo semi-transparents (200/100/50px) |
+| `scripts/generate_setlist_web.py` | Setlist interactive web (minuteur, BPM) |
+| `propositions/09-jazz-club/generate.py` | Générateur proposition Jazz Club |
+| `propositions/09-jazz-club/spec.md` | Spec proposition Jazz Club |
+| `propositions/09-jazz-club/charte-graphique.md` | Charte graphique Jazz Club |
+| `propositions/index.html` | Page comparaison des 9 propositions |
 | `scripts/generate_animated_logo.html` | Animation logo dans navigateur (arcs cercle) |
 | `scripts/render_animation.py` | Rendu MP6 du logo animé |
 | `scripts/logoutils.py` | Fonctions écusson + résolution polices cross-platform |
@@ -610,6 +621,11 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 24/06/2026 | **Proposition n°5 « Ponts & Lumière »** : création complète (palette, spec, generate.py, 12 assets) — inspiration architecturale ponts de Rouen, palette nuit/acier/lumière, fonts Teko + Raleway + DM Mono, logo pont + cercle, courbes caténaires, flares lumineux | opencode |
 | 24/06/2026 | **Correctifs 9/10** : balise `<title>` réparée (03), polices Teko/Raleway réelles chargées (04), WCAG contrastes corrigés (5 propositions), section Musique ajoutée (03), générateurs logoutils étendus (TEKO_PATH, RALEWAY_PATH, DMMONO_PATH) | opencode |
 | 24/06/2026 | **Finalisation 9/10** : responsive 400px (03, 04), responsive 640px (01, 02, 00), monogrammes spécifiques (bridge silhouette 04, wave RR 01, hexagon RR 02), animation wave ondulée (01), hiérarchie typographique clamp() (00) — 11 correctifs sur 5 propositions | opencode |
+| 24/06/2026 | **Enrichissement 5 propositions** : sticky nav, member cards grid, scroll indicator, footer logo SVG, dark mode CSS, responsive 640+400px pour 01, 02, 04, 05, 06 | opencode |
+| 24/06/2026 | **Proposition 07 « Nordik »** : minimaliste scandinave — blanc/gris/lin, Inter seul (tous usages), logo trait horizontal, setlist fond blanc pur | opencode |
+| 24/06/2026 | **Proposition 08 « Grunge »** : anti-design — papier/toner/marqueur rose, fonts Rubik Glitch + Space Mono + Syne Mono, logo tampon rouge, grain 15% | opencode |
+| 24/06/2026 | **Proposition 09 « Jazz Club »** : cuivres/velours — nuit/or/cuivre/rouge, fonts Playfair + Karla + DM Mono, logo cercle projecteur + ligne dorée | opencode |
+| 24/06/2026 | **Correctifs 10/10** : favicons ajoutés aux propositions 07/08/09, suivi-projet mis à jour (journal + todo 9 propositions) | opencode |
 | 24/06/2026 | **Assets manquants générés** : `scripts/generate_missing.py` — business cards, signatures, mockups, stage plots, tech sheets, lyrics (×12) pour les 5 propositions — 85 fichiers créés, total projet 176 assets | opencode |
 | 24/06/2026 | **Mise en ligne GitHub Pages** : dépôt clucet/rivers_rock passé en public, Pages activé sur `https://clucet.github.io/rivers_rock/` — retrait proposition 00 Originale de la sélection | opencode |
 | 24/06/2026 | **Proposition 05 « Neon Nights »** : cyberpunk — violet/rose/cyan, fonts Orbitron + Rajdhani + JetBrains Mono | opencode |
