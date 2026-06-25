@@ -368,7 +368,14 @@ footer{padding:30px;text-align:center;font-size:10px;color:#999;position:relativ
 <p>riversrockrouen@gmail.com</p>
 <p><a href="https://www.instagram.com/riversrockrouen" style="color:#1A1A1A">Instagram</a>
 | <a href="https://www.facebook.com/RiversRockRouen" style="color:#1A1A1A">Facebook</a>
-| <a href="https://www.youtube.com/@RiversRockRouen" style="color:#1A1A1A">YouTube</a></p></section>
+| <a href="https://www.youtube.com/@RiversRockRouen" style="color:#1A1A1A">YouTube</a></p>
+<form action="mailto:riversrockrouen@gmail.com" method="POST" enctype="text/plain" style="max-width:360px;margin:16px auto;font-family:Courier New,monospace">
+  <input type="text" name="nom" placeholder="nom" required style="width:100%;padding:6px;margin-bottom:6px;border:1px solid #1A1A1A;background:transparent;font-family:inherit;font-size:12px">
+  <input type="email" name="email" placeholder="email" required style="width:100%;padding:6px;margin-bottom:6px;border:1px solid #1A1A1A;background:transparent;font-family:inherit;font-size:12px">
+  <textarea name="message" placeholder="message" required rows="2" style="width:100%;padding:6px;margin-bottom:6px;border:1px solid #1A1A1A;background:transparent;font-family:inherit;font-size:12px;resize:vertical"></textarea>
+  <button type="submit" style="width:100%;padding:6px;border:1px solid #1A1A1A;background:#FF3366;color:#fff;font-family:inherit;font-size:12px;cursor:pointer">envoyer</button>
+</form>
+</section>
 <footer>R O U E N</footer>
 </body></html>''')
     print(f"[Grunge] Site > {path}")

@@ -584,6 +584,7 @@ def gen_animated():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock — Ponts &amp; Lumiere</title>
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAONJREFUWEft1r0NgzAQBeD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4khBtuWf+CJFJMqV3vfpneMEAf4PQAiAEAChIyA6AqIj4D8AlNJ3rfU2TdNr2/dfPn+PcRzBmga01gBQSgEAtVaMMQAAay0A5JyL53meIYQAAJxzAECTJAHGGADUWk3T3QFKKQDAWosxxhCCz/N8TdP0zvN83/u+xBjfi8Jrreb7PgC01ng8Hk3TfI/j+AFCSvmZpunVdd0r5/ytlPoqpV5KKRBCAEBKCQApJQCEENbaW84Z5pz3AFrrb845zjkjhAAAnHMQQvjvfQFCCOGHEEIIIRBC+I/vB0RPRM90HYzWAAAAAElFTkSuQmCC">
 <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0}
@@ -665,6 +666,7 @@ def gen_site():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock — Ponts &amp; Lumière</title>
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAONJREFUWEft1r0NgzAQBeD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4khBtuWf+CJFJMqV3vfpneMEAf4PQAiAEAChIyA6AqIj4D8AlNJ3rfU2TdNr2/dfPn+PcRzBmga01gBQSgEAtVaMMQAAay0A5JyL53meIYQAAJxzAECTJAHGGADUWk3T3QFKKQDAWosxxhCCz/N8TdP0zvN83/u+xBjfi8Jrreb7PgC01ng8Hk3TfI/j+AFCSvmZpunVdd0r5/ytlPoqpV5KKRBCAEBKCQApJQCEENbaW84Z5pz3AFrrb845zjkjhAAAnHMQQvjvfQFCCOGHEEIIIRBC+I/vB0RPRM90HYzWAAAAAElFTkSuQmCC">
 <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Raleway:wght@300;400;600&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
 :root{--nuit:#0D1B2A;--acier:#415A77;--lumiere:#FFB703;--seine:#1B263B;--brouillard:#E0E1DD;--blanc:#fff}@media(prefers-color-scheme:dark){:root{--nuit:#070D14;--acier:#1A2A3A;--seine:#0D1520}}
@@ -755,7 +757,7 @@ nav a:hover{color:var(--lumiere)}
   <h2>Le groupe</h2>
   <p>Cinq musiciens, une passion commune : faire vibrer la scène rouennaise avec des reprises qui décoiffent.</p>
   <div class="members-grid">
-    <div class="member-card"><div class="avatar-circle">R</div><h3>Rosaria</h3><p>Batterie</p></div>
+    <div class="member-card"><div class="avatar-circle" style="background:linear-gradient(135deg,#ccc,#999);font-size:20px;font-weight:bold">R</div><h3>Rosaria</h3><p>Batterie</p></div>
     <div class="member-card"><div class="avatar-circle">C</div><h3>Christophe</h3><p>Basse</p></div>
     <div class="member-card"><div class="avatar-circle">N</div><h3>Nicolas</h3><p>Guitare</p></div>
     <div class="member-card"><div class="avatar-circle">D</div><h3>David</h3><p>Guitare / Chant</p></div>
@@ -780,7 +782,13 @@ nav a:hover{color:var(--lumiere)}
 <section id="contact" class="section section-alt">
   <h2>Contact</h2>
   <div class="contact-info"><p>Pour toute demande :</p><a class="email" href="mailto:riversrockrouen@gmail.com">riversrockrouen@gmail.com</a></div>
-  <div class="links-social">
+  
+  <form action="mailto:riversrockrouen@gmail.com" method="POST" enctype="text/plain" style="max-width:400px;margin:20px auto">
+    <input type="text" name="nom" placeholder="Votre nom" required style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.15);border-radius:6px;background:rgba(255,255,255,0.05);color:#fff;font-family:inherit;font-size:14px">
+    <input type="email" name="email" placeholder="Votre email" required style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.15);border-radius:6px;background:rgba(255,255,255,0.05);color:#fff;font-family:inherit;font-size:14px">
+    <textarea name="message" placeholder="Votre message" required rows="3" style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.15);border-radius:6px;background:rgba(255,255,255,0.05);color:#fff;font-family:inherit;font-size:14px;resize:vertical"></textarea>
+    <button type="submit" style="width:100%;padding:10px;border:none;border-radius:6px;background:var(--accent, #E85D3A);color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer">Envoyer</button>
+  </form><div class="links-social">
     <a href="https://www.instagram.com/riversrockrouen" target="_blank">Instagram</a>
     <a href="https://www.facebook.com/RiversRockRouen" target="_blank">Facebook</a>
     <a href="https://www.youtube.com/@RiversRockRouen" target="_blank">YouTube</a>

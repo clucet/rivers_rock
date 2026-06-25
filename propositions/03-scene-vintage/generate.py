@@ -833,7 +833,7 @@ nav a:hover{color:var(--or);background:rgba(201,168,76,0.08)}
   <p>Cinq musiciens, une passion commune : faire vibrer la scène rouennaise avec des reprises qui décoiffent. Du rock à l\'alternatif, du pop-rock à l\'indé, Rivers Rock met le feu à chaque concert.</p>
   <p>Notre nom ? La Seine qui coule derrière le 106, notre lieu de répétition. L\'eau vive et l\'énergie rock, en un seul nom.</p>
   <div class="members-grid">
-    <div class="member-card"><div class="avatar-circle">R</div><h3>Rosaria</h3><p>Batterie</p></div>
+    <div class="member-card"><div class="avatar-circle" style="background:linear-gradient(135deg,#ccc,#999);font-size:20px;font-weight:bold">R</div><h3>Rosaria</h3><p>Batterie</p></div>
     <div class="member-card"><div class="avatar-circle">C</div><h3>Christophe</h3><p>Basse</p></div>
     <div class="member-card"><div class="avatar-circle">N</div><h3>Nicolas</h3><p>Guitare</p></div>
     <div class="member-card"><div class="avatar-circle">D</div><h3>David</h3><p>Guitare / Chant</p></div>
@@ -858,7 +858,13 @@ nav a:hover{color:var(--or);background:rgba(201,168,76,0.08)}
 <section id="contact" class="section section-alt">
   <h2>Contact</h2>
   <div class="contact-info"><p>Pour toute demande de concert :</p><a class="email" href="mailto:riversrockrouen@gmail.com">riversrockrouen@gmail.com</a></div>
-  <div class="links-social">
+  
+  <form action="mailto:riversrockrouen@gmail.com" method="POST" enctype="text/plain" style="max-width:400px;margin:20px auto">
+    <input type="text" name="nom" placeholder="Votre nom" required style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.15);border-radius:6px;background:rgba(255,255,255,0.05);color:#fff;font-family:inherit;font-size:14px">
+    <input type="email" name="email" placeholder="Votre email" required style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.15);border-radius:6px;background:rgba(255,255,255,0.05);color:#fff;font-family:inherit;font-size:14px">
+    <textarea name="message" placeholder="Votre message" required rows="3" style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.15);border-radius:6px;background:rgba(255,255,255,0.05);color:#fff;font-family:inherit;font-size:14px;resize:vertical"></textarea>
+    <button type="submit" style="width:100%;padding:10px;border:none;border-radius:6px;background:var(--accent, #E85D3A);color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer">Envoyer</button>
+  </form><div class="links-social">
     <a href="https://www.instagram.com/riversrockrouen" target="_blank">Instagram</a>
     <a href="https://www.facebook.com/RiversRockRouen" target="_blank">Facebook</a>
     <a href="https://www.youtube.com/@RiversRockRouen" target="_blank">YouTube</a>
