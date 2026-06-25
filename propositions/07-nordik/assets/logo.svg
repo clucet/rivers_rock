@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 24" width="80" height="24">
+  <line x1="0" y1="8" x2="80" y2="8" stroke="#B8B5A8" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="80" cy="8" r="2" fill="#B8B5A8"/>
+  <text x="40" y="21" text-anchor="middle" font-family="Inter, sans-serif" font-size="5.5" fill="#2B2B2B" letter-spacing="4" font-weight="200">rivers rock</text>
+</svg>
