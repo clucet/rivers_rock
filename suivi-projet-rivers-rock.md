@@ -743,3 +743,8 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 28/06/2026 | **Analyse impression** : `impression-production.md` — Brother DCP-L3560CDW, production famille, prestataires, budget | opencode |
 | 28/06/2026 | **Premiers votes** : 3/5 reçus — Neon Nights et Rock Brut en tête, Grunge 3e. 2 votes restants demain | opencode |
 | 28/06/2026 | **Planning répétitions** : `planning/index.html` — tableau interactif 5×7×3 créneaux, sauvegarde localStorage, copie WhatsApp, stats disponibilités | opencode |
+| 28/06/2026 | **GIF logo animé** : `pdf/templates/logo-animated.gif` — 240px, 10fps, 855 Ko (signature email, WhatsApp) | opencode |
+| 28/06/2026 | **Signature email HTML** : `pdf/templates/email-signature.html` — GIF intégré, prêt à copier dans Gmail | opencode |
+| 28/06/2026 | **Barre progression votes** : `propositions/vote/index.html` — suivi 0→5 votes, grille cliquable, localStorage | opencode |
+| 28/06/2026 | **Nettoyage `site/`** : dossier supprimé, contenu déplacé à la racine (index.html, setlist/, epk/, planning/) | opencode |
+| 28/06/2026 | **Admin docs** : `ADMIN.md` + `COMMANDS.md` — documentation administration et aide-mémoire commandes | opencode |
