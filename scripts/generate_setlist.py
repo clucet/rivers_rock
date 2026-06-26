@@ -3,8 +3,7 @@
 
 import os, sys, math, random
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH, create_bleed_canvas, save_with_crop_marks
-from logoutils import draw_gradient_pdf, draw_waves_pdf, draw_grain_pdf
+from logoutils import BEBAS_PATH, MONTSERRAT_PATH, create_bleed_canvas, save_with_crop_marks
 from palette import ACTIVE as CFG
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.colors import Color
@@ -50,8 +49,8 @@ ROWS_TOP = 610
 
 def draw_wave_stroke(cv):
     """Decorative gold wave stroke at bottom."""
-    cv.setStrokeColor(OR_VIEILLI)
-    cv.setLineWidth(1.5)
+    cv.setStrokeColor(Color(0, 0, 0, alpha=0.08))
+    cv.setLineWidth(1.0)
     y_line = H - 45
     segments = 200
     step_x = W / segments
@@ -104,16 +103,9 @@ def find_uniform_artist_size():
 
 
 def draw_card_bg(cv, card_left, cy, bg):
-    steps = 30
-    dh = CARD_H / steps
-    for i in range(steps):
-        t = i / (steps - 1)
-        lighten = 0.18 * (1 - t)
-        r = min(1, bg.red + lighten)
-        g = min(1, bg.green + lighten)
-        b = min(1, bg.blue + lighten)
-        cv.setFillColor(Color(r, g, b))
-        cv.rect(card_left, cy - CARD_H / 2 + i * dh, CARD_W, dh + 0.5, stroke=0, fill=1)
+    """Draw a card with a light background."""
+    cv.setFillColor(Color(0.97, 0.97, 0.96))
+    cv.roundRect(card_left, cy - CARD_H / 2, CARD_W, CARD_H, CARD_R, stroke=0, fill=1)
 
 
 def draw_cards(cv):
@@ -125,21 +117,13 @@ def draw_cards(cv):
         cx = COL_CENTERS[col]
         cy = ROWS_TOP - row * ROW_PITCH
         card_left = cx - CARD_W / 2
-        bg = TEAL_PROFOND if idx in GREEN_INDICES else TERRACOTTA
+        bg = Color(0.97, 0.97, 0.96)
         card_bottom = cy - CARD_H / 2
-
-        cv.setFillColor(Color(0, 0, 0, alpha=SHADOW_ALPHA))
-        cv.roundRect(card_left + SHADOW_OFFSET, card_bottom - SHADOW_OFFSET, CARD_W, CARD_H, CARD_R, stroke=0, fill=1)
-
         draw_card_bg(cv, card_left, cy, bg)
 
-        cv.setStrokeColor(Color(1, 1, 1, alpha=0.5))
-        cv.setLineWidth(0.5)
-        cv.roundRect(card_left, card_bottom, CARD_W, CARD_H, CARD_R, stroke=1, fill=0)
-
-        cv.setStrokeColor(OR_VIEILLI)
-        cv.setLineWidth(0.8)
-        cv.roundRect(card_left - 0.5, card_bottom - 0.5, CARD_W + 1, CARD_H + 1, CARD_R, stroke=1, fill=0)
+    cv.setStrokeColor(Color(0, 0, 0, alpha=0.06))
+    cv.setLineWidth(0.5)
+    cv.roundRect(card_left, card_bottom, CARD_W, CARD_H, CARD_R, stroke=1, fill=0)
 
         artist_width = pdfmetrics.stringWidth(artist, "BebasNeue", uniform_size)
         total_w = BADGE_R * 2 + GAP + artist_width
@@ -148,18 +132,18 @@ def draw_cards(cv):
         badge_cx = start_x + BADGE_R
         num_color = OR_VIEILLI if idx in GREEN_INDICES else ACCENT
         badge_cy = cy + BADGE_Y_OFFSET
-        cv.setFillColor(BLANC)
+        cv.setFillColor(Color(0.95, 0.95, 0.95))
         cv.circle(badge_cx, badge_cy, BADGE_R, stroke=0, fill=1)
         cv.setFillColor(num_color)
         cv.setFont("Montserrat", 12)
         cv.drawCentredString(badge_cx, badge_cy - 4.5, f"{idx+1:02d}")
 
-        cv.setFillColor(BLANC)
+        cv.setFillColor(Color(0, 0, 0, alpha=0.90))
         cv.setFont("BebasNeue", uniform_size)
         cv.drawString(start_x + BADGE_R * 2 + GAP, cy + ARTIST_BASELINE + 1, artist)
 
         if title:
-            cv.setFillColor(Color(1, 1, 1, alpha=0.80))
+            cv.setFillColor(Color(0, 0, 0, alpha=0.60))
             title_size = 14
             title_width = pdfmetrics.stringWidth(title, "Montserrat", title_size)
             max_title_w = CARD_W - 2 * MARGIN_H
@@ -171,14 +155,11 @@ def draw_cards(cv):
 
 def create_pdf():
     cv, _, _, bleed = create_bleed_canvas(OUTPUT, W, H)
-    draw_gradient_pdf(cv, W, H, BLEU_SEINE, TEAL_PROFOND)
-    draw_grain_pdf(cv, W, H)
-    draw_waves_pdf(cv, W, H)
-    draw_wave_stroke(cv)
-    draw_logo(cv)
+    cv.setFillColor(Color(1, 1, 1))
+    cv.rect(0, 0, W, H, stroke=0, fill=1)
     draw_setlist_subtitle(cv)
     draw_cards(cv)
-    cv.setFillColor(Color(1, 1, 1, alpha=0.18))
+    cv.setFillColor(Color(0, 0, 0, alpha=0.12))
     cv.setFont("Montserrat", 7)
     text = "R O U E N"
     tracking = 3

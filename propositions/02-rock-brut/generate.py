@@ -118,12 +118,12 @@ def gen_setlist():
     path = os.path.join(PDF, "setlist-rock-brut.pdf")
     cv, _, _, bleed = create_bleed_canvas(path, W, H)
 
-    cv.setFillColor(NOIR)
+    cv.setFillColor(BLANC)
     cv.rect(0, 0, W, H, stroke=0, fill=1)
 
     random.seed(42)
     for _ in range(5000):
-        cv.setFillColor(Color(1, 1, 1, alpha=random.uniform(0.03, 0.10)))
+        cv.setFillColor(Color(0, 0, 0, alpha=random.uniform(0.02, 0.06)))
         cv.circle(random.uniform(0, W), random.uniform(0, H),
                   random.uniform(0.3, 1.5), stroke=0, fill=1)
 
@@ -139,7 +139,7 @@ def gen_setlist():
     cv.setFont("Anton", 22)
     cv.drawCentredString(W / 2, H - 195, "SETLIST")
 
-    cv.setStrokeColor(Color(1, 1, 1, alpha=0.15))
+    cv.setStrokeColor(Color(0, 0, 0, alpha=0.08))
     cv.setLineWidth(2)
     cv.line(W / 2 - 60, H - 210, W / 2 + 60, H - 210)
 
@@ -224,12 +224,12 @@ def gen_poster():
     path = os.path.join(PDF, "poster-rock-brut.pdf")
     cv, _, _, bleed = create_bleed_canvas(path, W, H)
 
-    cv.setFillColor(NOIR)
+    cv.setFillColor(BLANC)
     cv.rect(0, 0, W, H, stroke=0, fill=1)
 
     random.seed(42)
     for _ in range(5000):
-        cv.setFillColor(Color(1, 1, 1, alpha=random.uniform(0.03, 0.10)))
+        cv.setFillColor(Color(0, 0, 0, alpha=random.uniform(0.02, 0.06)))
         cv.circle(random.uniform(0, W), random.uniform(0, H),
                   random.uniform(0.3, 1.5), stroke=0, fill=1)
 

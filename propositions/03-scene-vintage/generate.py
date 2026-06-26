@@ -54,38 +54,9 @@ def gen_setlist():
     path = os.path.join(PDF, "setlist-scene-vintage.pdf")
     cv, _, _, bleed = create_bleed_canvas(path, W, H)
 
-    for i in range(120):
-        t = i / 119
-        r = BLEU.red + (TEAL.red - BLEU.red) * t
-        g = BLEU.green + (TEAL.green - BLEU.green) * t
-        b = BLEU.blue + (TEAL.blue - BLEU.blue) * t
-        cv.setFillColor(Color(r, g, b))
-        cv.rect(0, i * H / 120, W, H / 120 + 1, stroke=0, fill=1)
-
-    random.seed(42)
-    for _ in range(3000):
-        cv.setFillColor(Color(1, 1, 1, alpha=random.uniform(0.02, 0.06)))
-        cv.circle(random.uniform(0, W), random.uniform(0, H),
-                  random.uniform(0.3, 1.0), stroke=0, fill=1)
-
-    cv.setFillColor(Color(1, 1, 1, alpha=0.06))
-    for row in range(3):
-        y = 20 + row * 30
-        amp = 8 + row * 6
-        segs = 300
-        sw = W / segs
-        p = cv.beginPath()
-        p.moveTo(0, y)
-        for i in range(segs + 1):
-            px = i * sw
-            py = y + amp * math.sin(i * 2 * math.pi / (28 + row * 12))
-            p.lineTo(px, py)
-        p.lineTo(W, 0)
-        p.lineTo(0, 0)
-        p.close()
-        cv.drawPath(p, fill=1, stroke=0)
-
-    cv.setStrokeColor(OR)
+    cv.setFillColor(Color(1, 1, 1))
+    cv.rect(0, 0, W, H, stroke=0, fill=1)
+    cv.setStrokeColor(Color(0, 0, 0, alpha=0.04))
     cv.setLineWidth(1.5)
     segs = 200
     sw = W / segs
@@ -203,20 +174,8 @@ def gen_poster():
     path = os.path.join(PDF, "poster-scene-vintage.pdf")
     cv, _, _, bleed = create_bleed_canvas(path, W, H)
 
-    for i in range(120):
-        t = i / 119
-        r = BLEU.red + (TEAL.red - BLEU.red) * t
-        g = BLEU.green + (TEAL.green - BLEU.green) * t
-        b = BLEU.blue + (TEAL.blue - BLEU.blue) * t
-        cv.setFillColor(Color(r, g, b))
-        cv.rect(0, i * H / 120, W, H / 120 + 1, stroke=0, fill=1)
-
-    random.seed(42)
-    for _ in range(3000):
-        cv.setFillColor(Color(1, 1, 1, alpha=random.uniform(0.02, 0.06)))
-        cv.circle(random.uniform(0, W), random.uniform(0, H),
-                  random.uniform(0.3, 1.0), stroke=0, fill=1)
-
+    cv.setFillColor(Color(1, 1, 1))
+    cv.rect(0, 0, W, H, stroke=0, fill=1)
     cv.setFillColor(Color(1, 1, 1, alpha=0.04))
     for y in range(20, H - 20, 8):
         for x in range(20, W - 20, 8):

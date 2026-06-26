@@ -316,7 +316,7 @@ def gen_flyer():
         grad(cv, ox, oy, FW, FH)
         cx = ox + FW / 2
         logo_wave_reportlab(cv, cx, oy + FH - 55, 1.2)
-        cv.setFillColor(BLANC)
+        cv.setFillColor(Color(0, 0, 0, alpha=0.90))
         cv.setFont("BebasNeue", 16)
         cv.drawCentredString(cx, oy + FH - 75, "RIVERS ROCK")
         cv.setFillColor(AMBRE)
@@ -329,7 +329,7 @@ def gen_flyer():
     def draw_verso(cv, ox, oy):
         grad(cv, ox, oy, FW, FH)
         cx = ox + FW / 2
-        cv.setFillColor(BLANC)
+        cv.setFillColor(Color(0, 0, 0, alpha=0.90))
         cv.setFont("BebasNeue", 16)
         cv.drawCentredString(cx, oy + FH - 40, "RIVERS ROCK")
         bio = ["Groupe rouennais formé en 2024", "au centre Éducation et Formation", "du Petit-Quevilly.",

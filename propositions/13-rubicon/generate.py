@@ -51,10 +51,9 @@ def gen_setlist():
     W, H = A4
     path = os.path.join(PDF, "setlist-" + sl + ".pdf")
     cv, _, _, bleed = create_bleed_canvas(path, W, H)
-    draw_gradient_pdf(cv, W, H, C1, C2)
-    draw_grain_pdf(cv, W, H, seed=42)
-    draw_waves_pdf(cv, W, H, count=CFG.token("wave_rows", 3), opacity=CFG.token("wave_opacity", 0.04))
-    cv.setFillColor(BLANC)
+    cv.setFillColor(Color(1, 1, 1))
+    cv.rect(0, 0, W, H, stroke=0, fill=1)
+    cv.setFillColor(Color(0, 0, 0, alpha=0.90))
     cv.setFont("BebasNeue", 28)
     cv.drawCentredString(W / 2, H - 115, "RIVERS ROCK")
     cv.setFillColor(ACCENT)
