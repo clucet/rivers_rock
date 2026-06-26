@@ -713,4 +713,4 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 26/06/2026 | **README.md** : documentation complète du projet (structure, commandes, liens) | opencode |
 | 26/06/2026 | **.gitignore** : patterns pour previews PNG, chartes ZIP, /tmp/ | opencode |
 | 26/06/2026 | **Spotify embeds** : iframes Spotify playlist ajoutés aux 9 propositions (placeholder `REMPLACER_PAR_ID`) + section Musique créée pour 00-originale | opencode |
-| 26/06/2026 | **Rendu MP4** : render_animation.py lancé à l'échelle 0.5 (en cours, ~210 frames) | opencode |
+| 26/06/2026 | **Rendu MP4** : tentative à l'échelle 0.5 — trop lent (add_grain pixel loop). MP4 existant conservé. Optimisation nécessaire (numpy) pour le rendu final | opencode |
