@@ -265,35 +265,75 @@ def generate_charte(cfg, dirname):
     if os.path.exists(tmpl_dir):
         cv.drawString(40, y - 10, "Templates :")
         y -= 26
-        # Show key templates as small thumbnails
         preview_files = []
-        for key in ["avatar.png", "instagram-post.png", "instagram-story.png", "facebook-banner.png", "youtube-banner.png", "lowerthird.png"]:
+        for key in ["avatar.png", "instagram-post.png", "instagram-story.png", "facebook-banner.png", "youtube-banner.png"]:
             tp = os.path.join(tmpl_dir, key)
             if os.path.exists(tp):
                 preview_files.append(tp)
 
         tx, ty = 40, y
-        for pf in preview_files[:3]:
+        for pf in preview_files[:4]:
             try:
                 img = Image.open(pf)
                 iw, ih = img.size
-                # Scale to fit ~80px height
-                ratio = 80 / ih
-                dw, dh = int(iw * ratio), 80
-                if dw > 150:
-                    ratio = 150 / iw
-                    dw, dh = 150, int(ih * ratio)
+                ratio = 70 / ih
+                dw, dh = int(iw * ratio), 70
+                if dw > 130:
+                    ratio = 130 / iw
+                    dw, dh = 130, int(ih * ratio)
                 cv.drawImage(pf, tx, ty - dh, dw, dh)
-                tx += dw + 15
+                tx += dw + 12
             except:
                 pass
         
-        y2 = ty - 95
+        y2 = ty - 90
         cv.setFont("Helvetica", 7)
-        for f in sorted(os.listdir(tmpl_dir))[:8]:
+        for f in sorted(os.listdir(tmpl_dir))[:10]:
             cv.drawString(40, y2, f"  {f}")
-            y2 -= 12
-
+            y2 -= 11
+    
+    # ── Page 5: Règles d'usage ──
+    cv.showPage()
+    cv.setFillColor(Color(0.95, 0.95, 0.95))
+    cv.rect(0, 0, W, H, stroke=0, fill=1)
+    
+    cv.setFillColor(HexColor("#2B2B2B"))
+    cv.setFont("Helvetica", 22)
+    cv.drawString(40, H - 50, "RÈGLES D'USAGE DU LOGO")
+    
+    rules = [
+        ("Ne pas déformer", "Le logo ne doit jamais être étiré, compressé ou tordu. Utiliser toujours le fichier SVG source."),
+        ("Ne pas recolorier", "Les couleurs du logo sont fixes, sauf pour la version monochrome dédiée."),
+        ("Ne pas pivoter", "Le logo ne doit pas être incliné ou retourné."),
+        ("Pas d'effets ajoutés", "Pas d'ombres portées, dégradés ou contours non prévus dans la charte."),
+        ("Taille minimale", "Icône seule : ∅30px écran / 10mm print. Logo complet : 60px écran / 20mm print."),
+        ("Fonds interdits", "Ne pas placer le logo sur des fonds dont le contraste < 3:1 (WCAG AA)."),
+    ]
+    
+    cv.setFont("Helvetica", 9)
+    y = H - 110
+    for title, desc in rules:
+        cv.setFillColor(HexColor("#2B2B2B"))
+        cv.setFont("Helvetica-Bold", 10)
+        cv.drawString(40, y, title)
+        cv.setFont("Helvetica", 8)
+        cv.drawString(40, y - 16, desc)
+        y -= 45
+    
+    # Colors for the charte
+    accent_color = list(cfg.colors.values())[0][0]
+    try:
+        c = HexColor(accent_color)
+        cv.setFillColor(c)
+        cv.setFont("Helvetica", 9)
+        cv.drawString(40, y - 10, f"Color accent : {accent_color}")
+    except:
+        pass
+    
+    # WCAG contrast info
+    cv.setFont("Helvetica", 8)
+    cv.drawString(40, y - 30, "Vérifier les contrastes avec palette.print_wcag_report()")
+    
     cv.save()
     print(f"  Charte PDF : {out_path}")
 
