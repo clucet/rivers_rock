@@ -1,4 +1,4 @@
-<!-- AUTO-UPDATE: Dernière mise à jour automatique par opencode (27/06/2026) -->
+<!-- AUTO-UPDATE: Dernière mise à jour automatique par opencode (28/06/2026) -->
 <!-- Sections gérées automatiquement : Propositions design, Tâches, Journal. Toute modification manuelle de ces sections sera écrasée. -->
 
 # Rivers Rock — Suivi de projet
@@ -304,22 +304,29 @@ setlist/
 
 ---
 
-## Prochaines évolutions possibles (26 juin 2026)
+## Prochaines évolutions possibles (28 juin 2026)
 
 | # | Suggestion | Effort | Impact | Description |
 |---|-----------|--------|--------|-------------|
 | # | Suggestion | Effort | Impact | Statut | Description |
 |---|-----------|--------|--------|--------|-------------|
+| # | Suggestion | Effort | Impact | Statut | Description |
+|---|-----------|--------|--------|--------|-------------|
 | 1 | **PWA Setlist** | 🟢 Faible | 🟠 Moyen | ✅ Fait | Service worker + manifest — utilisable hors-ligne sur scène |
 | 2 | **Cartes NFC** | 🟡 Moyen | 🟠 Moyen | 🔜 | Générer des cartes de visite NFC compatibles Apple Wallet / Google Wallet avec les designs existants |
-| 3 | **Spotify / Apple Music** | 🟢 Faible | 🔴 Élevé | 🔶 Partiel | Iframes Spotify ajoutés aux 9 sites (placeholder `REMPLACER_PAR_ID`) |
-| 4 | **Vote setlist** | 🟡 Moyen | 🔴 Élevé | 🔜 | Page publique où les fans votent pour les chansons du prochain concert ; admin drag-to-reorder |
-| 5 | **Merch store** | 🟡 Moyen | 🟠 Moyen | 🔜 | Page merch liée à Printful/Spreadshirt avec les designs t-shirt et stickers existants |
-| 6 | **Mailing list** | 🟢 Faible | 🟡 Moyen | 🔜 | Formulaire newsletter + envoi d'emails automatiques pour les annonces de concerts |
+| 3 | **Spotify / Apple Music** | 🟢 Faible | 🔴 Élevé | 🔶 Partiel | Iframes Spotify ajoutés aux 15 sites (placeholder à remplacer) |
+| 4 | **Vote setlist public** | 🟡 Moyen | 🔴 Élevé | 🔜 | Page publique où les fans votent pour les chansons du prochain concert |
+| 5 | **Merch store** | 🟡 Moyen | 🟠 Moyen | 🔜 | Page merch liée à Printful/Spreadshirt avec les designs existants |
+| 6 | **Mailing list** | 🟢 Faible | 🟡 Moyen | 🔜 | Formulaire newsletter + envoi d'emails automatiques |
 | 7 | **EPK / Press Kit** | 🟢 Faible | 🔴 Élevé | ✅ Fait | `site/epk/index.html` — bio, membres, répertoire, downloads |
-| 8 | **Planning répétitions** | 🟢 Faible | 🟡 Moyen | 🔜 | Outil interne pour les 5 membres pour coordonner les créneaux au 106 |
-| 9 | **CI/CD GitHub Actions** | 🟡 Moyen | 🔴 Élevé | ✅ Fait | `.github/workflows/generate.yml` — validation + génération + déploiement |
-| 10 | **Dashboard analytics** | 🟡 Moyen | 🟢 Faible | 🔜 | Tableau de bord privé avec stats Instagram, YouTube, QR scans, vues setlist |
+| 8 | **Planning répétitions** | 🟢 Faible | 🟡 Moyen | 🔜 | Outil interne pour les 5 membres pour coordonner les créneaux |
+| 9 | **CI/CD GitHub Actions** | 🟡 Moyen | 🔴 Élevé | ✅ Fait | `.github/workflows/generate.yml` |
+| 10 | **Dashboard analytics** | 🟡 Moyen | 🟢 Faible | 🔜 | Tableau de bord privé avec stats visites, QR scans, vues setlist |
+| 11 | **Vote groupe** | 🟢 Faible | 🔴 Élevé | ✅ Fait | `propositions/vote/index.html` — top 3 par email |
+| 12 | **Plan vote** | 🟢 Faible | 🔴 Élevé | ✅ Fait | `plan-vote-groupe.md` — procédure pour les 5 membres |
+| 13 | **MP4 toutes les props** | 🟡 Moyen | 🟠 Moyen | ✅ Fait | 14 frame handlers + dispatch dans render_animation.py |
+| 14 | **Sessions photos** | 🟡 Moyen | 🔴 Élevé | 🔜 | 5 portraits + 1 photo groupe + photos scène — prérequis lancement réseaux |
+| 15 | **Instagram** | 🟡 Moyen | 🔴 Élevé | 🔜 | Résoudre blocage `@riversrockrouen` ou activer `@riversrock_rouen` |
 
 ## Propositions design (24 juin 2026)
 
@@ -722,3 +729,11 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 26/06/2026 | **Chartes graphiques enrichies** : page 5 "Règles d'usage du logo" ajoutée aux 14 chartes PDF | opencode |
 | 26/06/2026 | **liens-projet.md** : fichier de référence avec tous les URLs du projet | opencode |
 | 26/06/2026 | **Webdesign cards** : barre colorée (border-top), flex layout, ombre portée, footer ancré — les 14 propositions visuellement groupées | opencode |
+| 27/06/2026 | **Layout cards v2** : cartes restructurées en 2 blocs (card-link + card-actions séparée), bouton "Site" devient un vrai lien, barre d'actions visuellement distincte | opencode |
+| 27/06/2026 | **Chartes PDF enrichies** : pagination + footer (nom prop + page X/5) + fond depuis config + contrastes WCAG calculés + proposition 00-originale ajoutée (15 chartes) | opencode |
+| 27/06/2026 | **Refonte 00-originale → Ombre & Lumière** : concept N&B (noir/gris/blanc), palette monochrome, logo diaphragme photo, fonts Playfair/Inter/SpaceMono, grain 12%, site argentique | opencode |
+| 27/06/2026 | **MP4 toutes les 14 propositions** : 8 nouveaux frame handlers (nordik, grunge, jazz-club, bitume, cordes-voix, heritage, rubicon, minuit), dispatch via dict | opencode |
+| 27/06/2026 | **PNG optimisation** : pngquant sur tous les templates réseaux (146 fichiers) | opencode |
+| 27/06/2026 | **Page vote** : `propositions/vote/index.html` — sélection top 3, envoi par email | opencode |
+| 27/06/2026 | **README.md** : mis à jour avec 15 propositions, table complète | opencode |
+| 27/06/2026 | **Plan vote groupe** : `plan-vote-groupe.md` — procédure pour recueillir les votes des 5 membres | opencode |
