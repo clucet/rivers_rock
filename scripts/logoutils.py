@@ -7,6 +7,7 @@ from PIL import Image, ImageFont, ImageDraw
 
 from palette import BASE, SCENE_VINTAGE, FLUID_WAVE, ROCK_BRUT, font_filename
 from palette import PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE, NORDIK, GRUNGE, JAZZ_CLUB
+from palette import BITUME, CORDES_VOIX, HERITAGE, RUBICON, MINUIT
 
 
 def _find_font(filename, alt_names=None):
@@ -145,8 +146,11 @@ SYNEMONO_PATH = _resolve_font("data", GRUNGE)
 CINZEL_PATH = _resolve_font("hero", SABLE_BRONZE)
 LATO_PATH = _resolve_font("body", SABLE_BRONZE)
 CORMORANT_PATH = _resolve_font("quote", SABLE_BRONZE)
-LATO_PATH = _resolve_font("body", SABLE_BRONZE)
-CORMORANT_PATH = _resolve_font("quote", SABLE_BRONZE)
+BANGERS_PATH = _resolve_font("hero", BITUME)
+CINZELDECO_PATH = _resolve_font("hero", HERITAGE)
+OSWALD_PATH = _resolve_font("hero", RUBICON)
+SOURCESANS_PATH = _resolve_font("body", RUBICON)
+DMSANS_PATH = _resolve_font("song", MINUIT)
 
 # Default config for logoutils functions
 DEFAULT_CFG = SCENE_VINTAGE

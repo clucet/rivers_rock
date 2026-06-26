@@ -8,8 +8,9 @@ from palette import set_active, proposition_dir
 
 parser = argparse.ArgumentParser(description="Generate Rivers Rock assets for a given config")
 parser.add_argument("--config", default="scene-vintage",
-                    choices=["originale", "fluid-wave", "rock-brut", "scene-vintage", "ponts-lumiere",
-                             "neon-nights", "sable-bronze", "nordik", "grunge", "jazz-club"],
+                     choices=["originale", "fluid-wave", "rock-brut", "scene-vintage", "ponts-lumiere",
+                              "neon-nights", "sable-bronze", "nordik", "grunge", "jazz-club",
+                              "bitume", "cordes-voix", "heritage", "rubicon", "minuit"],
                     help="Design config to generate (default: scene-vintage)")
 parser.add_argument("--site-only", action="store_true", help="Only generate the site")
 parser.add_argument("--pdf-only", action="store_true", help="Only generate PDFs/PNGs")

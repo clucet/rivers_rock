@@ -10,6 +10,7 @@ import os, sys, io, re, base64, subprocess, zipfile, glob as globmod
 
 sys.path.insert(0, os.path.dirname(__file__))
 from palette import FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE, NORDIK, GRUNGE, JAZZ_CLUB
+from palette import BITUME, CORDES_VOIX, HERITAGE, RUBICON, MINUIT
 
 PROPS = [
     (FLUID_WAVE,    "01-fluid-wave"),
@@ -21,6 +22,11 @@ PROPS = [
     (NORDIK,        "07-nordik"),
     (GRUNGE,        "08-grunge"),
     (JAZZ_CLUB,     "09-jazz-club"),
+    (BITUME,        "10-bitume"),
+    (CORDES_VOIX,   "11-cordes-voix"),
+    (HERITAGE,      "12-heritage"),
+    (RUBICON,       "13-rubicon"),
+    (MINUIT,        "14-minuit"),
 ]
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "propositions")
