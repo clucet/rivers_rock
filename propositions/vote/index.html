@@ -130,7 +130,7 @@ document.getElementById('voteForm').addEventListener('submit', function(e) {
   const result = `Vote de ${name}\n\nTop 3:\n${choices}\n\nCommentaire: ${comment || 'aucun'}`;
   const subject = encodeURIComponent(`[Vote] ${name} - Rivers Rock`);
   const body = encodeURIComponent(result);
-  const mailto = `mailto:riversrock_rouen@gmail.com?subject=${subject}&body=${body}`;
+  const mailto = `mailto:riversrockrouen@gmail.com?subject=${subject}&body=${body}`;
   const link = document.getElementById('resultLink');
   link.href = mailto;
   link.style.display = 'block';
