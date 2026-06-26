@@ -737,3 +737,8 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 27/06/2026 | **Page vote** : `propositions/vote/index.html` — sélection top 3, envoi par email | opencode |
 | 27/06/2026 | **README.md** : mis à jour avec 15 propositions, table complète | opencode |
 | 27/06/2026 | **Plan vote groupe** : `plan-vote-groupe.md` — procédure pour recueillir les votes des 5 membres | opencode |
+| 28/06/2026 | **Setlists/posters fonds blancs** : économie d'encre ~80%, lisibilité améliorée — 15 propositions corrigées + scripts/generate_setlist.py refactoré | opencode |
+| 28/06/2026 | **Templates Reels/Shorts** : 1080×1920 HTML animé pour Rock Brut et Neon Nights (logo, nom, date, particules) | opencode |
+| 28/06/2026 | **Script finaliser.py** : bascule automatique de la proposition gagnante (archive, palette, site, README, commit, push) | opencode |
+| 28/06/2026 | **Analyse impression** : `impression-production.md` — Brother DCP-L3560CDW, production famille, prestataires, budget | opencode |
+| 28/06/2026 | **Premiers votes** : 3/5 reçus — Neon Nights et Rock Brut en tête, Grunge 3e. 2 votes restants demain | opencode |

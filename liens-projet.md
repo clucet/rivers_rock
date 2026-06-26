@@ -56,6 +56,12 @@ _Mis à jour le 28 juin 2026_
 | **Instagram** | @riversrockrouen | 🔴 Désactivé (appel en cours) |
 | **Instagram (secours)** | @riversrock_rouen | ✅ Prêt (script `migrer_instagram.py`) |
 
+## Impression & Production
+
+| Ressource | Lien |
+|-----------|------|
+| **Analyse impression** (Brother, famille, prestataires, budget) | [impression-production.md](https://github.com/clucet/rivers_rock/blob/main/impression-production.md) |
+
 ## Fichiers clés du projet
 
 | Fichier | Description |

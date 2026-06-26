@@ -44,6 +44,7 @@ scripts/
   convert_to_cmyk.py          ← Post-process CMYK
   render_animation.py         ← Rendu MP4
   setlist_data.py             ← Setlist centralisée
+  finaliser.py                ← Bascule automatique proposition gagnante
 ```
 
 ## Commandes
