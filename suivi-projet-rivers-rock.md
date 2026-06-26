@@ -319,7 +319,7 @@ setlist/
 | 5 | **Merch store** | 🟡 Moyen | 🟠 Moyen | 🔜 | Page merch liée à Printful/Spreadshirt avec les designs existants |
 | 6 | **Mailing list** | 🟢 Faible | 🟡 Moyen | 🔜 | Formulaire newsletter + envoi d'emails automatiques |
 | 7 | **EPK / Press Kit** | 🟢 Faible | 🔴 Élevé | ✅ Fait | `site/epk/index.html` — bio, membres, répertoire, downloads |
-| 8 | **Planning répétitions** | 🟢 Faible | 🟡 Moyen | 🔜 | Outil interne pour les 5 membres pour coordonner les créneaux |
+| 8 | **Planning répétitions** | 🟢 Faible | 🟡 Moyen | ✅ Fait | `site/planning/index.html` — tableau 5×7×3, localStorage, copie WhatsApp |
 | 9 | **CI/CD GitHub Actions** | 🟡 Moyen | 🔴 Élevé | ✅ Fait | `.github/workflows/generate.yml` |
 | 10 | **Dashboard analytics** | 🟡 Moyen | 🟢 Faible | 🔜 | Tableau de bord privé avec stats visites, QR scans, vues setlist |
 | 11 | **Vote groupe** | 🟢 Faible | 🔴 Élevé | ✅ Fait | `propositions/vote/index.html` — top 3 par email |
@@ -742,3 +742,4 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 28/06/2026 | **Script finaliser.py** : bascule automatique de la proposition gagnante (archive, palette, site, README, commit, push) | opencode |
 | 28/06/2026 | **Analyse impression** : `impression-production.md` — Brother DCP-L3560CDW, production famille, prestataires, budget | opencode |
 | 28/06/2026 | **Premiers votes** : 3/5 reçus — Neon Nights et Rock Brut en tête, Grunge 3e. 2 votes restants demain | opencode |
+| 28/06/2026 | **Planning répétitions** : `site/planning/index.html` — tableau interactif 5×7×3 créneaux, sauvegarde localStorage, copie WhatsApp, stats disponibilités | opencode |

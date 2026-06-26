@@ -73,6 +73,7 @@ GitHub Pages : [clucet.github.io/rivers_rock](https://clucet.github.io/rivers_ro
 - Page comparaison : `propositions/index.html`
 - Setlist interactive : `site/setlist/`
 - EPK / Press Kit : `site/epk/`
+- Planning répétitions : `site/planning/`
 
 ## Réseaux
 

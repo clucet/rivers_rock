@@ -11,6 +11,7 @@ _Mis à jour le 28 juin 2026_
 | **Page vote** | [clucet.github.io/rivers_rock/propositions/vote/](https://clucet.github.io/rivers_rock/propositions/vote/) |
 | **Setlist interactive** (PWA offline) | [clucet.github.io/rivers_rock/setlist/](https://clucet.github.io/rivers_rock/setlist/) |
 | **EPK / Press Kit** | [clucet.github.io/rivers_rock/epk/](https://clucet.github.io/rivers_rock/epk/) |
+| **Planning répétitions** | [clucet.github.io/rivers_rock/planning/](https://clucet.github.io/rivers_rock/planning/) |
 | **Dépôt GitHub** | [github.com/clucet/rivers_rock](https://github.com/clucet/rivers_rock) |
 
 ## Propositions (15)
