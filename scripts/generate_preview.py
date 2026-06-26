@@ -148,6 +148,15 @@ def generate_preview(cfg, dirname):
     animated_path = os.path.join(tmpl_dir, f"logo-animated-{slug(cfg.name)}.html")
     if not os.path.exists(animated_path):
         animated_path = os.path.join(tmpl_dir, f"logo-animated-{dirname.split('-',1)[1]}.html")
+    if not os.path.exists(animated_path):
+        short = dirname.split('-', 1)[1].split('-')[0]
+        animated_path = os.path.join(tmpl_dir, f"logo-animated-{short}.html")
+    if not os.path.exists(animated_path):
+        # Fallback: list available animated files
+        import glob as _glob
+        matches = _glob.glob(os.path.join(tmpl_dir, "logo-animated-*.html"))
+        if matches:
+            animated_path = matches[0]
     has_animated = os.path.exists(animated_path)
 
     # Colors

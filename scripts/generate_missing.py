@@ -20,8 +20,10 @@ from logoutils import (
     BEBAS_PATH, MONTSERRAT_PATH, ANTON_PATH, SPACE_MONO_PATH,
     NUNITO_PATH, INTERTIGHT_PATH, JETBRAINS_PATH,
     TEKO_PATH, RALEWAY_PATH, DMMONO_PATH,
+    BANGERS_PATH, CINZELDECO_PATH, OSWALD_PATH, SOURCESANS_PATH, DMSANS_PATH,
 )
 from palette import BASE, FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE, NORDIK, GRUNGE, JAZZ_CLUB
+from palette import BITUME, CORDES_VOIX, HERITAGE, RUBICON, MINUIT
 
 PROPS = [
     (BASE,          "00-originale"),
@@ -29,11 +31,16 @@ PROPS = [
     (ROCK_BRUT,     "02-rock-brut"),
     (SCENE_VINTAGE, "03-scene-vintage"),
     (PONTS_LUMIERE, "04-ponts-lumiere"),
-    (NEON_NIGHTS, "05-neon-nights"),
-    (NORDIK, "07-nordik"),
-    (GRUNGE, "08-grunge"),
-    (JAZZ_CLUB, "09-jazz-club"),
-    (SABLE_BRONZE, "06-sable-bronze"),
+    (NEON_NIGHTS,   "05-neon-nights"),
+    (SABLE_BRONZE,  "06-sable-bronze"),
+    (NORDIK,        "07-nordik"),
+    (GRUNGE,        "08-grunge"),
+    (JAZZ_CLUB,     "09-jazz-club"),
+    (BITUME,        "10-bitume"),
+    (CORDES_VOIX,   "11-cordes-voix"),
+    (HERITAGE,      "12-heritage"),
+    (RUBICON,       "13-rubicon"),
+    (MINUIT,        "14-minuit"),
 ]
 
 from setlist_data import SETLIST, GREEN_INDICES
