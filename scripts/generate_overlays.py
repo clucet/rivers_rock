@@ -57,7 +57,7 @@ def gen_lowerthird(cfg, dirname):
         font_tag = ImageFont.truetype(MONTSERRAT_PATH, 20)
 
     draw.text((32, 32), "RIVERS ROCK", fill=BLANC_PIL, font=font_name)
-    draw.text((32, 90), "@riversrockrouen  ·  Reprises rock — Rouen",
+    draw.text((32, 90), "@riversrock_rouen  ·  Reprises rock — Rouen",
               fill=(255, 255, 255, 180), font=font_tag)
 
     # Small logo in right area

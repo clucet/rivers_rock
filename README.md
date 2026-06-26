@@ -69,7 +69,7 @@ GitHub Pages : [clucet.github.io/rivers_rock](https://clucet.github.io/rivers_ro
 
 ## Réseaux
 
-- **Gmail** : riversrockrouen@gmail.com
+- **Gmail** : riversrock_rouen@gmail.com
 - **YouTube** : [@RiversRockRouen](https://www.youtube.com/@RiversRockRouen)
 - **Facebook** : [Rivers Rock Rouen](https://www.facebook.com/RiversRockRouen)
-- **Instagram** : @riversrockrouen (appel en cours) / @riversrock_rouen (secours)
+- **Instagram** : @riversrock_rouen (appel en cours) / @riversrock_rouen (secours)

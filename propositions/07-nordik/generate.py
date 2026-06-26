@@ -174,7 +174,7 @@ def gen_flyer():
         cv.drawCentredString(cx, y - 6, "Contactez-nous")
         cv.setFillColor(Color(0, 0, 0, alpha=0.3))
         cv.setFont("Inter", 7)
-        cv.drawCentredString(cx, y - 22, "@riversrockrouen - riversrockrouen@gmail.com")
+        cv.drawCentredString(cx, y - 22, "@riversrock_rouen - riversrock_rouen@gmail.com")
     for page in range(2):
         for row in range(2):
             for col in range(2):
@@ -203,8 +203,8 @@ def gen_social():
     draw.text(((w-tw)/2,440), "VEN 26 JUIN 2026", fill=NOIR_PIL, font=font_m)
     bbox = draw.textbbox((0,0), "Montigny . 19h30", font=font_s); tw=bbox[2]-bbox[0]
     draw.text(((w-tw)/2,520), "Montigny . 19h30", fill=GRIS_PIL, font=font_s)
-    bbox = draw.textbbox((0,0), "@riversrockrouen", font=font_s); tw=bbox[2]-bbox[0]
-    draw.text(((w-tw)/2,860), "@riversrockrouen", fill=GRIS_PIL, font=font_s)
+    bbox = draw.textbbox((0,0), "@riversrock_rouen", font=font_s); tw=bbox[2]-bbox[0]
+    draw.text(((w-tw)/2,860), "@riversrock_rouen", fill=GRIS_PIL, font=font_s)
     img.save(os.path.join(TMPL, "instagram-post.png"))
     w, h = 1080, 1920
     img = Image.new("RGB", (w, h), BLANC_PIL)
@@ -293,7 +293,14 @@ def gen_animated():
 <html lang="fr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock \u2014 Nordik</title>
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAMlJREFUWEft1rENwjAQBdD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4kiWLNnxnU8UKZLr/Pd9thMEAf4PQAiAEAChIyA6AgI7ArLWPuc8zjnnC85a+5xzHgEgBEAIAOrA3Xsf9z17ZgBIfYAx5hVjrN77z3ffH4DVByClBICttV+t3bee1gcgpQQAay0B7L0TAOYcBPAcB3NODPCe0DHG5xhjA0AIgBAAoSMgOgICOwKy1j7nnMec8wsnhHDOeRxjjACEEADhCAgBEB0BgR0BWWufc85jzvmFE8Kccx5jjACEEADhCEgIAOgICAEQHQH/Ab3+V/+tKtRsAAAAAElFTkSuQmCC">
+<meta name="description" content="Rivers Rock \u2014 Nordik — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:title" content="Rivers Rock \u2014 Nordik">
+<meta property="og:description" content="Rivers Rock \u2014 Nordik — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:type" content="music.group">
+<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/07-nordik/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rivers Rock \u2014 Nordik">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiNCOEI1QTgiLz48dGV4dCB4PSIxNiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iYm9sZCI+bjwvdGV4dD48L3N2Zz4=">
 <style>
 *{margin:0;padding:0}
 body{width:1080px;height:1920px;overflow:hidden;background:#FAFAFA;display:flex;align-items:center;justify-content:center}
@@ -311,7 +318,9 @@ body{width:1080px;height:1920px;overflow:hidden;background:#FAFAFA;display:flex;
 .lROCK_C{animation:fadeL .3s ease-out 4.9s forwards}
 .lROCK_K{animation:fadeL .3s ease-out 5.2s forwards}
 @keyframes fadeL{0%{opacity:0;transform:translateY(-10px);letter-spacing:20px}100%{opacity:1;transform:translateY(0);letter-spacing:4px}}
-</style></head>
+
+a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}</style></head>
 <body>
 <svg viewBox="-200 -200 400 400">
   <line class="line" x1="-60" y1="0" x2="60" y2="0"/>
@@ -337,8 +346,15 @@ def gen_site():
 <html lang="fr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock \u2014 Nordik</title>
+<meta name="description" content="Rivers Rock \u2014 Nordik — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:title" content="Rivers Rock \u2014 Nordik">
+<meta property="og:description" content="Rivers Rock \u2014 Nordik — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:type" content="music.group">
+<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/07-nordik/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rivers Rock \u2014 Nordik">
 <link rel="preload" href="assets/logo.svg" as="image" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAMlJREFUWEft1rENwjAQBdD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4kiWLNnxnU8UKZLr/Pd9thMEAf4PQAiAEAChIyA6AgI7ArLWPuc8zjnnC85a+5xzHgEgBEAIAOrA3Xsf9z17ZgBIfYAx5hVjrN77z3ffH4DVByClBICttV+t3bee1gcgpQQAay0B7L0TAOYcBPAcB3NODPCe0DHG5xhjA0AIgBAAoSMgOgICOwKy1j7nnMec8wsnhHDOeRxjjACEEADhCAgBEB0BgR0BWWufc85jzvmFE8Kccx5jjACEEADhCEgIAOgICAEQHQH/Ab3+V/+tKtRsAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiNCOEI1QTgiLz48dGV4dCB4PSIxNiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iYm9sZCI+bjwvdGV4dD48L3N2Zz4=">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
 <style>
 :root{--b:#FAFAFA;--g:#E8E8E4;--a:#4A4A4A;--n:#2B2B2B;--l:#B8B5A8;--nav:rgba(250,250,250,0.9)}
@@ -374,6 +390,34 @@ nav a:hover{color:var(--l)}
 footer{text-align:center;padding:40px 24px;border-top:1px solid var(--g)}
 footer .line{width:40px;height:1px;background:var(--l);margin:0 auto 8px}
 footer p{font-weight:200;font-size:10px;color:var(--a);letter-spacing:8px;text-transform:lowercase}
+
+a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+@media(max-width:640px){
+  .hero h1{font-size:28px}
+  .members-grid{grid-template-columns:repeat(2,1fr)}
+  .section{padding:30px 12px}
+  nav{padding:10px 16px}
+  nav .nav-links{display:none}
+}
+@media(max-width:400px){
+  .hero h1{font-size:22px}
+  .members-grid{grid-template-columns:1fr}
+  .hero{padding:80px 16px 40px}
+}
+
+@media(max-width:640px){
+  .hero h1{font-size:28px}
+  .members-grid{grid-template-columns:repeat(2,1fr)}
+  .section{padding:30px 12px}
+  nav{padding:10px 16px}
+  nav .nav-links{display:none}
+}
+@media(max-width:400px){
+  .hero h1{font-size:22px}
+  .members-grid{grid-template-columns:1fr}
+  .hero{padding:80px 16px 40px}
+}
 </style></head>
 <body>
 <nav><a href="#" class="logo-small">rivers rock</a>
@@ -392,14 +436,14 @@ footer p{font-weight:200;font-size:10px;color:var(--a);letter-spacing:8px;text-t
 <div style="margin-top:16px;max-width:300px;margin-left:auto;margin-right:auto"><img src="../../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block" alt="Affiche"></div></section>
 <section id="musique" class="section"><h2>musique</h2>
 <p>Decouvrez Rivers Rock en action</p>
-<div style="position:relative;padding-bottom:56.25%;height:0;background:var(--g);margin-top:16px"><div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--a);font-weight:200"><iframe src="https://open.spotify.com/embed/playlist/REMPLACER_PAR_ID" width="100%" height="380" frameborder="0" allow="encrypted-media" style="border-radius:8px" title="Playlist Rivers Rock"></iframe></div></div></section>
+<div style="position:relative;padding-bottom:56.25%;height:0;background:var(--g);margin-top:16px"><div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--a);font-weight:200"><div style="text-align:center;padding:30px 20px;background:rgba(128,128,128,0.04);border-radius:8px"><p style="color:rgba(128,128,128,0.5);font-size:14px;margin-bottom:12px;font-family:sans-serif">Playlist musicale a venir</p><a href="https://www.youtube.com/@RiversRockRouen" target="_blank" style="display:inline-block;padding:10px 24px;border-radius:6px;background:var(--accent,#E85D3A);color:#fff;text-decoration:none;font-size:13px">Suivre sur YouTube</a></div></div></div></section>
 <section id="contact" class="section"><h2>contact</h2>
-<div class="ci"><a class="email" href="mailto:riversrockrouen@gmail.com">riversrockrouen@gmail.com</a></div>
+<div class="ci"><a class="email" href="mailto:riversrock_rouen@gmail.com">riversrock_rouen@gmail.com</a></div>
 <div class="links">
-<a href="https://www.instagram.com/riversrockrouen">Instagram</a>
+<a href="https://www.instagram.com/riversrock_rouen">Instagram</a>
 <a href="https://www.facebook.com/RiversRockRouen">Facebook</a>
 <a href="https://www.youtube.com/@RiversRockRouen">YouTube</a></div>
-  <form action="mailto:riversrockrouen@gmail.com" method="POST" enctype="text/plain" style="max-width:360px;margin:16px auto">
+  <form action="https://formsubmit.co/riversrock_rouen@gmail.com" method="POST" enctype="text/plain" style="max-width:360px;margin:16px auto">
     <input type="text" name="nom" placeholder="votre nom" required style="width:100%;padding:8px 0;margin-bottom:8px;border:none;border-bottom:1px solid var(--g);background:transparent;color:var(--noir);font-family:inherit;font-size:13px;font-weight:200">
     <input type="email" name="email" placeholder="votre email" required style="width:100%;padding:8px 0;margin-bottom:8px;border:none;border-bottom:1px solid var(--g);background:transparent;color:var(--noir);font-family:inherit;font-size:13px;font-weight:200">
     <textarea name="message" placeholder="votre message" required rows="2" style="width:100%;padding:8px 0;margin-bottom:8px;border:none;border-bottom:1px solid var(--g);background:transparent;color:var(--noir);font-family:inherit;font-size:13px;font-weight:200;resize:vertical"></textarea>

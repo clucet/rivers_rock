@@ -163,7 +163,7 @@ def gen_flyer():
         cv.drawCentredString(cx, y - 6, "contactez-nous!")
         cv.setFillColor(Color(0, 0, 0, alpha=0.3))
         cv.setFont("SpaceMono", 7)
-        cv.drawCentredString(cx, y - 22, "@riversrockrouen")
+        cv.drawCentredString(cx, y - 22, "@riversrock_rouen")
     for page in range(2):
         for row in range(2):
             for col in range(2):
@@ -187,7 +187,7 @@ def gen_social():
     draw.text(((w-tw)/2,155), "rIVERS rOCK", fill=TONER_PIL, font=font_glitch)
     draw.text((200,400), "VEN 26 JUIN", fill=MARQ_PIL, font=font_mono)
     draw.text((200,440), "Montigny 19h30", fill=TONER_PIL, font=font_mono)
-    draw.text((200,860), "@riversrockrouen", fill=(150,150,150), font=font_tag)
+    draw.text((200,860), "@riversrock_rouen", fill=(150,150,150), font=font_tag)
     img.save(os.path.join(TMPL, "instagram-post.png"))
     w, h = 1080, 1920
     img = Image.new("RGB", (w, h), PAPIER_PIL)
@@ -198,7 +198,7 @@ def gen_social():
     draw.text(((w-tw)/2+20,195), "rIVERS rOCK", fill=TONER_PIL, font=font_glitch)
     draw.text((200,650), "VEN 26 JUIN", fill=MARQ_PIL, font=ImageFont.truetype(SPACE_MONO_PATH, 80))
     draw.text((200,750), "Montigny 19h30", fill=TONER_PIL, font=font_mono)
-    draw.text((200,1750), "@riversrockrouen", fill=(150,150,150), font=font_tag)
+    draw.text((200,1750), "@riversrock_rouen", fill=(150,150,150), font=font_tag)
     img.save(os.path.join(TMPL, "instagram-story.png"))
     print(f"[Grunge] Social > {TMPL}")
 
@@ -263,7 +263,14 @@ def gen_animated():
     with open(path, "w") as f:
         f.write('''<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock \u2014 Grunge</title>
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAMlJREFUWEft1rENwjAQBdD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4kiWLNnxnU8UKZLr/Pd9thMEAf4PQAiAEAChIyA6AgI7ArLWPuc8zjnnC85a+5xzHgEgBEAIAOrA3Xsf9z17ZgBIfYAx5hVjrN77z3ffH4DVByClBICttV+t3bee1gcgpQQAay0B7L0TAOYcBPAcB3NODPCe0DHG5xhjA0AIgBAAoSMgOgICOwKy1j7nnMec8wsnhHDOeRxjjACEEADhCAgBEB0BgR0BWWufc85jzvmFE8Kccx5jjACEEADhCEgIAOgICAEQHQH/Ab3+V/+tKtRsAAAAAElFTkSuQmCC">
+<meta name="description" content="Rivers Rock \u2014 Grunge — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:title" content="Rivers Rock \u2014 Grunge">
+<meta property="og:description" content="Rivers Rock \u2014 Grunge — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:type" content="music.group">
+<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/08-grunge/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rivers Rock \u2014 Grunge">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiNGRjMzNjYiLz48dGV4dCB4PSIxNiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iYm9sZCI+ZzwvdGV4dD48L3N2Zz4=">
 <style>
 *{margin:0;padding:0}
 body{width:1080px;height:1920px;overflow:hidden;background:#F5EADD;display:flex;align-items:center;justify-content:center}
@@ -283,6 +290,22 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400p
 .lROCK_C{animation:dropGlitch .4s ease-out 3.6s forwards}
 .lROCK_K{animation:dropGlitch .4s ease-out 4.0s forwards}
 @keyframes dropGlitch{0%{opacity:0;transform:translateY(-20px) skewX(10deg)}50%{opacity:0.5;transform:translateY(5px) skewX(-5deg)}100%{opacity:1;transform:translateY(0) skewX(0deg)}}
+
+a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+@media(max-width:640px){
+  header h1{font-size:28px}
+  .members-grid{grid-template-columns:repeat(2,1fr)}
+  .section{padding:30px 12px}
+  nav{margin:6px 0}
+  nav .nav-links{display:none}
+  .hero h2{font-size:22px}
+}
+@media(max-width:400px){
+  header h1{font-size:22px}
+  .members-grid{grid-template-columns:1fr}
+  .hero{padding:40px 16px 20px}
+}
 </style></head>
 <body>
 <canvas id="p"></canvas>
@@ -317,8 +340,15 @@ def gen_site():
     with open(path, "w") as f:
         f.write('''<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock \u2014 Grunge</title>
+<meta name="description" content="Rivers Rock \u2014 Grunge — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:title" content="Rivers Rock \u2014 Grunge">
+<meta property="og:description" content="Rivers Rock \u2014 Grunge — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:type" content="music.group">
+<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/08-grunge/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rivers Rock \u2014 Grunge">
 <link rel="preload" href="assets/logo.svg" as="image" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAMlJREFUWEft1rENwjAQBdD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4kiWLNnxnU8UKZLr/Pd9thMEAf4PQAiAEAChIyA6AgI7ArLWPuc8zjnnC85a+5xzHgEgBEAIAOrA3Xsf9z17ZgBIfYAx5hVjrN77z3ffH4DVByClBICttV+t3bee1gcgpQQAay0B7L0TAOYcBPAcB3NODPCe0DHG5xhjA0AIgBAAoSMgOgICOwKy1j7nnMec8wsnhHDOeRxjjACEEADhCAgBEB0BgR0BWWufc85jzvmFE8Kccx5jjACEEADhCEgIAOgICAEQHQH/Ab3+V/+tKtRsAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiNGRjMzNjYiLz48dGV4dCB4PSIxNiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iYm9sZCI+ZzwvdGV4dD48L3N2Zz4=">
 <style>
 *{margin:0;padding:0}
 body{font-family:'Courier New',monospace;background:#F5EADD;color:#1A1A1A;min-height:100vh}
@@ -343,6 +373,35 @@ nav a:hover{background:#FF3366;color:#fff}
 .cl li{padding:6px 0;font-size:13px}
 .cl .d{color:#FF3366}
 footer{padding:30px;text-align:center;font-size:10px;color:#999;position:relative;z-index:1;border-top:1px dashed #1A1A1A}
+
+a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+@media(max-width:640px){
+  header h1{font-size:28px}
+  .members-grid{grid-template-columns:repeat(2,1fr)}
+  .section{padding:30px 12px}
+  nav{margin:6px 0}
+  nav .nav-links{display:none}
+  .hero h2{font-size:22px}
+}
+@media(max-width:400px){
+  header h1{font-size:22px}
+  .members-grid{grid-template-columns:1fr}
+  .hero{padding:40px 16px 20px}
+}
+
+@media(max-width:640px){
+  .hero h1{font-size:28px}
+  .members-grid{grid-template-columns:repeat(2,1fr)}
+  .section{padding:30px 12px}
+  nav{padding:10px 16px}
+  nav .nav-links{display:none}
+}
+@media(max-width:400px){
+  .hero h1{font-size:22px}
+  .members-grid{grid-template-columns:1fr}
+  .hero{padding:80px 16px 40px}
+}
 </style></head>
 <body>
 <div class="bg"></div>
@@ -362,13 +421,13 @@ footer{padding:30px;text-align:center;font-size:10px;color:#999;position:relativ
 <div style="margin-top:16px;max-width:300px;margin-left:auto;margin-right:auto;border:2px dashed #1A1A1A;padding:4px"><img src="../../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block" alt="Affiche"></div></section>
 <section id="m" class="section"><h3>musique</h3>
 <p>Decouvrez Rivers Rock en action</p>
-<div style="padding:20px;text-align:center;border:2px dashed #1A1A1A;margin-top:10px"><iframe src="https://open.spotify.com/embed/playlist/REMPLACER_PAR_ID" width="100%" height="380" frameborder="0" allow="encrypted-media" style="border-radius:0" title="Playlist Rivers Rock"></iframe></div></section>
+<div style="padding:20px;text-align:center;border:2px dashed #1A1A1A;margin-top:10px"><div style="text-align:center;padding:30px 20px;background:rgba(128,128,128,0.04);border-radius:8px"><p style="color:rgba(128,128,128,0.5);font-size:14px;margin-bottom:12px;font-family:sans-serif">Playlist musicale a venir</p><a href="https://www.youtube.com/@RiversRockRouen" target="_blank" style="display:inline-block;padding:10px 24px;border-radius:6px;background:var(--accent,#E85D3A);color:#fff;text-decoration:none;font-size:13px">Suivre sur YouTube</a></div></div></section>
 <section id="ct" class="section"><h3>contact</h3>
-<p>riversrockrouen@gmail.com</p>
-<p><a href="https://www.instagram.com/riversrockrouen" style="color:#1A1A1A">Instagram</a>
+<p>riversrock_rouen@gmail.com</p>
+<p><a href="https://www.instagram.com/riversrock_rouen" style="color:#1A1A1A">Instagram</a>
 | <a href="https://www.facebook.com/RiversRockRouen" style="color:#1A1A1A">Facebook</a>
 | <a href="https://www.youtube.com/@RiversRockRouen" style="color:#1A1A1A">YouTube</a></p>
-<form action="mailto:riversrockrouen@gmail.com" method="POST" enctype="text/plain" style="max-width:360px;margin:16px auto;font-family:Courier New,monospace">
+<form action="https://formsubmit.co/riversrock_rouen@gmail.com" method="POST" enctype="text/plain" style="max-width:360px;margin:16px auto;font-family:Courier New,monospace">
   <input type="text" name="nom" placeholder="nom" required style="width:100%;padding:6px;margin-bottom:6px;border:1px solid #1A1A1A;background:transparent;font-family:inherit;font-size:12px">
   <input type="email" name="email" placeholder="email" required style="width:100%;padding:6px;margin-bottom:6px;border:1px solid #1A1A1A;background:transparent;font-family:inherit;font-size:12px">
   <textarea name="message" placeholder="message" required rows="2" style="width:100%;padding:6px;margin-bottom:6px;border:1px solid #1A1A1A;background:transparent;font-family:inherit;font-size:12px;resize:vertical"></textarea>

@@ -292,7 +292,7 @@ def gen_flyer():
         cv.drawCentredString(cx, y - 6, "Contactez-nous pour programmer un concert")
         cv.setFillColor(Color(0, 0, 0, alpha=0.35))
         cv.setFont("Cormorant", 7)
-        cv.drawCentredString(cx, y - 22, "@riversrockrouen - riversrockrouen@gmail.com")
+        cv.drawCentredString(cx, y - 22, "@riversrock_rouen - riversrock_rouen@gmail.com")
 
     for page in range(2):
         for row in range(2):
@@ -352,9 +352,9 @@ def gen_social():
     th = bbox[3] - bbox[1]
     draw.text((qx + (qs - tw) / 2, qy + (qs - th) / 2), "QR", fill=VERT_PIL, font=font_lato)
 
-    bbox = draw.textbbox((0, 0), "@riversrockrouen", font=font_tag)
+    bbox = draw.textbbox((0, 0), "@riversrock_rouen", font=font_tag)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 860), "@riversrockrouen", fill=(100, 80, 60), font=font_tag)
+    draw.text(((w - tw) / 2, 860), "@riversrock_rouen", fill=(100, 80, 60), font=font_tag)
     img.save(os.path.join(TMPL, "instagram-post.png"))
 
     w, h = 1080, 1920
@@ -386,9 +386,9 @@ def gen_social():
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 840), "Montigny · 19h30", fill=(100, 80, 60), font=font_lato)
 
-    bbox = draw.textbbox((0, 0), "@riversrockrouen", font=font_tag)
+    bbox = draw.textbbox((0, 0), "@riversrock_rouen", font=font_tag)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 1750), "@riversrockrouen", fill=(100, 80, 60), font=font_tag)
+    draw.text(((w - tw) / 2, 1750), "@riversrock_rouen", fill=(100, 80, 60), font=font_tag)
     img.save(os.path.join(TMPL, "instagram-story.png"))
     print(f"[Sable & Bronze] Social → {TMPL}")
 
@@ -497,7 +497,14 @@ def gen_animated():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock — Sable &amp; Bronze</title>
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAONJREFUWEft1r0NgzAQBeD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4khBtuWf+CJFJMqV3vfpneMEAf4PQAiAEAChIyA6AqIj4D8AlNJ3rfU2TdNr2/dfPn+PcRzBmga01gBQSgEAtVaMMQAAay0A5JyL53meIYQAAJxzAECTJAHGGADUWk3T3QFKKQDAWosxxhCCz/N8TdP0zvN83/u+xBjfi8Jrreb7PgC01ng8Hk3TfI/j+AFCSvmZpunVdd0r5/ytlPoqpV5KKRBCAEBKCQApJQCEENbaW84Z5pz3AFrrb845zjkjhAAAnHMQQvjvfQFCCOGHEEIIIRBC+I/vB0RPRM90HYzWAAAAAElFTkSuQmCC">
+<meta name="description" content="Rivers Rock — Sable &amp; Bronze — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:title" content="Rivers Rock — Sable &amp; Bronze">
+<meta property="og:description" content="Rivers Rock — Sable &amp; Bronze — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:type" content="music.group">
+<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/06-sable-bronze/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rivers Rock — Sable &amp; Bronze">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiNDQzZCNDkiLz48dGV4dCB4PSIxNiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iYm9sZCI+QjwvdGV4dD48L3N2Zz4=">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0}
@@ -532,7 +539,9 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400p
 .rays-rotate{animation:spinSlow 25s linear infinite;transform-origin:0 0}
 @keyframes spinSlow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
 @media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
-</style>
+
+a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}</style>
 </head>
 <body>
 <div class="glow"></div>
@@ -589,8 +598,15 @@ def gen_site():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock — Sable &amp; Bronze</title>
+<meta name="description" content="Rivers Rock — Sable &amp; Bronze — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:title" content="Rivers Rock — Sable &amp; Bronze">
+<meta property="og:description" content="Rivers Rock — Sable &amp; Bronze — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:type" content="music.group">
+<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/06-sable-bronze/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rivers Rock — Sable &amp; Bronze">
 <link rel="preload" href="assets/logo.svg" as="image" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAONJREFUWEft1r0NgzAQBeD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4khBtuWf+CJFJMqV3vfpneMEAf4PQAiAEAChIyA6AqIj4D8AlNJ3rfU2TdNr2/dfPn+PcRzBmga01gBQSgEAtVaMMQAAay0A5JyL53meIYQAAJxzAECTJAHGGADUWk3T3QFKKQDAWosxxhCCz/N8TdP0zvN83/u+xBjfi8Jrreb7PgC01ng8Hk3TfI/j+AFCSvmZpunVdd0r5/ytlPoqpV5KKRBCAEBKCQApJQCEENbaW84Z5pz3AFrrb845zjkjhAAAnHMQQvjvfQFCCOGHEEIIIRBC+I/vB0RPRM90HYzWAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiNDQzZCNDkiLz48dGV4dCB4PSIxNiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iYm9sZCI+QjwvdGV4dD48L3N2Zz4=">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400;600&family=Cormorant:ital@1&display=swap" rel="stylesheet">
 <style>
 :root{--sable:#D4A373;--terre:#CC6B49;--bronze:#B5835A;--vert:#2D6A4F;--creme:#FEFAE0}@media(prefers-color-scheme:dark){:root{--sable:#A07440;--creme:#D4C8A0;--terre:#A04D3D}}
@@ -650,7 +666,9 @@ nav a:hover{color:var(--terre)}
   .section{padding:40px 12px}
 }
 @media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
-</style>
+
+a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}</style>
 </head>
 <body>
 <div class="bg-grain"></div>
@@ -702,20 +720,20 @@ nav a:hover{color:var(--terre)}
   <h2>Musique</h2>
   <p>Decouvrez Rivers Rock en action &mdash; extraits live et playlist a venir.</p>
   <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:16px">
-    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.05);border-radius:8px;font-family:sans-serif;font-size:16px;color:rgba(0,0,0,0.3)"><iframe src="https://open.spotify.com/embed/playlist/REMPLACER_PAR_ID" width="100%" height="380" frameborder="0" allow="encrypted-media" style="border-radius:8px" title="Playlist Rivers Rock"></iframe></div>
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.05);border-radius:8px;font-family:sans-serif;font-size:16px;color:rgba(0,0,0,0.3)"><div style="text-align:center;padding:30px 20px;background:rgba(128,128,128,0.04);border-radius:8px"><p style="color:rgba(128,128,128,0.5);font-size:14px;margin-bottom:12px;font-family:sans-serif">Playlist musicale a venir</p><a href="https://www.youtube.com/@RiversRockRouen" target="_blank" style="display:inline-block;padding:10px 24px;border-radius:6px;background:var(--accent,#E85D3A);color:#fff;text-decoration:none;font-size:13px">Suivre sur YouTube</a></div></div>
   </div>
 </section>
 <section id="contact" class="section section-alt">
   <h2>Contact</h2>
-  <div class="contact-info"><p>Pour toute demande :</p><a class="email" href="mailto:riversrockrouen@gmail.com">riversrockrouen@gmail.com</a></div>
+  <div class="contact-info"><p>Pour toute demande :</p><a class="email" href="mailto:riversrock_rouen@gmail.com">riversrock_rouen@gmail.com</a></div>
   
-  <form action="mailto:riversrockrouen@gmail.com" method="POST" enctype="text/plain" style="max-width:400px;margin:20px auto">
+  <form action="https://formsubmit.co/riversrock_rouen@gmail.com" method="POST" enctype="text/plain" style="max-width:400px;margin:20px auto">
     <input type="text" name="nom" placeholder="Votre nom" required style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(0,0,0,0.1);border-radius:6px;background:rgba(255,255,255,0.05);color:#333;font-family:inherit;font-size:14px">
     <input type="email" name="email" placeholder="Votre email" required style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(0,0,0,0.1);border-radius:6px;background:rgba(255,255,255,0.05);color:#333;font-family:inherit;font-size:14px">
     <textarea name="message" placeholder="Votre message" required rows="3" style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(0,0,0,0.1);border-radius:6px;background:rgba(255,255,255,0.05);color:#333;font-family:inherit;font-size:14px;resize:vertical"></textarea>
     <button type="submit" style="width:100%;padding:10px;border:none;border-radius:6px;background:var(--accent, #E85D3A);color:#333;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer">Envoyer</button>
   </form><div class="links-social">
-    <a href="https://www.instagram.com/riversrockrouen" target="_blank">Instagram</a>
+    <a href="https://www.instagram.com/riversrock_rouen" target="_blank">Instagram</a>
     <a href="https://www.facebook.com/RiversRockRouen" target="_blank">Facebook</a>
     <a href="https://www.youtube.com/@RiversRockRouen" target="_blank">YouTube</a>
   </div>

@@ -63,9 +63,9 @@
 
 ### 📋 À faire
 - [x] Création comptes réseaux — Gmail + YouTube + Instagram + Facebook faits
-  - Gmail : `riversrockrouen@gmail.com`
+  - Gmail : `riversrock_rouen@gmail.com`
   - YouTube : `@RiversRockRouen`
-  - Instagram : `@riversrockrouen` — 🔴 désactivé (appel en cours, secours `@riversrock_rouen`)
+  - Instagram : `@riversrock_rouen` — 🔴 désactivé (appel en cours, secours `@riversrock_rouen`)
   - Facebook : `Rivers Rock Rouen`
 - [ ] Publier les 5 posts de lancement sur Facebook — brouillons prêts dans `propositions/drafts/publications-facebook.md`
 - [ ] Merchandising (t-shirts)
@@ -497,7 +497,7 @@ qrcode>=8.0
 ### ✅ Gmail — Créé
 | Champ | Valeur |
 |-------|--------|
-| **Adresse** | `riversrockrouen@gmail.com` |
+| **Adresse** | `riversrock_rouen@gmail.com` |
 | **Mot de passe** | `!LeGroupe76140@` |
 
 ### ✅ YouTube — Créé
@@ -505,12 +505,12 @@ qrcode>=8.0
 |-------|--------|
 | **Chaîne** | Rivers Rock Rouen |
 | **Handle** | `@RiversRockRouen` |
-| **Email lié** | `riversrockrouen@gmail.com` |
+| **Email lié** | `riversrock_rouen@gmail.com` |
 
 ### 📋 À créer
 | Plateforme | Nom prévu | Avatar |
 |------------|-----------|--------|
-| Instagram | `@riversrockrouen` | `propositions/03-scene-vintage/assets/templates/avatar.png` |
+| Instagram | `@riversrock_rouen` | `propositions/03-scene-vintage/assets/templates/avatar.png` |
 | Facebook | `Rivers Rock Rouen` | `propositions/03-scene-vintage/assets/templates/avatar.png` |
 
 ### Guide (étape restante)
@@ -658,7 +658,7 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 24/06/2026 | Refonte logoutils.py : import palette, _resolve_font générique, constantes rétro-compatibles depuis DEFAULT_CFG | opencode |
 | 24/06/2026 | Migration de 9 générateurs + 2 propositions vers palette.py (suppression de toutes les couleurs en dur, HexColor → CFG.rl(), tuples → CFG.pil()) | opencode |
 | 24/06/2026 | Création generate.py + 12 assets pour proposition 00-originale (config BASE) et 03-scene-vintage (config SCENE_VINTAGE) — chaque proposition a désormais ses propres assets isolés | opencode |
-| 24/06/2026 | Mise à jour comptes réels : Gmail `riversrockrouen@gmail.com`, YouTube `@RiversRockRouen` — mise à jour site + toutes propositions + suivi | opencode |
+| 24/06/2026 | Mise à jour comptes réels : Gmail `riversrock_rouen@gmail.com`, YouTube `@RiversRockRouen` — mise à jour site + toutes propositions + suivi | opencode |
 | 24/06/2026 | **Refonte identitaire FLUID_WAVE** : nouveau logo vague seule, palette vert profond + ambre, fonts Playfair Display + Nunito, badges ronds, vagues Bézier, grain 3% | opencode |
 | 24/06/2026 | **Refonte identitaire ROCK_BRUT** : nouveau logo hexagone + RR, palette noir + orange `#FF3B00`, fonts Anton + Inter Tight + JetBrains Mono, badges pictogram, chevrons, grain 10% | opencode |
 | 24/06/2026 | Système ACTIVE config : `palette.ACTIVE` + `set_active()` + `scripts/generate_all.py --config <name>` — les générateurs principaux (`scripts/`) et `site/` basculent entre les 4 chartes (scene-vintage, fluid-wave, rock-brut, originale) | opencode |
@@ -700,7 +700,7 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 25/06/2026 | **Lot 1 — 9 logos SVG vectoriels** : grilles précises, proportions professionnelles, coordonnées mathématiques | opencode |
 | 25/06/2026 | **Lot 2 — 36 déclinaisons SVG** : mono, icône, compact, watermark × 9 propositions | opencode |
 | 25/06/2026 | **Lot 3-5 — Chartes enrichies** : grilles de construction, règles d'usage pro, preload SVG dans générateurs | opencode |
-| 25/06/2026 | **Instagram `@riversrockrouen` désactivé** — appel en cours. Handle de secours : `@riversrock_rouen` | opencode |
+| 25/06/2026 | **Instagram `@riversrock_rouen` désactivé** — appel en cours. Handle de secours : `@riversrock_rouen` | opencode |
 | 25/06/2026 | **Chartes PDF avec logos + assets** : cairosvg installé, rendu SVG, miniatures templates | opencode |
 | 25/06/2026 | **Pages d'aperçu par proposition** : `scripts/generate_preview.py` — 9 preview.html avec logos, palette, iframe animé, miniatures PDF, charte ZIP | opencode |
 | 25/06/2026 | **Lien Aperçu + Charte PDF** dans propositions/index.html pour chaque carte | opencode |
@@ -714,3 +714,5 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 26/06/2026 | **.gitignore** : patterns pour previews PNG, chartes ZIP, /tmp/ | opencode |
 | 26/06/2026 | **Spotify embeds** : iframes Spotify playlist ajoutés aux 9 propositions (placeholder `REMPLACER_PAR_ID`) + section Musique créée pour 00-originale | opencode |
 | 26/06/2026 | **Rendu MP4** : tentative à l'échelle 0.5 — trop lent (add_grain pixel loop). MP4 existant conservé. Optimisation nécessaire (numpy) pour le rendu final | opencode |
+| 26/06/2026 | **Audit complet 3 métiers** : webdesigner, infographiste, community manager — 10 faiblesses critiques identifiées, matrice P1→P4 | opencode |
+| 26/06/2026 | **Correctifs P1/P2** : Instagram handle migré (30 fichiers), responsive 07/08/09, formulaire FormSubmit, SEO meta tags, focus-visible, font-display:swap, favicons distincts, bleed/crop dans generate_missing.py | opencode |

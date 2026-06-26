@@ -4,7 +4,7 @@
 
 | Service | Identifiant | Mot de passe |
 |---------|-------------|--------------|
-| **Gmail** | `riversrockrouen@gmail.com` | `!LeGroupe76140@` |
+| **Gmail** | `riversrock_rouen@gmail.com` | `!LeGroupe76140@` |
 
 > Utilisé pour : YouTube, Instagram, Facebook, contact groupe
 
@@ -17,7 +17,7 @@
 | **Chaîne** | Rivers Rock Rouen |
 | **Handle** | `@RiversRockRouen` |
 | **Lien** | `https://www.youtube.com/@RiversRockRouen` |
-| **Email lié** | `riversrockrouen@gmail.com` |
+| **Email lié** | `riversrock_rouen@gmail.com` |
 
 ---
 
@@ -25,12 +25,12 @@
 
 | Champ | Valeur |
 |-------|--------|
-| **Pseudo** | `@riversrockrouen` (🔴 **désactivé** — en appel) |
+| **Pseudo** | `@riversrock_rouen` (🔴 **désactivé** — en appel) |
 | **Pseudo de secours** | `@riversrock_rouen` |
 | **Lien** | `https://www.instagram.com/riversrock_rouen` |
-| **Email lié** | `riversrockrouen@gmail.com` |
+| **Email lié** | `riversrock_rouen@gmail.com` |
 
-> ⚠️ Le compte `@riversrockrouen` a été désactivé par Instagram le 25/06/2026.
+> ⚠️ Le compte `@riversrock_rouen` a été désactivé par Instagram le 25/06/2026.
 > Appel en cours. Si l'appel échoue, le handle de secours est `@riversrock_rouen`.
 
 ---

@@ -255,7 +255,7 @@ def gen_flyer():
         cv.drawCentredString(cx, y - 6, "Contactez-nous pour programmer un concert")
         cv.setFillColor(Color(0, 0, 0, alpha=0.35))
         cv.setFont("DMMono", 7)
-        cv.drawCentredString(cx, y - 22, "@riversrockrouen - riversrockrouen@gmail.com")
+        cv.drawCentredString(cx, y - 22, "@riversrock_rouen - riversrock_rouen@gmail.com")
 
     for page in range(2):
         for row in range(2):
@@ -317,9 +317,9 @@ def gen_social():
     tw = bbox[2] - bbox[0]
     th = bbox[3] - bbox[1]
     draw.text((qx + (qs - tw) / 2, qy + (qs - th) / 2), "QR", fill=NUIT_PIL, font=font_karla)
-    bbox = draw.textbbox((0, 0), "@riversrockrouen", font=font_tag)
+    bbox = draw.textbbox((0, 0), "@riversrock_rouen", font=font_tag)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 860), "@riversrockrouen", fill=(180, 170, 160), font=font_tag)
+    draw.text(((w - tw) / 2, 860), "@riversrock_rouen", fill=(180, 170, 160), font=font_tag)
     img.save(os.path.join(TMPL, "instagram-post.png"))
 
     w, h = 1080, 1920
@@ -350,9 +350,9 @@ def gen_social():
     bbox = draw.textbbox((0, 0), "Montigny · 19h30", font=font_karla)
     tw = bbox[2] - bbox[0]
     draw.text(((w - tw) / 2, 840), "Montigny · 19h30", fill=IVOIRE_PIL, font=font_karla)
-    bbox = draw.textbbox((0, 0), "@riversrockrouen", font=font_tag)
+    bbox = draw.textbbox((0, 0), "@riversrock_rouen", font=font_tag)
     tw = bbox[2] - bbox[0]
-    draw.text(((w - tw) / 2, 1750), "@riversrockrouen", fill=(180, 170, 160), font=font_tag)
+    draw.text(((w - tw) / 2, 1750), "@riversrock_rouen", fill=(180, 170, 160), font=font_tag)
     img.save(os.path.join(TMPL, "instagram-story.png"))
     print(f"[Jazz Club] Social → {TMPL}")
 
@@ -454,7 +454,14 @@ def gen_animated():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock — Jazz Club</title>
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAMlJREFUWEft1rENwjAQBdD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4kiWLNnxnU8UKZLr/Pd9thMEAf4PQAiAEAChIyA6AgI7ArLWPuc8zjnnC85a+5xzHgEgBEAIAOrA3Xsf9z17ZgBIfYAx5hVjrN77z3ffH4DVByClBICttV+t3bee1gcgpQQAay0B7L0TAOYcBPAcB3NODPCe0DHG5xhjA0AIgBAAoSMgOgICOwKy1j7nnMec8wsnhHDOeRxjjACEEADhCAgBEB0BgR0BWWufc85jzvmFE8Kccx5jjACEEADhCEgIAOgICAEQHQH/Ab3+V/+tKtRsAAAAAElFTkSuQmCC">
+<meta name="description" content="Rivers Rock — Jazz Club — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:title" content="Rivers Rock — Jazz Club">
+<meta property="og:description" content="Rivers Rock — Jazz Club — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:type" content="music.group">
+<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/09-jazz-club/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rivers Rock — Jazz Club">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiNDOUE4NkMiLz48dGV4dCB4PSIxNiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iYm9sZCI+SjwvdGV4dD48L3N2Zz4=">
 <style>
 *{margin:0;padding:0}
 body{width:1080px;height:1920px;overflow:hidden;background:#0A0A0A;display:flex;align-items:center;justify-content:center}
@@ -479,7 +486,9 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400p
 @keyframes drop{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}
 @keyframes slide{0%{opacity:0;transform:translateX(120px)}100%{opacity:1;transform:translateX(0)}}
 @media(prefers-reduced-motion){*{animation:none!important}}
-</style>
+
+a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}</style>
 </head>
 <body>
 <div class="spolight"></div>
@@ -524,8 +533,15 @@ def gen_site():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock — Jazz Club</title>
+<meta name="description" content="Rivers Rock — Jazz Club — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:title" content="Rivers Rock — Jazz Club">
+<meta property="og:description" content="Rivers Rock — Jazz Club — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:type" content="music.group">
+<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/09-jazz-club/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rivers Rock — Jazz Club">
 <link rel="preload" href="assets/logo.svg" as="image" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAMlJREFUWEft1rENwjAQBdD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4kiWLNnxnU8UKZLr/Pd9thMEAf4PQAiAEAChIyA6AgI7ArLWPuc8zjnnC85a+5xzHgEgBEAIAOrA3Xsf9z17ZgBIfYAx5hVjrN77z3ffH4DVByClBICttV+t3bee1gcgpQQAay0B7L0TAOYcBPAcB3NODPCe0DHG5xhjA0AIgBAAoSMgOgICOwKy1j7nnMec8wsnhHDOeRxjjACEEADhCAgBEB0BgR0BWWufc85jzvmFE8Kccx5jjACEEADhCEgIAOgICAEQHQH/Ab3+V/+tKtRsAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiNDOUE4NkMiLz48dGV4dCB4PSIxNiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iYm9sZCI+SjwvdGV4dD48L3N2Zz4=">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Karla:wght@300;400;600&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
 :root{--nuit:#0A0A0A;--or:#C9A86C;--cuivre:#B87333;--rouge:#8B1A1A;--ivoire:#F5F0E8}
@@ -570,6 +586,34 @@ nav a:hover{color:var(--or)}
 .footer{position:relative;z-index:1;text-align:center;padding:44px 24px;border-top:1px solid rgba(201,168,108,0.05)}
 .footer svg{width:80px;height:80px;margin-bottom:8px;opacity:0.25}
 .footer p{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:6px;color:rgba(245,240,232,0.15)}
+
+a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+@media(max-width:640px){
+  .hero h1{font-size:32px}
+  .members-grid{grid-template-columns:repeat(2,1fr)}
+  .section{padding:30px 12px}
+  nav{padding:10px 16px}
+  nav .nav-links{display:none}
+}
+@media(max-width:400px){
+  .hero h1{font-size:26px}
+  .members-grid{grid-template-columns:1fr}
+  .hero{padding:80px 16px 40px}
+}
+
+@media(max-width:640px){
+  .hero h1{font-size:28px}
+  .members-grid{grid-template-columns:repeat(2,1fr)}
+  .section{padding:30px 12px}
+  nav{padding:10px 16px}
+  nav .nav-links{display:none}
+}
+@media(max-width:400px){
+  .hero h1{font-size:22px}
+  .members-grid{grid-template-columns:1fr}
+  .hero{padding:80px 16px 40px}
+}
 </style>
 </head>
 <body>
@@ -614,20 +658,20 @@ nav a:hover{color:var(--or)}
   <h2>Musique</h2>
   <p>Decouvrez Rivers Rock en action — extraits live et playlist a venir.</p>
   <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid rgba(201,168,108,0.15);margin-top:16px">
-    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);color:rgba(245,240,232,0.2);font-family:sans-serif"><iframe src="https://open.spotify.com/embed/playlist/REMPLACER_PAR_ID" width="100%" height="380" frameborder="0" allow="encrypted-media" style="border-radius:8px" title="Playlist Rivers Rock"></iframe></div>
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);color:rgba(245,240,232,0.2);font-family:sans-serif"><div style="text-align:center;padding:30px 20px;background:rgba(128,128,128,0.04);border-radius:8px"><p style="color:rgba(128,128,128,0.5);font-size:14px;margin-bottom:12px;font-family:sans-serif">Playlist musicale a venir</p><a href="https://www.youtube.com/@RiversRockRouen" target="_blank" style="display:inline-block;padding:10px 24px;border-radius:6px;background:var(--accent,#E85D3A);color:#fff;text-decoration:none;font-size:13px">Suivre sur YouTube</a></div></div>
   </div>
 </section>
 <section id="contact" class="section section-alt">
   <h2>Contact</h2>
-  <div class="contact-info"><p>Pour toute demande :</p><a class="email" href="mailto:riversrockrouen@gmail.com">riversrockrouen@gmail.com</a></div>
+  <div class="contact-info"><p>Pour toute demande :</p><a class="email" href="mailto:riversrock_rouen@gmail.com">riversrock_rouen@gmail.com</a></div>
   
-  <form action="mailto:riversrockrouen@gmail.com" method="POST" enctype="text/plain" style="max-width:400px;margin:20px auto">
+  <form action="https://formsubmit.co/riversrock_rouen@gmail.com" method="POST" enctype="text/plain" style="max-width:400px;margin:20px auto">
     <input type="text" name="nom" placeholder="Votre nom" required style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.15);border-radius:6px;background:rgba(255,255,255,0.05);color:#fff;font-family:inherit;font-size:14px">
     <input type="email" name="email" placeholder="Votre email" required style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.15);border-radius:6px;background:rgba(255,255,255,0.05);color:#fff;font-family:inherit;font-size:14px">
     <textarea name="message" placeholder="Votre message" required rows="3" style="width:100%;padding:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.15);border-radius:6px;background:rgba(255,255,255,0.05);color:#fff;font-family:inherit;font-size:14px;resize:vertical"></textarea>
     <button type="submit" style="width:100%;padding:10px;border:none;border-radius:6px;background:var(--accent, #E85D3A);color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer">Envoyer</button>
   </form><div class="links-social">
-    <a href="https://www.instagram.com/riversrockrouen" target="_blank">Instagram</a>
+    <a href="https://www.instagram.com/riversrock_rouen" target="_blank">Instagram</a>
     <a href="https://www.facebook.com/RiversRockRouen" target="_blank">Facebook</a>
     <a href="https://www.youtube.com/@RiversRockRouen" target="_blank">YouTube</a>
   </div>

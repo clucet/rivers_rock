@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Script de secours : remplace le handle Instagram partout dans le projet.
-Usage: python3 scripts/migrer_instagram.py  # remplace riversrockrouen → riversrock_rouen
-       python3 scripts/migrer_instagram.py --rollback  # restaure riversrock_rouen → riversrockrouen"""
+Usage: python3 scripts/migrer_instagram.py  # remplace riversrock_rouen → riversrock_rouen
+       python3 scripts/migrer_instagram.py --rollback  # restaure riversrock_rouen → riversrock_rouen"""
 
 import os, sys, argparse
 
@@ -12,10 +12,10 @@ args = parser.parse_args()
 
 if args.rollback:
     old = "riversrock_rouen"
-    new = "riversrockrouen"
-    print("⬅️  Rollback : riversrock_rouen → riversrockrouen")
+    new = "riversrock_rouen"
+    print("⬅️  Rollback : riversrock_rouen → riversrock_rouen")
 else:
-    old = "riversrockrouen"
+    old = "riversrock_rouen"
     new = args.new_handle
     print(f"➡️  Migration : {old} → {new}")
 

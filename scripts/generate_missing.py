@@ -16,6 +16,7 @@ from logoutils import (
     pillow_bridge_silhouette, pillow_monogramme_wave, pillow_hexagon_monogramme,
     pillow_neon_logo, pillar_neon_logo, pillow_sun_logo, pillar_sun_logo,
     pillow_grain_overlay,
+    create_bleed_canvas, save_with_crop_marks,
     BEBAS_PATH, MONTSERRAT_PATH, ANTON_PATH, SPACE_MONO_PATH,
     NUNITO_PATH, INTERTIGHT_PATH, JETBRAINS_PATH,
     TEKO_PATH, RALEWAY_PATH, DMMONO_PATH,
@@ -111,7 +112,7 @@ def gen_businesscard(cfg, out_dir):
     pdf_dir = os.path.join(out_dir, "pdf")
     os.makedirs(pdf_dir, exist_ok=True)
     path = os.path.join(pdf_dir, "business-card.pdf")
-    cv = rlcanvas.Canvas(path, pagesize=(W, H))
+    cv, trim_w, trim_h, bleed = create_bleed_canvas(path, W, H)
 
     if cfg.name == "Rock Brut":
         c1, c2 = HexColor("#0A0A0A"), HexColor("#222222")
@@ -138,9 +139,9 @@ def gen_businesscard(cfg, out_dir):
 
     cv.setFont("Montserrat", 7)
     cv.drawString(38 * mm, H / 2 - 8, "Reprises rock — Rouen")
-    cv.drawString(38 * mm, H / 2 - 18, "riversrockrouen@gmail.com")
+    cv.drawString(38 * mm, H / 2 - 18, "riversrock_rouen@gmail.com")
 
-    cv.save()
+    save_with_crop_marks(cv, trim_w, trim_h, bleed)
     print(f"  Business card → {path}")
 
 
@@ -236,7 +237,7 @@ def gen_stageplot(cfg, out_dir):
     pdf_dir = os.path.join(out_dir, "pdf")
     os.makedirs(pdf_dir, exist_ok=True)
     path = os.path.join(pdf_dir, "stage-plot.pdf")
-    cv = rlcanvas.Canvas(path, pagesize=(W, H))
+    cv, trim_w, trim_h, bleed = create_bleed_canvas(path, W, H)
 
     cv.setFillColor(Color(0, 0, 0, alpha=0.03))
     cv.rect(0, 0, W, H, stroke=0, fill=1)
@@ -246,7 +247,7 @@ def gen_stageplot(cfg, out_dir):
     cv.setFont("BebasNeue", 22)
     cv.drawString(100, H - 50, "RIVERS ROCK — Stage Plot")
     cv.setFont("Montserrat", 10)
-    cv.drawString(100, H - 70, "Contact: riversrockrouen@gmail.com")
+    cv.drawString(100, H - 70, "Contact: riversrock_rouen@gmail.com")
 
     sx, sy = 80, H - 200
     sw, sh = W - 160, 240
@@ -291,7 +292,7 @@ def gen_stageplot(cfg, out_dir):
         cv.drawString(ix0 + 180, y, mic)
         cv.drawString(ix0 + 270, y, note)
 
-    cv.save()
+    save_with_crop_marks(cv, trim_w, trim_h, bleed)
     print(f"  Stage plot → {path}")
 
 
@@ -302,7 +303,7 @@ def gen_techsheet(cfg, out_dir):
     pdf_dir = os.path.join(out_dir, "pdf")
     os.makedirs(pdf_dir, exist_ok=True)
     path = os.path.join(pdf_dir, "t-shirt-techsheet.pdf")
-    cv = rlcanvas.Canvas(path, pagesize=(W, H))
+    cv, trim_w, trim_h, bleed = create_bleed_canvas(path, W, H)
 
     cv.setFillColor(Color(0, 0, 0, alpha=0.04))
     cv.rect(0, 0, W, H, stroke=0, fill=1)
@@ -336,7 +337,7 @@ def gen_techsheet(cfg, out_dir):
     cv.setFont("Montserrat", 7)
     cv.drawString(60, y - 10, f"Réf Pantone : {cfg.colors.get('accent', ('#E85D3A',))[0]} ≈ Pantone 172")
 
-    cv.save()
+    save_with_crop_marks(cv, trim_w, trim_h, bleed)
     print(f"  Tech sheet → {path}")
 
 
@@ -352,7 +353,7 @@ def gen_lyrics(cfg, out_dir):
         safe_artist = artist.lower().replace(" ", "-").replace("/", "-")
         safe_title = song_title.lower().replace(" ", "-").replace("/", "-")
         path = os.path.join(pdf_dir, f"{idx+1:02d}-{safe_artist}-{safe_title}.pdf")
-        cv = rlcanvas.Canvas(path, pagesize=(W, H))
+        cv, trim_w, trim_h, bleed = create_bleed_canvas(path, W, H)
 
         cv.setFillColor(Color(0, 0, 0, alpha=0.03))
         cv.rect(0, 0, W, H, stroke=0, fill=1)
@@ -375,7 +376,7 @@ def gen_lyrics(cfg, out_dir):
             cv.drawCentredString(W / 2, y, line)
             y -= 16
 
-        cv.save()
+        save_with_crop_marks(cv, trim_w, trim_h, bleed)
     print(f"  Lyrics → {pdf_dir}/ (12 fichiers)")
 
 

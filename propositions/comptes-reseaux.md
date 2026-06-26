@@ -4,7 +4,7 @@
 
 | Service | Identifiant |
 |---------|-------------|
-| **Gmail** | `riversrockrouen@gmail.com` |
+| **Gmail** | `riversrock_rouen@gmail.com` |
 
 > Utilisé pour : YouTube, Instagram, Facebook, contact groupe
 
@@ -17,7 +17,7 @@
 | **Chaîne** | Rivers Rock Rouen |
 | **Handle** | `@RiversRockRouen` |
 | **Lien** | `https://www.youtube.com/@RiversRockRouen` |
-| **Email lié** | `riversrockrouen@gmail.com` |
+| **Email lié** | `riversrock_rouen@gmail.com` |
 
 ---
 
@@ -25,9 +25,9 @@
 
 | Champ | Valeur |
 |-------|--------|
-| **Pseudo** | `@riversrockrouen` |
-| **Lien** | `https://www.instagram.com/riversrockrouen` |
-| **Email lié** | `riversrockrouen@gmail.com` |
+| **Pseudo** | `@riversrock_rouen` |
+| **Lien** | `https://www.instagram.com/riversrock_rouen` |
+| **Email lié** | `riversrock_rouen@gmail.com` |
 
 ---
 

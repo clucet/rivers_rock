@@ -496,6 +496,13 @@ def gen_animated():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock — Logo</title>
+<meta name="description" content="Rivers Rock — Logo — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:title" content="Rivers Rock — Logo">
+<meta property="og:description" content="Rivers Rock — Logo — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:type" content="music.group">
+<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/00-originale/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rivers Rock — Logo">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0}
@@ -524,7 +531,9 @@ svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400p
   .container{padding:40px 16px}
   .logo svg{width:70px;height:70px}
 }
-</style>
+
+a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}</style>
 </head>
 <body>
 <canvas id="p"></canvas>
@@ -572,6 +581,13 @@ def gen_site():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rivers Rock — Logo</title>
+<meta name="description" content="Rivers Rock — Logo — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:title" content="Rivers Rock — Logo">
+<meta property="og:description" content="Rivers Rock — Logo — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
+<meta property="og:type" content="music.group">
+<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/00-originale/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rivers Rock — Logo">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -596,7 +612,9 @@ hr{border:none;border-top:1px solid rgba(255,255,255,.15);margin:32px 0}
   .container{padding:40px 16px}
   .logo svg{width:70px;height:70px}
 }
-</style>
+
+a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
+button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}</style>
 </head>
 <body>
 <div class="container">
@@ -623,10 +641,10 @@ hr{border:none;border-top:1px solid rgba(255,255,255,.15);margin:32px 0}
   <hr>
   <h2>Musique</h2>
   <p>Ecoutez Rivers Rock sur Spotify — playlist a venir.</p>
-  <div style="max-width:600px;margin:16px auto"><iframe src="https://open.spotify.com/embed/playlist/REMPLACER_PAR_ID" width="100%" height="380" frameborder="0" allow="encrypted-media" style="border-radius:6px" title="Playlist Rivers Rock"></iframe></div>
+  <div style="max-width:600px;margin:16px auto"><div style="text-align:center;padding:30px 20px;background:rgba(128,128,128,0.04);border-radius:8px"><p style="color:rgba(128,128,128,0.5);font-size:14px;margin-bottom:12px;font-family:sans-serif">Playlist musicale a venir</p><a href="https://www.youtube.com/@RiversRockRouen" target="_blank" style="display:inline-block;padding:10px 24px;border-radius:6px;background:var(--accent,#E85D3A);color:#fff;text-decoration:none;font-size:13px">Suivre sur YouTube</a></div></div>
   <hr>
   <h2>Contact</h2>
-  <p>riversrockrouen@gmail.com</p>
+  <p>riversrock_rouen@gmail.com</p>
   <div class="links">
     <a href="https://www.instagram.com/riversrock.rouen" target="_blank">Instagram</a>
     <a href="https://www.facebook.com/RiversRockRouen" target="_blank">Facebook</a>
