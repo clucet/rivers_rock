@@ -4,7 +4,7 @@ Usage: python3 scripts/render_animation.py [--render-scale 0.5] [--output path]"
 
 import os, math, subprocess, tempfile, sys, random, argparse
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import BEBAS_PATH, ANTON_PATH
+from logoutils import BEBAS_PATH, ANTON_PATH, SPACE_MONO_PATH, PLAYFAIR_PATH, INTER_PATH, CINZEL_PATH, BANGERS_PATH, OSWALD_PATH
 from palette import SCENE_VINTAGE as CFG_BASE
 from palette import set_active
 from PIL import Image, ImageDraw, ImageFont
@@ -17,7 +17,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--render-scale", type=float, default=1.0, help="Render scale (0.5=540x960, 1.0=1080x1920)")
 parser.add_argument("--output", default=OUTPUT)
 parser.add_argument("--config", default="scene-vintage",
-                    choices=["scene-vintage", "fluid-wave", "rock-brut", "originale", "ponts-lumiere", "neon-nights", "sable-bronze"])
+                    choices=["scene-vintage", "fluid-wave", "rock-brut", "originale", "ponts-lumiere",
+                             "neon-nights", "sable-bronze", "nordik", "grunge", "jazz-club",
+                             "bitume", "cordes-voix", "heritage", "rubicon", "minuit"])
 args = parser.parse_args()
 
 CFG = set_active(args.config) if args.config else CFG_BASE
@@ -74,18 +76,24 @@ def qbezier(p0, p1, p2, t):
 def make_frame(t):
     """Dispatch to the correct render function based on config."""
     name = CFG.name
-    if name == "Fluid Wave":
-        return _frame_fluid_wave(t)
-    elif name == "Rock Brut":
-        return _frame_rock_brut(t)
-    elif name == "Ponts & Lumiere":
-        return _frame_ponts_lumiere(t)
-    elif name == "Neon Nights":
-        return _frame_neon_nights(t)
-    elif name == "Sable & Bronze":
-        return _frame_sable_bronze(t)
-    else:
-        return _frame_scene_vintage(t)
+    dispatch = {
+        "Fluid Wave": _frame_fluid_wave,
+        "Rock Brut": _frame_rock_brut,
+        "Ponts & Lumiere": _frame_ponts_lumiere,
+        "Neon Nights": _frame_neon_nights,
+        "Sable & Bronze": _frame_sable_bronze,
+        "Nordik": _frame_nordik,
+        "Grunge": _frame_grunge,
+        "Jazz Club": _frame_jazz_club,
+        "Bitume": _frame_bitume,
+        "Cordes & Voix": _frame_cordes_voix,
+        "Héritage": _frame_heritage,
+        "Rubicon": _frame_rubicon,
+        "Minuit": _frame_minuit,
+        "Ombre & Lumière": _frame_scene_vintage,
+    }
+    fn = dispatch.get(name, _frame_scene_vintage)
+    return fn(t)
 
 
 def _frame_scene_vintage(t):
@@ -359,10 +367,189 @@ def _frame_sable_bronze(t):
         py = (p['y'] - t * FPS * 0.2) % H
         draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
                      fill=(204, 107, 73, int(255 * p['a'])))
-    # Sun rise
     prog = min(1, max(0, (t - 0.3) / 0.8))
     if prog > 0:
         offset_y = int(60 * (1 - prog))
         r = 30 * SCALE
         draw.ellipse([CX - r, CY - r + offset_y, CX + r, CY + r + offset_y], fill=(181, 131, 90))
+    return img.convert("RGB")
+
+
+def _frame_nordik(t):
+    """Nordik MP4: horizontal line draws across + text fades."""
+    img = Image.new("RGBA", (W, H), (250, 250, 250, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.1) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(200, 200, 195, int(255 * p['a'])))
+    prog = min(1, max(0, (t - 0.5) / 0.8))
+    if prog > 0:
+        end_x = CX - 60 + 120 * prog
+        draw.line([(CX - 60, CY), (end_x, CY)], fill=(74, 74, 74), width=2)
+    prog2 = min(1, max(0, (t - 1.8) / 0.6))
+    if prog2 > 0:
+        font = ImageFont.truetype(INTER_PATH, max(8, int(18 * SCALE)))
+        ep = ease_out(prog2)
+        draw.text((CX, CY + 20), "rivers rock", fill=(74, 74, 74, int(255 * ep)), font=font, anchor="mm")
+    return img.convert("RGB")
+
+
+def _frame_grunge(t):
+    """Grunge MP4: stamp impact + paper noise."""
+    img = Image.new("RGBA", (W, H), (245, 234, 221, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.4) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(255, 51, 102, int(255 * p['a'])))
+    prog = min(1, max(0, (t - 0.8) / 0.3))
+    if prog > 0:
+        r = 50 * SCALE
+        ep = ease_out(prog)
+        r_scaled = r * ep
+        draw.ellipse([CX - r_scaled, CY - r_scaled, CX + r_scaled, CY + r_scaled],
+                     fill=(255, 51, 102, int(255 * min(1, prog * 1.5))))
+    prog2 = min(1, max(0, (t - 1.6) / 0.4))
+    if prog2 > 0:
+        font = ImageFont.truetype(SPACE_MONO_PATH, max(8, int(14 * SCALE)))
+        draw.text((CX, CY + 40), "rIVERS rOCK", fill=(26, 26, 26, int(255 * prog2)), font=font, anchor="mm")
+    return img.convert("RGB")
+
+
+def _frame_jazz_club(t):
+    """Jazz Club MP4: spotlight turns on + golden circle."""
+    img = Image.new("RGBA", (W, H), (10, 10, 10, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.2) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(201, 168, 108, int(255 * p['a'])))
+    prog = min(1, max(0, (t - 0.3) / 1.2))
+    if prog > 0:
+        r = 60 * SCALE
+        ep = ease_out(prog)
+        draw.ellipse([CX - r, CY - r, CX + r, CY + r], fill=(201, 168, 108, int(30 * ep)))
+        draw.ellipse([CX - r * 0.7, CY - r * 0.7, CX + r * 0.7, CY + r * 0.7],
+                     fill=None, outline=(201, 168, 108, int(200 * ep)), width=2)
+        draw.line([(CX - r * 0.7, CY), (CX + r * 0.7, CY)], fill=(201, 168, 108, int(200 * ep)), width=1)
+    prog2 = min(1, max(0, (t - 2.0) / 0.5))
+    if prog2 > 0:
+        font = ImageFont.truetype(PLAYFAIR_PATH, max(8, int(20 * SCALE)))
+        draw.text((CX, CY + 50), "RIVERS ROCK", fill=(245, 240, 232, int(255 * prog2)), font=font, anchor="mm")
+    return img.convert("RGB")
+
+
+def _frame_bitume(t):
+    """Bitume MP4: stencil spray paint effect."""
+    img = Image.new("RGBA", (W, H), (44, 44, 44, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.5) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(244, 208, 63, int(255 * p['a'])))
+    prog = min(1, max(0, (t - 0.5) / 1.0))
+    if prog > 0:
+        r = 55 * SCALE
+        draw.circle((CX, CY), r * prog, fill=None, outline=(244, 208, 63, int(150 * prog)), width=2)
+    prog2 = min(1, max(0, (t - 1.8) / 0.5))
+    if prog2 > 0:
+        font = ImageFont.truetype(BANGERS_PATH, max(8, int(24 * SCALE)))
+        draw.text((CX, CY + 15), "RIVERS ROCK", fill=(169, 50, 38, int(255 * prog2)), font=font, anchor="mm")
+    return img.convert("RGB")
+
+
+def _frame_cordes_voix(t):
+    """Cordes & Voix MP4: vibrating string + warm fade."""
+    img = Image.new("RGBA", (W, H), (255, 248, 240, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.15) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(255, 183, 77, int(255 * p['a'])))
+    prog = min(1, max(0, (t - 0.3) / 0.8))
+    if prog > 0:
+        offset = 10 * math.sin(t * 8)
+        pts = []
+        for i in range(40):
+            x = CX - 80 + i * 160 / 40
+            y = CY + offset * math.sin(i / 40 * math.pi)
+            pts.append((int(x), int(y)))
+        for i in range(len(pts) - 1):
+            draw.line([pts[i], pts[i + 1]], fill=(109, 76, 65, int(255 * prog)), width=1)
+    prog2 = min(1, max(0, (t - 1.6) / 0.5))
+    if prog2 > 0:
+        font = ImageFont.truetype(PLAYFAIR_PATH, max(8, int(22 * SCALE)))
+        draw.text((CX, CY + 30), "RIVERS ROCK", fill=(109, 76, 65, int(255 * prog2)), font=font, anchor="mm")
+    return img.convert("RGB")
+
+
+def _frame_heritage(t):
+    """Héritage MP4: stained glass rotation + gold light."""
+    img = Image.new("RGBA", (W, H), (26, 35, 126, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.1) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(212, 175, 55, int(255 * p['a'])))
+    prog = min(1, max(0, (t - 0.5) / 1.0))
+    if prog > 0:
+        r = 60 * SCALE
+        angle = t * 15
+        draw.ellipse([CX - r, CY - r, CX + r, CY + r],
+                     fill=None, outline=(212, 175, 55, int(200 * prog)), width=2)
+        for i in range(8):
+            a = math.radians(angle + 45 * i)
+            x2 = CX + r * 0.8 * math.cos(a)
+            y2 = CY + r * 0.8 * math.sin(a)
+            draw.line([(CX, CY), (x2, y2)], fill=(212, 175, 55, int(80 * prog)), width=1)
+    prog2 = min(1, max(0, (t - 2.0) / 0.6))
+    if prog2 > 0:
+        font = ImageFont.truetype(CINZEL_PATH, max(8, int(18 * SCALE)))
+        draw.text((CX, CY + 50), "RIVERS ROCK", fill=(255, 248, 225, int(255 * prog2)), font=font, anchor="mm")
+    return img.convert("RGB")
+
+
+def _frame_rubicon(t):
+    """Rubicon MP4: highway line dash + sunset."""
+    img = Image.new("RGBA", (W, H), (255, 248, 225, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.3) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(230, 81, 0, int(255 * p['a'])))
+    prog = min(1, max(0, (t - 0.4) / 0.8))
+    if prog > 0:
+        r = 50 * SCALE
+        dash_offset = (t * 60) % 18
+        draw.arc([CX - r, CY - r, CX + r, CY + r], int(dash_offset), int(dash_offset + 180 * prog),
+                 fill=(230, 81, 0, int(200 * prog)), width=3)
+    prog2 = min(1, max(0, (t - 1.8) / 0.5))
+    if prog2 > 0:
+        font = ImageFont.truetype(OSWALD_PATH, max(8, int(24 * SCALE)))
+        draw.text((CX, CY + 10), "RIVERS ROCK", fill=(51, 105, 30, int(255 * prog2)), font=font, anchor="mm")
+    return img.convert("RGB")
+
+
+def _frame_minuit(t):
+    """Minuit MP4: moon rise + star twinkle."""
+    img = Image.new("RGBA", (W, H), (13, 13, 13, 255))
+    draw = ImageDraw.Draw(img)
+    for p in PARTICLES:
+        py = (p['y'] - t * FPS * 0.08) % H
+        draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
+                     fill=(201, 168, 124, int(255 * p['a'])))
+    prog = min(1, max(0, (t - 0.5) / 1.0))
+    if prog > 0:
+        ep = ease_out(prog)
+        r = 45 * SCALE
+        moon_y = CY + 40 - 80 * ep
+        draw.ellipse([CX - r, moon_y - r, CX + r, moon_y + r],
+                     fill=None, outline=(201, 168, 124, int(200 * ep)), width=1)
+        draw.ellipse([CX + r * 0.3, moon_y - r * 0.6, CX + r * 0.8, moon_y + r * 0.3],
+                     fill=(13, 13, 13, 255))
+    prog2 = min(1, max(0, (t - 2.2) / 0.6))
+    if prog2 > 0:
+        font = ImageFont.truetype(PLAYFAIR_PATH, max(8, int(20 * SCALE)))
+        draw.text((CX, CY + 55), "RIVERS ROCK", fill=(245, 240, 232, int(255 * prog2)), font=font, anchor="mm")
     return img.convert("RGB")
