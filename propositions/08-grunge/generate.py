@@ -362,7 +362,7 @@ footer{padding:30px;text-align:center;font-size:10px;color:#999;position:relativ
 <div style="margin-top:16px;max-width:300px;margin-left:auto;margin-right:auto;border:2px dashed #1A1A1A;padding:4px"><img src="../../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block" alt="Affiche"></div></section>
 <section id="m" class="section"><h3>musique</h3>
 <p>Decouvrez Rivers Rock en action</p>
-<div style="padding:20px;text-align:center;border:2px dashed #1A1A1A;margin-top:10px">Video a venir</div></section>
+<div style="padding:20px;text-align:center;border:2px dashed #1A1A1A;margin-top:10px"><iframe src="https://open.spotify.com/embed/playlist/REMPLACER_PAR_ID" width="100%" height="380" frameborder="0" allow="encrypted-media" style="border-radius:0" title="Playlist Rivers Rock"></iframe></div></section>
 <section id="ct" class="section"><h3>contact</h3>
 <p>riversrockrouen@gmail.com</p>
 <p><a href="https://www.instagram.com/riversrockrouen" style="color:#1A1A1A">Instagram</a>

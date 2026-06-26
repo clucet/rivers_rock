@@ -1,0 +1,25 @@
+name: Generate & Deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pip install reportlab Pillow qrcode cairosvg
+          sudo apt-get update && sudo apt-get install -y poppler-utils ghostscript
+      - name: Regenerate previews
+        run: python3 scripts/generate_preview.py --skip-thumbs
+      - name: Convert PDFs to CMYK
+        run: python3 scripts/convert_to_cmyk.py --all
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .

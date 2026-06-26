@@ -614,7 +614,7 @@ nav a:hover{color:var(--or)}
   <h2>Musique</h2>
   <p>Decouvrez Rivers Rock en action — extraits live et playlist a venir.</p>
   <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid rgba(201,168,108,0.15);margin-top:16px">
-    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);color:rgba(245,240,232,0.2);font-family:sans-serif">Video a venir</div>
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);color:rgba(245,240,232,0.2);font-family:sans-serif"><iframe src="https://open.spotify.com/embed/playlist/REMPLACER_PAR_ID" width="100%" height="380" frameborder="0" allow="encrypted-media" style="border-radius:8px" title="Playlist Rivers Rock"></iframe></div>
   </div>
 </section>
 <section id="contact" class="section section-alt">

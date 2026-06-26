@@ -392,7 +392,7 @@ footer p{font-weight:200;font-size:10px;color:var(--a);letter-spacing:8px;text-t
 <div style="margin-top:16px;max-width:300px;margin-left:auto;margin-right:auto"><img src="../../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block" alt="Affiche"></div></section>
 <section id="musique" class="section"><h2>musique</h2>
 <p>Decouvrez Rivers Rock en action</p>
-<div style="position:relative;padding-bottom:56.25%;height:0;background:var(--g);margin-top:16px"><div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--a);font-weight:200">Video a venir</div></div></section>
+<div style="position:relative;padding-bottom:56.25%;height:0;background:var(--g);margin-top:16px"><div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--a);font-weight:200"><iframe src="https://open.spotify.com/embed/playlist/REMPLACER_PAR_ID" width="100%" height="380" frameborder="0" allow="encrypted-media" style="border-radius:8px" title="Playlist Rivers Rock"></iframe></div></div></section>
 <section id="contact" class="section"><h2>contact</h2>
 <div class="ci"><a class="email" href="mailto:riversrockrouen@gmail.com">riversrockrouen@gmail.com</a></div>
 <div class="links">

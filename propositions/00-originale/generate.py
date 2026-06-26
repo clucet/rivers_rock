@@ -621,6 +621,10 @@ hr{border:none;border-top:1px solid rgba(255,255,255,.15);margin:32px 0}
   <h2>Concerts</h2>
   <p>Contactez-nous pour programmer un concert.</p>
   <hr>
+  <h2>Musique</h2>
+  <p>Ecoutez Rivers Rock sur Spotify — playlist a venir.</p>
+  <div style="max-width:600px;margin:16px auto"><iframe src="https://open.spotify.com/embed/playlist/REMPLACER_PAR_ID" width="100%" height="380" frameborder="0" allow="encrypted-media" style="border-radius:6px" title="Playlist Rivers Rock"></iframe></div>
+  <hr>
   <h2>Contact</h2>
   <p>riversrockrouen@gmail.com</p>
   <div class="links">
