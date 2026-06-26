@@ -503,3 +503,66 @@ def pillar_sun_logo(cv, cx, cy, scale=1.0):
         p.lineTo(pts[2][0], pts[2][1])
         p.close()
         cv.drawPath(p, fill=1, stroke=0)
+
+
+# ── Factorized utility functions (Lots 3) ──
+
+def draw_gradient_pdf(cv, W, H, c1, c2, steps=120, x=0, y=0):
+    """Draw a vertical gradient from c1 to c2 over (W, H) at (x, y) using ReportLab."""
+    dh = H / steps
+    for i in range(steps):
+        t = i / (steps - 1)
+        r = c1.red + (c2.red - c1.red) * t
+        g = c1.green + (c2.green - c1.green) * t
+        b = c1.blue + (c2.blue - c1.blue) * t
+        cv.setFillColor(Color(r, g, b))
+        cv.rect(x, y + i * dh, W, dh + 0.5, stroke=0, fill=1)
+
+
+def draw_waves_pdf(cv, W, H, color=None, count=3, opacity=0.06, amp_base=6, period_base=24):
+    """Draw decorative sine waves across the canvas."""
+    c = color or Color(1, 1, 1)
+    cv.setFillColor(Color(c.red, c.green, c.blue, alpha=opacity))
+    for row in range(count):
+        y_base = 20 + row * 30
+        amp = amp_base + row * 6
+        period = period_base + row * 12
+        segments = int(W / 2)
+        step_x = W / segments
+        p = cv.beginPath()
+        p.moveTo(0, y_base)
+        for i in range(segments + 1):
+            px = i * step_x
+            py = y_base + amp * math.sin(i * 2 * math.pi / period)
+            p.lineTo(px, py)
+        p.lineTo(W, 0)
+        p.lineTo(0, 0)
+        p.close()
+        cv.drawPath(p, fill=1, stroke=0)
+
+
+def draw_grain_pdf(cv, W, H, count=3000, seed=42, alpha_min=0.02, alpha_max=0.06):
+    """Draw a grain/noise texture overlay."""
+    random.seed(seed)
+    for _ in range(count):
+        x = random.uniform(0, W)
+        y = random.uniform(0, H)
+        a = random.uniform(alpha_min, alpha_max)
+        cv.setFillColor(Color(1, 1, 1, alpha=a))
+        cv.circle(x, y, random.uniform(0.3, 1.0), stroke=0, fill=1)
+
+
+def draw_footer_rouen(cv, W, font_name="Montserrat", font_size=7, tracking=3, y_pos=14, alpha=0.12):
+    """Draw 'ROUEN' spaced footer text."""
+    cv.setFillColor(Color(0, 0, 0, alpha=alpha))
+    cv.setFont(font_name, font_size)
+    text = "R O U E N"
+    tw = sum(pdfmetrics.stringWidth(c, font_name, font_size) for c in text.replace(" ", ""))
+    total_w = tw + tracking * 4
+    x = W / 2 - total_w / 2
+    for c in text:
+        if c == " ":
+            continue
+        w = pdfmetrics.stringWidth(c, font_name, font_size)
+        cv.drawString(x, y_pos, c)
+        x += w + tracking

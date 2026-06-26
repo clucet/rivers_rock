@@ -39,14 +39,9 @@ pdfmetrics.registerFont(TTFont("RubikGlitch", RUBIK_PATH))
 pdfmetrics.registerFont(TTFont("SpaceMono", SPACE_MONO_PATH))
 pdfmetrics.registerFont(TTFont("SyneMono", SYNEMONO_PATH))
 
-SETLIST = [
-    ("NIAGARA", "J'ai vu"), ("AC/DC", "You shook me all night long"),
-    ("DOLLY", "Je n'veux pas rester sage"), ("THE PIXIES", "Where is my mind"),
-    ("PJ HARVEY", "Good fortune"), ("BELLA CIAO", ""),
-    ("SMASHING PUMPKINS", "Today"), ("RADIOHEAD", "Creep"),
-    ("DESIRELESS", "Voyage, voyage"), ("QUEEN", "We will rock you"),
-    ("ROLLING STONES", "Jumping jack flash"), ("WHITE STRIPES", "Seven nation army"),
-]
+from setlist_data import SETLIST
+
+GREEN_INDICES = {0, 3, 6}
 
 def logo_grunge_rl(cv, cx, cy, scale=1.0):
     cv.setFillColor(Color(1, 51/255, 102/255))
@@ -167,7 +162,7 @@ def gen_flyer():
         cv.setFont("SpaceMono", 7)
         cv.drawCentredString(cx, y - 6, "contactez-nous!")
         cv.setFillColor(Color(0, 0, 0, alpha=0.3))
-        cv.setFont("SpaceMono", 5)
+        cv.setFont("SpaceMono", 7)
         cv.drawCentredString(cx, y - 22, "@riversrockrouen")
     for page in range(2):
         for row in range(2):
@@ -327,6 +322,7 @@ def gen_site():
 <style>
 *{margin:0;padding:0}
 body{font-family:'Courier New',monospace;background:#F5EADD;color:#1A1A1A;min-height:100vh}
+@media(prefers-color-scheme:dark){body{background:#1A1A1A;color:#E8D8CC}}
 .bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.12'/%3E%3C/svg%3E")}
 header{padding:20px 24px 10px;text-align:center;position:relative;z-index:1;border-bottom:3px dashed #1A1A1A}
 header h1{font-size:42px;letter-spacing:-2px;text-transform:uppercase;color:#FF3366}

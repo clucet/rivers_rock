@@ -42,21 +42,7 @@ pdfmetrics.registerFont(TTFont("PlayfairDisplay", PLAYFAIR_PATH))
 pdfmetrics.registerFont(TTFont("Karla", KARLA_PATH))
 pdfmetrics.registerFont(TTFont("DMMono", DMMONO_PATH))
 
-SETLIST = [
-    ("NIAGARA", "J'ai vu"),
-    ("AC/DC", "You shook me all night long"),
-    ("DOLLY", "Je n'veux pas rester sage"),
-    ("THE PIXIES", "Where is my mind"),
-    ("PJ HARVEY", "Good fortune"),
-    ("BELLA CIAO", ""),
-    ("SMASHING PUMPKINS", "Today"),
-    ("RADIOHEAD", "Creep"),
-    ("DESIRELESS", "Voyage, voyage"),
-    ("QUEEN", "We will rock you"),
-    ("ROLLING STONES", "Jumping jack flash"),
-    ("WHITE STRIPES", "Seven nation army"),
-]
-GREEN_INDICES = {0, 3, 6}
+from setlist_data import SETLIST, GREEN_INDICES
 
 
 def jazz_logo_reportlab(cv, cx, cy, scale=1.0):
@@ -268,7 +254,7 @@ def gen_flyer():
         cv.setFont("Karla", 7)
         cv.drawCentredString(cx, y - 6, "Contactez-nous pour programmer un concert")
         cv.setFillColor(Color(0, 0, 0, alpha=0.35))
-        cv.setFont("DMMono", 6)
+        cv.setFont("DMMono", 7)
         cv.drawCentredString(cx, y - 22, "@riversrockrouen - riversrockrouen@gmail.com")
 
     for page in range(2):
@@ -543,6 +529,7 @@ def gen_site():
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Karla:wght@300;400;600&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
 :root{--nuit:#0A0A0A;--or:#C9A86C;--cuivre:#B87333;--rouge:#8B1A1A;--ivoire:#F5F0E8}
+@media(prefers-color-scheme:light){:root{--nuit:#1A1A1A;--or:#C9A86C;--cuivre:#B87333;--rouge:#8B1A1A;--ivoire:#F0E8D8}}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{font-family:'Karla',sans-serif;font-weight:300;color:var(--ivoire);min-height:100vh;background:var(--nuit)}

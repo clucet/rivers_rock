@@ -45,21 +45,7 @@ BLANC_PIL = (255, 255, 255)
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
 pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
 
-SETLIST = [
-    ("NIAGARA", "J'ai vu"),
-    ("AC/DC", "You shook me all night long"),
-    ("DOLLY", "Je n'veux pas rester sage"),
-    ("THE PIXIES", "Where is my mind"),
-    ("PJ HARVEY", "Good fortune"),
-    ("BELLA CIAO", ""),
-    ("SMASHING PUMPKINS", "Today"),
-    ("RADIOHEAD", "Creep"),
-    ("DESIRELESS", "Voyage, voyage"),
-    ("QUEEN", "We will rock you"),
-    ("ROLLING STONES", "Jumping jack flash"),
-    ("WHITE STRIPES", "Seven nation army"),
-]
-GREEN_INDICES = {0, 3, 6}
+from setlist_data import SETLIST, GREEN_INDICES
 
 # ── Setlist ──
 

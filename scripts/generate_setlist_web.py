@@ -8,22 +8,7 @@ from logoutils import BEBAS_PATH
 OUT = os.path.join(os.path.dirname(__file__), "..", "site", "setlist")
 os.makedirs(OUT, exist_ok=True)
 
-SETLIST = [
-    ("01", "NIAGARA", "J'ai vu", 120),
-    ("02", "AC/DC", "You shook me all night long", 132),
-    ("03", "DOLLY", "Je n'veux pas rester sage", 115),
-    ("04", "THE PIXIES", "Where is my mind", 80),
-    ("05", "PJ HARVEY", "Good fortune", 110),
-    ("06", "BELLA CIAO", "", 100),
-    ("07", "SMASHING PUMPKINS", "Today", 135),
-    ("08", "RADIOHEAD", "Creep", 90),
-    ("09", "DESIRELESS", "Voyage, voyage", 125),
-    ("10", "QUEEN", "We will rock you", 88),
-    ("11", "ROLLING STONES", "Jumping jack flash", 140),
-    ("12", "WHITE STRIPES", "Seven nation army", 124),
-]
-
-LOWER = {6, 10}  # indices (0-based) for songs played a tone lower
+from setlist_data import SETLIST_WEB as SETLIST, LOWER
 
 html = '''<!DOCTYPE html>
 <html lang="fr">

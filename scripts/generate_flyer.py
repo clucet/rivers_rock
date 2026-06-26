@@ -4,6 +4,7 @@
 import os, math, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from logoutils import create_bleed_canvas, save_with_crop_marks, reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH, draw_qr_reportlab
+from logoutils import draw_gradient_pdf
 from palette import ACTIVE as CFG
 from reportlab.lib.pagesizes import A4, A6
 from reportlab.lib.colors import Color
@@ -27,17 +28,6 @@ COLS = 2
 ROWS = 2
 
 
-def gradient(cv, x, y, w, h, c1, c2, steps=60):
-    dh = h / steps
-    for i in range(steps):
-        t = i / (steps - 1)
-        r = c1.red + (c2.red - c1.red) * t
-        g = c1.green + (c2.green - c1.green) * t
-        b = c1.blue + (c2.blue - c1.blue) * t
-        cv.setFillColor(Color(r, g, b))
-        cv.rect(x, y + i * dh, w, dh + 0.5, stroke=0, fill=1)
-
-
 def wave_or(cv, x, y, w, h):
     cv.setFillColor(OR_VIEILLI)
     for row in range(2):
@@ -59,7 +49,7 @@ def wave_or(cv, x, y, w, h):
 
 
 def draw_recto(cv, ox, oy):
-    gradient(cv, ox, oy, FW, FH, BLEU_SEINE, TEAL_PROFOND)
+    draw_gradient_pdf(cv, FW, FH, BLEU_SEINE, TEAL_PROFOND, steps=60, x=ox, y=oy)
     wave_or(cv, ox, oy, FW, FH)
 
     cx = ox + FW / 2
@@ -82,7 +72,7 @@ def draw_recto(cv, ox, oy):
 
 
 def draw_verso(cv, ox, oy):
-    gradient(cv, ox, oy, FW, FH, BLEU_SEINE, TEAL_PROFOND)
+    draw_gradient_pdf(cv, FW, FH, BLEU_SEINE, TEAL_PROFOND, steps=60, x=ox, y=oy)
     wave_or(cv, ox, oy, FW, FH)
 
     cx = ox + FW / 2
@@ -134,7 +124,8 @@ def draw_verso(cv, ox, oy):
 
 def gen_flyer():
     global cv
-    cv = canvas.Canvas(OUTPUT, pagesize=A4)
+    A4_W, A4_H = A4[0], A4[1]
+    cv, trim_w, trim_h, bleed = create_bleed_canvas(OUTPUT, A4_W, A4_H)
 
     for page in range(2):
         for row in range(ROWS):
@@ -148,7 +139,7 @@ def gen_flyer():
         if page == 0:
             cv.showPage()
 
-    cv.save()
+    save_with_crop_marks(cv, trim_w, trim_h, bleed)
     print(f"Flyer généré : {OUTPUT}")
 
 

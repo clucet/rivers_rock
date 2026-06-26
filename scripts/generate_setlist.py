@@ -4,6 +4,7 @@
 import os, sys, math, random
 sys.path.insert(0, os.path.dirname(__file__))
 from logoutils import reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH, create_bleed_canvas, save_with_crop_marks
+from logoutils import draw_gradient_pdf, draw_waves_pdf, draw_grain_pdf
 from palette import ACTIVE as CFG
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.colors import Color
@@ -25,22 +26,7 @@ pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
 
 W, H = A4[0], A4[1]
 
-SETLIST = [
-    ("NIAGARA", "J'ai vu"),
-    ("AC/DC", "You shook me all night long"),
-    ("DOLLY", "Je n'veux pas rester sage"),
-    ("THE PIXIES", "Where is my mind"),
-    ("PJ HARVEY", "Good fortune"),
-    ("BELLA CIAO", ""),
-    ("SMASHING PUMPKINS", "Today"),
-    ("RADIOHEAD", "Creep"),
-    ("DESIRELESS", "Voyage, voyage"),
-    ("QUEEN", "We will rock you"),
-    ("ROLLING STONES", "Jumping jack flash"),
-    ("WHITE STRIPES", "Seven nation army"),
-]
-
-GREEN_INDICES = {0, 3, 6}
+from setlist_data import SETLIST, GREEN_INDICES
 
 W, H = A4[0], A4[1]
 
@@ -62,46 +48,8 @@ ROW_PITCH = 86
 ROWS_TOP = 610
 
 
-def draw_gradient(cv):
-    steps = 120
-    dh = H / steps
-    for i in range(steps):
-        t = i / (steps - 1)
-        r = BLEU_SEINE.red + (TEAL_PROFOND.red - BLEU_SEINE.red) * t
-        g = BLEU_SEINE.green + (TEAL_PROFOND.green - BLEU_SEINE.green) * t
-        b = BLEU_SEINE.blue + (TEAL_PROFOND.blue - BLEU_SEINE.blue) * t
-        cv.setFillColor(Color(r, g, b))
-        cv.rect(0, i * dh, W, dh + 1, stroke=0, fill=1)
-
-
-def draw_grain(cv):
-    random.seed(42)
-    for _ in range(3000):
-        x = random.uniform(0, W)
-        y = random.uniform(0, H)
-        a = random.uniform(0.02, 0.06)
-        cv.setFillColor(Color(1, 1, 1, alpha=a))
-        cv.circle(x, y, random.uniform(0.3, 1.0), stroke=0, fill=1)
-
-
-def draw_waves(cv):
-    cv.setFillColor(Color(1, 1, 1, alpha=0.06))
-    for row in range(3):
-        y_base = 20 + row * 30
-        amp = 8 + row * 6
-        period = 28 + row * 12
-        segments = 300
-        step_x = W / segments
-        p = cv.beginPath()
-        p.moveTo(0, y_base)
-        for i in range(segments + 1):
-            px = i * step_x
-            py = y_base + amp * math.sin(i * 2 * math.pi / period)
-            p.lineTo(px, py)
-        p.lineTo(W, 0)
-        p.lineTo(0, 0)
-        p.close()
-        cv.drawPath(p, fill=1, stroke=0)
+def draw_wave_stroke(cv):
+    """Decorative gold wave stroke at bottom."""
     cv.setStrokeColor(OR_VIEILLI)
     cv.setLineWidth(1.5)
     y_line = H - 45
@@ -223,9 +171,10 @@ def draw_cards(cv):
 
 def create_pdf():
     cv, _, _, bleed = create_bleed_canvas(OUTPUT, W, H)
-    draw_gradient(cv)
-    draw_grain(cv)
-    draw_waves(cv)
+    draw_gradient_pdf(cv, W, H, BLEU_SEINE, TEAL_PROFOND)
+    draw_grain_pdf(cv, W, H)
+    draw_waves_pdf(cv, W, H)
+    draw_wave_stroke(cv)
     draw_logo(cv)
     draw_setlist_subtitle(cv)
     draw_cards(cv)

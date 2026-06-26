@@ -4,6 +4,7 @@
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from logoutils import create_bleed_canvas, save_with_crop_marks, reportlab_crest, BEBAS_PATH, MONTSERRAT_PATH
+from logoutils import draw_gradient_pdf
 from reportlab.lib.units import mm
 from reportlab.lib.colors import HexColor, Color
 from reportlab.pdfgen import canvas
@@ -24,19 +25,8 @@ W = 85 * mm
 H = 55 * mm
 
 
-def draw_gradient(cv, steps=60):
-    dh = H / steps
-    for i in range(steps):
-        t = i / (steps - 1)
-        r = BLEU_SEINE.red + (VERT_EAU.red - BLEU_SEINE.red) * t
-        g = BLEU_SEINE.green + (VERT_EAU.green - BLEU_SEINE.green) * t
-        b = BLEU_SEINE.blue + (VERT_EAU.blue - BLEU_SEINE.blue) * t
-        cv.setFillColor(Color(r, g, b))
-        cv.rect(0, i * dh, W, dh + 1, stroke=0, fill=1)
-
-
-cv, W, H, bleed = create_bleed_canvas(OUTPUT, W, H)
-draw_gradient(cv)
+cv, W_card, H_card, bleed = create_bleed_canvas(OUTPUT, W, H)
+draw_gradient_pdf(cv, W, H, BLEU_SEINE, VERT_EAU, steps=60)
 
 reportlab_crest(cv, 24 * mm, H / 2 + 4, 0.45)
 cv.setFillColor(BLANC)

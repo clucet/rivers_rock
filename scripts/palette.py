@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Central palette and design tokens for all Rivers Rock proposals."""
 
+import os
 from dataclasses import dataclass, field
 from reportlab.lib.colors import HexColor
 
@@ -665,3 +666,47 @@ JAZZ_CLUB = Config(
         "use_timbre": True,
     },
 )
+
+
+# ── WCAG contrast checking utilities ──
+
+def relative_luminance(hex_color):
+    """Calculate relative luminance per WCAG 2.1 definition."""
+    h = hex_color.lstrip("#")
+    r, g, b = tuple(int(h[i:i+2], 16) / 255.0 for i in (0, 2, 4))
+    def linearize(c):
+        return c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+    return 0.2126 * linearize(r) + 0.7152 * linearize(g) + 0.0722 * linearize(b)
+
+
+def contrast_ratio(c1, c2):
+    """Calculate contrast ratio between two hex colors (WCAG 2.1)."""
+    l1 = relative_luminance(c1)
+    l2 = relative_luminance(c2)
+    lighter = max(l1, l2)
+    darker = min(l1, l2)
+    return (lighter + 0.05) / (darker + 0.05)
+
+
+def check_wcag_aa(cfg, threshold_small=4.5, threshold_large=3.0):
+    """Check all color pairs in a config against WCAG AA thresholds.
+    Returns list of (name1, name2, ratio, passed_small, passed_large)."""
+    results = []
+    items = [(n, v[0]) for n, v in cfg.colors.items() if not n.startswith("_")]
+    for i, (n1, h1) in enumerate(items):
+        for n2, h2 in items[i+1:]:
+            ratio = contrast_ratio(h1, h2)
+            results.append((n1, n2, ratio, ratio >= threshold_small, ratio >= threshold_large))
+    return results
+
+
+def print_wcag_report(cfg):
+    """Print a formatted WCAG contrast report for a config."""
+    print(f"\n=== WCAG AA Report: {cfg.name} ===")
+    print(f"{'Color 1':<20} {'Color 2':<20} {'Ratio':>6} {'Small':>6} {'Large':>6}")
+    print("-" * 58)
+    for n1, n2, ratio, passed_small, passed_large in check_wcag_aa(cfg):
+        small = "✅" if passed_small else "❌"
+        large = "✅" if passed_large else "❌"
+        print(f"{n1:<20} {n2:<20} {ratio:>5.2f}:1 {small:>6} {large:>6}")
+    print()

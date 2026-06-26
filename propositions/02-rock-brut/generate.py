@@ -43,21 +43,7 @@ pdfmetrics.registerFont(TTFont("Anton", ANTON_PATH))
 pdfmetrics.registerFont(TTFont("InterTight", INTERTIGHT_PATH))
 pdfmetrics.registerFont(TTFont("JetBrainsMono", JETBRAINS_PATH))
 
-SETLIST = [
-    ("NIAGARA", "J'ai vu"),
-    ("AC/DC", "You shook me all night long"),
-    ("DOLLY", "Je n'veux pas rester sage"),
-    ("THE PIXIES", "Where is my mind"),
-    ("PJ HARVEY", "Good fortune"),
-    ("BELLA CIAO", ""),
-    ("SMASHING PUMPKINS", "Today"),
-    ("RADIOHEAD", "Creep"),
-    ("DESIRELESS", "Voyage, voyage"),
-    ("QUEEN", "We will rock you"),
-    ("ROLLING STONES", "Jumping jack flash"),
-    ("WHITE STRIPES", "Seven nation army"),
-]
-GREEN_INDICES = {0, 3, 6}
+from setlist_data import SETLIST, GREEN_INDICES
 
 
 def hexagon_logo_reportlab(cv, cx, cy, size):

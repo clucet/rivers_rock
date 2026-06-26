@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nordik — Aperçu · Rivers Rock</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0D1117;--bg2:#161B22;--bg3:#1C2333;--text:#E6EDF3;--text2:#8B949E;--border:rgba(255,255,255,0.06);--accent:#FAFAFA;--radius:10px}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
+.bg-grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.03'/%3E%3C/svg%3E")}
+.container{max-width:1100px;margin:0 auto;padding:24px;position:relative;z-index:1}
+
+/* Header */
+.header{text-align:center;padding:60px 0 20px;position:relative}
+.header .num{font-family:'Anton',sans-serif;font-size:14px;color:rgba(255,255,255,0.15);letter-spacing:4px;text-transform:uppercase}
+.header h1{font-family:'Anton',sans-serif;font-size:42px;letter-spacing:2px;margin:8px 0;background:linear-gradient(135deg,var(--text) 30%,#FAFAFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header .tagline{font-size:13px;color:var(--text2);font-family:'Space Mono',monospace}
+.header-actions{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.header-actions a{padding:10px 24px;border-radius:8px;text-decoration:none;font-family:'Space Mono',monospace;font-size:12px;transition:.2s;letter-spacing:.5px}
+.btn-site{background:#FAFAFA;color:#fff}
+.btn-site:hover{filter:brightness(1.15)}
+.btn-back{background:rgba(255,255,255,0.06);color:var(--text2)}
+.btn-back:hover{background:rgba(255,255,255,0.1);color:var(--text)}
+
+/* Sections */
+.section{margin:48px 0}
+.section-title{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:1px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+
+/* Logos */
+.logo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.logo-card{background:var(--bg2);border-radius:var(--radius);border:1px solid var(--border);padding:20px;text-align:center;transition:.2s}
+.logo-card:hover{background:var(--bg3)}
+.logo-card.missing{opacity:0.3}
+.logo-frame{height:100px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.logo-frame img{max-width:100%;max-height:100%;object-fit:contain}
+.logo-label{font-size:12px;font-weight:600}
+.logo-fname{font-size:10px;color:var(--text2);margin-top:2px}
+.missing-icon{color:var(--text2);font-size:24px}
+
+/* Animated logo iframe */
+.anim-wrapper{max-width:300px;margin:0 auto;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
+.anim-wrapper iframe{width:100%;aspect-ratio:9/16;display:block;border:none}
+
+/* Palette */
+.palette-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.swatch{border-radius:var(--radius);height:80px;position:relative;overflow:hidden}
+.swatch-info{position:absolute;bottom:0;left:0;right:0;padding:8px 10px;background:rgba(0,0,0,0.2);backdrop-filter:blur(4px);display:flex;justify-content:space-between;align-items:center}
+.swatch-name{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.swatch-hex{font-family:'Space Mono',monospace;font-size:9px;opacity:0.7}
+
+/* Typography */
+.font-row{display:flex;align-items:center;gap:16px;padding:12px 16px;background:var(--bg2);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:8px}
+.font-role{font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:1px;min-width:60px}
+.font-name{font-size:14px;min-width:130px}
+.font-specimen{font-size:18px;color:var(--text);flex:1;text-align:right}
+
+/* Flags */
+.flags-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.flag-badge{padding:5px 14px;border-radius:20px;font-size:11px;background:#FAFAFA22;color:#FAFAFA;border:1px solid #FAFAFA44;font-family:'Space Mono',monospace}
+
+/* PDFs */
+.pdf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.pdf-card{background:var(--bg2);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;text-decoration:none;color:var(--text);transition:.2s}
+.pdf-card:hover{background:var(--bg3);transform:translateY(-2px)}
+.pdf-card .pdf-thumb{width:100%;height:150px;object-fit:cover;display:block;background:var(--bg3)}
+.pdf-icon{height:150px;display:flex;align-items:center;justify-content:center;font-size:36px;background:var(--bg3)}
+.pdf-info{padding:10px 12px;display:flex;justify-content:space-between;align-items:center}
+.pdf-name{font-size:12px;font-weight:600}
+.pdf-size{font-size:10px;color:var(--text2);font-family:'Space Mono',monospace}
+
+/* Template thumbnails */
+.tmpl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.tmpl-card{background:var(--bg2);border-radius:var(--radius);border:1px solid var(--border);padding:8px;text-align:center;transition:.2s}
+.tmpl-card:hover{background:var(--bg3)}
+.tmpl-card img{width:100%;height:80px;object-fit:contain;display:block;border-radius:4px}
+.tmpl-placeholder{width:100%;height:80px;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:20px;background:var(--bg3);border-radius:4px}
+.tmpl-name{font-size:10px;margin-top:6px;color:var(--text2);word-break:break-all}
+
+/* Charte */
+.charte-card{display:flex;align-items:center;gap:16px;background:var(--bg2);border-radius:var(--radius);border:1px solid #FAFAFA44;padding:16px 20px}
+.charte-icon{font-size:32px;flex-shrink:0}
+.charte-info{flex:1}
+.charte-title{font-weight:600;font-size:14px}
+.charte-desc{font-size:11px;color:var(--text2);margin-top:2px}
+.charte-btn{padding:8px 20px;border-radius:6px;background:#FAFAFA;color:#fff;text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;transition:.2s;flex-shrink:0}
+.charte-btn:hover{filter:brightness(1.15)}
+
+/* Page de comparaison link */
+.back-link{text-align:center;padding:40px 0 20px}
+.back-link a{color:var(--text2);text-decoration:none;font-size:12px;font-family:'Space Mono',monospace;transition:.2s}
+.back-link a:hover{color:var(--text)}
+
+/* Responsive */
+@media(max-width:600px){
+  .header h1{font-size:28px}
+  .logo-grid{grid-template-columns:repeat(2,1fr)}
+  .palette-grid{grid-template-columns:repeat(2,1fr)}
+  .font-row{flex-wrap:wrap}
+  .font-specimen{text-align:left;width:100%;margin-top:4px}
+  .charte-card{flex-wrap:wrap}
+}
+
+@media(prefers-color-scheme:light){
+  :root{--bg:#F5F5F0;--bg2:#FFFFFF;--bg3:#F0F0EB;--text:#1A1A1A;--text2:#666;--border:rgba(0,0,0,0.08)}
+}
+
+@media(prefers-reduced-motion){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="bg-grain"></div>
+<div class="container">
+
+  <div class="header">
+    <div class="num">07-nordik · Proposition 07</div>
+    <h1>Nordik</h1>
+    <p class="tagline">Flat · Circle badges · None wave</p>
+    <div class="header-actions">
+      <a class="btn-site" href="index.html" target="_blank">Voir le site →</a>
+      <a class="btn-back" href="../../propositions/">← Toutes les propositions</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Logo · 5 variantes</div>
+    <div class="logo-grid">
+        <div class="logo-card">
+          <div class="logo-frame"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MCAyNCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjI0Ij4KICA8bGluZSB4MT0iMCIgeTE9IjgiIHgyPSI4MCIgeTI9IjgiIHN0cm9rZT0iI0I4QjVBOCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjgwIiBjeT0iOCIgcj0iMiIgZmlsbD0iI0I4QjVBOCIvPgogIDx0ZXh0IHg9IjQwIiB5PSIyMSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjUuNSIgZmlsbD0iIzJCMkIyQiIgbGV0dGVyLXNwYWNpbmc9IjQiIGZvbnQtd2VpZ2h0PSIyMDAiPnJpdmVycyByb2NrPC90ZXh0Pgo8L3N2Zz4=" alt="Standard"></div>
+          <div class="logo-label">Standard</div>
+          <div class="logo-fname">logo.svg</div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-frame"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MCAyNCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjI0Ij4KICA8bGluZSB4MT0iMCIgeTE9IjgiIHgyPSI4MCIgeTI9IjgiIHN0cm9rZT0iIzJCMkIyQiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjgwIiBjeT0iOCIgcj0iMiIgZmlsbD0iIzJCMkIyQiIvPgogIDx0ZXh0IHg9IjQwIiB5PSIyMSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjUuNSIgZmlsbD0iIzJCMkIyQiIgbGV0dGVyLXNwYWNpbmc9IjQiIGZvbnQtd2VpZ2h0PSIyMDAiPnJpdmVycyByb2NrPC90ZXh0Pgo8L3N2Zz4=" alt="Monochrome"></div>
+          <div class="logo-label">Monochrome</div>
+          <div class="logo-fname">logo-mono.svg</div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-frame"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MCAyNCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjI0Ij4KICA8bGluZSB4MT0iMCIgeTE9IjgiIHgyPSI4MCIgeTI9IjgiIHN0cm9rZT0iI0I4QjVBOCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjgwIiBjeT0iOCIgcj0iMiIgZmlsbD0iI0I4QjVBOCIvPgogIAo8L3N2Zz4=" alt="Icône"></div>
+          <div class="logo-label">Icône</div>
+          <div class="logo-fname">logo-icon.svg</div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-frame"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMzAiIHdpZHRoPSIxODAiIGhlaWdodD0iMzAiPgogIDxsaW5lIHgxPSIwIiB5MT0iOCIgeDI9IjUwIiB5Mj0iOCIgc3Ryb2tlPSIjQjhCNUE4IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI4IiByPSIxLjUiIGZpbGw9IiNCOEI1QTgiLz4KICA8dGV4dCB4PSI3MCIgeT0iMjAiIGZvbnQtZmFtaWx5PSJJbnRlciwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzJCMkIyQiIgbGV0dGVyLXNwYWNpbmc9IjQiIGZvbnQtd2VpZ2h0PSIyMDAiPnJpdmVycyByb2NrPC90ZXh0Pgo8L3N2Zz4=" alt="Compact"></div>
+          <div class="logo-label">Compact</div>
+          <div class="logo-fname">logo-compact.svg</div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-frame"><img src="data:image/svg+xml;base64,PHN2ZyBzdHlsZT0ib3BhY2l0eTowLjMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDgwIDI0IiB3aWR0aD0iODAiIGhlaWdodD0iMjQiPgogIDxsaW5lIHgxPSIwIiB5MT0iOCIgeDI9IjgwIiB5Mj0iOCIgc3Ryb2tlPSIjQjhCNUE4IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI4IiByPSIyIiBmaWxsPSIjQjhCNUE4Ii8+CiAgCjwvc3ZnPg==" alt="Watermark"></div>
+          <div class="logo-label">Watermark</div>
+          <div class="logo-fname">logo-watermark.svg</div>
+        </div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Logo animé</div>
+    <div class="anim-wrapper">
+      <iframe src='templates/logo-animated-nordik.html' title='Logo animé Nordik' loading='lazy'></iframe>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Palette couleurs <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text2);font-weight:400">(15 couleurs)</span></div>
+    <div class="palette-grid">
+        <div class="swatch" style="background:#FAFAFA">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Blanc pur</span>
+            <span class="swatch-hex">#FAFAFA</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#E8E8E4">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Gris nuage</span>
+            <span class="swatch-hex">#E8E8E4</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#4A4A4A">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">Gris ardoise</span>
+            <span class="swatch-hex">#4A4A4A</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#2B2B2B">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">Noir doux</span>
+            <span class="swatch-hex">#2B2B2B</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#B8B5A8">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Accent lin</span>
+            <span class="swatch-hex">#B8B5A8</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#FFFFFF">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Blanc</span>
+            <span class="swatch-hex">#FFFFFF</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#FAFAFA">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Bleu Seine</span>
+            <span class="swatch-hex">#FAFAFA</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#E8E8E4">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Vert d'eau</span>
+            <span class="swatch-hex">#E8E8E4</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#B8B5A8">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Accent</span>
+            <span class="swatch-hex">#B8B5A8</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#E8E8E4">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Teal profond</span>
+            <span class="swatch-hex">#E8E8E4</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#B8B5A8">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Terracotta</span>
+            <span class="swatch-hex">#B8B5A8</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#4A4A4A">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">Or vieilli</span>
+            <span class="swatch-hex">#4A4A4A</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#E8E8E4">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Vert repère</span>
+            <span class="swatch-hex">#E8E8E4</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#F5F0EB">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Blanc cassé</span>
+            <span class="swatch-hex">#F5F0EB</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#8C9196">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Gris acier</span>
+            <span class="swatch-hex">#8C9196</span>
+          </div>
+        </div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Typographie</div>
+    
+        <div class="font-row">
+          <div class="font-role">HERO</div>
+          <div class="font-name">Inter</div>
+          <div class="font-specimen" style="font-family:'Inter',sans-serif">Aa Bb 0123</div>
+        </div>
+        <div class="font-row">
+          <div class="font-role">LOGO</div>
+          <div class="font-name">Inter</div>
+          <div class="font-specimen" style="font-family:'Inter',sans-serif">Aa Bb 0123</div>
+        </div>
+        <div class="font-row">
+          <div class="font-role">BODY</div>
+          <div class="font-name">Inter</div>
+          <div class="font-specimen" style="font-family:'Inter',sans-serif">Aa Bb 0123</div>
+        </div>
+        <div class="font-row">
+          <div class="font-role">BADGE</div>
+          <div class="font-name">Inter</div>
+          <div class="font-specimen" style="font-family:'Inter',sans-serif">Aa Bb 0123</div>
+        </div>
+        <div class="font-row">
+          <div class="font-role">SONG</div>
+          <div class="font-name">Inter</div>
+          <div class="font-specimen" style="font-family:'Inter',sans-serif">Aa Bb 0123</div>
+        </div>
+        <div class="font-row">
+          <div class="font-role">DATA</div>
+          <div class="font-name">Inter</div>
+          <div class="font-specimen" style="font-family:'Inter',sans-serif">Aa Bb 0123</div>
+        </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Éléments graphiques</div>
+    <div class="flags-wrap"><span style="color:var(--text2);font-size:13px">Aucun effet spécial</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">PDF générés <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text2);font-weight:400">(8 fichiers)</span></div>
+    <div class="pdf-grid">
+        <a class="pdf-card" href="pdf/business-card.pdf" target="_blank">
+          <img src="pdf/business-card-preview.png" alt="business-card.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">business-card.pdf</span>
+            <span class="pdf-size">24 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/flyer-nordik.pdf" target="_blank">
+          <img src="pdf/flyer-nordik-preview.png" alt="flyer-nordik.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">flyer-nordik.pdf</span>
+            <span class="pdf-size">13 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/poster-nordik.pdf" target="_blank">
+          <img src="pdf/poster-nordik-preview.png" alt="poster-nordik.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">poster-nordik.pdf</span>
+            <span class="pdf-size">12 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/setlist-nordik.pdf" target="_blank">
+          <img src="pdf/setlist-nordik-preview.png" alt="setlist-nordik.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">setlist-nordik.pdf</span>
+            <span class="pdf-size">15 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/stage-plot.pdf" target="_blank">
+          <img src="pdf/stage-plot-preview.png" alt="stage-plot.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">stage-plot.pdf</span>
+            <span class="pdf-size">23 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/stickers-nordik.pdf" target="_blank">
+          <img src="pdf/stickers-nordik-preview.png" alt="stickers-nordik.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">stickers-nordik.pdf</span>
+            <span class="pdf-size">12 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/t-shirt-techsheet.pdf" target="_blank">
+          <img src="pdf/t-shirt-techsheet-preview.png" alt="t-shirt-techsheet.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">t-shirt-techsheet.pdf</span>
+            <span class="pdf-size">23 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/tshirt-nordik.pdf" target="_blank">
+          <img src="pdf/tshirt-nordik-preview.png" alt="tshirt-nordik.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">tshirt-nordik.pdf</span>
+            <span class="pdf-size">12 Ko</span>
+          </div>
+        </a></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Templates réseaux <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text2);font-weight:400">(8 fichiers)</span></div>
+    <div class="tmpl-grid">
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAABtElEQVR4nO3YsYoTURiG4f9MJtmRXVe20AW3sLCw8CYMNrK4hU1Q0NZ7sPMCrAVvQKwCFhai4FVYWugGW3U1iVkzc6wsxCpBHMY8Tzfdy/DBzDkRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/D/SyxfPnrQdweYqB1tb99uOYHOVi8Wi7QY2WFmWvbYb2GBlU+drbUcAAAAAAAAAAAAAAKwltR3QNa+fP93/lmezqtrdb5o6Hx+ffLh8ce9Cbye+nE7jymD7/NvhcPi97c6uKNsO6Jplr3hQpbNXUxPbRRPjg4Od8Y+ox8tZeh8pzsV8cjciJm13dkXRdkDX5Mi7kXMzONM/vHHzzqOi6FcppUu5iccn0+L68PCe8a3AAFeVomgivxoOb32OiMj5tJcjT77Oizej0ahuua5zDHBVOSLl/Md7q6pPfmfWYIB/Qc4Oc+sywBXlnIuU0m+DK9wmrM1nY0X9NHi47KX5r+e6nr4b9PZuHx19dPUCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMA/8ROV7VppcHd7UwAAAABJRU5ErkJggg==' alt='avatar.png' loading='lazy'>
+          <div class="tmpl-name">avatar.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAA1CAIAAABJBneKAAAC5ElEQVR4nO2cQW/UMBCF34ydtBw5cAChCiFx5Mz//wtwAg4gpApxbEG0u7HncXA37G7TSpS2m4zmO2WdrGTl7Rvb4/HKarVC4Bc9dAeChyUEdk4meeg+BA9IONg5GQgHeyZHhPZNONg5MQY7J0K0cyJEOydCtHOmEx0iIiLtmmQkQ5ZLnmxVTaraonetNQReLhMCk6y1mEm7fvQuBffJRIgWkZwzcBWizazW8ugdC+6HfQeras65lGJmrSWl1Pf9MKzDzEtkb5kkKaVhWG/butYCMqVcyvD4/Qv+k51ER0rJSCNQK1IGABJkgfW5A0oMyYtjx8EqLL9/2c8znn6Rp8/0xav6+QOs6skbO34i/TFjMF4aWw4WAMIfpyxF377j92/103t5+Vq6vn79mJ+foD8OAy8OOT8/Gz+klDTloQwwgypGPUWO+qP16qI1iMgNsVoi8Tk3dkJ0rSWllASFJva3vct9KTszr02aa4/Iec2O/WXSMKy7rhfRWgsJVUkpA6hlZ/Ql2XKZu6pPyx4ckP1EB8nV6jLnLudOBCRLKWZ191skJ5JcYd8ZMp2LrrWQ2gQbMx5bdykSfl0G07tJXdfn3JlVEbm8vNh+pm0u1UrV/anWJmijWV9V40dwcKYdXEppQt6kkGprb4pa05IkIKowi1g9F6YFNqvXxt0rtreKN+h4q12kFMadC3c52dC+si0zCeBGuwcHZNrBt0DSzESkTb5EMGY/QuAZcoeiu6vn2zBMEhgnXDH0zo47lM3KZoYFACLScpqjlYNZcQ9VlaHrnIm6aOfEyQbnhIOdEycbnBN/4eCcnPM/5zqCBZGv7wYGnsi1Tm8qBD6ISZZzYpnknEh0OMflFJpWDQKSAhACUASgEGwbna3+RKQVcotACKaUxjOVbnAYoklCQBqbdthUgF61Qzc1/TQTVQDEuJTw9jZchuhWfHDr/FEmrOrxVXh0cLBNLJOcE7lo54SDnRMCO+cP4s+FvraUsTUAAAAASUVORK5CYII=' alt='email-signature.png' loading='lazy'>
+          <div class="tmpl-name">email-signature.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAA9CAIAAAClVfXnAAAC7klEQVR4nO3bT0vjUBSH4dw/aRuaxBsKLYqigosuRNz5FVz7ncVNN8V240IQK0YqRqWNTWLOnUUgFHRgcHQ6/XGelaZUcnntaRc9Is9zh+GSq74B9rM4MDgODI4Dg+PA4DgwOA4MjgOD48DgODA4DgyOA4PjwOA4MDgODI4Dg+PA4DgwOA4MjgOD48DgODA4DgwOObCUXzzdl5/4H8I5yTKttbU2jmOllBBCSqm1Vku01o7jCCG01vWj1Q9CiMfHx+qJqz7HN9CrvoHvJ4QYDodKqaenJyJqt9vz+fzh4aHT6ZRlOZvNWq1WmqaHh4d5no9Go62trTiOwzDs9XrD4XB3d3cwGJycnHieZ4yx1q76QH8FMDARXVxcnJ6ejsfjJElarVYcx0SktS7L8ujoaDAYBEHQ7/eTJLm6usrzfLFYTCaT8/Pz4+NjIrq+vs7z/OzsbNVH+QaAI9paG0VRr9drNpvGmNvb24ODA2vt5uamMWZnZ2dvb+/m5ub5+dlxnO3t7SiKiqJwHKfRaGRZlmVZGIZE9Pr6CjClBeTy2XQ67XQ6SZJ4njebzbrd7ng83tjYaLfbQRBMJpO3t7d+v18UxXw+N8aMRiNjTLfbvby83N/fl1JKKat/lHUf0WsaWGRZmmcLx/n8FaaUJCIpZaPpNZutsixd1yUia201q4UQRVEIIYQQRFQ9Wo/x+u8Q0b860U9Z08DsTwG+B7NlHBgcBwbHgcFxYHAcGBwHBseBwXFgcBwYHAcGx4HBcWBwHBgcBwbHgcFxYHAcGBwHBseBwXFgcBwYHAcGB7ibVJNSCiHq1QRrbbWKUl1ZXksB+IL772AGFkKkaXp3dxcEQbU++v7+7vt+lmXVNoPneff3977vK6XKsoyiyHXddd9S+RRmYMdxpJRKqel0GoahtbYoCq11mqbWWs/zfN93Xffl5aXaFa52W1Z9yz8CdnWleqUu/0pE9ZV6XFd4RK8fa+3Hkbt8BXIgf8SfosH9AvTyKbuwo+MNAAAAAElFTkSuQmCC' alt='facebook-banner.png' loading='lazy'>
+          <div class="tmpl-name">facebook-banner.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,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' alt='instagram-post.png' loading='lazy'>
+          <div class="tmpl-name">instagram-post.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,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' alt='instagram-story.png' loading='lazy'>
+          <div class="tmpl-name">instagram-story.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,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' alt='lowerthird.png' loading='lazy'>
+          <div class="tmpl-name">lowerthird.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,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' alt='tshirt-mockup.png' loading='lazy'>
+          <div class="tmpl-name">tshirt-mockup.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAABaCAIAAACwpMoFAAAC+0lEQVR4nO3cvU7jQBSG4TljO84fCkJEcgMIWUiIAlFH3AWXS0MBFbRUFFSAQcYEJMh6xp7ZwrsoC6w22h8hf/s9ShEnLsZ5M5arI8YYRbj0Zy+A/i0GBsfA4BgYHAODY2BwDAyOgcExMDgGBsfA4BgYHAODY2BwDAyOgcExMDgGBsfA4BgYHAODY2BwDAyOgcExMDgGBsfA4BgYHAODY2BwDAyOgcExMDgGBsfA4BgYHAODY2BwsIFFRETmD+c/nz98863WWmucnwXnSt6w1l5cXBhjmpzOOaWUiFRV5ZyrqqqJWte1UsoYEwRBc3hzc3N3d/e5i/+LBG8QWhiGZ2dnRVF0u926rre2ti4vL6fTaa/XayqWZRnH8f7+/v39/cnJSZIkeZ6nafr09PT4+BjH8Ww229jY2NnZaf4WrQa4g0Ukz/PNzc2Xl5eyLA8PD4uiuL6+fnh4uLq6StPUe397e2utfX5+HgwGRVFsb2+fnp5mWTaZTDqdztHRUb/fn7/Dt1fLA4u8f3nvkyRZXl4ej8e7u7vD4XAymYzH4yRJ0jQdDodLS0vOOefcYDBYW1tbX18/Pz/f29tbXV09Pj7u9XoHBwdZlgFsX9XqW3RlrfcfNhCvvFJKeRWEYRiGIlKWpYiEYaiUstaKSBRF3nullIjMZrN+v1/XtTEmjmMRqev6zWNaS7U4sDFffrbJ5HvjMIyiqOO9b1K9Fn19/+18kffnzJ/QXi0OrBbYXxiR/kT42Qv4A6y3gJY/ZNGvMDA4BgbHwOAYGBwDg2NgcAwMjoHBMTA4BgbHwOAYGBwDg2NgcAwMjoHBMTA4BgbHwOAYGBwDg2NgcAwMjoHBMTA4BgbHwOAYGBwDg2NgcAwMjoHBMTA4BgbHwOAYGNx/GhhgwtmC2jxGaTHNPFn148zgqqqamcFIk4M/BB5Ya53n+XQ67Xa7Wusoiqy1KysrWZYFQTAajUajEfa4rTZPuluM9945Nz+sUGvtnPPea63h79X4gRXQ4Mnf8BWcRAtJT4YTlgAAAABJRU5ErkJggg==' alt='youtube-banner.png' loading='lazy'>
+          <div class="tmpl-name">youtube-banner.png</div>
+        </div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Charte Graphique</div>
+    
+        <div class="charte-card">
+          <div class="charte-icon">📘</div>
+          <div class="charte-info">
+            <div class="charte-title">Charte Graphique</div>
+            <div class="charte-desc">89 Ko — PDF complet avec logos, palette et règles d'usage</div>
+          </div>
+          <a href="../charte-graphique-07-nordik.pdf" class="charte-btn" target="_blank">Télécharger</a>
+        </div>
+  </div>
+
+  <div class="back-link">
+    <a href="../../propositions/">← Retour à la page de comparaison</a>
+  </div>
+
+</div>
+</body>
+</html>

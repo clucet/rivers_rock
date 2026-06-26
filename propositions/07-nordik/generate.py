@@ -34,15 +34,7 @@ LIN_PIL = CFG.pil("accent_lin")
 
 pdfmetrics.registerFont(TTFont("Inter", INTER_PATH))
 
-SETLIST = [
-    ("NIAGARA", "J'ai vu"), ("AC/DC", "You shook me all night long"),
-    ("DOLLY", "Je n'veux pas rester sage"), ("THE PIXIES", "Where is my mind"),
-    ("PJ HARVEY", "Good fortune"), ("BELLA CIAO", ""),
-    ("SMASHING PUMPKINS", "Today"), ("RADIOHEAD", "Creep"),
-    ("DESIRELESS", "Voyage, voyage"), ("QUEEN", "We will rock you"),
-    ("ROLLING STONES", "Jumping jack flash"), ("WHITE STRIPES", "Seven nation army"),
-]
-GREEN_INDICES = {0, 3, 6}
+from setlist_data import SETLIST, GREEN_INDICES
 
 def nordik_logo_reportlab(cv, cx, cy, scale=1.0):
     w = 60 * scale
@@ -100,11 +92,11 @@ def gen_setlist():
             cv.setFont("Inter", 11)
             cv.drawCentredString(cx, cy - 17, title)
     cv.setFillColor(Color(0, 0, 0, alpha=0.12))
-    cv.setFont("Inter", 6)
+    cv.setFont("Inter", 7)
     text, tr = "R O U E N", 8
-    x = W / 2 - (sum(pdfmetrics.stringWidth(c, "Inter", 6) for c in text) + tr * (len(text) - 1)) / 2
+    x = W / 2 - (sum(pdfmetrics.stringWidth(c, "Inter", 7) for c in text) + tr * (len(text) - 1)) / 2
     for c in text:
-        w = pdfmetrics.stringWidth(c, "Inter", 6)
+        w = pdfmetrics.stringWidth(c, "Inter", 7)
         cv.drawString(x, 14, c)
         x += w + tr
     save_with_crop_marks(cv, _, _, bleed)
@@ -133,11 +125,11 @@ def gen_poster():
     cv.setLineWidth(0.5)
     cv.line(W / 2 - 80, H - 410, W / 2 + 80, H - 410)
     cv.setFillColor(Color(0, 0, 0, alpha=0.12))
-    cv.setFont("Inter", 6)
+    cv.setFont("Inter", 7)
     text, tr = "R O U E N", 8
-    x = W / 2 - (sum(pdfmetrics.stringWidth(c, "Inter", 6) for c in text) + tr * (len(text) - 1)) / 2
+    x = W / 2 - (sum(pdfmetrics.stringWidth(c, "Inter", 7) for c in text) + tr * (len(text) - 1)) / 2
     for c in text:
-        w = pdfmetrics.stringWidth(c, "Inter", 6)
+        w = pdfmetrics.stringWidth(c, "Inter", 7)
         cv.drawString(x, 14, c)
         x += w + tr
     save_with_crop_marks(cv, _, _, bleed)
@@ -181,7 +173,7 @@ def gen_flyer():
         cv.setFont("Inter", 7)
         cv.drawCentredString(cx, y - 6, "Contactez-nous")
         cv.setFillColor(Color(0, 0, 0, alpha=0.3))
-        cv.setFont("Inter", 6)
+        cv.setFont("Inter", 7)
         cv.drawCentredString(cx, y - 22, "@riversrockrouen - riversrockrouen@gmail.com")
     for page in range(2):
         for row in range(2):
@@ -269,7 +261,7 @@ def gen_stickers():
         sr = SR * 0.50
         nordik_logo_reportlab(cv, cx, cy, sr/22.0)
         cv.setFillColor(NOIR)
-        cv.setFont("Inter", 6)
+        cv.setFont("Inter", 7)
         cv.drawCentredString(cx, cy+sr+8, "rivers rock")
     cv.save()
     print(f"[Nordik] Stickers > {path}")
@@ -349,11 +341,12 @@ def gen_site():
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAMlJREFUWEft1rENwjAQBdD/FYyAWIAJYAQKOkZgBEZgBDoWYARGYAQK4kiWLNnxnU8UKZLr/Pd9thMEAf4PQAiAEAChIyA6AgI7ArLWPuc8zjnnC85a+5xzHgEgBEAIAOrA3Xsf9z17ZgBIfYAx5hVjrN77z3ffH4DVByClBICttV+t3bee1gcgpQQAay0B7L0TAOYcBPAcB3NODPCe0DHG5xhjA0AIgBAAoSMgOgICOwKy1j7nnMec8wsnhHDOeRxjjACEEADhCAgBEB0BgR0BWWufc85jzvmFE8Kccx5jjACEEADhCEgIAOgICAEQHQH/Ab3+V/+tKtRsAAAAAElFTkSuQmCC">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
 <style>
-:root{--b:#FAFAFA;--g:#E8E8E4;--a:#4A4A4A;--n:#2B2B2B;--l:#B8B5A8}
+:root{--b:#FAFAFA;--g:#E8E8E4;--a:#4A4A4A;--n:#2B2B2B;--l:#B8B5A8;--nav:rgba(250,250,250,0.9)}
+@media(prefers-color-scheme:dark){:root{--b:#1A1A1A;--g:#2A2A2A;--a:#B8B5A8;--n:#E8E8E4;--l:#6A6A5A;--nav:rgba(26,26,26,0.9)}}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:60px}
 body{font-family:'Inter',sans-serif;font-weight:300;color:var(--a);background:var(--b)}
-nav{position:fixed;top:0;width:100%;padding:12px 32px;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(250,250,250,0.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--g)}
+nav{position:fixed;top:0;width:100%;padding:12px 32px;display:flex;justify-content:space-between;align-items:center;z-index:100;background:var(--nav);backdrop-filter:blur(8px);border-bottom:1px solid var(--g)}
 nav .logo-small{text-decoration:none;color:var(--n);font-weight:200;font-size:14px;letter-spacing:4px;text-transform:lowercase}
 nav a{color:var(--a);text-decoration:none;font-size:11px;font-weight:300;letter-spacing:1px;padding:4px 12px;transition:.3s}
 nav a:hover{color:var(--l)}
