@@ -16,9 +16,9 @@ header p{font-family:'Space Mono',monospace;font-size:13px;color:rgba(255,255,25
 .btn-zip{display:inline-block;margin-top:14px;padding:10px 24px;border-radius:8px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;border:1px solid rgba(255,255,255,0.08);transition:.2s;letter-spacing:.5px}
 .btn-zip:hover{background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.15)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:24px;max-width:1200px;margin:40px auto;padding:0 24px;position:relative;z-index:1}
-.card{background:rgba(255,255,255,0.04);border-radius:12px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;transition:.3s;text-decoration:none;color:#fff}
-.card:hover{transform:translateY(-4px);background:rgba(255,255,255,0.07)}
-.card-header{padding:20px 24px;display:flex;justify-content:space-between;align-items:center}
+.card{display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:12px;border:1px solid rgba(255,255,255,0.06);border-top:3px solid;overflow:hidden;transition:.3s;text-decoration:none;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.2)}
+.card:hover{transform:translateY(-4px);background:rgba(255,255,255,0.07);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.card-header{padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
 .card-header .num{font-family:'Anton',sans-serif;font-size:14px;color:rgba(255,255,255,0.2)}
 .card-header .badge{font-size:10px;padding:3px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:1px}
 .badge-fluid{background:rgba(212,168,67,0.15);color:#D4A843}
@@ -32,11 +32,11 @@ header p{font-family:'Space Mono',monospace;font-size:13px;color:rgba(255,255,25
 .badge-minuit{background:rgba(201,168,124,0.15);color:#C9A87C}
 .card-preview{height:160px;display:flex;align-items:center;justify-content:center;position:relative}
 .card-preview svg{max-width:120px;max-height:80px}
-.card-body{padding:20px 24px}
+.card-body{padding:16px 24px;flex:1;display:flex;flex-direction:column;justify-content:center}
 .card-body h2{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:4px}
-.card-body .tag{font-size:11px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
-.card-body p{font-size:13px;line-height:1.6;color:rgba(255,255,255,0.6)}
-.card-footer{display:flex;gap:8px;padding:0 24px 20px;flex-wrap:wrap}
+.card-body .tag{font-size:11px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.card-body p{font-size:13px;line-height:1.5;color:rgba(255,255,255,0.6)}
+.card-footer{display:flex;gap:8px;padding:12px 24px 16px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.04);background:rgba(0,0,0,0.08);margin-top:auto}
 .card-footer a{font-family:'Space Mono',monospace;font-size:11px;padding:6px 14px;border-radius:6px;text-decoration:none;transition:.2s;letter-spacing:0.5px}
 .card-footer .btn-site{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7)}
 .card-footer .btn-site:hover{background:rgba(255,255,255,0.15);color:#fff}
@@ -60,7 +60,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
 <div class="grid">
 
   <!-- 01 Fluid Wave -->
-  <a class="card" href="01-fluid-wave/assets/index.html" target="_blank">
+  <a class="card" href="01-fluid-wave/assets/index.html" target="_blank" style="border-top-color:#D4A843">
     <div class="card-header">
       <span class="num">01</span>
       <span class="badge badge-fluid">Organique</span>
@@ -84,7 +84,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 02 Rock Brut -->
-  <a class="card" href="02-rock-brut/assets/index.html" target="_blank">
+  <a class="card" href="02-rock-brut/assets/index.html" target="_blank" style="border-top-color:#FF3B00">
     <div class="card-header">
       <span class="num">02</span>
       <span class="badge badge-rock">Industriel</span>
@@ -109,7 +109,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 03 Scène & Vintage -->
-  <a class="card" href="03-scene-vintage/assets/index.html" target="_blank" style="border-color:rgba(201,168,76,0.2)">
+  <a class="card" href="03-scene-vintage/assets/index.html" target="_blank" style="border-top-color:#C9A84C">
     <div class="card-header">
       <span class="num">03</span>
       <span class="badge badge-vintage">Vintage</span>
@@ -135,7 +135,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 04 Ponts & Lumière -->
-  <a class="card" href="04-ponts-lumiere/assets/index.html" target="_blank">
+  <a class="card" href="04-ponts-lumiere/assets/index.html" target="_blank" style="border-top-color:#FFB703">
     <div class="card-header">
       <span class="num">04</span>
       <span class="badge badge-ponts">Architectural</span>
@@ -161,7 +161,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 05 Neon Nights -->
-  <a class="card" href="05-neon-nights/assets/index.html" target="_blank">
+  <a class="card" href="05-neon-nights/assets/index.html" target="_blank" style="border-top-color:#FF2D95">
     <div class="card-header">
       <span class="num">05</span>
       <span class="badge badge-vintage" style="background:rgba(255,45,149,0.15);color:#FF2D95">Cyberpunk</span>
@@ -187,7 +187,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 06 Sable & Bronze -->
-  <a class="card" href="06-sable-bronze/assets/index.html" target="_blank">
+  <a class="card" href="06-sable-bronze/assets/index.html" target="_blank" style="border-top-color:#CC6B49">
     <div class="card-header">
       <span class="num">06</span>
       <span class="badge" style="background:rgba(204,107,73,0.15);color:#CC6B49">Voyage</span>
@@ -215,7 +215,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 07 Nordik -->
-  <a class="card" href="07-nordik/assets/index.html" target="_blank">
+  <a class="card" href="07-nordik/assets/index.html" target="_blank" style="border-top-color:#B8B5A8">
     <div class="card-header">
       <span class="num">07</span>
       <span class="badge" style="background:rgba(184,181,168,0.15);color:#4A4A4A">Minimal</span>
@@ -237,7 +237,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 08 Grunge -->
-  <a class="card" href="08-grunge/assets/index.html" target="_blank">
+  <a class="card" href="08-grunge/assets/index.html" target="_blank" style="border-top-color:#FF3366">
     <div class="card-header">
       <span class="num">08</span>
       <span class="badge" style="background:rgba(255,51,102,0.15);color:#FF3366">Punk</span>
@@ -259,7 +259,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 09 Jazz Club -->
-  <a class="card" href="09-jazz-club/assets/index.html" target="_blank">
+  <a class="card" href="09-jazz-club/assets/index.html" target="_blank" style="border-top-color:#C9A86C">
     <div class="card-header">
       <span class="num">09</span>
       <span class="badge" style="background:rgba(201,168,108,0.15);color:#C9A86C">Jazz</span>
@@ -284,7 +284,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 10 Bitume -->
-  <a class="card" href="10-bitume/assets/index.html" target="_blank">
+  <a class="card" href="10-bitume/assets/index.html" target="_blank" style="border-top-color:#F4D03F">
     <div class="card-header">
       <span class="num">10</span>
       <span class="badge badge-bitume">Street</span>
@@ -308,7 +308,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 11 Cordes & Voix -->
-  <a class="card" href="11-cordes-voix/assets/index.html" target="_blank">
+  <a class="card" href="11-cordes-voix/assets/index.html" target="_blank" style="border-top-color:#FFB74D">
     <div class="card-header">
       <span class="num">11</span>
       <span class="badge badge-cordes">Acoustique</span>
@@ -332,7 +332,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 12 Héritage -->
-  <a class="card" href="12-heritage/assets/index.html" target="_blank" style="border-color:rgba(212,175,55,0.2)">
+  <a class="card" href="12-heritage/assets/index.html" target="_blank" style="border-top-color:#D4AF37">
     <div class="card-header">
       <span class="num">12</span>
       <span class="badge badge-heritage">Patrimoine</span>
@@ -357,7 +357,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 13 Rubicon -->
-  <a class="card" href="13-rubicon/assets/index.html" target="_blank">
+  <a class="card" href="13-rubicon/assets/index.html" target="_blank" style="border-top-color:#E65100">
     <div class="card-header">
       <span class="num">13</span>
       <span class="badge badge-rubicon">Americana</span>
@@ -382,7 +382,7 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
   </a>
 
   <!-- 14 Minuit -->
-  <a class="card" href="14-minuit/assets/index.html" target="_blank" style="border-color:rgba(201,168,124,0.2)">
+  <a class="card" href="14-minuit/assets/index.html" target="_blank" style="border-top-color:#C9A87C">
     <div class="card-header">
       <span class="num">14</span>
       <span class="badge badge-minuit">French</span>
