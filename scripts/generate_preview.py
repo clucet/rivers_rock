@@ -9,10 +9,11 @@ Usage: python3 scripts/generate_preview.py [--skip-thumbs]
 import os, sys, io, re, base64, subprocess, zipfile, glob as globmod
 
 sys.path.insert(0, os.path.dirname(__file__))
-from palette import FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE, NORDIK, GRUNGE, JAZZ_CLUB
+from palette import BASE, FLUID_WAVE, ROCK_BRUT, SCENE_VINTAGE, PONTS_LUMIERE, NEON_NIGHTS, SABLE_BRONZE, NORDIK, GRUNGE, JAZZ_CLUB
 from palette import BITUME, CORDES_VOIX, HERITAGE, RUBICON, MINUIT
 
 PROPS = [
+    (BASE,          "00-originale"),
     (FLUID_WAVE,    "01-fluid-wave"),
     (ROCK_BRUT,     "02-rock-brut"),
     (SCENE_VINTAGE, "03-scene-vintage"),

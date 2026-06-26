@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "scripts"
 from logoutils import (
     draw_qr_pillow,
     reportlab_crest, pillow_crest,
-    BEBAS_PATH, MONTSERRAT_PATH,
+    BEBAS_PATH, MONTSERRAT_PATH, PLAYFAIR_PATH, INTER_PATH, SPACE_MONO_PATH,
 )
 from palette import BASE as CFG
 from reportlab.lib.pagesizes import A4, A6
@@ -33,6 +33,9 @@ VERT_PIL = CFG.pil("vert_eau")
 ACCENT_PIL = CFG.pil("accent")
 BLANC_PIL = (255, 255, 255)
 
+pdfmetrics.registerFont(TTFont("PlayfairDisplay", PLAYFAIR_PATH))
+pdfmetrics.registerFont(TTFont("Inter", INTER_PATH))
+pdfmetrics.registerFont(TTFont("SpaceMono", SPACE_MONO_PATH))
 pdfmetrics.registerFont(TTFont("BebasNeue", BEBAS_PATH))
 pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
 
@@ -495,170 +498,133 @@ def gen_animated():
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rivers Rock — Logo</title>
-<meta name="description" content="Rivers Rock — Logo — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
-<meta property="og:title" content="Rivers Rock — Logo">
-<meta property="og:description" content="Rivers Rock — Logo — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
-<meta property="og:type" content="music.group">
-<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/00-originale/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rivers Rock — Logo">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<title>Rivers Rock — Ombre & Lumiere</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0}
-body{width:1080px;height:1920px;overflow:hidden;background:#1A3A5C;display:flex;align-items:center;justify-content:center}
+body{width:1080px;height:1920px;overflow:hidden;background:#0A0A0A;display:flex;align-items:center;justify-content:center}
 canvas{position:absolute;top:0;left:0;width:1080px;height:1920px}
-svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;overflow:visible}
-.outer{fill:none;stroke:rgba(255,255,255,0.25);stroke-width:2}
-.inner{fill:none;stroke:#fff;stroke-width:5;stroke-dasharray:300;stroke-dashoffset:300;animation:drawC .8s ease-out .3s forwards}
-.wave{fill:none;stroke:#E85D3A;stroke-width:4;stroke-linecap:round;opacity:0;animation:fadeW .5s ease-out 1.5s forwards}
-@keyframes drawC{to{stroke-dashoffset:0}}
-@keyframes fadeW{to{opacity:1}}
-.letter{font-family:'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:32px;fill:#fff;opacity:0}
-.lR{animation:drop .4s ease-out 1.0s forwards}
-.lI{animation:drop .4s ease-out 1.1s forwards}
-.lV{animation:drop .4s ease-out 1.2s forwards}
-.lE1{animation:drop .4s ease-out 1.3s forwards}
-.lR2{animation:drop .4s ease-out 1.4s forwards}
-.lS{animation:drop .4s ease-out 1.5s forwards}
-.lROCK_R{animation:slide .4s ease-out 1.9s forwards}
-.lROCK_O{animation:slide .4s ease-out 2.0s forwards}
-.lROCK_C{animation:slide .4s ease-out 2.1s forwards}
-.lROCK_K{animation:slide .4s ease-out 2.2s forwards}
-@keyframes drop{0%{opacity:0;transform:translateY(-40px)}100%{opacity:1;transform:translateY(0)}}
-@keyframes slide{0%{opacity:0;transform:translateX(200px)}100%{opacity:1;transform:translateX(0)}}
-@media(max-width:640px){
-  .container{padding:40px 16px}
-  .logo svg{width:70px;height:70px}
-}
-
-a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
-button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}</style>
-</head>
-<body>
-<canvas id="p"></canvas>
+svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:360px;height:360px;overflow:visible}
+.circle{fill:none;stroke:rgba(255,255,255,0.12);stroke-width:2;animation:fadeIn 1s ease-out .3s forwards;opacity:0}
+.diaphragm{stroke:#BDBDBD;stroke-width:4;stroke-linecap:round;opacity:0;animation:fadeIn .6s ease-out .8s forwards}
+.dot{fill:#BDBDBD;opacity:0;animation:expand 1s ease-out 1.4s forwards}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes expand{0%{opacity:0;r:0}100%{opacity:1;r:8}}
+.text{font-family:'Playfair Display',serif;font-size:34px;fill:#F5F0E8;opacity:0;letter-spacing:6}
+.t1{animation:appearText .8s ease-out 2.0s forwards}
+.t2{animation:appearText .8s ease-out 2.6s forwards}
+@keyframes appearText{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<canvas id="c"></canvas>
 <svg viewBox="-200 -200 400 400">
-  <circle class="outer" cx="0" cy="0" r="165"/>
-  <circle class="inner" cx="0" cy="0" r="80"/>
-  <path class="wave" d="M-72,0 Q-40,-20 0,0 Q40,20 72,0">
-    <animate attributeName="d" dur="3s" repeatCount="indefinite" values="M-72,0 Q-40,-20 0,0 Q40,20 72,0;M-72,0 Q-40,20 0,0 Q40,-20 72,0;M-72,0 Q-40,-20 0,0 Q40,20 72,0"/>
-  </path>
-  <text x="-60" y="-52.9" text-anchor="middle" class="letter lR">R</text>
-  <text x="-36" y="-71.4" text-anchor="middle" class="letter lI">I</text>
-  <text x="-12" y="-79.1" text-anchor="middle" class="letter lV">V</text>
-  <text x="12" y="-79.1" text-anchor="middle" class="letter lE1">E</text>
-  <text x="36" y="-71.4" text-anchor="middle" class="letter lR2">R</text>
-  <text x="60" y="-52.9" text-anchor="middle" class="letter lS">S</text>
-  <text x="-30" y="74.2" text-anchor="middle" class="letter lROCK_R" font-size="26">R</text>
-  <text x="-10" y="79.4" text-anchor="middle" class="letter lROCK_O" font-size="26">O</text>
-  <text x="10" y="79.4" text-anchor="middle" class="letter lROCK_C" font-size="26">C</text>
-  <text x="30" y="74.2" text-anchor="middle" class="letter lROCK_K" font-size="26">K</text>
+  <circle class="circle" cx="0" cy="0" r="160"/>
+  <circle class="circle" cx="0" cy="0" r="145" style="animation-delay:.6s"/>
+  <line class="diaphragm" x1="0" y1="-160" x2="0" y2="-50"/>
+  <line class="diaphragm" x1="0" y1="50" x2="0" y2="160" style="animation-delay:1.0s"/>
+  <circle class="dot" cx="0" cy="0" r="8"/>
+  <text class="text t1" x="0" y="65" text-anchor="middle">RIVERS ROCK</text>
+  <text class="text t2" x="0" y="105" text-anchor="middle" font-size="14" fill="#6B6B6B" letter-spacing="9">OMBRE & LUMIERE</text>
 </svg>
 <script>
-const c=document.getElementById('p'),ctx=c.getContext('2d');
-c.width=1080;c.height=1920;
+const c=document.getElementById('c'),ctx=c.getContext('2d');c.width=1080;c.height=1920;
 const ps=[];
-for(let i=0;i<25;i++){ps.push({x:Math.random()*1080,y:Math.random()*1920,s:Math.random()*2+1,a:Math.random()*0.08+0.02})}
-const grad=ctx.createLinearGradient(0,0,0,1920);grad.addColorStop(0,'#1A3A5C');grad.addColorStop(1,'#4A9B8E');
-function draw(){ctx.clearRect(0,0,1080,1920);ctx.fillStyle=grad;ctx.fillRect(0,0,1080,1920);
-for(const p of ps){ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,'+p.a+')';ctx.fill();p.y-=0.3;if(p.y<0){p.y=1920;p.x=Math.random()*1080}}
+for(let i=0;i<60;i++){ps.push({x:Math.random()*1080,y:Math.random()*1920,s:Math.random()*2+0.5,a:Math.random()*0.03+0.01})}
+function draw(){ctx.clearRect(0,0,1080,1920);
+const g=ctx.createRadialGradient(540,960,0,540,960,1200);
+g.addColorStop(0,'rgba(255,255,255,0.03)');g.addColorStop(1,'rgba(0,0,0,0)');
+ctx.fillStyle=g;ctx.fillRect(0,0,1080,1920);
+for(const p of ps){ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,'+p.a+')';ctx.fill();p.y-=0.15;if(p.y<0){p.y=1920;p.x=Math.random()*1080}}
 requestAnimationFrame(draw)}draw();
 </script>
-</body>
-</html>'''
+</body></html>'''
     path = os.path.join(TMPL, "logo-animated-original.html")
     with open(path, "w") as f:
         f.write(html)
-    print(f"[Originale] Animated logo → {path}")
-
+    print(f"[Ombre & Lumiere] Animated logo → {path}")
 
 # ── Site ──
-
 def gen_site():
     html = '''<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rivers Rock — Logo</title>
-<meta name="description" content="Rivers Rock — Logo — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
-<meta property="og:title" content="Rivers Rock — Logo">
-<meta property="og:description" content="Rivers Rock — Logo — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
-<meta property="og:type" content="music.group">
-<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/00-originale/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rivers Rock — Logo">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<title>Rivers Rock — Ombre & Lumiere</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#1A3A5C,#4A9B8E);color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center}
-.container{max-width:640px;width:100%;padding:60px 24px;text-align:center}
+:root{--noir:#0A0A0A;--gris-fonce:#2B2B2B;--gris-moyen:#6B6B6B;--gris-clair:#BDBDBD;--blanc:#FFFFFF}
+body{font-family:Inter,system-ui,sans-serif;background:var(--noir);color:var(--blanc);min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.bg-grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.08'/%3E%3C/svg%3E")}
+.container{max-width:640px;width:100%;padding:60px 24px;text-align:center;position:relative;z-index:1}
 .logo{margin-bottom:32px}
-.logo svg{width:100px;height:100px}
-.logo svg circle{fill:none;stroke:#fff;stroke-width:4}
-.logo svg path{fill:none;stroke:#E85D3A;stroke-width:3.5}
-h1{font-family:'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(36px,8vw,48px);letter-spacing:2px;margin-top:8px;text-transform:uppercase}
-h2{font-size:clamp(20px,5vw,28px);font-weight:400;letter-spacing:4px;text-transform:uppercase;color:#E85D3A;margin:32px 0 12px}
-p,li{font-size:15px;line-height:1.7;color:rgba(255,255,255,.8)}
+.logo svg{width:80px;height:80px}
+.logo svg circle{fill:none;stroke:var(--gris-clair);stroke-width:2.5}
+.logo svg line{stroke:var(--gris-clair);stroke-width:3;stroke-linecap:round}
+h1{font-family:Playfair Display,serif;font-weight:400;font-size:clamp(32px,7vw,44px);letter-spacing:4px;margin-top:8px;color:var(--gris-clair)}
+.tagline{font-family:Space Mono,monospace;font-size:11px;color:var(--gris-moyen);letter-spacing:3px;margin-top:4px;text-transform:uppercase}
+h2{font-family:Playfair Display,serif;font-size:clamp(18px,4vw,24px);font-weight:400;letter-spacing:3px;color:var(--gris-clair);margin:40px 0 16px}
+p{font-size:14px;line-height:1.7;color:var(--gris-moyen)}
 .members{list-style:none;padding:0}
-.members li{padding:4px 0}
-.highlight{color:#E85D3A;font-weight:600}
-hr{border:none;border-top:1px solid rgba(255,255,255,.15);margin:32px 0}
-.links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-.links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:14px;padding:8px 16px;border:1px solid rgba(255,255,255,.2);border-radius:6px;transition:.2s}
-.links a:hover{color:#fff;border-color:#fff}
-.footer{font-size:12px;color:rgba(255,255,255,.3);margin-top:48px}
-@media(max-width:640px){
-  .container{padding:40px 16px}
-  .logo svg{width:70px;height:70px}
-}
-
-a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
-button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}</style>
+.members li{padding:4px 0;font-size:14px;color:var(--gris-clair)}
+.members li span{color:var(--blanc)}
+hr{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:32px 0}
+.links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.links a{color:var(--gris-moyen);text-decoration:none;font-size:12px;font-family:Space Mono,monospace;padding:8px 18px;border:1px solid rgba(255,255,255,0.1);border-radius:6px;transition:.3s}
+.links a:hover{color:var(--blanc);border-color:var(--gris-clair)}
+.footer{font-size:10px;font-family:Space Mono,monospace;color:var(--gris-moyen);margin-top:48px;letter-spacing:3px;text-transform:uppercase}
+@media(max-width:640px){.container{padding:40px 16px}.logo svg{width:60px;height:60px}h1{font-size:28px}}
+@media(prefers-color-scheme:light){:root{--noir:#FAFAFA;--gris-fonce:#E8E8E4;--gris-moyen:#666;--gris-clair:#333;--blanc:#1A1A1A}}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gris-clair);outline-offset:2px}
+</style>
 </head>
 <body>
+<div class="bg-grain"></div>
 <div class="container">
   <div class="logo">
     <svg viewBox="0 0 100 100">
       <circle cx="50" cy="50" r="42"/>
-      <path d="M18,50 Q30,42 42,50 Q54,58 66,50 Q78,42 90,50"/>
+      <circle cx="50" cy="50" r="38"/>
+      <line x1="50" y1="8" x2="50" y2="42"/>
+      <line x1="50" y1="58" x2="50" y2="92"/>
+      <circle cx="50" cy="50" r="5" fill="var(--noir)"/>
     </svg>
     <h1>RIVERS ROCK</h1>
+    <div class="tagline">Ombre &amp; Lumiere</div>
   </div>
-  <p>Groupe rouennais formé en 2024 au centre Éducation et Formation du Petit-Quevilly.<br>Rock — Pop-Rock — Indé — Alternatif</p>
+  <p>Clair-obscur, argentique, lessentiel.<br>Groupe rouennais forme en 2024.</p>
   <hr>
-  <h2>Les membres</h2>
+  <h2>Membres</h2>
   <ul class="members">
-    <li><span class="highlight">Rosaria</span> — batterie</li>
-    <li><span class="highlight">Christophe</span> — basse</li>
-    <li><span class="highlight">Nicolas</span> — guitare</li>
-    <li><span class="highlight">David</span> — guitare / chant</li>
-    <li><span class="highlight">Virginie</span> — chant</li>
+    <li><span>Rosaria</span> -- batterie</li>
+    <li><span>Christophe</span> -- basse</li>
+    <li><span>Nicolas</span> -- guitare</li>
+    <li><span>David</span> -- guitare / chant</li>
+    <li><span>Virginie</span> -- chant</li>
   </ul>
   <hr>
   <h2>Concerts</h2>
   <p>Contactez-nous pour programmer un concert.</p>
   <hr>
   <h2>Musique</h2>
-  <p>Ecoutez Rivers Rock sur Spotify — playlist a venir.</p>
-  <div style="max-width:600px;margin:16px auto"><div style="text-align:center;padding:30px 20px;background:rgba(128,128,128,0.04);border-radius:8px"><p style="color:rgba(128,128,128,0.5);font-size:14px;margin-bottom:12px;font-family:sans-serif">Playlist musicale a venir</p><a href="https://www.youtube.com/@RiversRockRouen" target="_blank" style="display:inline-block;padding:10px 24px;border-radius:6px;background:var(--accent,#E85D3A);color:#fff;text-decoration:none;font-size:13px">Suivre sur YouTube</a></div></div>
+  <p>Playlist a venir -- suivez-nous sur YouTube.</p>
   <hr>
   <h2>Contact</h2>
   <p>riversrock_rouen@gmail.com</p>
   <div class="links">
-    <a href="https://www.instagram.com/riversrock.rouen" target="_blank">Instagram</a>
-    <a href="https://www.facebook.com/RiversRockRouen" target="_blank">Facebook</a>
-    <a href="https://www.youtube.com/@RiversRockRouen" target="_blank">YouTube</a>
+    <a href="https://www.instagram.com/riversrock_rouen">Instagram</a>
+    <a href="https://www.facebook.com/RiversRockRouen">Facebook</a>
+    <a href="https://www.youtube.com/@RiversRockRouen">YouTube</a>
   </div>
-  <p class="footer">RIVERS ROCK — Rouen</p>
+  <p class="footer">RIVERS ROCK -- Rouen</p>
 </div>
 </body>
 </html>'''
     path = os.path.join(OUT, "index.html")
     with open(path, "w") as f:
         f.write(html)
-    print(f"[Originale] Site → {path}")
-
+    print(f"[Ombre & Lumiere] Site > {path}")
 
 if __name__ == "__main__":
     gen_setlist()

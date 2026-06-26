@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ombre & Lumière — Aperçu · Rivers Rock</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0D1117;--bg2:#161B22;--bg3:#1C2333;--text:#E6EDF3;--text2:#8B949E;--border:rgba(255,255,255,0.06);--accent:#0A0A0A;--radius:10px}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
+.bg-grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.03'/%3E%3C/svg%3E")}
+.container{max-width:1100px;margin:0 auto;padding:24px;position:relative;z-index:1}
+
+/* Header */
+.header{text-align:center;padding:60px 0 20px;position:relative}
+.header .num{font-family:'Anton',sans-serif;font-size:14px;color:rgba(255,255,255,0.15);letter-spacing:4px;text-transform:uppercase}
+.header h1{font-family:'Anton',sans-serif;font-size:42px;letter-spacing:2px;margin:8px 0;background:linear-gradient(135deg,var(--text) 30%,#0A0A0A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header .tagline{font-size:13px;color:var(--text2);font-family:'Space Mono',monospace}
+.header-actions{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.header-actions a{padding:10px 24px;border-radius:8px;text-decoration:none;font-family:'Space Mono',monospace;font-size:12px;transition:.2s;letter-spacing:.5px}
+.btn-site{background:#0A0A0A;color:#fff}
+.btn-site:hover{filter:brightness(1.15)}
+.btn-back{background:rgba(255,255,255,0.06);color:var(--text2)}
+.btn-back:hover{background:rgba(255,255,255,0.1);color:var(--text)}
+
+/* Sections */
+.section{margin:48px 0}
+.section-title{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:1px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+
+/* Logos */
+.logo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.logo-card{background:var(--bg2);border-radius:var(--radius);border:1px solid var(--border);padding:20px;text-align:center;transition:.2s}
+.logo-card:hover{background:var(--bg3)}
+.logo-card.missing{opacity:0.3}
+.logo-frame{height:100px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.logo-frame img{max-width:100%;max-height:100%;object-fit:contain}
+.logo-label{font-size:12px;font-weight:600}
+.logo-fname{font-size:10px;color:var(--text2);margin-top:2px}
+.missing-icon{color:var(--text2);font-size:24px}
+
+/* Animated logo iframe */
+.anim-wrapper{max-width:300px;margin:0 auto;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
+.anim-wrapper iframe{width:100%;aspect-ratio:9/16;display:block;border:none}
+
+/* Palette */
+.palette-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.swatch{border-radius:var(--radius);height:80px;position:relative;overflow:hidden}
+.swatch-info{position:absolute;bottom:0;left:0;right:0;padding:8px 10px;background:rgba(0,0,0,0.2);backdrop-filter:blur(4px);display:flex;justify-content:space-between;align-items:center}
+.swatch-name{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.swatch-hex{font-family:'Space Mono',monospace;font-size:9px;opacity:0.7}
+
+/* Typography */
+.font-row{display:flex;align-items:center;gap:16px;padding:12px 16px;background:var(--bg2);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:8px}
+.font-role{font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:1px;min-width:60px}
+.font-name{font-size:14px;min-width:130px}
+.font-specimen{font-size:18px;color:var(--text);flex:1;text-align:right}
+
+/* Flags */
+.flags-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.flag-badge{padding:5px 14px;border-radius:20px;font-size:11px;background:#0A0A0A22;color:#0A0A0A;border:1px solid #0A0A0A44;font-family:'Space Mono',monospace}
+
+/* PDFs */
+.pdf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.pdf-card{background:var(--bg2);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;text-decoration:none;color:var(--text);transition:.2s}
+.pdf-card:hover{background:var(--bg3);transform:translateY(-2px)}
+.pdf-card .pdf-thumb{width:100%;height:150px;object-fit:cover;display:block;background:var(--bg3)}
+.pdf-icon{height:150px;display:flex;align-items:center;justify-content:center;font-size:36px;background:var(--bg3)}
+.pdf-info{padding:10px 12px;display:flex;justify-content:space-between;align-items:center}
+.pdf-name{font-size:12px;font-weight:600}
+.pdf-size{font-size:10px;color:var(--text2);font-family:'Space Mono',monospace}
+
+/* Template thumbnails */
+.tmpl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.tmpl-card{background:var(--bg2);border-radius:var(--radius);border:1px solid var(--border);padding:8px;text-align:center;transition:.2s}
+.tmpl-card:hover{background:var(--bg3)}
+.tmpl-card img{width:100%;height:80px;object-fit:contain;display:block;border-radius:4px}
+.tmpl-placeholder{width:100%;height:80px;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:20px;background:var(--bg3);border-radius:4px}
+.tmpl-name{font-size:10px;margin-top:6px;color:var(--text2);word-break:break-all}
+
+/* Charte */
+.charte-card{display:flex;align-items:center;gap:16px;background:var(--bg2);border-radius:var(--radius);border:1px solid #0A0A0A44;padding:16px 20px}
+.charte-icon{font-size:32px;flex-shrink:0}
+.charte-info{flex:1}
+.charte-title{font-weight:600;font-size:14px}
+.charte-desc{font-size:11px;color:var(--text2);margin-top:2px}
+.charte-btn{padding:8px 20px;border-radius:6px;background:#0A0A0A;color:#fff;text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;transition:.2s;flex-shrink:0}
+.charte-btn:hover{filter:brightness(1.15)}
+
+/* Page de comparaison link */
+.back-link{text-align:center;padding:40px 0 20px}
+.back-link a{color:var(--text2);text-decoration:none;font-size:12px;font-family:'Space Mono',monospace;transition:.2s}
+.back-link a:hover{color:var(--text)}
+
+/* Responsive */
+@media(max-width:600px){
+  .header h1{font-size:28px}
+  .logo-grid{grid-template-columns:repeat(2,1fr)}
+  .palette-grid{grid-template-columns:repeat(2,1fr)}
+  .font-row{flex-wrap:wrap}
+  .font-specimen{text-align:left;width:100%;margin-top:4px}
+  .charte-card{flex-wrap:wrap}
+}
+
+@media(prefers-color-scheme:light){
+  :root{--bg:#F5F5F0;--bg2:#FFFFFF;--bg3:#F0F0EB;--text:#1A1A1A;--text2:#666;--border:rgba(0,0,0,0.08)}
+}
+
+@media(prefers-reduced-motion){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="bg-grain"></div>
+<div class="container">
+
+  <div class="header">
+    <div class="num">00-originale · Proposition 00</div>
+    <h1>Ombre & Lumière</h1>
+    <p class="tagline">Flat · Circle badges · None wave</p>
+    <div class="header-actions">
+      <a class="btn-site" href="index.html" target="_blank">Voir le site →</a>
+      <a class="btn-back" href="../../propositions/">← Toutes les propositions</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Logo · 5 variantes</div>
+    <div class="logo-grid">
+        <div class="logo-card">
+          <div class="logo-frame"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzJCMkIyQiIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjM4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCREJEQkQiIHN0cm9rZS13aWR0aD0iMC41Ii8+CjxsaW5lIHgxPSI1MCIgeTE9IjgiIHgyPSI1MCIgeTI9IjQyIiBzdHJva2U9IiNCREJEQkQiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxsaW5lIHgxPSI1MCIgeTE9IjU4IiB4Mj0iNTAiIHkyPSI5MiIgc3Ryb2tlPSIjQkRCREJEIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1IiBmaWxsPSIjMEEwQTBBIi8+Cjwvc3ZnPg==" alt="Standard"></div>
+          <div class="logo-label">Standard</div>
+          <div class="logo-fname">logo.svg</div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-frame"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBBMEEwQSIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxsaW5lIHgxPSI1MCIgeTE9IjgiIHgyPSI1MCIgeTI9IjQyIiBzdHJva2U9IiMwQTBBMEEiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxsaW5lIHgxPSI1MCIgeTE9IjU4IiB4Mj0iNTAiIHkyPSI5MiIgc3Ryb2tlPSIjMEEwQTBBIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1IiBmaWxsPSIjMEEwQTBBIi8+Cjwvc3ZnPg==" alt="Monochrome"></div>
+          <div class="logo-label">Monochrome</div>
+          <div class="logo-fname">logo-mono.svg</div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-frame"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzJCMkIyQiIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjM4IiBmaWxsPSJub25lIiBzdHJva2U9IiNCREJEQkQiIHN0cm9rZS13aWR0aD0iMC41Ii8+CjxsaW5lIHgxPSI1MCIgeTE9IjgiIHgyPSI1MCIgeTI9IjQyIiBzdHJva2U9IiNCREJEQkQiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxsaW5lIHgxPSI1MCIgeTE9IjU4IiB4Mj0iNTAiIHkyPSI5MiIgc3Ryb2tlPSIjQkRCREJEIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1IiBmaWxsPSIjMEEwQTBBIi8+Cjwvc3ZnPg==" alt="Icône"></div>
+          <div class="logo-label">Icône</div>
+          <div class="logo-fname">logo-icon.svg</div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-frame"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiPgo8Y2lyY2xlIGN4PSIzNSIgY3k9IjMwIiByPSIyMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMkIyQjJCIiBzdHJva2Utd2lkdGg9IjIuNSIvPgo8bGluZSB4MT0iMzUiIHkxPSI4IiB4Mj0iMzUiIHkyPSIyMiIgc3Ryb2tlPSIjQkRCREJEIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8bGluZSB4MT0iMzUiIHkxPSIzOCIgeDI9IjM1IiB5Mj0iNTIiIHN0cm9rZT0iI0JEQkRCRCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHRleHQgeD0iNzAiIHk9IjM4IiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiMyQjJCMkIiIGxldHRlci1zcGFjaW5nPSIzIj5PbWJyZSAmYW1wOyBMdW1pZXJlPC90ZXh0Pgo8L3N2Zz4=" alt="Compact"></div>
+          <div class="logo-label">Compact</div>
+          <div class="logo-fname">logo-compact.svg</div>
+        </div>
+        <div class="logo-card">
+          <div class="logo-frame"><img src="data:image/svg+xml;base64,PHN2ZyBzdHlsZT0ib3BhY2l0eTowLjMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMkIyQjJCIiBzdHJva2Utd2lkdGg9IjMiLz4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0JEQkRCRCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KPGxpbmUgeDE9IjUwIiB5MT0iOCIgeDI9IjUwIiB5Mj0iNDIiIHN0cm9rZT0iI0JEQkRCRCIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjUwIiB5MT0iNTgiIHgyPSI1MCIgeTI9IjkyIiBzdHJva2U9IiNCREJEQkQiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjUiIGZpbGw9IiMwQTBBMEEiLz4KPC9zdmc+" alt="Watermark"></div>
+          <div class="logo-label">Watermark</div>
+          <div class="logo-fname">logo-watermark.svg</div>
+        </div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Logo animé</div>
+    <div class="anim-wrapper">
+      <div style="padding:40px;text-align:center;color:var(--text2)">Logo animé non disponible</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Palette couleurs <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text2);font-weight:400">(15 couleurs)</span></div>
+    <div class="palette-grid">
+        <div class="swatch" style="background:#0A0A0A">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">noir_profond</span>
+            <span class="swatch-hex">#0A0A0A</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#2B2B2B">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">Gris foncé</span>
+            <span class="swatch-hex">#2B2B2B</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#6B6B6B">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">gris_moyen</span>
+            <span class="swatch-hex">#6B6B6B</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#BDBDBD">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">gris_clair</span>
+            <span class="swatch-hex">#BDBDBD</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#FFFFFF">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Blanc pur</span>
+            <span class="swatch-hex">#FFFFFF</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#FFFFFF">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Blanc</span>
+            <span class="swatch-hex">#FFFFFF</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#0A0A0A">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">Bleu Seine</span>
+            <span class="swatch-hex">#0A0A0A</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#2B2B2B">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">Vert d'eau</span>
+            <span class="swatch-hex">#2B2B2B</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#BDBDBD">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Accent</span>
+            <span class="swatch-hex">#BDBDBD</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#FFFFFF">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Or vieilli</span>
+            <span class="swatch-hex">#FFFFFF</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#6B6B6B">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">Terracotta</span>
+            <span class="swatch-hex">#6B6B6B</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#0A0A0A">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">Teal profond</span>
+            <span class="swatch-hex">#0A0A0A</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#6B6B6B">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">Vert repère</span>
+            <span class="swatch-hex">#6B6B6B</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#F5F0E8">
+          <div class="swatch-info" style="color:#1a1a1a">
+            <span class="swatch-name">Blanc cassé</span>
+            <span class="swatch-hex">#F5F0E8</span>
+          </div>
+        </div>
+        <div class="swatch" style="background:#6B6B6B">
+          <div class="swatch-info" style="color:#f0f0f0">
+            <span class="swatch-name">Gris acier</span>
+            <span class="swatch-hex">#6B6B6B</span>
+          </div>
+        </div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Typographie</div>
+    
+        <div class="font-row">
+          <div class="font-role">HERO</div>
+          <div class="font-name">Playfair Display</div>
+          <div class="font-specimen" style="font-family:'Playfair Display',sans-serif">Aa Bb 0123</div>
+        </div>
+        <div class="font-row">
+          <div class="font-role">LOGO</div>
+          <div class="font-name">Playfair Display</div>
+          <div class="font-specimen" style="font-family:'Playfair Display',sans-serif">Aa Bb 0123</div>
+        </div>
+        <div class="font-row">
+          <div class="font-role">BODY</div>
+          <div class="font-name">Inter</div>
+          <div class="font-specimen" style="font-family:'Inter',sans-serif">Aa Bb 0123</div>
+        </div>
+        <div class="font-row">
+          <div class="font-role">BADGE</div>
+          <div class="font-name">Space Mono</div>
+          <div class="font-specimen" style="font-family:'Space Mono',sans-serif">Aa Bb 0123</div>
+        </div>
+        <div class="font-row">
+          <div class="font-role">SONG</div>
+          <div class="font-name">Inter</div>
+          <div class="font-specimen" style="font-family:'Inter',sans-serif">Aa Bb 0123</div>
+        </div>
+        <div class="font-row">
+          <div class="font-role">DATA</div>
+          <div class="font-name">Space Mono</div>
+          <div class="font-specimen" style="font-family:'Space Mono',sans-serif">Aa Bb 0123</div>
+        </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Éléments graphiques</div>
+    <div class="flags-wrap"><span class="flag-badge">Grain overlay</span><span class="flag-badge">Halftone dots</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">PDF générés <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text2);font-weight:400">(8 fichiers)</span></div>
+    <div class="pdf-grid">
+        <a class="pdf-card" href="pdf/business-card.pdf" target="_blank">
+          <img src="pdf/business-card-preview.png" alt="business-card.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">business-card.pdf</span>
+            <span class="pdf-size">24 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/flyer-original.pdf" target="_blank">
+          <img src="pdf/flyer-original-preview.png" alt="flyer-original.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">flyer-original.pdf</span>
+            <span class="pdf-size">30 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/poster-original.pdf" target="_blank">
+          <img src="pdf/poster-original-preview.png" alt="poster-original.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">poster-original.pdf</span>
+            <span class="pdf-size">31 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/setlist-original.pdf" target="_blank">
+          <img src="pdf/setlist-original-preview.png" alt="setlist-original.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">setlist-original.pdf</span>
+            <span class="pdf-size">38 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/stage-plot.pdf" target="_blank">
+          <img src="pdf/stage-plot-preview.png" alt="stage-plot.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">stage-plot.pdf</span>
+            <span class="pdf-size">23 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/stickers-original.pdf" target="_blank">
+          <img src="pdf/stickers-original-preview.png" alt="stickers-original.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">stickers-original.pdf</span>
+            <span class="pdf-size">7 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/t-shirt-techsheet.pdf" target="_blank">
+          <img src="pdf/t-shirt-techsheet-preview.png" alt="t-shirt-techsheet.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">t-shirt-techsheet.pdf</span>
+            <span class="pdf-size">23 Ko</span>
+          </div>
+        </a>
+        <a class="pdf-card" href="pdf/tshirt-original.pdf" target="_blank">
+          <img src="pdf/tshirt-original-preview.png" alt="tshirt-original.pdf" loading="lazy" class="pdf-thumb">
+          <div class="pdf-info">
+            <span class="pdf-name">tshirt-original.pdf</span>
+            <span class="pdf-size">24 Ko</span>
+          </div>
+        </a></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Templates réseaux <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text2);font-weight:400">(8 fichiers)</span></div>
+    <div class="tmpl-grid">
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgBAMAAAB54XoeAAAAFVBMVEVHcEz////////////////////oXTrZnFx7AAAABXRSTlMAtOckZTDmbSgAAAM9SURBVHic7Zo9c9swDIZlO+TcxXsv1+xesvty552pw85aqv//E0pSoiR+CARAxrn0hMEfEPDgBUVRsqyu27azOurLWXVa6U5o49DqZt4OWgFJkFnWD/NyXoBH+/aiK4DKvNwW4MG+iVqguK+AF90AqAPgpRHw+fnnCHR7phL4YaF6BN60fq8EHvXdA0/6ejAfmMDddtttt4ebWby4q2pqdin01hhnTNXydGJVSJHyqohZXsVIxppEJTGXXUMU+RFjE8VWomDumW0hPCKUJBhNC1AEvDVrBQ2CKrHYE5GICKc1jYgmSUQFC4JEXHG8RGRtvERsabREbGWBBGLj0BLxew9XGi8QWZsCRMVSDikMkCIQVV2QFjpEeeLKWQTSOkbUpwKL8dRzBQZI4ZUTOEAFbKZNGkQGCwj1xLvEYG99DBAcJfoQfgcgOEyMIfwOQAECFQu4lcXaJ18LlH2fRkkZOfHAYeiHIeENMnKCwDDVWcyzFmjcnhsRcOSFyVORoAoWKCHg2rkNDLbIUYcMkidnSEQCfVLQ3+SUgRMHnHPWEufPgUQQOM+xRcNKTdbZg0Aft2pqkbgSO6ycEPBPrqeZvZK1HpG/sMIhErh8CQZutc9KwD7Onb6Fu7abZxXQsp3YdtbKaOb62Zw4e3fQlIHJ8eGdXdZZOPQyPO8MfbKfnCBQmeUuzR2bjoq4KnbBLABNoEwWweiQ9sTeBf5X55RaIPtE3xb40Gsb6DKFC1RfDnzsJXHzXwHtf6cwem4NLP94pN/9BSV8xg9wsCAZSB3E4hg1v81CHcTWd5YQDTW/mUaT2BqIaofSM644XqLAheIlamQkViJS4CfcuicMDSIMXxotEFlbEICoP5wwMZTqJB4inNQwgiiIAuG/Rv1mCq9ALJTLmgCSODyIqBkNL3lJouDyZqLK4HiPEfjkBZl6eBoTY+I2iXxe/uGOGl5GpKrkRcgGOGtVk2W33XbbDW3nX/b1jftc92J2ybr4i27h1i/3rLeqAd79lda4vrrv1xqg7m729fo0A1/4C63JNkD3zL2yjeoP57rXAG8O+GSB106/G9ep4sRigK8OeJqAv41L1JzncwpfGwKdq9DxP0JVA4Hk2NM6AAAAAElFTkSuQmCC' alt='avatar.png' loading='lazy'>
+          <div class="tmpl-name">avatar.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAA1BAMAAAA0Sv3uAAAAJ1BMVEUrXW4lUWhHl4wfRmI2dHoxaXQbPV1DjYc7fH4+hYL7/PxahYboXTrC67zfAAAB6UlEQVR4nNWPsW6cQBCGh4IGpQDRpUSKqE+8wiJRUuxIltPfA9BQ0KTA0rqPFF1nF26uiqWzXPgV8lD5fzgr3cHdTST7X2b/mZ3lY5CtseTjA6tqu7UMeyCNsnKxhNGlMpZkWVVZhmzyKs83m8rKxXa+rJI8zyCwsSGBVZtsUj7Hef1cMmMR+DV5NgRGaQRLzZZEUZbsH0EWo4hEHiR6REFl13qKCZMoTRNw0zRCJsI9urQWTohIUvLnC3PrwnoeVP6Irb4Y89pWknjKsLdXhmh8C5C2+kPkN+mxxvHl3opq+6D6FLf6Ii8xhpVW2YXpNPxZNUKhvR6FQ+W0MT2ez86sRY1F4O3+iWm4G2+MgMU37D7cfVdvAXTqaue8q73CUV8V4nztPXl4fI0Hh54JvKbxY/iaetZMTvZrcbyCQzeO46GeL6FyuMDT+SY0vcnzhb64d/1sDodjerwzTTNfdu+wxf4/oJGk4c6taZrQjPxzFGNoHJ0W2BxdE9gJTHDY4JUw9XDA3sQgMBjrUwB3O8uQ+x3F1MTvxRA2ueyM9b+AfW/kv2Qu7EJ6Y60BDozhbXh7XQMsu+XVkza8DusmLJcXmdjKvuj74nSUUhTl0uqKvis6PCvuFpiwA/lkYAFakrkCWBjr4wP/AnUppCzKGQ+iAAAAAElFTkSuQmCC' alt='email-signature.png' loading='lazy'>
+          <div class="tmpl-name">email-signature.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAA9BAMAAADYGX+DAAAAKlBMVEUgR2IlUWgqXG0+hII5en01cHgvZ3NDjodIl4wbPV3///+swsdTgYvoXTpju52rAAADXElEQVR4nOVQMXLjRhAchsyA/QE2wAegKj2Ai8QxdgOXI9RhA5YzBcALDIRM9QEGrHJ6gf0Pv8fdsyBISebpKMFV53ILuzPT09M7lDyvDPkfGsrzFn/AAWf7fDgcnrfb7QHlh/iDqOeKRw7bLa71bloeRFK1TvzhsclkkyPmG8myjUiGRHLy2Yd6splTSrLNLMuS7P5eRjpHud6NlfMcRYZwO2NIYCGplXZ5PSP592D2fGF9A99neAckL/LcICn0+nwuxprCFja3YAo+YfCH8qO8sMqNtWhaox9TEHnBr0i9gnKM2oKE4U7aM9c9DuZiKcK44Q1ZYSznkEIJ5Ja8VRgySW9MUiI3aYoNY4zQOMk1GE3MHKy9ai3homMoiqu3rBW7Mv4DhjFau+IppSxLJrHFXba2JRkTU6poZkodSEyb1Il5NS8UcZKxjZq0ypXqot12ttBuGctZjQau9nq+jGqYxsola5NnegLfz3F/Oh738evx16vGS+g8WHndeIN9jCF++frHaX86dcd35TDsMOC7jlWIiF1AjIFECChi/Am7nX6B4Zcje2C16aFhFub5LnofBBRoFnCapZHdWRp//wsex990Q7YgURWMO6/vhqBuChpGGOvxXMcHzTsmwZPFXNA8djgBquC5H3VgON9xXQrxkxkITGmfYJZS/OT9zISzrFt0WoZlRgnx8Zym0/EK3XkmLuJ0LVbnNxIdllz8u/jzfckVYNg03tf17XgfpOacr32dxmHgPBnX+KbGRxrmLGhOSe2d0o3jozq/9B02dO4bp/5m9+1ppGmcc3jLERjHTrWbgWVwITB1tZZcz2ErxzlO1WCxbJNETtilI32ob3QpEM38gKOgbvSFpPFzSk0971GfM3ErYzGsqlWyBzkTifx0tpMLtc6Rde3wP6yqB3y7qtpVD8jcjsUDervdpXOHBobr4t8x7PvLfcZHOWG65pGnvn98fMJdPfZP+KpP1thQ876nM0PVK6rluq8v/YKn/gqP/Y3GS7yVyT/qPgEZB9xj32tYIeeG0zChnKZxGoZpAjuME1XjyJ7eE+9h4tiESepG9sBc98DJNLE5EePIYmAxjIkFNYz0gwfCxMdnYIu0ggZlGGVcFFcYp+UFtb1QtzGkI+/p7sWPb/g3tiuQoPvmyiAAAAAASUVORK5CYII=' alt='facebook-banner.png' loading='lazy'>
+          <div class="tmpl-name">facebook-banner.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,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' alt='instagram-post.png' loading='lazy'>
+          <div class="tmpl-name">instagram-post.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAACgBAMAAAB+j2ZOAAAALVBMVEUwaHMsXm8nVWo5en09g4EbPV0jTGU1cXhEkYlBioUfRWFJmIzoXTr9/v5xXlutOzghAAAErElEQVR4nO1RO47jOBAtRU6pTleJHXS0mQToAGaiA2xiYBMHDjpqQIGuIEOpAvMAnkC7nQsQBhhvbPQBDDjYm+yrIuWxLXebwqCBHuwUxV/xvVePFP0xJugX+kfRixHgBbS33g1OFv5tS9tR6HG3bK7jr5dB6hS0uI4/30MPMofFdqDQxxD9d7PYNrfbQHvRHJrjYdE0L8fj8XCJveUEXo4viOPx5XDfd9Mcj02vfR/99YnHL/J5aD81T6sb6TfQIv0Ejjca4l9Wg3gL3dxGD1PvxC/0D6OXqxEN2v7o0U5mj6sVPo++fBypPRsTI9GPy9nMu49Fo4Bff5wt8YJjfC9BXM2WHn38m/yc6OmncTKjcEyM15759hlNw4fpbIrlAzrP++h1uo/2O7RpeJZ/AJDCKbep9TWFxC7ahxYdnfy6c6AfeH6Yng520e+7/b9R+E8YfU+7xfBNdlG0e4XuLowGZ7fRO6DPndxH39a+xgO933+zaDVAqzDghQxK0HtAxUmApFL8BYHiMyIVhKSUIktVeL3XSOHDG3JKKVuAx4ACdHaDAUscgcJZew5VqW0rQ1IRoSIqBHxGSmZLZm274wlnqOQciz9l76z66wW2fsBiQUAUKodgQ8SF5DYcfEeifu3y7jDgqhbj4gSVLIsSG7ARKHkeUlZH0MEJDTc8OQW4s7eQ+TfJKerl+WXOS4lMcJ1gzUDuR44vnqyKDPLH3FMqh+ezkAZ6AV1UVL3EZUXOXvDoJubzRDEmiJ4nIz6a+Es/f+gtJ2MCb0Kejd8E3ide7ZkvCYYXmmEFHnCC724TVYwCvhsTMQ20z89/dn/e/09+LnT6gdpxnqa5b4d2nOZFkRe5TO/NRUxpHBd5jAHBMyJ9Y45jgnTBGQwoBgFI8SIvUpmLNE1j3ohv4RVOhKkF80QuRUEp7IoWOcl8KiWU891l0MWux+V57G4BG1KFF3gTIPqEG4SV9uTU3TLvtc+AInXDSW4HGp68E/8LdEJz79DzmHiI9Vzr+N0+j5NYJ5QAnugkmYMi68sey1HCchpoEBPQsOT9nJnoPGlZAY9ZMzzRlICouY47EU6SSEpuJtLWEGszKbH0eaId3s3a1khcaYeWYhJxT7jmndB9/XM9q3jCz6/RHvHh6EzrGs2uboZDkNFZJps600bXJsMCK6MNEhlL1MhbSg00w2sMBmzQTGZAAd4IFlOW1ayJCU6YmSEHmBjJWL42jGC9GjJ1baClM2jXLjLDQjDAyiggEIiAwcawBxqTMXasjdgwpz2fZFLVgggL7c6NLckX5GTGfoxYEjjkWdvwNTJbq+dx6VNZ64O1XWHAbY3Mbb5DjendiW//+ETockxAe+0ftC7XG+MlvN5Ae7PZrO8aLktTrg1rG5DuWYD0BurELKB591bDKRAQL2nDjoT5plsL52/kC34ouh3kzjLV2a5y2hUWXdW2Xdm2VdliVVVV27VtWWHflZyrsC6pk12Js5JzVdcB3TGlZCSiZKCcQ1tYUEYJ1sYIXMeHEG8r0SoryyFwW5YXM4JxLlmWi7Y8d+yr60hUKiZIWd66yRErWweu2PeYIFvGbwDaF8rDaCc/Jfo/GNSreYeq9fgAAAAASUVORK5CYII=' alt='instagram-story.png' loading='lazy'>
+          <div class="tmpl-name">instagram-story.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAbCAMAAADMHHSpAAAAP1BMVEUaOlwaOlwaOlwaOlwaOlwaOlwaOlwaOlwaOlwaOlwaOlwaOlwaOlwaOlzoXTp3ip5KY37///+0v8roXTr////GNHYKAAAAFHRSTlNcn0moUnuEZnGWOY1BsMirr1DiUNKqaFEAAAHPSURBVHic1ZfhcoMgEIQFIsYYi5p7/2ftHSCcColOxE5XoH+/2WUvtPrpnZRStK0EU8vVeWmtaVvV9Fnd6ztT09jdWFW4gm60bk6SlnR6znrQ9qpmwD7gLQHFhi4wzoRBiFUvEGdVDI8IAx/D44SR7zNgwr8l3x7AZgtYHQVkEWcT/hhxXecjjpAUcTSQjqsiXtzBZcTN1w6eEXEWsNkHKLOAAMgHALgNKAEg8IMBz2Mt/jJimY0Ypr6fkE/ZA88J+WCYirX4djBichCsg0YhIRhDLg5QrMVpQLnlYw4Sn7XReAenQQxntrjaHfGIIScA8QIimgKBZ7yDpQZ1JuIx3+JYYSV8j9uLB3WMeHwD6KaM8oTXDmo5+havI14TMgevHNQSE35ZbSI2yUHtIjZrQmP5jCkwqMdNjR3ggs/EWzgQo8cza0D8bL4lfosTEbPnIOLxlojon6bl7l+nPdmJg1qGFq/nIAHOHgpX5NWPceeWo9T+z9mD+unnzPh4N2YITzG8OeKu5Q2JJTlxUD95yAcdbKODIekSg3qd8EWAR1/UfxPx/hYXi/i0F3WpiL8d1P8o4tQ/TUcA+WNG13nA4OKxJ38S8NoWf3hRs4h/AfLab/uhi7EUAAAAAElFTkSuQmCC' alt='lowerthird.png' loading='lazy'>
+          <div class="tmpl-name">lowerthird.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAACgBAMAAAA1J7WjAAAAGFBMVEVHcEz///8UFBb///8mJinoXTqJiYrV1dVC/tqtAAAAAnRSTlMAG/z2BNQAAAC2SURBVHic7djRDYIwEIDhwgRlA3MNC5wboBN0BEdw/wch8UFaC3o1KuH/H5t83DXwhHOPtTLrPDY/ObhyIqkekpOybVOcVx4NBoPB4B3jcAyXGnzd4p1F9HdrqxHrfXX7ZDuOfbTeuZfRRiOuWlvr7iz2VzXBZPA7n6cGNeMnfQmHcKrCwwbvDAaDwWDwv+Hsx1Je2a6PXhi8PnrJEhERERERERHRvmp853zjnDfpbnrAR/d5qRs0eXsiY0RZOgAAAABJRU5ErkJggg==' alt='tshirt-mockup.png' loading='lazy'>
+          <div class="tmpl-name">tshirt-mockup.png</div>
+        </div>
+        <div class="tmpl-card">
+          <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAABaBAMAAADN6EBhAAAAJ1BMVEVHloslUWgqXG0bPl5Ci4YgSGM0cHgvZ3M9goE5eXz9/f7oXTpXhY5/tKAaAAAD2UlEQVR4nO2RMY6jShCGKyDaDCQOYBIOYJETEDhFyFdo1BM6AMmxA3yB1nT6grHkg7xz7f9XY5vZ3Xlvx/RKu9KWm6K6qvqrv7FsI5v8Bf6GwCo2cLvdV120te1k3223XRVnVV0HYDTrKoiroHCPoFu/yAMWCiviq2rt6vir9uHK1er73gkRv+ECmLdwbbtiBViOQNIcuJRZBT+59HzetnkrrQ7IwdxrmD6xWp4EAptc9m3+/iO0aZp/cs0WvmEOrhq4YGsaGQS8xM/5Gad/hRAVmDmHUT1iPrkGH/kQptqbhwPqJI1mOkOB7SMXhuZ5/sMj7+3e1C6zERXOwE2WRl0SmZfFv3KWZsUGQSwv2QZRsUG80vMpCvwpmw3QWbZBYYXHG0w4AZhD8EX5es6DgADCijQT8opMV/GsL4IofUkR2f4E4KGMuuQwljFXIXjGMdrilcuiKMsoazyUh4Poi/iiXOXBG0fclsCx1PsjKJ715MLgZVzYYYW/mSwK5Y/99YP80j/I7xR+bMd/Xq7H6/V6+d9OMeOggRn7HlHfj994rON4eftyebleXy7D9z2mH4be6OlhNNKDiAT3JLPnvR9R6d8ux+Nd4Tc9aCCW8cArczPQa5I6h6U3A7OX68sbgciQ/+hREczghtj0gwADzcYYnNUk1WMEchxttI52nMELyTkdelg1KpSTsQbhFzA9Y3g2aohz2jAojU84AhT7xkF7BiLNqGkMMtwJD/aamlEBM7OZ+bdX+tiHkaF0i9hAlXCqkUAlzIfV+rv70Ob2+cSwaJf/PPeEiTUOL2cNAzyOe2uN91p3mp3NzlFo0gxzLkQzkOfCWcuCh3fO2Vs/Hu+BB9bZ2wwfxjirxqHIBJAXilMRocJzYKDEN9vB93rcM8Qse2PNKnjWc4gOE3Q7QBxHsNVqL2VCmYXz4c5eZVObYxm6PR7M9Gy3egtsvVjmWbXaobO8Jl0oIHFv0DdGa4PmIdw7H+gcbgVOZYSkWRx1Cx8QKDgdpBS3LN/3EtBUfi9qzT60hbs5f1PsNOVsuLbjTRyvrCY+ssUHvvpz1CVxcedXeX09TzGXnGN/w2mKKG+aJgCj2jk2MLrCXwA80e/wxAl2sptODRJNM0UJoBDWNM0OTxMhaGS3203NaXfCdkJ+ZXACEHhqjCTxJPC6iYPElZvIFh+YNHXdJDXCBD5p1m6FGimzTriatdtakpp0qUU4LBFZtcVOs6JKpU7C78ltg8sLgcKXVuq58ZktQDW10WpZb2Qkqi3gKLbWH9KJ6v7UVn2tUR0yt1IdOpNPbe86k0f4134f+wrbHx+3nti04wAAAABJRU5ErkJggg==' alt='youtube-banner.png' loading='lazy'>
+          <div class="tmpl-name">youtube-banner.png</div>
+        </div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Charte Graphique</div>
+    
+        <div class="charte-card">
+          <div class="charte-icon">📘</div>
+          <div class="charte-info">
+            <div class="charte-title">Charte Graphique</div>
+            <div class="charte-desc">425 Ko — PDF complet avec logos, palette et règles d'usage</div>
+          </div>
+          <a href="../charte-graphique-00-originale.pdf" class="charte-btn" target="_blank">Télécharger</a>
+        </div>
+  </div>
+
+  <div class="back-link">
+    <a href="../../propositions/">← Retour à la page de comparaison</a>
+  </div>
+
+</div>
+</body>
+</html>

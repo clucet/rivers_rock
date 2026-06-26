@@ -3,77 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rivers Rock — Logo</title>
-<meta name="description" content="Rivers Rock — Logo — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
-<meta property="og:title" content="Rivers Rock — Logo">
-<meta property="og:description" content="Rivers Rock — Logo — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
-<meta property="og:type" content="music.group">
-<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/00-originale/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rivers Rock — Logo">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<title>Rivers Rock — Ombre & Lumiere</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#1A3A5C,#4A9B8E);color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center}
-.container{max-width:640px;width:100%;padding:60px 24px;text-align:center}
+:root{--noir:#0A0A0A;--gris-fonce:#2B2B2B;--gris-moyen:#6B6B6B;--gris-clair:#BDBDBD;--blanc:#FFFFFF}
+body{font-family:Inter,system-ui,sans-serif;background:var(--noir);color:var(--blanc);min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.bg-grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.08'/%3E%3C/svg%3E")}
+.container{max-width:640px;width:100%;padding:60px 24px;text-align:center;position:relative;z-index:1}
 .logo{margin-bottom:32px}
-.logo svg{width:100px;height:100px}
-.logo svg circle{fill:none;stroke:#fff;stroke-width:4}
-.logo svg path{fill:none;stroke:#E85D3A;stroke-width:3.5}
-h1{font-family:'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(36px,8vw,48px);letter-spacing:2px;margin-top:8px;text-transform:uppercase}
-h2{font-size:clamp(20px,5vw,28px);font-weight:400;letter-spacing:4px;text-transform:uppercase;color:#E85D3A;margin:32px 0 12px}
-p,li{font-size:15px;line-height:1.7;color:rgba(255,255,255,.8)}
+.logo svg{width:80px;height:80px}
+.logo svg circle{fill:none;stroke:var(--gris-clair);stroke-width:2.5}
+.logo svg line{stroke:var(--gris-clair);stroke-width:3;stroke-linecap:round}
+h1{font-family:Playfair Display,serif;font-weight:400;font-size:clamp(32px,7vw,44px);letter-spacing:4px;margin-top:8px;color:var(--gris-clair)}
+.tagline{font-family:Space Mono,monospace;font-size:11px;color:var(--gris-moyen);letter-spacing:3px;margin-top:4px;text-transform:uppercase}
+h2{font-family:Playfair Display,serif;font-size:clamp(18px,4vw,24px);font-weight:400;letter-spacing:3px;color:var(--gris-clair);margin:40px 0 16px}
+p{font-size:14px;line-height:1.7;color:var(--gris-moyen)}
 .members{list-style:none;padding:0}
-.members li{padding:4px 0}
-.highlight{color:#E85D3A;font-weight:600}
-hr{border:none;border-top:1px solid rgba(255,255,255,.15);margin:32px 0}
-.links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-.links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:14px;padding:8px 16px;border:1px solid rgba(255,255,255,.2);border-radius:6px;transition:.2s}
-.links a:hover{color:#fff;border-color:#fff}
-.footer{font-size:12px;color:rgba(255,255,255,.3);margin-top:48px}
-@media(max-width:640px){
-  .container{padding:40px 16px}
-  .logo svg{width:70px;height:70px}
-}
-
-a:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
-button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}</style>
+.members li{padding:4px 0;font-size:14px;color:var(--gris-clair)}
+.members li span{color:var(--blanc)}
+hr{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:32px 0}
+.links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.links a{color:var(--gris-moyen);text-decoration:none;font-size:12px;font-family:Space Mono,monospace;padding:8px 18px;border:1px solid rgba(255,255,255,0.1);border-radius:6px;transition:.3s}
+.links a:hover{color:var(--blanc);border-color:var(--gris-clair)}
+.footer{font-size:10px;font-family:Space Mono,monospace;color:var(--gris-moyen);margin-top:48px;letter-spacing:3px;text-transform:uppercase}
+@media(max-width:640px){.container{padding:40px 16px}.logo svg{width:60px;height:60px}h1{font-size:28px}}
+@media(prefers-color-scheme:light){:root{--noir:#FAFAFA;--gris-fonce:#E8E8E4;--gris-moyen:#666;--gris-clair:#333;--blanc:#1A1A1A}}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gris-clair);outline-offset:2px}
+</style>
 </head>
 <body>
+<div class="bg-grain"></div>
 <div class="container">
   <div class="logo">
     <svg viewBox="0 0 100 100">
       <circle cx="50" cy="50" r="42"/>
-      <path d="M18,50 Q30,42 42,50 Q54,58 66,50 Q78,42 90,50"/>
+      <circle cx="50" cy="50" r="38"/>
+      <line x1="50" y1="8" x2="50" y2="42"/>
+      <line x1="50" y1="58" x2="50" y2="92"/>
+      <circle cx="50" cy="50" r="5" fill="var(--noir)"/>
     </svg>
     <h1>RIVERS ROCK</h1>
+    <div class="tagline">Ombre &amp; Lumiere</div>
   </div>
-  <p>Groupe rouennais formé en 2024 au centre Éducation et Formation du Petit-Quevilly.<br>Rock — Pop-Rock — Indé — Alternatif</p>
+  <p>Clair-obscur, argentique, lessentiel.<br>Groupe rouennais forme en 2024.</p>
   <hr>
-  <h2>Les membres</h2>
+  <h2>Membres</h2>
   <ul class="members">
-    <li><span class="highlight">Rosaria</span> — batterie</li>
-    <li><span class="highlight">Christophe</span> — basse</li>
-    <li><span class="highlight">Nicolas</span> — guitare</li>
-    <li><span class="highlight">David</span> — guitare / chant</li>
-    <li><span class="highlight">Virginie</span> — chant</li>
+    <li><span>Rosaria</span> -- batterie</li>
+    <li><span>Christophe</span> -- basse</li>
+    <li><span>Nicolas</span> -- guitare</li>
+    <li><span>David</span> -- guitare / chant</li>
+    <li><span>Virginie</span> -- chant</li>
   </ul>
   <hr>
   <h2>Concerts</h2>
   <p>Contactez-nous pour programmer un concert.</p>
   <hr>
   <h2>Musique</h2>
-  <p>Ecoutez Rivers Rock sur Spotify — playlist a venir.</p>
-  <div style="max-width:600px;margin:16px auto"><div style="text-align:center;padding:30px 20px;background:rgba(128,128,128,0.04);border-radius:8px"><p style="color:rgba(128,128,128,0.5);font-size:14px;margin-bottom:12px;font-family:sans-serif">Playlist musicale a venir</p><a href="https://www.youtube.com/@RiversRockRouen" target="_blank" style="display:inline-block;padding:10px 24px;border-radius:6px;background:var(--accent,#E85D3A);color:#fff;text-decoration:none;font-size:13px">Suivre sur YouTube</a></div></div>
+  <p>Playlist a venir -- suivez-nous sur YouTube.</p>
   <hr>
   <h2>Contact</h2>
   <p>riversrock_rouen@gmail.com</p>
   <div class="links">
-    <a href="https://www.instagram.com/riversrock.rouen" target="_blank">Instagram</a>
-    <a href="https://www.facebook.com/RiversRockRouen" target="_blank">Facebook</a>
-    <a href="https://www.youtube.com/@RiversRockRouen" target="_blank">YouTube</a>
+    <a href="https://www.instagram.com/riversrock_rouen">Instagram</a>
+    <a href="https://www.facebook.com/RiversRockRouen">Facebook</a>
+    <a href="https://www.youtube.com/@RiversRockRouen">YouTube</a>
   </div>
-  <p class="footer">RIVERS ROCK — Rouen</p>
+  <p class="footer">RIVERS ROCK -- Rouen</p>
 </div>
 </body>
 </html>

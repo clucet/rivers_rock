@@ -57,49 +57,54 @@ def _colors(c1):
     return {k: (v, _pil(v)) for k, v in c1.items()}
 
 
-# ── Configuration originale (BASE) ──
+# ── Proposition 00 : Ombre & Lumière (refonte — N&B, clair-obscur) ──
 BASE = Config(
-    name="Originale",
+    name="Ombre & Lumière",
     colors=_colors({
-        "bleu_seine":    "#1A3A5C",
-        "vert_eau":      "#4A9B8E",
-        "accent":        "#E85D3A",
-        "vert_repere":   "#2D8A6E",
-        "gris_acier":    "#8C9196",
-        "blanc_casse":   "#F5F5F0",
+        "noir_profond":  "#0A0A0A",
+        "gris_fonce":    "#2B2B2B",
+        "gris_moyen":    "#6B6B6B",
+        "gris_clair":    "#BDBDBD",
+        "blanc_pur":     "#FFFFFF",
         "blanc":         "#FFFFFF",
-        # Aliases for compatibility
-        "teal_profond":  "#1A3A5C",
-        "terracotta":    "#E85D3A",
+        # Aliases for generator compatibility
+        "bleu_seine":    "#0A0A0A",
+        "vert_eau":      "#2B2B2B",
+        "accent":        "#BDBDBD",
         "or_vieilli":    "#FFFFFF",
+        "terracotta":    "#6B6B6B",
+        "teal_profond":  "#0A0A0A",
+        "vert_repere":   "#6B6B6B",
+        "blanc_casse":   "#F5F0E8",
+        "gris_acier":    "#6B6B6B",
     }),
     fonts={
-        "hero":      "BebasNeue",
-        "logo":      "BebasNeue",
-        "body":      "Montserrat",
-        "badge":     "Montserrat",
-        "song":      "Montserrat",
-        "accent":    "Montserrat",
+        "hero":      "PlayfairDisplay",
+        "logo":      "PlayfairDisplay",
+        "body":      "Inter",
+        "badge":     "SpaceMono",
+        "song":      "Inter",
+        "data":      "SpaceMono",
     },
     tokens={
-        "card_w":    250, "card_h":    74,   "card_r":    6,
+        "card_w":    250, "card_h":    74,   "card_r":    2,
         "badge_r":   12,  "badge_y":   15,
-        "shadow_off":3,   "shadow_alpha":0.15,
-        "border_alpha":0.35,
+        "shadow_off":3,   "shadow_alpha":0.0,
+        "border_alpha":0.15,
         "gradient_steps":120,
-        "wave_rows": 3,   "wave_opacity":0.07,
-        "grain_intensity":0.0,
-        "logo_scale":2.2,
-        "footer_tracking":3,
-        "setlist_font_size":28,
+        "wave_rows": 2,   "wave_opacity":0.03,
+        "grain_intensity":0.12,
+        "logo_scale":2.0,
+        "footer_tracking":4,
+        "setlist_font_size":22,
         "card_double_border":False,
         "badge_shape":"circle",
-        "wave_style":"sine",
-        "gradient_style":"linear",
+        "wave_style":"none",
+        "gradient_style":"flat",
     },
     flags={
-        "use_grain": False,
-        "use_halftone": False,
+        "use_grain": True,
+        "use_halftone": True,
         "use_flare": False,
         "use_or_wave": False,
         "use_duotone": False,
@@ -469,7 +474,7 @@ def font_filename(role, cfg=BASE):
 
 
 # ── Active config (runtime switchable) ──
-ACTIVE = NEON_NIGHTS
+ACTIVE = BASE
 
 def set_active(name):
     """Switch ACTIVE config by name. Names: originale, fluid-wave, rock-brut, scene-vintage."""
