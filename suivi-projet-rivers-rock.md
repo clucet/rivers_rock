@@ -1,4 +1,4 @@
-<!-- AUTO-UPDATE: Dernière mise à jour automatique par opencode (25/06/2026) -->
+<!-- AUTO-UPDATE: Dernière mise à jour automatique par opencode (26/06/2026) -->
 <!-- Sections gérées automatiquement : Propositions design, Tâches, Journal. Toute modification manuelle de ces sections sera écrasée. -->
 
 # Rivers Rock — Suivi de projet
@@ -292,24 +292,34 @@ setlist/
 - **Setlist interactive** : app web accessible depuis le QR, avec minuterie scène — ✅ fait, `site/setlist/index.html`
 - **Fiche technique son** (stage plot) — ✅ fait
 - **Logo animé** pour Reels/Shorts — ✅ fait, `render_animation.py` paramétrable
-- **PDF chartes graphiques** — à créer, avec aperçus des assets et logos SVG
+- **PDF chartes graphiques** — ✅ fait, `scripts/generate_charte_pdf.py` + cairosvg
+- **Pages d'aperçu** — ✅ fait, `scripts/generate_preview.py` — 9 preview.html avec logos, palette, iframe animé
+- **PWA Setlist offline** — ✅ fait, `site/setlist/manifest.json` + `sw.js`
+- **EPK / Press Kit** — ✅ fait, `site/epk/index.html`
+- **CI/CD GitHub Actions** — ✅ fait, `.github/workflows/generate.yml`
+- **CMYK print** — ✅ fait, `scripts/convert_to_cmyk.py` + flag `--cmyk`
+- **Setlist centralisée** — ✅ fait, `scripts/setlist_data.py` (13 fichiers)
+- **WCAG auto-checker** — ✅ fait, `scripts/palette.py` — `contrast_ratio()`, `check_wcag_aa()`
+- **Spotify embeds** — ✅ fait, iframes dans les 9 sites (placeholder à remplacer)
 
 ---
 
-## Prochaines évolutions possibles (25 juin 2026)
+## Prochaines évolutions possibles (26 juin 2026)
 
 | # | Suggestion | Effort | Impact | Description |
 |---|-----------|--------|--------|-------------|
-| 1 | **PWA Setlist** | 🟢 Faible | 🟠 Moyen | Convertir `site/setlist/` en PWA offline (service worker + manifest) pour utilisation sur scène sans connexion |
-| 2 | **Cartes NFC** | 🟡 Moyen | 🟠 Moyen | Générer des cartes de visite NFC compatibles Apple Wallet / Google Wallet avec les designs existants |
-| 3 | **Spotify / Apple Music** | 🟢 Faible | 🔴 Élevé | Playlists publiques des 12 titres, embed widgets dans les sites des propositions |
-| 4 | **Vote setlist** | 🟡 Moyen | 🔴 Élevé | Page publique où les fans votent pour les chansons du prochain concert ; admin drag-to-reorder |
-| 5 | **Merch store** | 🟡 Moyen | 🟠 Moyen | Page merch liée à Printful/Spreadshirt avec les designs t-shirt et stickers existants |
-| 6 | **Mailing list** | 🟢 Faible | 🟡 Moyen | Formulaire newsletter + envoi d'emails automatiques pour les annonces de concerts |
-| 7 | **EPK / Press Kit** | 🟢 Faible | 🔴 Élevé | Page EPK professionnelle avec bio, photos, rider technique, stages plot, lien de booking |
-| 8 | **Planning répétitions** | 🟢 Faible | 🟡 Moyen | Outil interne pour les 5 membres pour coordonner les créneaux au 106 |
-| 9 | **CI/CD GitHub Actions** | 🟡 Moyen | 🔴 Élevé | Pipeline de validation + génération automatique + déploiement à chaque push |
-| 10 | **Dashboard analytics** | 🟡 Moyen | 🟢 Faible | Tableau de bord privé avec stats Instagram, YouTube, QR scans, vues setlist |
+| # | Suggestion | Effort | Impact | Statut | Description |
+|---|-----------|--------|--------|--------|-------------|
+| 1 | **PWA Setlist** | 🟢 Faible | 🟠 Moyen | ✅ Fait | Service worker + manifest — utilisable hors-ligne sur scène |
+| 2 | **Cartes NFC** | 🟡 Moyen | 🟠 Moyen | 🔜 | Générer des cartes de visite NFC compatibles Apple Wallet / Google Wallet avec les designs existants |
+| 3 | **Spotify / Apple Music** | 🟢 Faible | 🔴 Élevé | 🔶 Partiel | Iframes Spotify ajoutés aux 9 sites (placeholder `REMPLACER_PAR_ID`) |
+| 4 | **Vote setlist** | 🟡 Moyen | 🔴 Élevé | 🔜 | Page publique où les fans votent pour les chansons du prochain concert ; admin drag-to-reorder |
+| 5 | **Merch store** | 🟡 Moyen | 🟠 Moyen | 🔜 | Page merch liée à Printful/Spreadshirt avec les designs t-shirt et stickers existants |
+| 6 | **Mailing list** | 🟢 Faible | 🟡 Moyen | 🔜 | Formulaire newsletter + envoi d'emails automatiques pour les annonces de concerts |
+| 7 | **EPK / Press Kit** | 🟢 Faible | 🔴 Élevé | ✅ Fait | `site/epk/index.html` — bio, membres, répertoire, downloads |
+| 8 | **Planning répétitions** | 🟢 Faible | 🟡 Moyen | 🔜 | Outil interne pour les 5 membres pour coordonner les créneaux au 106 |
+| 9 | **CI/CD GitHub Actions** | 🟡 Moyen | 🔴 Élevé | ✅ Fait | `.github/workflows/generate.yml` — validation + génération + déploiement |
+| 10 | **Dashboard analytics** | 🟡 Moyen | 🟢 Faible | 🔜 | Tableau de bord privé avec stats Instagram, YouTube, QR scans, vues setlist |
 
 ## Propositions design (24 juin 2026)
 
@@ -692,3 +702,15 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 25/06/2026 | **Lot 3-5 — Chartes enrichies** : grilles de construction, règles d'usage pro, preload SVG dans générateurs | opencode |
 | 25/06/2026 | **Instagram `@riversrockrouen` désactivé** — appel en cours. Handle de secours : `@riversrock_rouen` | opencode |
 | 25/06/2026 | **Chartes PDF avec logos + assets** : cairosvg installé, rendu SVG, miniatures templates | opencode |
+| 25/06/2026 | **Pages d'aperçu par proposition** : `scripts/generate_preview.py` — 9 preview.html avec logos, palette, iframe animé, miniatures PDF, charte ZIP | opencode |
+| 25/06/2026 | **Lien Aperçu + Charte PDF** dans propositions/index.html pour chaque carte | opencode |
+| 26/06/2026 | **Lot 1 — Print** : bleed/crop sur flyer, police 5-6pt→7pt (07/08/09), script CMYK Ghostscript + flag `--cmyk` | opencode |
+| 26/06/2026 | **Lot 3 — Technique** : factorisation 4 fonctions dans logoutils.py (gradient, waves, grain, footer) + setlist centralisée setlist_data.py (13 fichiers mis à jour) | opencode |
+| 26/06/2026 | **Lot 5 — Accessibilité** : dark mode préfères-color-scheme sur sites 07/08/09 + WCAG auto-checker dans palette.py | opencode |
+| 26/06/2026 | **PWA Setlist** : manifest.json + sw.js + enregistrement service worker — utilisable hors-ligne sur scène | opencode |
+| 26/06/2026 | **EPK / Press Kit** : `site/epk/index.html` — bio, membres, répertoire, downloads chartes/PDF, liens réseaux | opencode |
+| 26/06/2026 | **CI/CD GitHub Actions** : `.github/workflows/generate.yml` — validation → génération → déploiement automatique | opencode |
+| 26/06/2026 | **README.md** : documentation complète du projet (structure, commandes, liens) | opencode |
+| 26/06/2026 | **.gitignore** : patterns pour previews PNG, chartes ZIP, /tmp/ | opencode |
+| 26/06/2026 | **Spotify embeds** : iframes Spotify playlist ajoutés aux 9 propositions (placeholder `REMPLACER_PAR_ID`) + section Musique créée pour 00-originale | opencode |
+| 26/06/2026 | **Rendu MP4** : render_animation.py lancé à l'échelle 0.5 (en cours, ~210 frames) | opencode |
