@@ -16,8 +16,10 @@ header p{font-family:'Space Mono',monospace;font-size:13px;color:rgba(255,255,25
 .btn-zip{display:inline-block;margin-top:14px;padding:10px 24px;border-radius:8px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;border:1px solid rgba(255,255,255,0.08);transition:.2s;letter-spacing:.5px}
 .btn-zip:hover{background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.15)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:24px;max-width:1200px;margin:40px auto;padding:0 24px;position:relative;z-index:1}
-.card{display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:12px;border:1px solid rgba(255,255,255,0.06);border-top:3px solid;overflow:hidden;transition:.3s;text-decoration:none;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.2)}
-.card:hover{transform:translateY(-4px);background:rgba(255,255,255,0.07);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.card{display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:12px;border:1px solid rgba(255,255,255,0.06);border-top:3px solid;overflow:hidden;transition:.3s;box-shadow:0 4px 12px rgba(0,0,0,0.2)}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.card-link{display:block;text-decoration:none;color:#fff;transition:.3s}
+.card-link:hover{background:rgba(255,255,255,0.03)}
 .card-header{padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
 .card-header .num{font-family:'Anton',sans-serif;font-size:14px;color:rgba(255,255,255,0.2)}
 .card-header .badge{font-size:10px;padding:3px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:1px}
@@ -36,12 +38,12 @@ header p{font-family:'Space Mono',monospace;font-size:13px;color:rgba(255,255,25
 .card-body h2{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:4px}
 .card-body .tag{font-size:11px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
 .card-body p{font-size:13px;line-height:1.5;color:rgba(255,255,255,0.6)}
-.card-footer{display:flex;gap:8px;padding:12px 24px 16px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.04);background:rgba(0,0,0,0.08);margin-top:auto}
-.card-footer a{font-family:'Space Mono',monospace;font-size:11px;padding:6px 14px;border-radius:6px;text-decoration:none;transition:.2s;letter-spacing:0.5px}
-.card-footer .btn-site{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7)}
-.card-footer .btn-site:hover{background:rgba(255,255,255,0.15);color:#fff}
-.card-footer .btn-pdf{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.4)}
-.card-footer .btn-pdf:hover{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)}
+.card-actions{display:flex;gap:8px;padding:12px 24px 16px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.12);border-radius:0 0 12px 12px}
+.card-actions a{font-family:'Space Mono',monospace;font-size:11px;padding:7px 16px;border-radius:6px;text-decoration:none;transition:.2s;letter-spacing:0.5px;font-weight:600}
+.card-actions .btn-site{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.85)}
+.card-actions .btn-site:hover{background:rgba(255,255,255,0.2);color:#fff}
+.card-actions .btn-pdf{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.5)}
+.card-actions .btn-pdf:hover{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8)}
 .legend{max-width:800px;margin:40px auto;padding:0 24px;text-align:center;position:relative;z-index:1}
 .legend table{width:100%;border-collapse:collapse;font-size:12px;color:rgba(255,255,255,0.5)}
 .legend th,.legend td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.04);text-align:left}
@@ -60,7 +62,8 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
 <div class="grid">
 
   <!-- 01 Fluid Wave -->
-  <a class="card" href="01-fluid-wave/assets/index.html" target="_blank" style="border-top-color:#D4A843">
+<div class="card" style="border-top-color:#D4A843">
+  <a href="01-fluid-wave/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">01</span>
       <span class="badge badge-fluid">Organique</span>
@@ -75,16 +78,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Playfair Display · Nunito</div>
       <p>Organique et contemporain — vert profond, ambre, vague seule. Élégant et fluide.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
     
-      <a class="btn-pdf" href="01-fluid-wave/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="01-fluid-wave/charte-graphique-01-fluid-wave.pdf">Charte PDF</a>
-</div>
   </a>
+  <div class="card-actions">      <a class="btn-site" href="01-fluid-wave/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="01-fluid-wave/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="01-fluid-wave/charte-graphique-01-fluid-wave.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 02 Rock Brut -->
-  <a class="card" href="02-rock-brut/assets/index.html" target="_blank" style="border-top-color:#FF3B00">
+<div class="card" style="border-top-color:#FF3B00">
+  <a href="02-rock-brut/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">02</span>
       <span class="badge badge-rock">Industriel</span>
@@ -100,16 +103,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Anton · Inter Tight · JetBrains Mono</div>
       <p>Industriel et performatif — noir, orange vif, hexagone. Puissant et radical.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
     
-      <a class="btn-pdf" href="02-rock-brut/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="02-rock-brut/charte-graphique-02-rock-brut.pdf">Charte PDF</a>
-</div>
   </a>
+  <div class="card-actions">      <a class="btn-site" href="02-rock-brut/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="02-rock-brut/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="02-rock-brut/charte-graphique-02-rock-brut.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 03 Scène & Vintage -->
-  <a class="card" href="03-scene-vintage/assets/index.html" target="_blank" style="border-top-color:#C9A84C">
+<div class="card" style="border-top-color:#C9A84C">
+  <a href="03-scene-vintage/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">03</span>
       <span class="badge badge-vintage">Vintage</span>
@@ -125,17 +128,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Anton · Bebas Neue · Space Mono</div>
       <p>Nostalgique et lumineux — teal, terracotta, or, écusson néon, timbre disque. La plus aboutie.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
-      <span class="btn-pdf">PDF setlist</span>
     
-      <a class="btn-pdf" href="03-scene-vintage/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="03-scene-vintage/charte-graphique-03-scene-vintage.pdf">Charte PDF</a>
-</div>
   </a>
+  <div class="card-actions">      <a class="btn-site" href="03-scene-vintage/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="03-scene-vintage/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="03-scene-vintage/charte-graphique-03-scene-vintage.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 04 Ponts & Lumière -->
-  <a class="card" href="04-ponts-lumiere/assets/index.html" target="_blank" style="border-top-color:#FFB703">
+<div class="card" style="border-top-color:#FFB703">
+  <a href="04-ponts-lumiere/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">04</span>
       <span class="badge badge-ponts">Architectural</span>
@@ -152,16 +154,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Teko · Raleway · DM Mono</div>
       <p>Architectural et nocturne — bleu nuit, acier, lumière, pont arc. Atmosphérique et cinématographique.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
     
-      <a class="btn-pdf" href="04-ponts-lumiere/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="04-ponts-lumiere/charte-graphique-04-ponts-lumiere.pdf">Charte PDF</a>
-</div>
   </a>
+  <div class="card-actions">      <a class="btn-site" href="04-ponts-lumiere/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="04-ponts-lumiere/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="04-ponts-lumiere/charte-graphique-04-ponts-lumiere.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 05 Neon Nights -->
-  <a class="card" href="05-neon-nights/assets/index.html" target="_blank" style="border-top-color:#FF2D95">
+<div class="card" style="border-top-color:#FF2D95">
+  <a href="05-neon-nights/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">05</span>
       <span class="badge badge-vintage" style="background:rgba(255,45,149,0.15);color:#FF2D95">Cyberpunk</span>
@@ -178,16 +180,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Orbitron · Rajdhani · JetBrains Mono</div>
       <p>Cyberpunk et urbain — violet, rose néon, cyan, éclairs. Rouen la nuit, bitume mouillé, néons.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
     
-      <a class="btn-pdf" href="05-neon-nights/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="05-neon-nights/charte-graphique-05-neon-nights.pdf">Charte PDF</a>
-</div>
   </a>
+  <div class="card-actions">      <a class="btn-site" href="05-neon-nights/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="05-neon-nights/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="05-neon-nights/charte-graphique-05-neon-nights.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 06 Sable & Bronze -->
-  <a class="card" href="06-sable-bronze/assets/index.html" target="_blank" style="border-top-color:#CC6B49">
+<div class="card" style="border-top-color:#CC6B49">
+  <a href="06-sable-bronze/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">06</span>
       <span class="badge" style="background:rgba(204,107,73,0.15);color:#CC6B49">Voyage</span>
@@ -206,16 +208,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Cinzel · Lato · Cormorant</div>
       <p>Voyage et nature — sable, terre cuite, bronze, vert palmier. Chaleur du désert, lumière dorée, matières naturelles.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
     
-      <a class="btn-pdf" href="06-sable-bronze/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="06-sable-bronze/charte-graphique-06-sable-bronze.pdf">Charte PDF</a>
-</div>
   </a>
+  <div class="card-actions">      <a class="btn-site" href="06-sable-bronze/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="06-sable-bronze/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="06-sable-bronze/charte-graphique-06-sable-bronze.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 07 Nordik -->
-  <a class="card" href="07-nordik/assets/index.html" target="_blank" style="border-top-color:#B8B5A8">
+<div class="card" style="border-top-color:#B8B5A8">
+  <a href="07-nordik/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">07</span>
       <span class="badge" style="background:rgba(184,181,168,0.15);color:#4A4A4A">Minimal</span>
@@ -228,16 +230,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Inter (tous usages)</div>
       <p>Minimaliste scandinave — blanc, gris, vide, espace. Un trait horizontal comme seul logo. Le degré zéro du design.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
     
-      <a class="btn-pdf" href="07-nordik/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="07-nordik/charte-graphique-07-nordik.pdf">Charte PDF</a>
-</div>
   </a>
+  <div class="card-actions">      <a class="btn-site" href="07-nordik/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="07-nordik/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="07-nordik/charte-graphique-07-nordik.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 08 Grunge -->
-  <a class="card" href="08-grunge/assets/index.html" target="_blank" style="border-top-color:#FF3366">
+<div class="card" style="border-top-color:#FF3366">
+  <a href="08-grunge/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">08</span>
       <span class="badge" style="background:rgba(255,51,102,0.15);color:#FF3366">Punk</span>
@@ -250,16 +252,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Rubik Glitch · Space Mono · Syne Mono</div>
       <p>Anti-design — photocopies, marqueur rose, tampon, imperfection volontaire. Zine des années 90.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
     
-      <a class="btn-pdf" href="08-grunge/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="08-grunge/charte-graphique-08-grunge.pdf">Charte PDF</a>
-</div>
   </a>
+  <div class="card-actions">      <a class="btn-site" href="08-grunge/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="08-grunge/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="08-grunge/charte-graphique-08-grunge.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 09 Jazz Club -->
-  <a class="card" href="09-jazz-club/assets/index.html" target="_blank" style="border-top-color:#C9A86C">
+<div class="card" style="border-top-color:#C9A86C">
+  <a href="09-jazz-club/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">09</span>
       <span class="badge" style="background:rgba(201,168,108,0.15);color:#C9A86C">Jazz</span>
@@ -275,16 +277,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Playfair Display · Karla · DM Mono</div>
       <p>Club de jazz enfumé — cuivres, velours rouge, projecteur, ligne dorée, label de vinyle de luxe.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
     
-      <a class="btn-pdf" href="09-jazz-club/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="09-jazz-club/charte-graphique-09-jazz-club.pdf">Charte PDF</a>
-</div>
   </a>
+  <div class="card-actions">      <a class="btn-site" href="09-jazz-club/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="09-jazz-club/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="09-jazz-club/charte-graphique-09-jazz-club.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 10 Bitume -->
-  <a class="card" href="10-bitume/assets/index.html" target="_blank" style="border-top-color:#F4D03F">
+<div class="card" style="border-top-color:#F4D03F">
+  <a href="10-bitume/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">10</span>
       <span class="badge badge-bitume">Street</span>
@@ -300,15 +302,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Bangers · Space Mono</div>
       <p>Street art et urbain — gris béton, jaune fluo, rouge brique. Pochoir stencil, graffitis, énergie de la rue.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
-      <a class="btn-pdf" href="10-bitume/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="10-bitume/charte-graphique-10-bitume.pdf">Charte PDF</a>
-    </div>
+    
   </a>
+  <div class="card-actions">      <a class="btn-site" href="10-bitume/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="10-bitume/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="10-bitume/charte-graphique-10-bitume.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 11 Cordes & Voix -->
-  <a class="card" href="11-cordes-voix/assets/index.html" target="_blank" style="border-top-color:#FFB74D">
+<div class="card" style="border-top-color:#FFB74D">
+  <a href="11-cordes-voix/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">11</span>
       <span class="badge badge-cordes">Acoustique</span>
@@ -324,15 +327,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Playfair Display · Lato</div>
       <p>Acoustique et intimiste — crème chaud, acajou, ambre. Cordes qui vibrent, concert au coin du feu.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
-      <a class="btn-pdf" href="11-cordes-voix/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="11-cordes-voix/charte-graphique-11-cordes-voix.pdf">Charte PDF</a>
-    </div>
+    
   </a>
+  <div class="card-actions">      <a class="btn-site" href="11-cordes-voix/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="11-cordes-voix/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="11-cordes-voix/charte-graphique-11-cordes-voix.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 12 Héritage -->
-  <a class="card" href="12-heritage/assets/index.html" target="_blank" style="border-top-color:#D4AF37">
+<div class="card" style="border-top-color:#D4AF37">
+  <a href="12-heritage/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">12</span>
       <span class="badge badge-heritage">Patrimoine</span>
@@ -349,15 +353,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Cinzel · Lora · Cormorant</div>
       <p>Patrimoine normand — bleu vitrail, or feuille, brun colombage. Rosace gothique, intemporel et sacré.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
-      <a class="btn-pdf" href="12-heritage/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="12-heritage/charte-graphique-12-heritage.pdf">Charte PDF</a>
-    </div>
+    
   </a>
+  <div class="card-actions">      <a class="btn-site" href="12-heritage/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="12-heritage/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="12-heritage/charte-graphique-12-heritage.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 13 Rubicon -->
-  <a class="card" href="13-rubicon/assets/index.html" target="_blank" style="border-top-color:#E65100">
+<div class="card" style="border-top-color:#E65100">
+  <a href="13-rubicon/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">13</span>
       <span class="badge badge-rubicon">Americana</span>
@@ -374,15 +379,16 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Oswald · Anton · Source Sans</div>
       <p>Road trip et americana — orange route, bleu ciel, vert pin. Badge Route 66, horizon infini.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
-      <a class="btn-pdf" href="13-rubicon/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="13-rubicon/charte-graphique-13-rubicon.pdf">Charte PDF</a>
-    </div>
+    
   </a>
+  <div class="card-actions">      <a class="btn-site" href="13-rubicon/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="13-rubicon/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="13-rubicon/charte-graphique-13-rubicon.pdf">Charte PDF</a></div>
+</div>
 
   <!-- 14 Minuit -->
-  <a class="card" href="14-minuit/assets/index.html" target="_blank" style="border-top-color:#C9A87C">
+<div class="card" style="border-top-color:#C9A87C">
+  <a href="14-minuit/assets/index.html" class="card-link">
     <div class="card-header">
       <span class="num">14</span>
       <span class="badge badge-minuit">French</span>
@@ -399,12 +405,12 @@ footer{text-align:center;padding:40px 24px;color:rgba(255,255,255,0.2);font-size
       <div class="tag">Playfair Display · Karla · DM Mono</div>
       <p>French touch et élégance — noir velours, bordeaux, or bruni. Lune croissante, nuit rouennaise chic.</p>
     </div>
-    <div class="card-footer">
-      <span class="btn-site">Site</span>
-      <a class="btn-pdf" href="14-minuit/assets/preview.html">Aperçu</a>
-      <a class="btn-pdf" href="14-minuit/charte-graphique-14-minuit.pdf">Charte PDF</a>
-    </div>
+    
   </a>
+  <div class="card-actions">      <a class="btn-site" href="14-minuit/assets/index.html">🌐 Site</a>
+      <a class="btn-pdf" href="14-minuit/assets/preview.html">Aperçu</a>
+      <a class="btn-pdf" href="14-minuit/charte-graphique-14-minuit.pdf">Charte PDF</a></div>
+</div>
 
 </div>
 
