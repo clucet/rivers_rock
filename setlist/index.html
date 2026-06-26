@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Rivers Rock — Setlist</title>
-<link rel="manifest" href="manifest.json">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0c;color:#e0e0e0;min-height:100svh;display:flex;flex-direction:column;user-select:none;-webkit-user-select:none}
@@ -37,7 +34,6 @@ h1{font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
 .song.playing .btn-play{background:#E85D3A;border-color:#E85D3A}
 footer{position:fixed;bottom:0;width:100%;padding:10px 16px 20px;background:linear-gradient(transparent,#0a0a0c 40%);text-align:center;font-size:11px;color:rgba(255,255,255,0.15)}
 footer a{color:rgba(232,93,58,0.6);text-decoration:none}
-footer .sep{color:rgba(255,255,255,0.1);margin:0 8px}
 @media(prefers-color-scheme:light){body{background:#f5f5f0;color:#333}header{background:#f5f5f0;border-color:rgba(0,0,0,0.06)}.artist{color:#111}.btn-play{border-color:rgba(0,0,0,0.15)}.song.playing{background:rgba(232,93,58,0.06)}footer{background:linear-gradient(transparent,#f5f5f0 40%)}}
 </style>
 </head>
@@ -188,7 +184,7 @@ footer .sep{color:rgba(255,255,255,0.1);margin:0 8px}
   </div>
 </div>
 <footer>
-  <span id="duration">Duree totale: ~45:00</span> <span class="sep">·</span> <a href="https://clucet.github.io/rivers_rock" target="_blank">Rivers Rock</a> <span class="sep">·</span> <a href="../epk/" target="_blank">Press Kit</a>
+  <span id="duration">Duree totale: ~45:00</span> &middot; <a href="https://clucet.github.io/rivers_rock" target="_blank">Rivers Rock</a>
 </footer>
 <script>
 const songs = document.querySelectorAll('.song');
@@ -247,9 +243,6 @@ setInterval(() => {
     timer.textContent = formatTime(elapsed);
   }
 }, 1000);
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
-}
 </script>
 </body>
 </html>

@@ -57,7 +57,7 @@
 | QR codes réels (draw_qr_pillow + draw_qr_reportlab) dans les 6 propositions | Tous les `generate.py` | 24/06 |
 | Bleed + crop marks (business card, stage plot, t-shirt) | `scripts/generate_businesscard.py`, `stageplot.py`, `tshirts.py` | 24/06 |
 | Section Musique YouTube (propositions 01 et 04) | `propositions/01-fluid-wave/generate.py`, `04-ponts-lumiere/generate.py` | 24/06 |
-| Setlist interactive web (minuteur, BPM, chronomètre) | `scripts/generate_setlist_web.py`, `site/setlist/index.html` | 24/06 |
+| Setlist interactive web (minuteur, BPM, chronomètre) | `scripts/generate_setlist_web.py`, `setlist/index.html` | 24/06 |
 | GitHub Pages activé + page comparaison 6 propositions | `propositions/index.html` | 24/06 |
 | Facebook Page « Rivers Rock Rouen » créée | — | 24/06 |
 
@@ -117,7 +117,7 @@
 | `propositions/index.html` | Page comparaison des 9 propositions |
 | `propositions/drafts/publications-facebook.md` | Brouillons Facebook (5 posts) |
 | `propositions/infos-comptes-reseaux.md` | Accès réseaux sociaux du groupe |
-| `site/setlist/index.html` | Setlist interactive (minuteur concert) |
+| `setlist/index.html` | Setlist interactive (minuteur concert) |
 | `scripts/generate_animated_logo.html` | Animation logo dans navigateur (arcs cercle) |
 | `scripts/render_animation.py` | Rendu MP6 du logo animé |
 | `scripts/logoutils.py` | Fonctions écusson + résolution polices cross-platform |
@@ -289,13 +289,13 @@ setlist/
 ## Améliorations possibles
 
 - **QR code dynamique** : URL courte redirigeant vers la dernière version de la setlist — ✅ fait, QR réels branchés
-- **Setlist interactive** : app web accessible depuis le QR, avec minuterie scène — ✅ fait, `site/setlist/index.html`
+- **Setlist interactive** : app web accessible depuis le QR, avec minuterie scène — ✅ fait, `setlist/index.html`
 - **Fiche technique son** (stage plot) — ✅ fait
 - **Logo animé** pour Reels/Shorts — ✅ fait, `render_animation.py` paramétrable
 - **PDF chartes graphiques** — ✅ fait, `scripts/generate_charte_pdf.py` + cairosvg
 - **Pages d'aperçu** — ✅ fait, `scripts/generate_preview.py` — 9 preview.html avec logos, palette, iframe animé
-- **PWA Setlist offline** — ✅ fait, `site/setlist/manifest.json` + `sw.js`
-- **EPK / Press Kit** — ✅ fait, `site/epk/index.html`
+- **PWA Setlist offline** — ✅ fait, `setlist/manifest.json` + `sw.js`
+- **EPK / Press Kit** — ✅ fait, `epk/index.html`
 - **CI/CD GitHub Actions** — ✅ fait, `.github/workflows/generate.yml`
 - **CMYK print** — ✅ fait, `scripts/convert_to_cmyk.py` + flag `--cmyk`
 - **Setlist centralisée** — ✅ fait, `scripts/setlist_data.py` (13 fichiers)
@@ -318,8 +318,8 @@ setlist/
 | 4 | **Vote setlist public** | 🟡 Moyen | 🔴 Élevé | 🔜 | Page publique où les fans votent pour les chansons du prochain concert |
 | 5 | **Merch store** | 🟡 Moyen | 🟠 Moyen | 🔜 | Page merch liée à Printful/Spreadshirt avec les designs existants |
 | 6 | **Mailing list** | 🟢 Faible | 🟡 Moyen | 🔜 | Formulaire newsletter + envoi d'emails automatiques |
-| 7 | **EPK / Press Kit** | 🟢 Faible | 🔴 Élevé | ✅ Fait | `site/epk/index.html` — bio, membres, répertoire, downloads |
-| 8 | **Planning répétitions** | 🟢 Faible | 🟡 Moyen | ✅ Fait | `site/planning/index.html` — tableau 5×7×3, localStorage, copie WhatsApp |
+| 7 | **EPK / Press Kit** | 🟢 Faible | 🔴 Élevé | ✅ Fait | `epk/index.html` — bio, membres, répertoire, downloads |
+| 8 | **Planning répétitions** | 🟢 Faible | 🟡 Moyen | ✅ Fait | `planning/index.html` — tableau 5×7×3, localStorage, copie WhatsApp |
 | 9 | **CI/CD GitHub Actions** | 🟡 Moyen | 🔴 Élevé | ✅ Fait | `.github/workflows/generate.yml` |
 | 10 | **Dashboard analytics** | 🟡 Moyen | 🟢 Faible | 🔜 | Tableau de bord privé avec stats visites, QR scans, vues setlist |
 | 11 | **Vote groupe** | 🟢 Faible | 🔴 Élevé | ✅ Fait | `propositions/vote/index.html` — top 3 par email |
@@ -715,7 +715,7 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 26/06/2026 | **Lot 3 — Technique** : factorisation 4 fonctions dans logoutils.py (gradient, waves, grain, footer) + setlist centralisée setlist_data.py (13 fichiers mis à jour) | opencode |
 | 26/06/2026 | **Lot 5 — Accessibilité** : dark mode préfères-color-scheme sur sites 07/08/09 + WCAG auto-checker dans palette.py | opencode |
 | 26/06/2026 | **PWA Setlist** : manifest.json + sw.js + enregistrement service worker — utilisable hors-ligne sur scène | opencode |
-| 26/06/2026 | **EPK / Press Kit** : `site/epk/index.html` — bio, membres, répertoire, downloads chartes/PDF, liens réseaux | opencode |
+| 26/06/2026 | **EPK / Press Kit** : `epk/index.html` — bio, membres, répertoire, downloads chartes/PDF, liens réseaux | opencode |
 | 26/06/2026 | **CI/CD GitHub Actions** : `.github/workflows/generate.yml` — validation → génération → déploiement automatique | opencode |
 | 26/06/2026 | **README.md** : documentation complète du projet (structure, commandes, liens) | opencode |
 | 26/06/2026 | **.gitignore** : patterns pour previews PNG, chartes ZIP, /tmp/ | opencode |
@@ -742,4 +742,4 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 28/06/2026 | **Script finaliser.py** : bascule automatique de la proposition gagnante (archive, palette, site, README, commit, push) | opencode |
 | 28/06/2026 | **Analyse impression** : `impression-production.md` — Brother DCP-L3560CDW, production famille, prestataires, budget | opencode |
 | 28/06/2026 | **Premiers votes** : 3/5 reçus — Neon Nights et Rock Brut en tête, Grunge 3e. 2 votes restants demain | opencode |
-| 28/06/2026 | **Planning répétitions** : `site/planning/index.html` — tableau interactif 5×7×3 créneaux, sauvegarde localStorage, copie WhatsApp, stats disponibilités | opencode |
+| 28/06/2026 | **Planning répétitions** : `planning/index.html` — tableau interactif 5×7×3 créneaux, sauvegarde localStorage, copie WhatsApp, stats disponibilités | opencode |

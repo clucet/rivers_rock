@@ -6,7 +6,7 @@ import os, sys, shutil
 sys.path.insert(0, os.path.dirname(__file__))
 from palette import ACTIVE, CONFIG_NAMES, proposition_dir, set_active
 
-SITE_DIR = os.path.join(os.path.dirname(__file__), "..", "site")
+SITE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def get_source_path():

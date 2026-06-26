@@ -5,7 +5,7 @@ import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from logoutils import BEBAS_PATH
 
-OUT = os.path.join(os.path.dirname(__file__), "..", "site", "setlist")
+OUT = os.path.join(os.path.dirname(__file__), "..", "setlist")
 os.makedirs(OUT, exist_ok=True)
 
 from setlist_data import SETLIST_WEB as SETLIST, LOWER

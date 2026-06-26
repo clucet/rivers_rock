@@ -142,7 +142,7 @@ La config active est définie dans `scripts/palette.py` ligne ~490 :
 ACTIVE = NEON_NIGHTS   ← Par défaut. Change selon la proposition affichée sur le root site.
 ```
 
-Le root site (`site/index.html`) affiche toujours la proposition définie par `ACTIVE`.
+Le root site (`index.html`) affiche toujours la proposition définie par `ACTIVE`.
 Pour changer :
 ```bash
 python3 scripts/generate_all.py --config rock-brut --site-only
