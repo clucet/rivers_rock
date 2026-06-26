@@ -1,4 +1,4 @@
-<!-- AUTO-UPDATE: Dernière mise à jour automatique par opencode (26/06/2026) -->
+<!-- AUTO-UPDATE: Dernière mise à jour automatique par opencode (27/06/2026) -->
 <!-- Sections gérées automatiquement : Propositions design, Tâches, Journal. Toute modification manuelle de ces sections sera écrasée. -->
 
 # Rivers Rock — Suivi de projet
@@ -716,3 +716,9 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 26/06/2026 | **Rendu MP4** : tentative à l'échelle 0.5 — trop lent (add_grain pixel loop). MP4 existant conservé. Optimisation nécessaire (numpy) pour le rendu final | opencode |
 | 26/06/2026 | **Audit complet 3 métiers** : webdesigner, infographiste, community manager — 10 faiblesses critiques identifiées, matrice P1→P4 | opencode |
 | 26/06/2026 | **Correctifs P1/P2** : Instagram handle migré (30 fichiers), responsive 07/08/09, formulaire FormSubmit, SEO meta tags, focus-visible, font-display:swap, favicons distincts, bleed/crop dans generate_missing.py | opencode |
+| 26/06/2026 | **5 nouvelles propositions** : 10-Bitume (street), 11-Cordes&Voix (acoustique), 12-Héritage (patrimoine), 13-Rubicon (americana), 14-Minuit (french touch) — palette.py, 25 SVG logos, 5 generate.py, 5 animated logo HTML, previews, chartes PDF | opencode |
+| 26/06/2026 | **Assets complets pour 10-14** : setlist, poster, flyer, social, banners, avatar, stickers, t-shirt générés pour les 5 nouvelles propositions | opencode |
+| 26/06/2026 | **propositions/index.html mis à jour** : 14 cartes (ajout 10-14), badges CSS, tableau legend complété, bandeau coloré par proposition | opencode |
+| 26/06/2026 | **Chartes graphiques enrichies** : page 5 "Règles d'usage du logo" ajoutée aux 14 chartes PDF | opencode |
+| 26/06/2026 | **liens-projet.md** : fichier de référence avec tous les URLs du projet | opencode |
+| 26/06/2026 | **Webdesign cards** : barre colorée (border-top), flex layout, ombre portée, footer ancré — les 14 propositions visuellement groupées | opencode |

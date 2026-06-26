@@ -1,6 +1,6 @@
 # Rivers Rock — Identité Visuelle
 
-9 propositions identitaires complètes pour **Rivers Rock**, groupe de reprises rock basé à Rouen.
+14 propositions identitaires complètes pour **Rivers Rock**, groupe de reprises rock basé à Rouen.
 
 Chaque proposition inclut : site web responsive, setlist PDF, poster, flyer, stickers, t-shirt, templates réseaux (Instagram/Facebook/YouTube), logo animé HTML, charte graphique PDF, 5 variantes SVG, overlays vidéo, business card, stage plot, tech sheet, lyrics, et signature email.
 
@@ -17,19 +17,24 @@ Chaque proposition inclut : site web responsive, setlist PDF, poster, flyer, sti
 | 07 | Nordik | Minimaliste, scandinave |
 | 08 | Grunge | Punk, photocopie, chaos |
 | 09 | Jazz Club | Cuivres, velours, jazz |
+| 10 | Bitume | Street art, urbain |
+| 11 | Cordes & Voix | Acoustique, intimiste |
+| 12 | Héritage | Patrimoine normand |
+| 13 | Rubicon | Americana, road trip |
+| 14 | Minuit | French touch, élégance |
 
 ## Structure
 
 ```
-propositions/NN-xxx/          ← Proposition isolée
+propositions/NN-xxx/          ← Proposition isolée (NN=00→14)
   generate.py                 ← Générateur Python
-  charte-graphique.md         ← Charte Markdown
-  charte-graphique-NN-xxx.pdf ← Charte PDF
+  charte-graphique-NN-xxx.pdf ← Charte PDF (5 pages)
   assets/
     logo*.svg                 ← 5 variantes de logo
     index.html                ← Site de la proposition
-    pdf/                      ← PDF générés
-    templates/                ← Templates PNG/HTML
+    preview.html              ← Page d'aperçu
+    pdf/                      ← PDF générés (setlist, poster, flyer, stickers, tshirt)
+    templates/                ← Templates PNG/HTML (social, avatar, banners, animé)
 scripts/
   palette.py                  ← Config couleurs/fonts/tokens
   logoutils.py                ← Utilitaires partagés
