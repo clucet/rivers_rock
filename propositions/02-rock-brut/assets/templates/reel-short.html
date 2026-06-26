@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rivers Rock — Rock Brut (Reel)</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0}
+body{width:1080px;height:1920px;overflow:hidden;background:#0A0A0A;display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif}
+canvas{position:absolute;top:0;left:0;width:1080px;height:1920px;z-index:0}
+.content{position:relative;z-index:1;text-align:center;color:#fff}
+.hex{width:200px;height:200px;margin:0 auto 40px;position:relative;opacity:0;animation:fadeIn .8s ease-out .3s forwards}
+.hex svg{width:100%;height:100%}
+.hex polygon{fill:none;stroke:#FF3B00;stroke-width:6;stroke-dasharray:600;stroke-dashoffset:600;animation:drawHex 1s ease-out .5s forwards}
+@keyframes drawHex{to{stroke-dashoffset:0}}
+h1{font-size:120px;letter-spacing:4px;text-transform:uppercase;opacity:0;animation:slideUp .6s ease-out 1.2s forwards;color:#FF3B00}
+.sub{font-family:'Inter Tight',sans-serif;font-size:28px;font-weight:300;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:12px;opacity:0;animation:slideUp .6s ease-out 1.8s forwards}
+.date{font-size:48px;letter-spacing:3px;margin-top:80px;opacity:0;animation:slideUp .6s ease-out 2.4s forwards;color:#fff}
+.line{width:200px;height:3px;background:#FF3B00;margin:20px auto;opacity:0;animation:fadeIn .4s ease-out 2.8s forwards}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes slideUp{0%{opacity:0;transform:translateY(40px)}100%{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<canvas id="c"></canvas>
+<div class="content">
+  <div class="hex">
+    <svg viewBox="0 0 100 100">
+      <polygon points="50,8 86.4,29 86.4,71 50,92 13.6,71 13.6,29"/>
+      <polygon points="50,18 78.1,33.5 78.1,66.5 50,84 21.9,66.5 21.9,33.5" fill="none" stroke="#fff" stroke-width="2"/>
+    </svg>
+  </div>
+  <h1>RIVERS ROCK</h1>
+  <div class="sub">Rock Brut</div>
+  <div class="line"></div>
+  <div class="date">VEN 26 JUIN 2026</div>
+</div>
+<script>
+const c=document.getElementById('c'),ctx=c.getContext('2d');c.width=1080;c.height=1920;
+const ps=[];
+for(let i=0;i<40;i++){ps.push({x:Math.random()*1080,y:Math.random()*1920,s:Math.random()*2+1,a:Math.random()*0.06+0.02})}
+function draw(){ctx.clearRect(0,0,1080,1920);
+for(const p of ps){ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle='rgba(255,59,0,'+p.a+')';ctx.fill();p.y-=0.5;if(p.y<0){p.y=1920;p.x=Math.random()*1080}}
+requestAnimationFrame(draw)}draw();
+</script>
+</body></html>
