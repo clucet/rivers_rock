@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Rivers Rock — Planning répétitions</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0D1117;--bg2:#161B22;--text:#E6EDF3;--text2:#8B949E;--accent:#E85D3A;--green:#2EA043;--green-bg:rgba(46,160,67,0.15);--border:rgba(255,255,255,0.06)}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.bg-grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.03'/%3E%3C/svg%3E")}
+.container{max-width:900px;margin:0 auto;padding:24px;position:relative;z-index:1}
+header{text-align:center;padding:40px 0 20px}
+header h1{font-family:'Anton',sans-serif;font-size:42px;letter-spacing:2px;color:var(--accent)}
+header p{font-family:'Space Mono',monospace;font-size:12px;color:var(--text2);margin-top:6px}
+.week-selector{display:flex;align-items:center;justify-content:center;gap:16px;margin:20px 0;font-family:'Space Mono',monospace;font-size:14px}
+.week-selector button{background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:6px 14px;border-radius:6px;cursor:pointer;font-family:'Space Mono',monospace;font-size:12px;transition:.2s}
+.week-selector button:hover{background:rgba(255,255,255,0.08)}
+.table-wrap{overflow-x:auto;margin:16px 0;border-radius:10px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:600px}
+thead th{background:var(--bg2);padding:10px 6px;font-family:'Anton',sans-serif;font-size:13px;letter-spacing:1px;color:var(--text2);border-bottom:1px solid var(--border);text-align:center;position:sticky;top:0}
+thead th:first-child{text-align:left;padding-left:12px;min-width:100px}
+tbody td{text-align:center;padding:4px 2px;border-bottom:1px solid rgba(255,255,255,0.03);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:.1s}
+tbody td:first-child{font-family:'Space Mono',monospace;font-size:11px;color:var(--text2);text-align:left;padding-left:12px;cursor:default;min-width:100px}
+.slot{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:36px;border-radius:6px;font-size:10px;font-family:'Space Mono',monospace;color:var(--text2);background:rgba(255,255,255,0.03);transition:.15s;user-select:none;padding:2px 4px}
+.slot:hover{background:rgba(255,255,255,0.06)}
+.slot.on{background:var(--green-bg);color:var(--green);font-weight:600}
+.slot.on::after{content:" ✓";font-size:9px}
+.legend{display:flex;gap:16px;justify-content:center;font-size:11px;color:var(--text2);font-family:'Space Mono',monospace;margin:12px 0}
+.legend .on{color:var(--green)}.legend .off{color:var(--text2)}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px 0}
+.actions button{padding:10px 24px;border:none;border-radius:8px;font-family:'Space Mono',monospace;font-size:12px;cursor:pointer;transition:.2s;letter-spacing:.5px}
+.btn-copy{background:var(--accent);color:#fff}
+.btn-copy:hover{filter:brightness(1.15)}
+.btn-reset{background:var(--bg2);color:var(--text2);border:1px solid var(--border)!important}
+.btn-reset:hover{background:rgba(255,255,255,0.06);color:var(--text)}
+.summary{background:var(--bg2);border-radius:10px;border:1px solid var(--border);padding:16px;margin:16px 0;display:none;font-family:'Space Mono',monospace;font-size:12px;line-height:1.7;white-space:pre-wrap;color:var(--text)}
+.summary.show{display:block}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:12px 24px;border-radius:8px;font-family:'Space Mono',monospace;font-size:12px;opacity:0;transition:.3s;z-index:100;pointer-events:none}
+.toast.show{opacity:1}
+footer{text-align:center;padding:40px 0;color:var(--text2);font-size:11px;font-family:'Space Mono',monospace}
+@media(max-width:600px){header h1{font-size:28px}.table-wrap{margin:12px -8px;border-radius:0;border-left:none;border-right:none}table{font-size:10px;min-width:auto}.slot{min-height:30px;font-size:9px}}
+@media(prefers-color-scheme:light){:root{--bg:#F5F5F0;--bg2:#FFFFFF;--text:#1A1A1A;--text2:#666;--border:rgba(0,0,0,0.08);--green:#1a7f37;--green-bg:rgba(26,127,55,0.1)}}
+@media(prefers-reduced-motion){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bg-grain"></div>
+<div class="container">
+  <header>
+    <h1>RIVERS ROCK</h1>
+    <p>Planning répétitions — Le 106 · Rouen</p>
+  </header>
+
+  <div class="week-selector">
+    <button id="prevWeek">←</button>
+    <span id="weekLabel">Semaine en cours</span>
+    <button id="nextWeek">→</button>
+  </div>
+
+  <div class="legend">
+    <span class="off">⬜ Indisponible</span>
+    <span class="on">🟩 Disponible</span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead id="tableHead"></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <div class="actions">
+    <button class="btn-copy" onclick="copyPlanning()">📋 Copier le planning</button>
+    <button class="btn-reset" onclick="resetWeek()">🔄 Réinitialiser la semaine</button>
+  </div>
+
+  <div class="summary" id="summary"></div>
+  <div class="toast" id="toast">✅ Copié dans le presse-papier</div>
+
+  <footer>
+    Rivers Rock — Cliquez sur vos créneaux pour indiquer votre disponibilité
+  </footer>
+</div>
+
+<script>
+const MEMBRES = ["Rosaria","Christophe","Nicolas","David","Virginie"];
+const JOURS = ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
+const CRENEAUX = ["AM","PM","Soir"];
+const STORAGE_KEY = "riversrock_planning";
+
+function getMonday(d) {
+  const date = new Date(d);
+  const day = date.getDay();
+  const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+  return new Date(date.setDate(diff));
+}
+
+let currentMonday = getMonday(new Date());
+let planning = {};
+
+function loadPlanning() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) planning = JSON.parse(saved);
+    else planning = {};
+  } catch(e) { planning = {}; }
+}
+
+function savePlanning() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(planning)); } catch(e) {}
+}
+
+function getWeekKey(date) {
+  const y = date.getFullYear();
+  const m = date.getMonth() + 1;
+  const d = date.getDate();
+  return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+}
+
+function toggleSlot(membre, jourIdx, creneau) {
+  const wk = getWeekKey(currentMonday);
+  if (!planning[wk]) planning[wk] = {};
+  if (!planning[wk][membre]) planning[wk][membre] = [];
+  const key = `${jourIdx}-${creneau}`;
+  const idx = planning[wk][membre].indexOf(key);
+  if (idx >= 0) planning[wk][membre].splice(idx, 1);
+  else planning[wk][membre].push(key);
+  savePlanning();
+  render();
+}
+
+function render() {
+  const wk = getWeekKey(currentMonday);
+  const weekStart = new Date(currentMonday);
+  
+  // Week label
+  const options = { day: 'numeric', month: 'long' };
+  const end = new Date(weekStart);
+  end.setDate(end.getDate() + 6);
+  document.getElementById('weekLabel').textContent =
+    `${weekStart.toLocaleDateString('fr-FR', options)} — ${end.toLocaleDateString('fr-FR', options)}`;
+
+  // Table head: empty cell + day headers
+  let headHtml = '<tr><th></th>';
+  JOURS.forEach((j, idx) => {
+    const d = new Date(weekStart);
+    d.setDate(d.getDate() + idx);
+    headHtml += `<th>${j} ${d.getDate()}</th>`;
+  });
+  headHtml += '</tr>';
+  document.getElementById('tableHead').innerHTML = headHtml;
+
+  // Table body: one row per member, 3 sub-rows per creneau
+  let bodyHtml = '';
+  MEMBRES.forEach(m => {
+    // Name row (spans all creneaux)
+    bodyHtml += `<tr><td><strong>${m}</strong></td>`;
+    JOURS.forEach((_, jIdx) => {
+      bodyHtml += '<td style="padding:0">';
+      CRENEAUX.forEach((c, cIdx) => {
+        const key = `${jIdx}-${cIdx}`;
+        const on = planning[wk]?.[m]?.includes(key) || false;
+        bodyHtml += `<div class="slot ${on?'on':''}" onclick="toggleSlot('${m}',${jIdx},${cIdx})">${c}</div>`;
+      });
+      bodyHtml += '</td>';
+    });
+    bodyHtml += '</tr>';
+  });
+  document.getElementById('tableBody').innerHTML = bodyHtml;
+}
+
+function copyPlanning() {
+  const wk = getWeekKey(currentMonday);
+  const weekStart = new Date(currentMonday);
+  const end = new Date(weekStart);
+  end.setDate(end.getDate() + 6);
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  
+  let txt = `📋 Rivers Rock — Planning\n${weekStart.toLocaleDateString('fr-FR', options)} → ${end.toLocaleDateString('fr-FR', options)}\n\n`;
+  
+  MEMBRES.forEach(m => {
+    const slots = planning[wk]?.[m] || [];
+    if (slots.length === 0) {
+      txt += `❌ ${m}: aucun créneau\n`;
+      return;
+    }
+    const jourMap = {};
+    slots.forEach(s => {
+      const [jIdx, cIdx] = s.split('-').map(Number);
+      const jour = JOURS[jIdx];
+      const creneau = CRENEAUX[cIdx];
+      if (!jourMap[jour]) jourMap[jour] = [];
+      jourMap[jour].push(creneau);
+    });
+    const joursStr = Object.entries(jourMap)
+      .map(([j, c]) => `${j} (${c.join('/')})`)
+      .join(', ');
+    txt += `✅ ${m}: ${joursStr}\n`;
+  });
+
+  // Common slots
+  txt += '\n📊 Créneaux communs :\n';
+  const totalMembers = MEMBRES.length;
+  JOURS.forEach((j, jIdx) => {
+    CRENEAUX.forEach((c, cIdx) => {
+      const key = `${jIdx}-${cIdx}`;
+      const count = MEMBRES.filter(m => planning[wk]?.[m]?.includes(key)).length;
+      if (count > 0) {
+        const pct = Math.round(count / totalMembers * 100);
+        txt += `  ${j} ${c}: ${count}/${totalMembers} (${pct}%)\n`;
+      }
+    });
+  });
+
+  document.getElementById('summary').textContent = txt;
+  document.getElementById('summary').classList.add('show');
+
+  navigator.clipboard.writeText(txt).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  });
+}
+
+function resetWeek() {
+  const wk = getWeekKey(currentMonday);
+  if (planning[wk]) delete planning[wk];
+  savePlanning();
+  render();
+  document.getElementById('summary').classList.remove('show');
+}
+
+document.getElementById('prevWeek').addEventListener('click', () => {
+  currentMonday.setDate(currentMonday.getDate() - 7);
+  render();
+});
+
+document.getElementById('nextWeek').addEventListener('click', () => {
+  currentMonday.setDate(currentMonday.getDate() + 7);
+  render();
+});
+
+loadPlanning();
+render();
+</script>
+</body>
+</html>
