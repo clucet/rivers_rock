@@ -1,5 +1,7 @@
 # Rivers Rock — Identité Visuelle
 
+> 📖 **Documentation d'administration** : voir [`ADMIN.md`](ADMIN.md) (administration projet) et [`COMMANDS.md`](COMMANDS.md) (aide-mémoire commandes)
+
 15 propositions identitaires complètes pour **Rivers Rock**, groupe de reprises rock basé à Rouen.
 
 Chaque proposition inclut : site web responsive, setlist PDF, poster, flyer, stickers, t-shirt, templates réseaux (Instagram/Facebook/YouTube), logo animé HTML, charte graphique PDF, 5 variantes SVG, overlays vidéo, business card, stage plot, tech sheet, lyrics, et signature email.
