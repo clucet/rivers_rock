@@ -306,10 +306,6 @@ setlist/
 
 ## Prochaines évolutions possibles (29 juin 2026)
 
-| # | Suggestion | Effort | Impact | Description |
-|---|-----------|--------|--------|-------------|
-| # | Suggestion | Effort | Impact | Statut | Description |
-|---|-----------|--------|--------|--------|-------------|
 | # | Suggestion | Effort | Impact | Statut | Description |
 |---|-----------|--------|--------|--------|-------------|
 | 1 | **PWA Setlist** | 🟢 Faible | 🟠 Moyen | ✅ Fait | Service worker + manifest — utilisable hors-ligne sur scène |
@@ -753,3 +749,27 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 28/06/2026 | **Réorganisation `pdf/templates/` → `templates/`** : les templates réseaux sont maintenant à la racine. Dossier `pdf/` supprimé | opencode |
 | 28/06/2026 | **Fix Rosaria** : avatar cohérent avec les autres membres (orange transparent) | opencode |
 | 28/06/2026 | **MD files → `md/`** : 9 fichiers documentaires déplacés dans `md/`, réécrits et clarifiés. README.md mis à jour | opencode |
+| 29/06/2026 | **Favicon Rock Brut** : hexagone RR orange+blanc dans le site racine | opencode |
+| 29/06/2026 | **404.html** : page personnalisee avec logo hexagone et lien retour | opencode |
+| 29/06/2026 | **WCAG check Rock Brut** : noir/orange 5.5:1, tous seuils AA passes | opencode |
+| 29/06/2026 | **Nettoyage templates** : plus de reference au concert Montigny annule | opencode |
+
+---
+
+## Recommandations professionnelles
+
+### Webdesigner
+- **Coherence visuelle** : le site Rock Brut utilise encore des classes CSS generiques (`.section`, `.hero`). Les adapter aux regles charte (Anton, pas d'arrondis, orange pur)
+- **Logo source unique** : les fonctions `hexagon_logo_pillow()` dupliquent le logo en Python. A terme, generer les templates depuis les SVG officiels
+- **Responsive** : verifier le rendu du site a 400px et 640px
+
+### Infographiste
+- **Contraste Orange/Blanc (3.6:1)** : echoue WCAG AA small text. L'orange ne doit etre utilise qu'en grands titres sur fond blanc
+- **Grain 10%** : bien respecte dans les templates, a verifier sur les PDF en impression laser
+- **CMYK** : PDFs en RGB. Conversion Ghostscript fiable, verifier le rendu orange `#FF3B00`
+
+### Community manager
+- **Posts Facebook** : 7 posts prets dans `md/publications-facebook.md` — a publier
+- **Instagram** : `@riversrockrouen` desactive (appel en cours). Secours `@riversrock_rouen` pret
+- **Playlist Spotify** : iframes avec `REMPLACER_PAR_ID` — creer la playlist et remplacer l'ID
+- **Session photo** : prevoyant 5 portraits + 1 photo groupe, indispensable pour le lancement
