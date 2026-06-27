@@ -231,33 +231,35 @@ def gen_poster():
     cv.rect(0, 0, W, H, stroke=0, fill=1)
 
     random.seed(42)
-    for _ in range(5000):
-        cv.setFillColor(Color(0, 0, 0, alpha=random.uniform(0.02, 0.06)))
+    for _ in range(3000):
+        cv.setFillColor(Color(0, 0, 0, alpha=random.uniform(0.015, 0.04)))
         cv.circle(random.uniform(0, W), random.uniform(0, H),
-                  random.uniform(0.3, 1.5), stroke=0, fill=1)
+                  random.uniform(0.3, 1.0), stroke=0, fill=1)
 
-    cv.setStrokeColor(ACCENT)
+    cv.setStrokeColor(Color(0, 0, 0, alpha=0.04))
     cv.setLineWidth(0.5)
-    for y in range(0, H, 30):
-        cv.line(0, y, W, y)
+    for y in range(40, H - 40, 40):
+        cv.line(40, y, W - 40, y)
 
-    hexagon_logo_reportlab(cv, W / 2, H - 190, 36)
+    cv.setFillColor(Color(0, 0, 0, alpha=0.85))
+    cv.roundRect(W / 2 - 100, H - 215, 200, 120, 4, stroke=0, fill=1)
+    hexagon_logo_reportlab(cv, W / 2, H - 160, 40)
 
     cv.setFillColor(BLANC)
-    cv.setFont("Anton", 22)
-    cv.drawCentredString(W / 2, H - 240, "RIVERS ROCK")
+    cv.setFont("Anton", 24)
+    cv.drawCentredString(W / 2, H - 200, "RIVERS ROCK")
 
     cv.setFillColor(ACCENT)
-    cv.setFont("InterTight", 12)
-    cv.drawCentredString(W / 2, H - 280, "LES SOIREES NOCTURNES")
+    cv.setFont("Anton", 14)
+    cv.drawCentredString(W / 2, H - 240, "PROCHAIN CONCERT À VENIR")
 
     cv.setFillColor(BLANC)
-    cv.setFont("Anton", 52)
-    cv.drawCentredString(W / 2, H - 350, "VEN 26 JUIN 2026")
+    cv.setFont("Anton", 40)
+    cv.drawCentredString(W / 2, H - 310, "CONTACTEZ-NOUS")
 
-    cv.setFillColor(Color(1, 1, 1, alpha=0.6))
-    cv.setFont("InterTight", 16)
-    cv.drawCentredString(W / 2, H - 390, "Montigny · 19h30")
+    cv.setFillColor(Color(0, 0, 0, alpha=0.5))
+    cv.setFont("InterTight", 14)
+    cv.drawCentredString(W / 2, H - 340, "riversrock_rouen@gmail.com")
 
     cv.setStrokeColor(ACCENT)
     cv.setLineWidth(3)
@@ -285,29 +287,29 @@ def gen_flyer():
     def draw_recto(cv, ox, oy):
         cv.setFillColor(NOIR)
         cv.rect(ox, oy, FW, FH, stroke=0, fill=1)
-        cv.setStrokeColor(ACCENT)
+        cv.setStrokeColor(Color(1, 1, 1, alpha=0.04))
         cv.setLineWidth(0.3)
-        for y in range(int(oy), int(oy + FH), 15):
-            cv.line(ox, y, ox + FW, y)
+        for y in range(int(oy) + 10, int(oy + FH) - 10, 20):
+            cv.line(ox + 10, y, ox + FW - 10, y)
         cx = ox + FW / 2
         hexagon_logo_reportlab(cv, cx, oy + FH - 55, 16)
         cv.setFillColor(BLANC)
         cv.setFont("Anton", 16)
         cv.drawCentredString(cx, oy + FH - 80, "RIVERS ROCK")
         cv.setFillColor(ACCENT)
-        cv.setFont("Anton", 28)
-        cv.drawCentredString(cx, oy + FH - 150, "VEN 26 JUIN 2026")
+        cv.setFont("Anton", 22)
+        cv.drawCentredString(cx, oy + FH - 140, "CONTACT")
         cv.setFillColor(Color(1, 1, 1, alpha=0.6))
-        cv.setFont("InterTight", 10)
-        cv.drawCentredString(cx, oy + FH - 180, "Montigny · 19h30")
+        cv.setFont("InterTight", 8)
+        cv.drawCentredString(cx, oy + FH - 170, "riversrock_rouen@gmail.com")
 
     def draw_verso(cv, ox, oy):
         cv.setFillColor(NOIR)
         cv.rect(ox, oy, FW, FH, stroke=0, fill=1)
-        cv.setStrokeColor(ACCENT)
+        cv.setStrokeColor(Color(1, 1, 1, alpha=0.04))
         cv.setLineWidth(0.3)
-        for y in range(int(oy), int(oy + FH), 15):
-            cv.line(ox, y, ox + FW, y)
+        for y in range(int(oy) + 10, int(oy + FH) - 10, 20):
+            cv.line(ox + 10, y, ox + FW - 10, y)
         cx = ox + FW / 2
         cv.setFillColor(BLANC)
         cv.setFont("Anton", 16)

@@ -29,8 +29,6 @@ nav a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:12px;font-weigh
 nav a:hover{color:var(--accent)}
 .hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px}
 .hero .logo-svg svg{width:100px;height:100px;margin-bottom:12px}
-.hero .logo-svg svg polygon{fill:none;stroke:#fff;stroke-width:4}
-.hero .logo-svg svg polyline{fill:none;stroke:var(--accent);stroke-width:3}
 .hero h1{font-family:'Anton',sans-serif;font-size:clamp(42px,10vw,72px);letter-spacing:3px;color:var(--blanc);text-transform:uppercase;margin-bottom:4px}
 .hero .tagline{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
 .hero p{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.6);max-width:500px}
@@ -97,9 +95,11 @@ button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
 </nav>
 <section class="hero">
   <div class="logo-svg">
-    <svg viewBox="0 0 100 100">
-      <polygon points="50,8 86.4,29 86.4,71 50,92 13.6,71 13.6,29"/>
-      <polyline points="35,60 50,45 65,60"/>
+    <svg viewBox="0 0 100 100" width="100" height="100">
+      <polygon points="50,4 93.3,29 93.3,71 50,96 6.7,71 6.7,29" fill="none" stroke="#FF3B00" stroke-width="3.5" stroke-linejoin="round"/>
+      <polygon points="50,15.2 84.6,36.2 84.6,63.8 50,84.8 15.4,63.8 15.4,36.2" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"/>
+      <text x="42" y="62" text-anchor="middle" font-family="Anton, sans-serif" font-size="32" fill="#FFFFFF" font-weight="700">R</text>
+      <text x="59" y="62" text-anchor="middle" font-family="Anton, sans-serif" font-size="32" fill="#FFFFFF" font-weight="700">R</text>
     </svg>
   </div>
   <h1>Rivers Rock</h1>
@@ -122,9 +122,8 @@ button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
   <div class="band"></div>
   <h2>Concerts</h2>
   <p>Contactez-nous pour programmer un concert. Notre setlist de 12 titres traverse les epoques.</p>
-  <div class="concerts-list"><li><span class="date">VEN 26 JUIN 2026</span><span class="lieu">Montigny · 19h30</span><span class="status">Concert</span></li></div>
+  <div class="concerts-list"><li><span class="date">Prochain concert</span><span class="lieu">À venir</span><span class="status">Contactez-nous</span></li></div>
   <div class="band"></div>
-  <div style="margin-top:16px;border-radius:8px;overflow:hidden;max-width:400px;margin-left:auto;margin-right:auto"><img src="../../../images/IMG-20260620-WA0001.jpg" style="width:100%;height:auto;display:block;border-radius:8px" alt="Affiche"></div>
 </section>
 <section id="musique" class="section">
   <h2>Musique</h2>
