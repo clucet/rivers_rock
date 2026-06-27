@@ -4,7 +4,7 @@
 import os, sys, argparse, glob
 
 sys.path.insert(0, os.path.dirname(__file__))
-from palette import set_active, proposition_dir
+from palette import set_active, proposition_dir, CONFIG_NAMES
 
 parser = argparse.ArgumentParser(description="Generate Rivers Rock assets for a given config")
 parser.add_argument("--config", default="scene-vintage",
@@ -25,35 +25,33 @@ if not args.pdf_only:
     generate_site()
 
 if not args.site_only:
-    from generate_setlist import create_pdf
-    from generate_poster import gen_poster
-    from generate_flyer import gen_flyer
-    from generate_social import generate_post, generate_story
-    from generate_banners import gen_banners
-    from generate_signature import gen_signature
-    from generate_stickers import gen_stickers
-    from generate_tshirts import generate_print, generate_mockup
-    from generate_avatar import gen_avatar
-
-    create_pdf()
-    gen_poster()
-    gen_flyer()
-    generate_post()
-    generate_story()
-    gen_banners()
-    gen_signature()
-    gen_stickers()
-    generate_print()
-    generate_mockup()
-    gen_avatar()
-
-    print(f"\n✅ Tous les assets générés dans pdf/ pour : {cfg.name}")
+    print("  Generation des assets via le generateur de la proposition...")
+    prop_gen = os.path.join(os.path.dirname(__file__), "..", "propositions",
+                            CONFIG_NAMES.get(args.config, "02-rock-brut"), "generate.py")
+    if os.path.exists(prop_gen):
+        import importlib.util as _util
+        _spec = _util.spec_from_file_location("prop_gen", prop_gen)
+        _mod = _util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        _mod.gen_setlist()
+        _mod.gen_poster()
+        _mod.gen_flyer()
+        _mod.gen_social()
+        _mod.gen_banners()
+        _mod.gen_avatar()
+        _mod.gen_stickers()
+        _mod.gen_tshirt()
+        _mod.gen_animated()
+        _mod.gen_site()
+        print(f"\n✅ Tous les assets générés pour : {cfg.name}")
+    else:
+        print(f"⚠️  Proposition non trouvee : {prop_gen}")
 
     if args.cmyk:
         print("\nConversion CMYK...")
         from convert_to_cmyk import convert_pdf_to_cmyk
         pdf_dir = proposition_dir(args.config)
-        pdf_glob = os.path.join(os.path.dirname(pdf_dir), "pdf", "*.pdf")
+        pdf_glob = os.path.join(pdf_dir, "pdf", "*.pdf")
         for pdf_path in glob.glob(pdf_glob):
             cmyk_path = pdf_path.replace(".pdf", "-cmyk.pdf")
             if not os.path.exists(cmyk_path):

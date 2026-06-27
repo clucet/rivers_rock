@@ -11,7 +11,7 @@ from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
-OUTPUT = os.path.join(os.path.dirname(__file__), "..", "pdf", "setlist-rivers-rock.pdf")
+OUTPUT = os.path.join(os.path.join(os.path.dirname(__file__), "..", "propositions", "02-rock-brut", "assets", "pdf"), "setlist-rock-brut.pdf")
 
 BLEU_SEINE = CFG.rl("bleu_seine")
 TEAL_PROFOND = CFG.rl("teal_profond")
@@ -125,32 +125,32 @@ def draw_cards(cv):
     cv.setLineWidth(0.5)
     cv.roundRect(card_left, card_bottom, CARD_W, CARD_H, CARD_R, stroke=1, fill=0)
 
-        artist_width = pdfmetrics.stringWidth(artist, "BebasNeue", uniform_size)
-        total_w = BADGE_R * 2 + GAP + artist_width
-        start_x = cx - total_w / 2
+    artist_width = pdfmetrics.stringWidth(artist, "BebasNeue", uniform_size)
+    total_w = BADGE_R * 2 + GAP + artist_width
+    start_x = cx - total_w / 2
 
-        badge_cx = start_x + BADGE_R
-        num_color = OR_VIEILLI if idx in GREEN_INDICES else ACCENT
-        badge_cy = cy + BADGE_Y_OFFSET
-        cv.setFillColor(Color(0.95, 0.95, 0.95))
-        cv.circle(badge_cx, badge_cy, BADGE_R, stroke=0, fill=1)
-        cv.setFillColor(num_color)
-        cv.setFont("Montserrat", 12)
-        cv.drawCentredString(badge_cx, badge_cy - 4.5, f"{idx+1:02d}")
+    badge_cx = start_x + BADGE_R
+    num_color = OR_VIEILLI if idx in GREEN_INDICES else ACCENT
+    badge_cy = cy + BADGE_Y_OFFSET
+    cv.setFillColor(Color(0.95, 0.95, 0.95))
+    cv.circle(badge_cx, badge_cy, BADGE_R, stroke=0, fill=1)
+    cv.setFillColor(num_color)
+    cv.setFont("Montserrat", 12)
+    cv.drawCentredString(badge_cx, badge_cy - 4.5, f"{idx+1:02d}")
 
-        cv.setFillColor(Color(0, 0, 0, alpha=0.90))
-        cv.setFont("BebasNeue", uniform_size)
-        cv.drawString(start_x + BADGE_R * 2 + GAP, cy + ARTIST_BASELINE + 1, artist)
+    cv.setFillColor(Color(0, 0, 0, alpha=0.90))
+    cv.setFont("BebasNeue", uniform_size)
+    cv.drawString(start_x + BADGE_R * 2 + GAP, cy + ARTIST_BASELINE + 1, artist)
 
-        if title:
-            cv.setFillColor(Color(0, 0, 0, alpha=0.60))
-            title_size = 14
-            title_width = pdfmetrics.stringWidth(title, "Montserrat", title_size)
-            max_title_w = CARD_W - 2 * MARGIN_H
-            if title_width > max_title_w:
-                title_size = title_size * max_title_w / title_width
-            cv.setFont("Montserrat", title_size)
-            cv.drawCentredString(cx, cy + TITLE_BASELINE, title)
+    if title:
+        cv.setFillColor(Color(0, 0, 0, alpha=0.60))
+        title_size = 14
+        title_width = pdfmetrics.stringWidth(title, "Montserrat", title_size)
+        max_title_w = CARD_W - 2 * MARGIN_H
+        if title_width > max_title_w:
+            title_size = title_size * max_title_w / title_width
+        cv.setFont("Montserrat", title_size)
+        cv.drawCentredString(cx, cy + TITLE_BASELINE, title)
 
 
 def create_pdf():

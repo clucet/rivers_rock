@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from logoutils import BEBAS_PATH, create_bleed_canvas, save_with_crop_marks
 from palette import ACTIVE as CFG
 
-OUTPUT = os.path.join(os.path.dirname(__file__), "..", "pdf", "stickers.pdf")
+OUTPUT = os.path.join(os.path.join(os.path.dirname(__file__), "..", "propositions", "02-rock-brut", "assets", "pdf"), "stickers-rock-brut.pdf")
 
 TERRACOTTA = CFG.rl("terracotta")
 OR_VIEILLI = CFG.rl("or_vieilli")

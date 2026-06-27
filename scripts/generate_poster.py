@@ -12,7 +12,7 @@ from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
-OUTPUT = os.path.join(os.path.dirname(__file__), "..", "pdf", "poster-a4.pdf")
+OUTPUT = os.path.join(os.path.join(os.path.dirname(__file__), "..", "propositions", "02-rock-brut", "assets", "pdf"), "poster-rock-brut.pdf")
 
 BLEU_SEINE = CFG.rl("bleu_seine")
 TEAL_PROFOND = CFG.rl("teal_profond")
