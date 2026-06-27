@@ -1,5 +1,9 @@
 # Publications Facebook — Rivers Rock Rouen
 
+_Mis à jour le 28 juin 2026 — Concert Montigny annulé, nouvelle stratégie de contenu._
+
+---
+
 ## Publication n°1 — Lancement / Présentation
 
 > **Texte :**
@@ -10,17 +14,16 @@
 > On est un groupe de reprises rock, pop-rock, indé et alternatif formé en 2024.
 > Notre nom ? La Seine qui coule derrière le 106, notre lieu de répétition.
 > 
-> Premier concert : **SAM 26 JUIN** à **Montigny** dans le cadre des **Soirées Nocturnes** 🎶
-> 
 > Au programme : AC/DC, Queen, Radiohead, White Stripes, Pixies, et bien d'autres…
 > 
-> 📍 Montigny · 19h30
+> Prochaines dates à venir — suivez-nous pour ne rien rater !
+> 
 > 📧 riversrock_rouen@gmail.com
 > 📷 @riversrock_rouen
 > 
-> #RiversRock #Rouen #SoiréesNocturnes #Montigny #Concert #ReprisesRock
+> #RiversRock #Rouen #NouveauGroupe #ReprisesRock #RockNormandie
 
-> **Visuel :** `propositions/03-scene-vintage/assets/templates/instagram-post.png`
+> **Visuel :** bannière Facebook de la proposition gagnante (quand choisie)
 
 ---
 
@@ -36,13 +39,12 @@
 > 🎤 Virginie — Chant
 > 
 > Cinq styles, cinq personnalités, un seul son.
-> On vous attend nombreux le **SAM 26 JUIN** à **Montigny** !
 > 
-> 🎵 **Les Soirées Nocturnes** — 19h30
+> Nouveau concert à venir — contactez-nous pour programmer une date !
 > 
-> #RiversRock #Rouen #GroupeRouen #SoiréesNocturnes #Montigny
+> #RiversRock #Rouen #GroupeRouen #Musiciens #Rock
 
-> **Visuel :** photo du groupe (quand disponible) ou montage des 5 avatar-circle depuis le site
+> **Visuel :** photo du groupe (quand disponible) ou montage des 5 avatars depuis le site
 
 ---
 
@@ -64,14 +66,13 @@
 > 🔥 ROLLING STONES — Jumping jack flash
 > 🔥 WHITE STRIPES — Seven nation army
 > 
-> À retrouver en live le **SAM 26 JUIN** aux **Soirées Nocturnes** de **Montigny** !
-> Contactez-nous pour tout renseignement.
+> Contactez-nous pour programmer un concert et découvrir notre répertoire en live !
 > 
 > 📧 riversrock_rouen@gmail.com
 > 
-> #Setlist #SoiréesNocturnes #Montigny #Concert #Rouen
+> #Setlist #ReprisesRock #Rouen #Concert
 
-> **Visuel :** capture d'écran de la première page de la setlist PDF
+> **Visuel :** capture d'écran de la première page de la setlist PDF de la proposition gagnante
 
 ---
 
@@ -88,28 +89,72 @@
 > 
 > Setlist modulable (45 min / 1h / 1h30). Sonorisation autonome possible.
 > 
-> Prochain concert : **SAM 26 JUIN** — **Montigny** (Soirées Nocturnes)
+> Nous finalisons actuellement notre identité visuelle — nouveau concert annoncé prochainement.
 > 
 > Contactez-nous pour un devis :
 > 📧 riversrock_rouen@gmail.com
 > 📷 @riversrock_rouen
 > 
-> #RiversRock #Booking #GroupeNormandie #SoiréesNocturnes #Montigny
+> #RiversRock #Booking #GroupeNormandie #Concert76 #MusiqueLive
 
-> **Visuel :** `propositions/03-scene-vintage/assets/templates/facebook-banner.png`
+> **Visuel :** `propositions/XX-gagnant/assets/templates/facebook-banner.png`
 
 ---
 
-## Publication n°5 — Rappel concert
+## Publication n°5 — Annulation concert Montigny
 
 > **Texte :**
-> 🎤 **Rappel — Rivers Rock en concert cette semaine !**
+> 🚫 **Concert de Montigny annulé**
 > 
-> 📅 **SAM 26 JUIN 2026**
-> 📍 **Montigny — Les Soirées Nocturnes**
-> ⏰ **19h30**
+> Suite à des circonstances indépendantes de notre volonté, notre concert prévu aux Soirées Nocturnes de Montigny est annulé.
 > 
-> Rock, pop-rock, indé, alternatif. 12 titres qui dépotent.
-> Entrée libre — venez nombreux !
+> Nous présentons nos excuses à celles et ceux qui comptaient venir.
 > 
-> #RiversRock #Concert #Montigny #SoiréesNocturnes #Rock #MusiqueLive
+> **Mais ce n'est que partie remise !** 🎸
+> 
+> De nouvelles dates arrivent très bientôt. Suivez-nous pour être les premiers informés.
+> 
+> 📧 riversrock_rouen@gmail.com
+> 📷 @riversrock_rouen
+> 
+> #RiversRock #Montigny #ConcertAnnulé #Bientôt #Rouen
+
+> **Visuel :** logo de la proposition gagnante sur fond sombre
+
+---
+
+## Publication n°6 — Nouvelle identité visuelle en cours
+
+> **Texte :**
+> 🎨 **Nous choisissons notre identité visuelle !**
+> 
+> En coulisses, on travaille sur notre image de groupe : logo, couleurs, site web, charte graphique…
+> 
+> 15 propositions ont été créées, et le vote bat son plein parmi les membres.
+> 
+> Bientôt, nous dévoilerons notre nouveau look — et un tout nouveau site web.
+> 
+> Restez connectés ! 🔥
+> 
+> #RiversRock #IdentitéVisuelle #Logo #Graphisme #Rock
+
+> **Visuel :** capture d'écran de la page de comparaison des propositions
+> `https://clucet.github.io/rivers_rock/propositions/`
+
+---
+
+## Publication n°7 — Planning répétitions
+
+> **Texte :**
+> 🥁 **Des répètes bien organisées**
+> 
+> On a même notre propre outil de planning interne pour coordonner les créneaux au 106.
+> 
+> Rosaria, Christophe, Nicolas, David, Virginie — plus d'excuses pour arriver en retard !
+> 
+> Le rock, c'est aussi du travail d'équipe. 💪
+> 
+> #RiversRock #Répétitions #Le106 #Rouen #TravailDÉquipe
+
+> **Visuel :** capture d'écran du planning interactif
+> `https://clucet.github.io/rivers_rock/planning/`
