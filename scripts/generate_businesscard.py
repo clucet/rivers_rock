@@ -4,13 +4,17 @@
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from logoutils import create_bleed_canvas, save_with_crop_marks, hexagon_logo_reportlab, ANTON_PATH
+from palette import ACTIVE, CONFIG_NAMES
 from reportlab.lib.units import mm
 from reportlab.lib.colors import Color, HexColor
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
-OUTPUT = os.path.join(os.path.dirname(__file__), "..", "pdf", "business-card.pdf")
+# Determine output path from active config
+_active_name = ACTIVE.name.lower().replace(" ", "-").replace("é", "e")
+_prop_dir = CONFIG_NAMES.get(_active_name, "02-rock-brut")
+OUTPUT = os.path.join(os.path.dirname(__file__), "..", "propositions", _prop_dir, "assets", "pdf", "business-card.pdf")
 
 NOIR = HexColor("#0A0A0A")
 ORANGE = HexColor("#FF3B00")
