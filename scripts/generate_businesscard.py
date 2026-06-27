@@ -41,10 +41,7 @@ cv.drawString(30 * mm, H - 20.5 * mm, "Reprises rock — Rouen")
 
 cv.setFillColor(BLANC)
 cv.setFont("Anton", 7)
-contact_y = H - 31 * mm
-cv.drawString(30 * mm, contact_y, "[Nom]")
-cv.drawString(30 * mm, contact_y - 4.5 * mm, "[Telephone]")
-cv.drawString(30 * mm, contact_y - 9 * mm, "[Email]")
+cv.drawString(30 * mm, H - 32 * mm, "riversrock_rouen@gmail.com")
 
 cv.setFillColor(ORANGE)
 cv.setFont("Anton", 6)
