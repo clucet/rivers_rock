@@ -131,12 +131,12 @@ def gen_setlist():
 
     # Dark background for logo visibility on white
     cv.setFillColor(Color(0, 0, 0, alpha=0.85))
-    cv.roundRect(W / 2 - 90, H - 178, 180, 110, 4, stroke=0, fill=1)
+    cv.roundRect(W / 2 - 90, H - 162, 180, 105, 4, stroke=0, fill=1)
     hexagon_logo_reportlab(cv, W / 2, H - 100, 30)
 
     cv.setFillColor(BLANC)
     cv.setFont("Anton", 20)
-    cv.drawCentredString(W / 2, H - 156, "RIVERS ROCK")
+    cv.drawCentredString(W / 2, H - 149, "RIVERS ROCK")
 
     cv.setFillColor(ACCENT)
     cv.setFont("Anton", 22)
