@@ -129,6 +129,9 @@ def gen_setlist():
 
     chevron_waves(cv, W, H)
 
+    # Dark background for logo visibility on white
+    cv.setFillColor(Color(0, 0, 0, alpha=0.85))
+    cv.roundRect(W / 2 - 40, H - 150, 80, 65, 4, stroke=0, fill=1)
     hexagon_logo_reportlab(cv, W / 2, H - 120, 30)
 
     cv.setFillColor(BLANC)
@@ -147,7 +150,7 @@ def gen_setlist():
     col_gap = (W - 2 * card_w) / 3
     col_c = [col_gap + card_w / 2, col_gap * 2 + card_w + card_w / 2]
     row_pitch = 86
-    rows_top = 610
+    rows_top = 575
 
     def uniform_size():
         longest = max(SETLIST, key=lambda x: len(x[0]))[0]
