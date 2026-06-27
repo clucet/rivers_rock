@@ -1,6 +1,6 @@
 # Rivers Rock — Identité Visuelle
 
-> 📖 **Documentation d'administration** : voir [`ADMIN.md`](ADMIN.md) (administration projet) et [`COMMANDS.md`](COMMANDS.md) (aide-mémoire commandes)
+> 📖 **Documentation** : voir [`md/admin.md`](md/admin.md) (administration), [`md/commandes.md`](md/commandes.md) (commandes), [`md/liens-projet.md`](md/liens-projet.md) (URLs)
 
 Proposition retenue : rock-brut pour **Rivers Rock**, groupe de reprises rock basé à Rouen.
 

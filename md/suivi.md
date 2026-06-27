@@ -1,4 +1,4 @@
-<!-- AUTO-UPDATE: Dernière mise à jour automatique par opencode (28/06/2026) -->
+<!-- AUTO-UPDATE: Dernière mise à jour automatique par opencode (29/06/2026) -->
 <!-- Sections gérées automatiquement : Propositions design, Tâches, Journal. Toute modification manuelle de ces sections sera écrasée. -->
 
 # Rivers Rock — Suivi de projet
@@ -304,7 +304,7 @@ setlist/
 
 ---
 
-## Prochaines évolutions possibles (28 juin 2026)
+## Prochaines évolutions possibles (29 juin 2026)
 
 | # | Suggestion | Effort | Impact | Description |
 |---|-----------|--------|--------|-------------|
@@ -749,3 +749,7 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 28/06/2026 | **Nettoyage `site/`** : dossier supprimé, contenu déplacé à la racine (index.html, setlist/, epk/, planning/) | opencode |
 | 28/06/2026 | **Admin docs** : `ADMIN.md` + `COMMANDS.md` — documentation administration et aide-mémoire commandes | opencode |
 | 28/06/2026 | **🏆 Rock Brut élu** : 4 votes sur 5 — Rock Brut remporte largement devant Neon Nights. Proposition finalisée, 14 autres archivées. Root site, README, liens mis à jour. Vote page marquée | opencode |
+| 28/06/2026 | **Conformité charte Rock Brut** : 4 scripts réécrits (avatar, social, banners, signature) — hexagone RR, fond noir, Anton, grain 10%. Plus de trace de Scene & Vintage dans les templates | opencode |
+| 28/06/2026 | **Réorganisation `pdf/templates/` → `templates/`** : les templates réseaux sont maintenant à la racine. Dossier `pdf/` supprimé | opencode |
+| 28/06/2026 | **Fix Rosaria** : avatar cohérent avec les autres membres (orange transparent) | opencode |
+| 28/06/2026 | **MD files → `md/`** : 9 fichiers documentaires déplacés dans `md/`, réécrits et clarifiés. README.md mis à jour | opencode |
