@@ -3,7 +3,7 @@
 
 import os, math, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from logoutils import create_bleed_canvas, save_with_crop_marks, reportlab_crest, pillow_crest, BEBAS_PATH, MONTSERRAT_PATH
+from logoutils import create_bleed_canvas, save_with_crop_marks, hexagon_logo_reportlab, hexagon_logo_pillow, BEBAS_PATH, MONTSERRAT_PATH
 from palette import ACTIVE as CFG
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm, cm
@@ -26,13 +26,11 @@ pdfmetrics.registerFont(TTFont("Montserrat", MONTSERRAT_PATH))
 
 
 def draw_design(cv, cx, cy, sym_r, label=""):
-    from logoutils import create_bleed_canvas, save_with_crop_marks, reportlab_crest_vintage
-    reportlab_crest_vintage(cv, cx, cy, sym_r / 25.0)
+    from logoutils import hexagon_logo_reportlab
+    hexagon_logo_reportlab(cv, cx, cy, sym_r * 0.8)
     cv.setFillColor(BLANC)
-    cv.setFont("BebasNeue", max(14, int(sym_r * 2.2)))
-    cv.drawCentredString(cx, cy - sym_r - max(10, sym_r * 0.6), "RIVERS")
-    cv.setFont("BebasNeue", max(14, int(sym_r * 2.2)))
-    cv.drawCentredString(cx, cy - sym_r - max(24, sym_r * 1.3), "ROCK")
+    cv.setFont("Anton", max(10, int(sym_r * 1.6)))
+    cv.drawCentredString(cx, cy + sym_r * 0.7 + 4, "RIVERS ROCK")
     if label:
         cv.setFillColor(Color(1, 1, 1, alpha=0.4))
         cv.setFont("Montserrat", 7)
@@ -125,7 +123,7 @@ def generate_mockup():
     font_bebas_sub = ImageFont.truetype(BEBAS_PATH, 72)
     font_mont = ImageFont.truetype(MONTSERRAT_PATH, 18)
 
-    pillow_crest(draw, mw / 2, cy - 20, 2.8)
+    hexagon_logo_pillow(draw, mw / 2, cy - 20, 60)
 
     draw.text((30, mh - 30), "RIVERS ROCK — T-shirt design B", fill=(255, 255, 255, 80), font=font_mont)
 

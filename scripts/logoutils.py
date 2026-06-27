@@ -556,6 +556,45 @@ def draw_grain_pdf(cv, W, H, count=3000, seed=42, alpha_min=0.02, alpha_max=0.06
         cv.circle(x, y, random.uniform(0.3, 1.0), stroke=0, fill=1)
 
 
+def hexagon_logo_reportlab(cv, cx, cy, size, accent_color=None, blanc_color=None):
+    """Draw Rock Brut hexagon + RR text using ReportLab."""
+    from reportlab.lib.colors import Color as _C, HexColor
+    ac = accent_color or HexColor("#FF3B00")
+    bc = blanc_color or HexColor("#FFFFFF")
+    r = size
+    pts = [(cx + r * math.cos(math.radians(60 * i - 30)), cy + r * math.sin(math.radians(60 * i - 30))) for i in range(6)]
+    cv.setStrokeColor(ac)
+    cv.setLineWidth(3)
+    for i in range(6):
+        cv.line(pts[i][0], pts[i][1], pts[(i + 1) % 6][0], pts[(i + 1) % 6][1])
+    inner = [(cx + (pt[0] - cx) * 0.85, cy + (pt[1] - cy) * 0.85) for pt in pts]
+    cv.setStrokeColor(bc)
+    cv.setLineWidth(1.5)
+    for i in range(6):
+        cv.line(inner[i][0], inner[i][1], inner[(i + 1) % 6][0], inner[(i + 1) % 6][1])
+    cv.setFillColor(bc)
+    cv.setFont("Anton", max(8, int(r * 0.9)))
+    cv.drawCentredString(cx, cy - r * 0.4, "RR")
+
+
+def hexagon_logo_pillow(draw, cx, cy, size, accent=None, blanc=None):
+    """Draw Rock Brut hexagon + RR text using Pillow."""
+    ac = accent or (255, 59, 0)
+    bc = blanc or (255, 255, 255)
+    from PIL import ImageFont
+    r = size
+    pts = [(cx + r * math.cos(math.radians(60 * i - 30)), cy + r * math.sin(math.radians(60 * i - 30))) for i in range(6)]
+    for i in range(6):
+        draw.line([pts[i], pts[(i + 1) % 6]], fill=ac, width=max(3, int(3 * r / 15)))
+    inner = [(cx + (pt[0] - cx) * 0.85, cy + (pt[1] - cy) * 0.85) for pt in pts]
+    for i in range(6):
+        draw.line([inner[i], inner[(i + 1) % 6]], fill=bc, width=max(1, int(1.5 * r / 15)))
+    font = ImageFont.truetype(ANTON_PATH, max(8, int(r * 0.8)))
+    bbox = draw.textbbox((0, 0), "RR", font=font)
+    tw = bbox[2] - bbox[0]
+    draw.text((cx - tw / 2, cy - r * 0.35), "RR", fill=bc, font=font)
+
+
 def draw_footer_rouen(cv, W, font_name="Montserrat", font_size=7, tracking=3, y_pos=14, alpha=0.12):
     """Draw 'ROUEN' spaced footer text."""
     cv.setFillColor(Color(0, 0, 0, alpha=alpha))
