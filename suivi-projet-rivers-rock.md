@@ -748,3 +748,4 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 28/06/2026 | **Barre progression votes** : `propositions/vote/index.html` — suivi 0→5 votes, grille cliquable, localStorage | opencode |
 | 28/06/2026 | **Nettoyage `site/`** : dossier supprimé, contenu déplacé à la racine (index.html, setlist/, epk/, planning/) | opencode |
 | 28/06/2026 | **Admin docs** : `ADMIN.md` + `COMMANDS.md` — documentation administration et aide-mémoire commandes | opencode |
+| 28/06/2026 | **🏆 Rock Brut élu** : 4 votes sur 5 — Rock Brut remporte largement devant Neon Nights. Proposition finalisée, 14 autres archivées. Root site, README, liens mis à jour. Vote page marquée | opencode |
