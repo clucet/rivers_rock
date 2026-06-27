@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from logoutils import pillow_crest, BEBAS_PATH, MONTSERRAT_PATH, SPACE_MONO_PATH
 from palette import ACTIVE as CFG
 
-OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "pdf", "templates")
+OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "templates")
 OUTPUT = os.path.join(OUT_DIR, "email-signature.png")
 os.makedirs(OUT_DIR, exist_ok=True)
 

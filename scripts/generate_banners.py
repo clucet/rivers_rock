@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from logoutils import pillow_crest, BEBAS_PATH, MONTSERRAT_PATH, ANTON_PATH, pillow_grain_overlay
 from palette import ACTIVE as CFG
 
-OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "pdf", "templates")
+OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "templates")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 BLEU_SEINE = CFG.pil("bleu_seine")

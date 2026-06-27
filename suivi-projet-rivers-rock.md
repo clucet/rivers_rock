@@ -35,11 +35,11 @@
 | Affiche A4 concert | `generate_poster.py`, `poster-a4.pdf` | 18/06 |
 | Flyer A6 recto/verso | `generate_flyer.py`, `flyer-a6.pdf` | 18/06 |
 | Carte de visite 85×55 mm QR | `generate_businesscard.py`, `business-card.pdf` | 18/06 |
-| Bannière Facebook (1640×624) | `generate_banners.py`, `pdf/templates/facebook-banner.png` | 18/06 |
-| Bannière YouTube (2560×1440) | `generate_banners.py`, `pdf/templates/youtube-banner.png` | 18/06 |
-| Signature email (600×200) | `generate_signature.py`, `pdf/templates/email-signature.png` | 18/06 |
+| Bannière Facebook (1640×624) | `generate_banners.py`, `templates/facebook-banner.png` | 18/06 |
+| Bannière YouTube (2560×1440) | `generate_banners.py`, `templates/youtube-banner.png` | 18/06 |
+| Signature email (600×200) | `generate_signature.py`, `templates/email-signature.png` | 18/06 |
 | Stickers ∅80mm (planche de 6 / A4) | `generate_stickers.py`, `pdf/stickers.pdf` | 18/06 |
-| T-shirt design B (print + mockup) | `generate_tshirts.py`, `pdf/t-shirt-print.pdf`, `pdf/templates/tshirt-mockup.png` | 18/06 |
+| T-shirt design B (print + mockup) | `generate_tshirts.py`, `pdf/t-shirt-print.pdf`, `templates/tshirt-mockup.png` | 18/06 |
 | Flyer A6 — 4/A4 duplex, bio verso | `generate_flyer.py`, `pdf/flyer-a6.pdf` | 18/06 |
 | Fiche technique sérigraphe | `generate_techsheet.py`, `pdf/t-shirt-techsheet.pdf` | 18/06 |
 | Site one-page | `site/index.html` | 18/06 |
@@ -83,8 +83,8 @@
 | `charte-graphique-rivers-rock.md` | Charte graphique complète (palette, typo, logo, supports) |
 | `suivi-projet-rivers-rock.md` | Suivi de projet (ce fichier) |
 | `scripts/generate_setlist.py` | Script → `pdf/setlist-rivers-rock.pdf` |
-| `scripts/generate_social.py` | Script → `pdf/templates/instagram-*.png` |
-| `scripts/generate_avatar.py` | Script → `pdf/templates/avatar.png` |
+| `scripts/generate_social.py` | Script → `templates/instagram-*.png` |
+| `scripts/generate_avatar.py` | Script → `templates/avatar.png` |
 | `scripts/generate_poster.py` | Script → `pdf/poster-a4.pdf` |
 | `scripts/generate_flyer.py` | Script → `pdf/flyer-a6.pdf` |
 | `scripts/generate_businesscard.py` | Script → `pdf/business-card.pdf` |
@@ -92,19 +92,19 @@
 | `pdf/poster-a4.pdf` | Affiche concert A4 — logo + date/lieu |
 | `pdf/flyer-a6.pdf` | Flyer A6 (2 p.) — recto promo, verso noms |
 | `pdf/business-card.pdf` | Carte 85×55 mm — logo + contact + QR code |
-| `pdf/templates/avatar.png` | Avatar 500×500, symbole seul, fond transparent |
-| `pdf/templates/instagram-post.png` | Post carré 1080×1080 |
-| `pdf/templates/instagram-story.png` | Story 1080×1920 |
-| `pdf/templates/facebook-banner.png` | Bannière Facebook 1640×624 |
-| `pdf/templates/youtube-banner.png` | Bannière YouTube 2560×1440 |
-| `pdf/templates/email-signature.png` | Signature email 600×200 |
+| `templates/avatar.png` | Avatar 500×500, symbole seul, fond transparent |
+| `templates/instagram-post.png` | Post carré 1080×1080 |
+| `templates/instagram-story.png` | Story 1080×1920 |
+| `templates/facebook-banner.png` | Bannière Facebook 1640×624 |
+| `templates/youtube-banner.png` | Bannière YouTube 2560×1440 |
+| `templates/email-signature.png` | Signature email 600×200 |
 | `pdf/stickers.pdf` | Planche de 6 stickers ∅80mm sur A4 |
 | `pdf/t-shirt-print.pdf` | Planche print t-shirt (S/M/L/XL) design B |
-| `pdf/templates/tshirt-mockup.png` | Mockup t-shirt noir 1200×1600 |
+| `templates/tshirt-mockup.png` | Mockup t-shirt noir 1200×1600 |
 | `pdf/t-shirt-techsheet.pdf` | Fiche technique sérigraphe |
 | `site/index.html` | Site one-page (GitHub Pages) |
 | `pdf/stage-plot.pdf` | Fiche technique son (stage plot + input list) |
-| `pdf/templates/logo-animated.mp4` | Logo animé (6s, 1080×1920) |
+| `templates/logo-animated.mp4` | Logo animé (6s, 1080×1920) |
 | `scripts/palette.py` | Palette centralisée — 9 configurations (Config dataclass) |
 | `scripts/logoutils.py` | Fonctions partagées (création logo, QR, bleed, crop marks) |
 | `scripts/generate_all.py` | Générateur multi-config (`--config`) |
@@ -743,8 +743,8 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 28/06/2026 | **Analyse impression** : `impression-production.md` — Brother DCP-L3560CDW, production famille, prestataires, budget | opencode |
 | 28/06/2026 | **Premiers votes** : 3/5 reçus — Neon Nights et Rock Brut en tête, Grunge 3e. 2 votes restants demain | opencode |
 | 28/06/2026 | **Planning répétitions** : `planning/index.html` — tableau interactif 5×7×3 créneaux, sauvegarde localStorage, copie WhatsApp, stats disponibilités | opencode |
-| 28/06/2026 | **GIF logo animé** : `pdf/templates/logo-animated.gif` — 240px, 10fps, 855 Ko (signature email, WhatsApp) | opencode |
-| 28/06/2026 | **Signature email HTML** : `pdf/templates/email-signature.html` — GIF intégré, prêt à copier dans Gmail | opencode |
+| 28/06/2026 | **GIF logo animé** : `templates/logo-animated.gif` — 240px, 10fps, 855 Ko (signature email, WhatsApp) | opencode |
+| 28/06/2026 | **Signature email HTML** : `templates/email-signature.html` — GIF intégré, prêt à copier dans Gmail | opencode |
 | 28/06/2026 | **Barre progression votes** : `propositions/vote/index.html` — suivi 0→5 votes, grille cliquable, localStorage | opencode |
 | 28/06/2026 | **Nettoyage `site/`** : dossier supprimé, contenu déplacé à la racine (index.html, setlist/, epk/, planning/) | opencode |
 | 28/06/2026 | **Admin docs** : `ADMIN.md` + `COMMANDS.md` — documentation administration et aide-mémoire commandes | opencode |

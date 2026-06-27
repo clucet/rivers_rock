@@ -63,7 +63,7 @@ python3 scripts/render_animation.py --config rock-brut --render-scale 0.25
 |----------|---------|--------|
 | `--config` | `scene-vintage`, `fluid-wave`, `rock-brut`, `originale`, `ponts-lumiere`, `neon-nights`, `sable-bronze` + 7 autres | `scene-vintage` |
 | `--render-scale` | `0.25` (270×480), `0.5` (540×960), `1.0` (1080×1920) | `1.0` |
-| `--output` | Chemin du fichier MP4 | `pdf/templates/logo-animated.mp4` |
+| `--output` | Chemin du fichier MP4 | `templates/logo-animated.mp4` |
 
 ### 14 animations disponibles
 ✅ `scene-vintage`, `fluid-wave`, `rock-brut`, `originale`, `ponts-lumiere`, `neon-nights`, `sable-bronze`, `nordik`, `grunge`, `jazz-club`, `bitume`, `cordes-voix`, `heritage`, `rubicon`, `minuit`

@@ -7,7 +7,7 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 from logoutils import hexagon_logo_pillow, ANTON_PATH
 
-OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "pdf", "templates")
+OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "templates")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 SIZE = 500

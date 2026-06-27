@@ -14,7 +14,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from PIL import Image, ImageDraw, ImageFont
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "pdf")
-TMPL_DIR = os.path.join(OUT_DIR, "templates")
+TMPL_DIR = os.path.join(os.path.dirname(__file__), "..", "templates")
 os.makedirs(OUT_DIR, exist_ok=True)
 os.makedirs(TMPL_DIR, exist_ok=True)
 

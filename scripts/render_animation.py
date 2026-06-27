@@ -9,7 +9,7 @@ from palette import SCENE_VINTAGE as CFG_BASE
 from palette import set_active
 from PIL import Image, ImageDraw, ImageFont
 
-OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "pdf", "templates")
+OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "templates")
 OUTPUT = os.path.join(OUT_DIR, "logo-animated.mp4")
 os.makedirs(OUT_DIR, exist_ok=True)
 
