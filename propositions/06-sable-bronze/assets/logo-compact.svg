@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
-  <circle cx="35" cy="30" r="20" fill="#B5835A"/>
-  <polygon points="35,30 35,10 37,11" fill="#B5835A" opacity="0.6"/>
-  <polygon points="35,30 55,30 53,32" fill="#B5835A" opacity="0.6"/>
-  <polygon points="35,30 35,50 33,49" fill="#B5835A" opacity="0.6"/>
-  <polygon points="35,30 15,30 17,28" fill="#B5835A" opacity="0.6"/>
-  <text x="75" y="36" font-family="Cinzel, serif" font-size="14" fill="#2D6A4F" letter-spacing="2">RIVERS ROCK</text>
-</svg>

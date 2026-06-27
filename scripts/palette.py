@@ -474,7 +474,7 @@ def font_filename(role, cfg=BASE):
 
 
 # ── Active config (runtime switchable) ──
-ACTIVE = BASE
+ACTIVE = ROCK_BRUT
 
 def set_active(name):
     """Switch ACTIVE config by name. Names: originale, fluid-wave, rock-brut, scene-vintage."""

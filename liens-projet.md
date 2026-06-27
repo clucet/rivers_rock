@@ -7,7 +7,7 @@ _Mis à jour le 28 juin 2026_
 | Lien | URL |
 |------|-----|
 | **Site racine** | [clucet.github.io/rivers_rock](https://clucet.github.io/rivers_rock/) |
-| **Page comparaison des 15 propositions** | [clucet.github.io/rivers_rock/propositions/](https://clucet.github.io/rivers_rock/propositions/) |
+| **Page comparaison des 1 proposition retenue : rock-brut** | [clucet.github.io/rivers_rock/propositions/](https://clucet.github.io/rivers_rock/propositions/) |
 | **Page vote** | [clucet.github.io/rivers_rock/propositions/vote/](https://clucet.github.io/rivers_rock/propositions/vote/) |
 | **Setlist interactive** (PWA offline) | [clucet.github.io/rivers_rock/setlist/](https://clucet.github.io/rivers_rock/setlist/) |
 | **EPK / Press Kit** | [clucet.github.io/rivers_rock/epk/](https://clucet.github.io/rivers_rock/epk/) |
@@ -71,7 +71,7 @@ _Mis à jour le 28 juin 2026_
 | `README.md` | Documentation du projet |
 | `plan-vote-groupe.md` | Procédure pour faire voter le groupe |
 | `liens-projet.md` | Tous les URLs du projet (ce fichier) |
-| `scripts/palette.py` | Configuration centralisée (15 propositions) |
+| `scripts/palette.py` | Configuration centralisée (1 proposition retenue : rock-brut) |
 | `scripts/logoutils.py` | Utilitaires de dessin partagés |
 | `scripts/generate_all.py` | Point d'entrée CLI |
 | `scripts/generate_preview.py` | Pages d'aperçu par proposition |

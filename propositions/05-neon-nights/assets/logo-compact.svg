@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
-  <circle cx="35" cy="30" r="22" fill="none" stroke="#00F5FF" stroke-width="2.5"/>
-  <polyline points="48,15 58,22 51,30 62,35" fill="none" stroke="#FF2D95" stroke-width="2.5" stroke-linejoin="round"/>
-  <circle cx="35" cy="30" r="6" fill="#FF2D95"/>
-  <text x="75" y="36" font-family="Orbitron, sans-serif" font-size="12" fill="#E8E0F0" letter-spacing="2">RIVERS ROCK</text>
-</svg>
