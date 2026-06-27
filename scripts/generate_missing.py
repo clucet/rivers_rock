@@ -115,6 +115,7 @@ def _draw_logo_pil(draw, cfg, cx, cy, scale=1.0):
 
 def gen_businesscard(cfg, out_dir):
     from reportlab.lib.units import mm
+    from reportlab.lib.colors import Color as _Color
     W, H = 85 * mm, 55 * mm
     pdf_dir = os.path.join(out_dir, "pdf")
     os.makedirs(pdf_dir, exist_ok=True)
@@ -122,31 +123,50 @@ def gen_businesscard(cfg, out_dir):
     cv, trim_w, trim_h, bleed = create_bleed_canvas(path, W, H)
 
     if cfg.name == "Rock Brut":
-        c1, c2 = HexColor("#0A0A0A"), HexColor("#222222")
-    elif cfg.name == "Ponts & Lumiere":
-        c1, c2 = HexColor("#0D1B2A"), HexColor("#1B263B")
-    elif cfg.name == "Fluid Wave":
-        c1, c2 = HexColor("#1A4A3A"), HexColor("#4A9B8E")
+        pdfmetrics.registerFont(TTFont("Anton", ANTON_PATH))
+        cv.setFillColor(HexColor("#0A0A0A"))
+        cv.rect(0, 0, W, H, stroke=0, fill=1)
+        _draw_logo_rl(cv, cfg, 20 * mm, H / 2, 0.7)
+        cv.setFillColor(Color(1, 1, 1))
+        cv.setFont("Anton", 12)
+        cv.drawString(32 * mm, H / 2 + 6, "RIVERS ROCK")
+        cv.setFillColor(Color(1, 1, 1, alpha=0.4))
+        cv.setFont("Anton", 6)
+        cv.drawString(32 * mm, H / 2 - 6, "Reprises rock — Rouen")
+        cv.drawString(32 * mm, H / 2 - 13, "riversrock_rouen@gmail.com")
+    elif cfg.name in ("Ponts & Lumiere", "Fluid Wave"):
+        c1 = HexColor("#0D1B2A" if cfg.name == "Ponts & Lumiere" else "#1A4A3A")
+        c2 = HexColor("#1B263B" if cfg.name == "Ponts & Lumiere" else "#4A9B8E")
+        for i in range(60):
+            t = i / 59
+            r = c1.red + (c2.red - c1.red) * t
+            g = c1.green + (c2.green - c1.green) * t
+            b = c1.blue + (c2.blue - c1.blue) * t
+            cv.setFillColor(Color(r, g, b))
+            cv.rect(0, i * H / 60, W, H / 60 + 0.5, stroke=0, fill=1)
+        _draw_logo_rl(cv, cfg, 20 * mm, H / 2, 0.7)
+        cv.setFillColor(Color(1, 1, 1))
+        cv.setFont("BebasNeue", 14)
+        cv.drawString(38 * mm, H / 2 + 8, "RIVERS ROCK")
+        cv.setFont("Montserrat", 7)
+        cv.drawString(38 * mm, H / 2 - 8, "Reprises rock — Rouen")
+        cv.drawString(38 * mm, H / 2 - 18, "riversrock_rouen@gmail.com")
     else:
         c1, c2 = cfg.rl("bleu_seine"), cfg.rl("vert_eau")
-
-    for i in range(60):
-        t = i / 59
-        r = c1.red + (c2.red - c1.red) * t
-        g = c1.green + (c2.green - c1.green) * t
-        b = c1.blue + (c2.blue - c1.blue) * t
-        cv.setFillColor(Color(r, g, b))
-        cv.rect(0, i * H / 60, W, H / 60 + 0.5, stroke=0, fill=1)
-
-    _draw_logo_rl(cv, cfg, 20 * mm, H / 2, 0.7)
-
-    cv.setFillColor(Color(1, 1, 1))
-    cv.setFont("BebasNeue", 14)
-    cv.drawString(38 * mm, H / 2 + 8, "RIVERS ROCK")
-
-    cv.setFont("Montserrat", 7)
-    cv.drawString(38 * mm, H / 2 - 8, "Reprises rock — Rouen")
-    cv.drawString(38 * mm, H / 2 - 18, "riversrock_rouen@gmail.com")
+        for i in range(60):
+            t = i / 59
+            r = c1.red + (c2.red - c1.red) * t
+            g = c1.green + (c2.green - c1.green) * t
+            b = c1.blue + (c2.blue - c1.blue) * t
+            cv.setFillColor(Color(r, g, b))
+            cv.rect(0, i * H / 60, W, H / 60 + 0.5, stroke=0, fill=1)
+        _draw_logo_rl(cv, cfg, 20 * mm, H / 2, 0.7)
+        cv.setFillColor(Color(1, 1, 1))
+        cv.setFont("BebasNeue", 14)
+        cv.drawString(38 * mm, H / 2 + 8, "RIVERS ROCK")
+        cv.setFont("Montserrat", 7)
+        cv.drawString(38 * mm, H / 2 - 8, "Reprises rock — Rouen")
+        cv.drawString(38 * mm, H / 2 - 18, "riversrock_rouen@gmail.com")
 
     save_with_crop_marks(cv, trim_w, trim_h, bleed)
     print(f"  Business card → {path}")
