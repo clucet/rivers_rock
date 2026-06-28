@@ -23,7 +23,7 @@ def make_banner(w, h, logo_size, sub_size, path):
     font_logo = ImageFont.truetype(ANTON_PATH, logo_size)
     font_sub = ImageFont.truetype(ANTON_PATH, sub_size)
 
-    hexagon_logo_pillow(draw, w / 2, h / 2 - 20, logo_size * 0.5)
+    hexagon_logo_pillow(draw, w / 2, h / 2 - 20, logo_size * 1.2)
 
     bbox = draw.textbbox((0, 0), "RIVERS ROCK", font=font_logo)
     draw.text(((w - (bbox[2] - bbox[0])) / 2, h / 2 + 40), "RIVERS ROCK", fill=BLANC, font=font_logo)
