@@ -2,84 +2,43 @@
 
 > 📖 **Documentation** : voir [`md/admin.md`](md/admin.md) (administration), [`md/commandes.md`](md/commandes.md) (commandes), [`md/liens-projet.md`](md/liens-projet.md) (URLs)
 
-Proposition retenue : rock-brut pour **Rivers Rock**, groupe de reprises rock basé à Rouen.
+Rock Brut est l'identité visuelle officielle de **Rivers Rock**, groupe de reprises rock basé à Rouen.
 
-Chaque proposition inclut : site web responsive, setlist PDF, poster, flyer, stickers, t-shirt, templates réseaux (Instagram/Facebook/YouTube), logo animé HTML, charte graphique PDF, 5 variantes SVG, overlays vidéo, business card, stage plot, tech sheet, lyrics, et signature email.
+## Charte Rock Brut
 
-## Propositions
-
-| # | Nom | Ambiance |
-|---|-----|----------|
-| ✅ | **rock-brut** (retenue) | Clair-obscur, argentique |
-| 01 | Fluid Wave | Organique, aquatique |
-| 02 | Rock Brut | Industriel, percutant |
-| 03 | Scène & Vintage | Rétro, scène, vinyle |
-| 04 | Ponts & Lumière | Architectural, nocturne |
-| 05 | Neon Nights | Cyberpunk, électrique |
-| 06 | Sable & Bronze | Voyage, chaleur, nature |
-| 07 | Nordik | Minimaliste, scandinave |
-| 08 | Grunge | Punk, photocopie, chaos |
-| 09 | Jazz Club | Cuivres, velours, jazz |
-| 10 | Bitume | Street art, urbain |
-| 11 | Cordes & Voix | Acoustique, intimiste |
-| 12 | Héritage | Patrimoine normand |
-| 13 | Rubicon | Americana, road trip |
-| 14 | Minuit | French touch, élégance |
+| Élément | Valeur |
+|---------|--------|
+| **Palette** | Noir `#0A0A0A`, Orange `#FF3B00`, Blanc `#FFFFFF` |
+| **Logo** | Hexagone double orange+blanc, monogramme RR, hexagone ouvert top-left |
+| **Typo** | Anton (titres), Inter Tight (corps), JetBrains Mono (data) |
+| **Règles** | Pas d'arrondis, pas de dégradés, pas d'ombres, grain 10% |
 
 ## Structure
 
 ```
-propositions/NN-xxx/          ← Proposition isolée (NN=00→14)
-  generate.py                 ← Générateur Python
-  charte-graphique-NN-xxx.pdf ← Charte PDF (5 pages)
-  assets/
-    logo*.svg                 ← 5 variantes de logo
-    index.html                ← Site de la proposition
-    preview.html              ← Page d'aperçu
-    pdf/                      ← PDF générés (setlist, poster, flyer, stickers, tshirt)
-    templates/                ← Templates PNG/HTML (social, avatar, banners, animé)
-scripts/
-  palette.py                  ← Config couleurs/fonts/tokens
-  logoutils.py                ← Utilitaires partagés
-  generate_all.py             ← Point d'entrée --config
-  generate_preview.py         ← Pages d'aperçu
-  convert_to_cmyk.py          ← Post-process CMYK
-  render_animation.py         ← Rendu MP4
-  setlist_data.py             ← Setlist centralisée
-  finaliser.py                ← Bascule automatique proposition gagnante
-```
-
-## Commandes
-
-```bash
-# Générer les assets d'une proposition
-python3 scripts/generate_all.py --config scene-vintage
-
-# Générer le site seulement
-python3 scripts/generate_all.py --config nordik --site-only
-
-# Générer les pages d'aperçu
-python3 scripts/generate_preview.py
-
-# Convertir les PDF en CMYK
-python3 scripts/convert_to_cmyk.py --all
-
-# Rendu MP4 du logo animé
-python3 scripts/render_animation.py --config scene-vintage --render-scale 0.5
+riversrock.fr/
+├── index.html              ← Site racine
+├── 404.html                ← Page introuvable
+├── templates/              ← PNG/HTML/GIF/MP4 réseaux
+├── setlist/                ← Setlist interactive (PWA)
+├── epk/                    ← Press Kit
+├── planning/               ← Planning répétitions
+├── propositions/
+│   ├── 02-rock-brut/       ← Proposition élue (assets, PDFs, templates)
+│   └── vote/               ← Page de vote (archivée)
+├── archive/                ← 14 propositions non retenues
+├── scripts/                ← 29 générateurs Python
+└── md/                     ← Documentation
 ```
 
 ## Déploiement
 
-GitHub Pages : [clucet.github.io/rivers_rock](https://clucet.github.io/rivers_rock/)
-
-- Page comparaison : `propositions/index.html`
-- Setlist interactive : `setlist/`
-- EPK / Press Kit : `epk/`
-- Planning répétitions : `planning/`
+**Actuellement :** GitHub Pages — [clucet.github.io/rivers_rock](https://clucet.github.io/rivers_rock/)
+**Prochainement :** Hébergement OVH-1 avec domaine `riversrock.fr`
 
 ## Réseaux
 
-- **Gmail** : riversrock_rouen@gmail.com
 - **YouTube** : [@RiversRockRouen](https://www.youtube.com/@RiversRockRouen)
 - **Facebook** : [Rivers Rock Rouen](https://www.facebook.com/RiversRockRouen)
-- **Instagram** : @riversrock_rouen (appel en cours) / @riversrock_rouen (secours)
+- **Instagram** : @riversrockrouen (appel en cours)
+- **Contact** : riversrock_rouen@gmail.com

@@ -773,3 +773,9 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 - **Instagram** : `@riversrockrouen` desactive (appel en cours). Secours `@riversrock_rouen` pret
 - **Playlist Spotify** : iframes avec `REMPLACER_PAR_ID` — creer la playlist et remplacer l'ID
 - **Session photo** : prevoyant 5 portraits + 1 photo groupe, indispensable pour le lancement
+- **Hébergement OVH** : prévu sur OVH-1 avec domaine `riversrock.fr`. Pas encore souscrit
+
+| 30/06/2026 | **Nettoyage global** : 14 dossiers propositions dupliqués supprimés de `propositions/`, `md/plan-vote-groupe.md` archivé, `propositions/drafts/` et `propositions/comptes-reseaux.md` supprimés | opencode |
+| 30/06/2026 | **MD files mis à jour** : README.md, admin.md, commandes.md, liens-projet.md — nettoyés et simplifiés pour Rock Brut | opencode |
+| 30/06/2026 | **Hébergement OVH planifié** : domaine `riversrock.fr`, OVH-1. Migration à faire après souscription | opencode |
+
