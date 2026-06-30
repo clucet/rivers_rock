@@ -290,13 +290,9 @@ def _frame_rock_brut(t):
         draw.ellipse([p['x'] - p['s'], py - p['s'], p['x'] + p['s'], py + p['s']],
                      fill=(255, 59, 0, int(255 * p['a'])))
     # Hexagon draw
-    prog = min(1, max(0, (t - 0.3) / 0.6))
-    if prog > 0:
-        r = 60 * SCALE
-        pts = [(CX + r * math.cos(math.radians(60 * i - 30)), CY + r * math.sin(math.radians(60 * i - 30))) for i in range(6)]
-        draw_prog = int(len(pts) * prog)
-        for i in range(draw_prog - 1):
-            draw.line([pts[i], pts[(i + 1) % 6]], fill=(255, 255, 255), width=3)
+    if t > 0.3:
+        from logoutils import hexagon_logo_pillow
+        hexagon_logo_pillow(draw, CX, CY, 60 * SCALE)
     # RR letters
     prog_r = min(1, max(0, (t - 1.4) / 0.4))
     if prog_r > 0:
