@@ -574,7 +574,7 @@ def hexagon_logo_reportlab(cv, cx, cy, size, accent_color=None, blanc_color=None
         cv.line(inner[i][0], inner[i][1], inner[(i + 1) % 6][0], inner[(i + 1) % 6][1])
     cv.setFillColor(bc)
     cv.setFont("Anton", max(8, int(r * 0.9)))
-    cv.drawCentredString(cx, cy - r * 0.4, "RR")
+    cv.drawCentredString(cx, cy + r * 0.3, "RR")
 
 
 def hexagon_logo_pillow(draw, cx, cy, size, accent=None, blanc=None):
@@ -592,7 +592,7 @@ def hexagon_logo_pillow(draw, cx, cy, size, accent=None, blanc=None):
     font = ImageFont.truetype(ANTON_PATH, max(8, int(r * 0.8)))
     bbox = draw.textbbox((0, 0), "RR", font=font)
     tw = bbox[2] - bbox[0]
-    draw.text((cx - tw / 2, cy - r * 0.35), "RR", fill=bc, font=font)
+    draw.text((cx - tw / 2, cy + r * 0.28), "RR", fill=bc, font=font)
 
 
 def draw_footer_rouen(cv, W, font_name="Montserrat", font_size=7, tracking=3, y_pos=14, alpha=0.12):

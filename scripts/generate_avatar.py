@@ -15,12 +15,21 @@ CX, CY = SIZE / 2, SIZE / 2
 
 
 def gen_avatar():
-    img = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    # Version fond noir opaque (YouTube, reseaux)
+    img = Image.new("RGB", (SIZE, SIZE), (10, 10, 10))
     draw = ImageDraw.Draw(img)
     hexagon_logo_pillow(draw, CX, CY, 100)
     path = os.path.join(OUT_DIR, "avatar.png")
     img.save(path)
     print(f"Avatar généré : {path}")
+
+    # Version fond transparent (superposition, watermark)
+    img_t = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    draw_t = ImageDraw.Draw(img_t)
+    hexagon_logo_pillow(draw_t, CX, CY, 100)
+    path_t = os.path.join(OUT_DIR, "avatar-transparent.png")
+    img_t.save(path_t)
+    print(f"Avatar transparent généré : {path_t}")
 
     img2 = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
     draw2 = ImageDraw.Draw(img2)
