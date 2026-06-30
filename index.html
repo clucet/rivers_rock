@@ -28,7 +28,7 @@ nav .logo-small span{font-family:'Anton',sans-serif;font-size:16px;letter-spacin
 nav a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:12px;font-weight:400;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;transition:.2s}
 nav a:hover{color:var(--accent)}
 .hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px}
-.hero .logo-animated{width:400px;height:400px;margin-bottom:12px;position:relative}
+.hero .logo-animated{width:600px;height:600px;margin-bottom:12px;position:relative}
 .hero .logo-animated svg{width:100%;height:100%;overflow:visible}
 .hero canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1}
 @keyframes drawHex{0%{stroke-dashoffset:400;transform:scale(0)}60%{transform:scale(1.15)}100%{stroke-dashoffset:0;transform:scale(1)}}
@@ -112,7 +112,7 @@ button:focus-visible{outline:2px solid var(--accent,#E85D3A);outline-offset:2px}
 <section class="hero">
   <canvas id="hp"></canvas>
   <div class="logo-animated">
-    <svg viewBox="-200 -200 400 400" width="400" height="400">
+    <svg viewBox="-200 -200 400 400" width="600" height="600">
       <polygon class="hex" points="0,-80 69.3,-40 69.3,40 0,80 -69.3,40 -69.3,-40"/>
       <g class="shake">
         <polygon class="hex-inner" points="0,-60 52,-30 52,30 0,60 -52,30 -52,-30"/>
