@@ -8,8 +8,8 @@ _Version 1.2 — Rock Brut (proposition élue)_
 |-------------|-------|
 | Python 3.12 | Génération des assets (ReportLab, Pillow, cairosvg) |
 | HTML/CSS/JS | Sites web statiques |
-| GitHub Pages | Hébergement actuel |
-| **OVH-1** | **Hébergement à venir** — domaine `riversrock.fr` |
+| GitHub Pages | Hébergement initial |
+| **OVH VPS-1** | **Hébergement actuel** — [riversrock.fr](https://riversrock.fr) |
 
 ## Proposition élue : Rock Brut
 
@@ -73,8 +73,8 @@ python3 scripts/render_animation.py --config rock-brut --render-scale 0.5
 
 ## Déploiement
 
-**Actuel :** Push sur GitHub → GitHub Actions → mise en ligne sur `clucet.github.io/rivers_rock`
-**Futur :** Transfert FTP vers OVH-1 (dossier `www/`) — voir `md/admin.md` section OVH
+**Actuel :** Transfert rsync vers OVH VPS-1 — [riversrock.fr](https://riversrock.fr)
+**Source :** Dépôt GitHub → `rsync -avz --exclude=.git --exclude=archive /home/.../rivers_rock/ root@IP:/var/www/riversrock/`
 
 ## Réseaux
 
@@ -87,12 +87,12 @@ python3 scripts/render_animation.py --config rock-brut --render-scale 0.5
 
 ## URLs
 
-| Page | Actuelle (GitHub Pages) | Future (OVH) |
-|------|------------------------|--------------|
-| Site | `clucet.github.io/rivers_rock` | `riversrock.fr` |
-| Setlist | `clucet.github.io/rivers_rock/setlist/` | `riversrock.fr/setlist/` |
-| EPK | `clucet.github.io/rivers_rock/epk/` | `riversrock.fr/epk/` |
-| Planning | `clucet.github.io/rivers_rock/planning/` | `riversrock.fr/planning/` |
+| Page | URL |
+|------|-----|
+| Site | [riversrock.fr](https://riversrock.fr) |
+| Setlist | [riversrock.fr/setlist/](https://riversrock.fr/setlist/) |
+| EPK | [riversrock.fr/epk/](https://riversrock.fr/epk/) |
+| Planning | [riversrock.fr/planning/](https://riversrock.fr/planning/) |
 
 ## Dépendances
 

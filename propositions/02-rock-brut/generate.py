@@ -535,7 +535,7 @@ def gen_animated():
 <meta property="og:title" content="Rivers Rock — Rock Brut">
 <meta property="og:description" content="Rivers Rock — Rock Brut — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
 <meta property="og:type" content="music.group">
-<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/02-rock-brut/">
+<meta property="og:url" content="https://riversrock.fr/propositions/02-rock-brut/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rivers Rock — Rock Brut">
 <link rel="icon" type="image/svg+xml" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiNGRjNCMDAiLz48dGV4dCB4PSIxNiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iYm9sZCI+SDwvdGV4dD48L3N2Zz4=">
@@ -608,7 +608,7 @@ def gen_site():
 <meta property="og:title" content="Rivers Rock — Rock Brut">
 <meta property="og:description" content="Rivers Rock — Rock Brut — Rivers Rock, groupe de reprises rock base a Rouen. Rock, pop-rock, inde et alternatif — 5 musiciens, 12 titres.">
 <meta property="og:type" content="music.group">
-<meta property="og:url" content="https://clucet.github.io/rivers_rock/propositions/02-rock-brut/">
+<meta property="og:url" content="https://riversrock.fr/propositions/02-rock-brut/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rivers Rock — Rock Brut">
 <link rel="preload" href="assets/logo.svg" as="image" type="image/svg+xml">

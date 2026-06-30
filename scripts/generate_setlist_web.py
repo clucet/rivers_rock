@@ -81,7 +81,7 @@ for i, (num, artist, title, bpm) in enumerate(SETLIST):
 
 html += '''</div>
 <footer>
-  <span id="duration">Duree totale: ~45:00</span> &middot; <a href="https://clucet.github.io/rivers_rock" target="_blank">Rivers Rock</a>
+  <span id="duration">Duree totale: ~45:00</span> &middot; <a href="https://riversrock.fr" target="_blank">Rivers Rock</a>
 </footer>
 <script>
 const songs = document.querySelectorAll('.song');

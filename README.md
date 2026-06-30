@@ -33,8 +33,7 @@ riversrock.fr/
 
 ## Déploiement
 
-**Actuellement :** GitHub Pages — [clucet.github.io/rivers_rock](https://clucet.github.io/rivers_rock/)
-**Prochainement :** Hébergement OVH-1 avec domaine `riversrock.fr`
+**Hébergement :** OVH VPS-1 — [riversrock.fr](https://riversrock.fr/)
 
 ## Réseaux
 

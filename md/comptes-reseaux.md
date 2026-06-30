@@ -49,9 +49,9 @@
 
 | Ressource | URL |
 |-----------|-----|
-| **GitHub Pages** | `https://clucet.github.io/rivers_rock/` |
-| **Comparaison propositions** | `https://clucet.github.io/rivers_rock/propositions/index.html` |
-| **Setlist interactive** | `https://clucet.github.io/rivers_rock/setlist/` |
+| **GitHub Pages** | `https://riversrock.fr/` |
+| **Comparaison propositions** | `https://riversrock.fr/propositions/index.html` |
+| **Setlist interactive** | `https://riversrock.fr/setlist/` |
 
 ---
 

@@ -139,7 +139,7 @@ _Mis à jour le 28 juin 2026 — Concert Montigny annulé, nouvelle stratégie d
 > #RiversRock #IdentitéVisuelle #Logo #Graphisme #Rock
 
 > **Visuel :** capture d'écran de la page de comparaison des propositions
-> `https://clucet.github.io/rivers_rock/propositions/`
+> `https://riversrock.fr/propositions/`
 
 ---
 
@@ -157,4 +157,4 @@ _Mis à jour le 28 juin 2026 — Concert Montigny annulé, nouvelle stratégie d
 > #RiversRock #Répétitions #Le106 #Rouen #TravailDÉquipe
 
 > **Visuel :** capture d'écran du planning interactif
-> `https://clucet.github.io/rivers_rock/planning/`
+> `https://riversrock.fr/planning/`

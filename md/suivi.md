@@ -684,7 +684,7 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 | 24/06/2026 | **Proposition 09 « Jazz Club »** : cuivres/velours — nuit/or/cuivre/rouge, fonts Playfair + Karla + DM Mono, logo cercle projecteur + ligne dorée | opencode |
 | 24/06/2026 | **Correctifs 10/10** : favicons ajoutés aux propositions 07/08/09, suivi-projet mis à jour (journal + todo 9 propositions) | opencode |
 | 24/06/2026 | **Assets manquants générés** : `scripts/generate_missing.py` — business cards, signatures, mockups, stage plots, tech sheets, lyrics (×12) pour les 5 propositions — 85 fichiers créés, total projet 176 assets | opencode |
-| 24/06/2026 | **Mise en ligne GitHub Pages** : dépôt clucet/rivers_rock passé en public, Pages activé sur `https://clucet.github.io/rivers_rock/` — retrait proposition 00 Originale de la sélection | opencode |
+| 24/06/2026 | **Mise en ligne GitHub Pages** : dépôt clucet/rivers_rock passé en public, Pages activé sur `https://riversrock.fr/` — retrait proposition 00 Originale de la sélection | opencode |
 | 24/06/2026 | **Proposition 05 « Neon Nights »** : cyberpunk — violet/rose/cyan, fonts Orbitron + Rajdhani + JetBrains Mono | opencode |
 | 24/06/2026 | **Proposition 06 « Sable & Bronze »** : voyage — sable/terre cuite/bronze, fonts Cinzel + Lato + Cormorant | opencode |
 | 24/06/2026 | **QR codes réels** : branchement `draw_qr_pillow`/`draw_qr_reportlab` dans les 6 propositions + flyer 03 | opencode |
@@ -773,9 +773,10 @@ Analyse comparative des 4 propositions (Originale, Fluid Wave, Rock Brut, Scène
 - **Instagram** : `@riversrockrouen` desactive (appel en cours). Secours `@riversrock_rouen` pret
 - **Playlist Spotify** : iframes avec `REMPLACER_PAR_ID` — creer la playlist et remplacer l'ID
 - **Session photo** : prevoyant 5 portraits + 1 photo groupe, indispensable pour le lancement
-- **Hébergement OVH** : prévu sur OVH-1 avec domaine `riversrock.fr`. Pas encore souscrit
+- **Hébergement OVH** : ✅ VPS-1 en ligne — [riversrock.fr](https://riversrock.fr)
 
 | 30/06/2026 | **Nettoyage global** : 14 dossiers propositions dupliqués supprimés de `propositions/`, `md/plan-vote-groupe.md` archivé, `propositions/drafts/` et `propositions/comptes-reseaux.md` supprimés | opencode |
 | 30/06/2026 | **MD files mis à jour** : README.md, admin.md, commandes.md, liens-projet.md — nettoyés et simplifiés pour Rock Brut | opencode |
 | 30/06/2026 | **Hébergement OVH planifié** : domaine `riversrock.fr`, OVH-1. Migration à faire après souscription | opencode |
+| 30/06/2026 | **🚀 riversrock.fr en ligne** : VPS-1 (OVH) déployé avec Nginx + SSL Let's Encrypt. Site, setlist, EPK, planning opérationnels. URLs mises à jour dans tous les fichiers | opencode |
 

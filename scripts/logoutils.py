@@ -344,7 +344,7 @@ def save_with_crop_marks(cv, trim_w, trim_h, bleed):
     cv.save()
 
 
-def draw_qr_reportlab(cv, cx, cy, size, url="https://clucet.github.io/rivers_rock/setlist/", fill_color=None):
+def draw_qr_reportlab(cv, cx, cy, size, url="https://riversrock.fr/setlist/", fill_color=None):
     """Draw a QR code at position using ReportLab."""
     try:
         import qrcode
@@ -371,7 +371,7 @@ def draw_qr_reportlab(cv, cx, cy, size, url="https://clucet.github.io/rivers_roc
         cv.drawCentredString(cx, cy - size * 0.06, "QR")
 
 
-def draw_qr_pillow(draw, cx, cy, size, url="https://clucet.github.io/rivers_rock/setlist/", fill_color=None):
+def draw_qr_pillow(draw, cx, cy, size, url="https://riversrock.fr/setlist/", fill_color=None):
     """Draw a QR code at position using Pillow."""
     try:
         import qrcode

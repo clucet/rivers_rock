@@ -4,17 +4,16 @@ _Mis à jour le 30 juin 2026_
 
 ## Site
 
-**Actuellement :** [clucet.github.io/rivers_rock](https://clucet.github.io/rivers_rock) (GitHub Pages)
-**Prochainement :** `riversrock.fr` (OVH-1)
+**Hébergement :** OVH VPS-1
 
-| Page | URL actuelle |
-|------|-------------|
-| **Racine** | [clucet.github.io/rivers_rock](https://clucet.github.io/rivers_rock) |
-| **Setlist** (PWA) | [clucet.github.io/rivers_rock/setlist/](https://clucet.github.io/rivers_rock/setlist/) |
-| **EPK** | [clucet.github.io/rivers_rock/epk/](https://clucet.github.io/rivers_rock/epk/) |
-| **Planning** | [clucet.github.io/rivers_rock/planning/](https://clucet.github.io/rivers_rock/planning/) |
-| **Propositions** (archivé) | [clucet.github.io/rivers_rock/propositions/](https://clucet.github.io/rivers_rock/propositions/) |
-| **Vote** (archivé) | [clucet.github.io/rivers_rock/propositions/vote/](https://clucet.github.io/rivers_rock/propositions/vote/) |
+| Page | URL |
+|------|-----|
+| **Racine** | [riversrock.fr](https://riversrock.fr) |
+| **Setlist** (PWA) | [riversrock.fr/setlist/](https://riversrock.fr/setlist/) |
+| **EPK** | [riversrock.fr/epk/](https://riversrock.fr/epk/) |
+| **Planning** | [riversrock.fr/planning/](https://riversrock.fr/planning/) |
+| **Propositions** (archivé) | [riversrock.fr/propositions/](https://riversrock.fr/propositions/) |
+| **Vote** (archivé) | [riversrock.fr/propositions/vote/](https://riversrock.fr/propositions/vote/) |
 
 ## Réseaux
 

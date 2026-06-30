@@ -221,7 +221,7 @@ server {
 # Remplacer les URLs GitHub Pages par riversrock.fr
 find . -type f \( -name "*.html" -o -name "*.md" -o -name "*.json" -o -name "*.js" \) \
   -not -path "./.git/*" -not -path "./archive/*" \
-  -exec sed -i 's|clucet.github.io/rivers_rock|riversrock.fr|g' {} \;
+  -exec sed -i 's|riversrock.fr|riversrock.fr|g' {} \;
 ```
 
 ---
