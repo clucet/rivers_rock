@@ -565,13 +565,14 @@ def hexagon_logo_reportlab(cv, cx, cy, size, accent_color=None, blanc_color=None
     pts = [(cx + r * math.cos(math.radians(60 * i - 30)), cy + r * math.sin(math.radians(60 * i - 30))) for i in range(6)]
     cv.setStrokeColor(ac)
     cv.setLineWidth(3)
-    for i in range(5):
-        cv.line(pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1])
+    for i in range(6):
+        if i == 4: continue  # skip top-left segment (left-up to up)
+        cv.line(pts[i][0], pts[i][1], pts[(i + 1) % 6][0], pts[(i + 1) % 6][1])
     inner = [(cx + (pt[0] - cx) * 0.85, cy + (pt[1] - cy) * 0.85) for pt in pts]
     cv.setStrokeColor(bc)
     cv.setLineWidth(1.5)
-    for i in range(5):
-        cv.line(inner[i][0], inner[i][1], inner[i + 1][0], inner[i + 1][1])
+    for i in range(6):
+        cv.line(inner[i][0], inner[i][1], inner[(i + 1) % 6][0], inner[(i + 1) % 6][1])
     cv.setFillColor(bc)
     cv.setFont("Anton", max(8, int(r * 0.9)))
     cv.drawCentredString(cx, cy + r * 0.3, "RR")
@@ -584,11 +585,12 @@ def hexagon_logo_pillow(draw, cx, cy, size, accent=None, blanc=None):
     from PIL import ImageFont
     r = size
     pts = [(cx + r * math.cos(math.radians(60 * i - 30)), cy + r * math.sin(math.radians(60 * i - 30))) for i in range(6)]
-    for i in range(5):
-        draw.line([pts[i], pts[i + 1]], fill=ac, width=max(3, int(3 * r / 15)))
+    for i in range(6):
+        if i == 4: continue  # skip top-left segment (left-up to up)
+        draw.line([pts[i], pts[(i + 1) % 6]], fill=ac, width=max(3, int(3 * r / 15)))
     inner = [(cx + (pt[0] - cx) * 0.85, cy + (pt[1] - cy) * 0.85) for pt in pts]
-    for i in range(5):
-        draw.line([inner[i], inner[i + 1]], fill=bc, width=max(1, int(1.5 * r / 15)))
+    for i in range(6):
+        draw.line([inner[i], inner[(i + 1) % 6]], fill=bc, width=max(1, int(1.5 * r / 15)))
     font = ImageFont.truetype(ANTON_PATH, max(8, int(r * 0.8)))
     draw.text((cx, cy), "RR", fill=bc, font=font, anchor="mm")
 
