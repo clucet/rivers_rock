@@ -87,12 +87,14 @@ def make_frame(t):
         "Jazz Club": _frame_jazz_club,
         "Bitume": _frame_bitume,
         "Cordes & Voix": _frame_cordes_voix,
-        "Héritage": _frame_heritage,
+        "Heritage": _frame_heritage,
         "Rubicon": _frame_rubicon,
         "Minuit": _frame_minuit,
-        "Ombre & Lumière": _frame_scene_vintage,
+        "Ombre & Lumiere": _frame_scene_vintage,
     }
     fn = dispatch.get(name, _frame_scene_vintage)
+    if fn is None:
+        return _frame_scene_vintage(t)
     return fn(t)
 
 
@@ -208,40 +210,6 @@ def add_grain(img, intensity=0.04):
     return Image.composite(img, Image.new("RGB", (w, h), (128, 128, 128)), grain)
 
 
-if __name__ == "__main__":
-    tmpdir = tempfile.mkdtemp()
-    print(f"Rendu de {FRAMES} frames à {W}x{H}...")
-    for i in range(FRAMES):
-        t = i / FPS
-        f = make_frame(t)
-        if SCALE < 1.0:
-            f = f.resize((1080, 1920), Image.LANCZOS)
-        f = add_grain(f, 0.03)
-        f.save(os.path.join(tmpdir, f"frame_{i:04d}.png"), "PNG")
-        if i % 30 == 0:
-            print(f"  Frame {i}/{FRAMES}")
-
-    print("Assemblage MP4...")
-    subprocess.run([
-        "ffmpeg", "-y", "-framerate", str(FPS),
-        "-i", os.path.join(tmpdir, "frame_%04d.png"),
-        "-c:v", "libx264", "-pix_fmt", "yuv420p",
-        "-preset", "medium", "-crf", "18",
-        OUTPUT
-    ], capture_output=True)
-
-    for f in os.listdir(tmpdir):
-        os.remove(os.path.join(tmpdir, f))
-    os.rmdir(tmpdir)
-
-    print(f"MP4 généré : {OUTPUT}")
-
-    # Also generate a high-quality still frame
-    still = make_frame(3.0)
-    still = add_grain(still, 0.03)
-    still_path = OUTPUT.replace(".mp4", ".png")
-    still.save(still_path, "PNG")
-    print(f"Still frame : {still_path}")
 
 def _frame_fluid_wave(t):
     """Fluid Wave MP4 frame: wave + bubbles + float-up letters."""
@@ -549,3 +517,37 @@ def _frame_minuit(t):
         font = ImageFont.truetype(PLAYFAIR_PATH, max(8, int(20 * SCALE)))
         draw.text((CX, CY + 55), "RIVERS ROCK", fill=(245, 240, 232, int(255 * prog2)), font=font, anchor="mm")
     return img.convert("RGB")
+if __name__ == "__main__":
+    tmpdir = tempfile.mkdtemp()
+    print(f"Rendu de {FRAMES} frames à {W}x{H}...")
+    for i in range(FRAMES):
+        t = i / FPS
+        f = make_frame(t)
+        if SCALE < 1.0:
+            f = f.resize((1080, 1920), Image.LANCZOS)
+        f = add_grain(f, 0.03)
+        f.save(os.path.join(tmpdir, f"frame_{i:04d}.png"), "PNG")
+        if i % 30 == 0:
+            print(f"  Frame {i}/{FRAMES}")
+
+    print("Assemblage MP4...")
+    subprocess.run([
+        "ffmpeg", "-y", "-framerate", str(FPS),
+        "-i", os.path.join(tmpdir, "frame_%04d.png"),
+        "-c:v", "libx264", "-pix_fmt", "yuv420p",
+        "-preset", "medium", "-crf", "18",
+        OUTPUT
+    ], capture_output=True)
+
+    for f in os.listdir(tmpdir):
+        os.remove(os.path.join(tmpdir, f))
+    os.rmdir(tmpdir)
+
+    print(f"MP4 généré : {OUTPUT}")
+
+    # Also generate a high-quality still frame
+    still = make_frame(3.0)
+    still = add_grain(still, 0.03)
+    still_path = OUTPUT.replace(".mp4", ".png")
+    still.save(still_path, "PNG")
+    print(f"Still frame : {still_path}")
