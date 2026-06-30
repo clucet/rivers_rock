@@ -9,14 +9,18 @@ _Dernière mise à jour : 30 juin 2026_
 
 | Élément | Valeur |
 |---------|--------|
-| **Offre** | OVH VPS Value |
-| **Prix** | ~4,50 €/mois |
-| **RAM** | 2 Go |
-| **Stockage** | 20 Go NVMe |
-| **CPU** | 1 vCore |
+| **Offre** | OVH VPS-1 (nouvelle gamme 2027) |
+| **Prix** | **4,57 € TTC/mois** |
+| **RAM** | 4 Go |
+| **Stockage** | 40 Go SSD NVMe |
+| **vCores** | 2 |
+| **Bande passante** | 500 Mbit/s (illimité) |
+| **Sauvegarde** | Automatique quotidienne incluse |
 | **Docker** | ✅ Pris en charge |
 | **OS** | Debian 12 |
 | **Domaines** | `riversrock.fr` (à réserver) + `phaenna-formation.fr` (Gandi, DNS à pointer) |
+
+> **Alternative :** VPS-2 (8,65 €/mois, 4 vCores / 8 Go RAM / 75 Go SSD) si le Moodle monte en charge avec plusieurs apprenants simultanés.
 
 ---
 
@@ -79,7 +83,7 @@ VPS OVH (Debian 12)
 
 | # | Action | Détail |
 |---|--------|--------|
-| 1 | Commander VPS Value | `ovh.com` → VPS Value → Debian 12 |
+| 1 | Commander VPS-1 | `ovhcloud.com/fr/vps/` → VPS-1 → Debian 12 |
 | 2 | Réserver `riversrock.fr` | Chez OVH (ou transfert) |
 | 3 | DNS `phaenna-formation.fr` | Gandi → pointer vers IP du VPS (entrée A) |
 | 4 | Noter IP du VPS | `ssh root@IP_VPS` |
@@ -226,20 +230,19 @@ find . -type f \( -name "*.html" -o -name "*.md" -o -name "*.json" -o -name "*.j
 
 | Poste | Coût mensuel |
 |-------|-------------|
-| VPS OVH Value | 4,50 € |
+| VPS OVH VPS-1 | 4,57 € |
 | Domaine riversrock.fr | ~0,70 € |
 | Domaine phaenna-formation.fr | Déjà possédé (Gandi) |
-| **Total** | **~5,20 €/mois** |
+| **Total** | **~5,27 €/mois** |
 
 ---
 
-## 8. Alternatives si VPS indisponible
+## 8. Alternatives
 
-| Alternative | Prix | Docker | Notes |
-|-------------|------|--------|-------|
-| OVH VPS Starter | ~3,50 € | ✅ | 1 Go RAM, suffisant pour les deux |
-| Hetzner VPS | ~3,50 € | ✅ | Rapport qualité/prix excellent |
-| OVH Public Cloud | ~5 € | ✅ | À l'usage, plus flexible |
+| Alternative | Prix | RAM | Docker | Notes |
+|-------------|------|-----|--------|-------|
+| OVH VPS-2 | 8,65 € | 8 Go | ✅ | Upgrade possible si Moodle monte en charge |
+| Hetzner VPS | ~3,50 € | 4 Go | ✅ | Rapport qualité/prix excellent (mais hors OVH) |
 
 ---
 
