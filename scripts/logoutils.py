@@ -590,9 +590,7 @@ def hexagon_logo_pillow(draw, cx, cy, size, accent=None, blanc=None):
     for i in range(6):
         draw.line([inner[i], inner[(i + 1) % 6]], fill=bc, width=max(1, int(1.5 * r / 15)))
     font = ImageFont.truetype(ANTON_PATH, max(8, int(r * 0.8)))
-    bbox = draw.textbbox((0, 0), "RR", font=font)
-    tw = bbox[2] - bbox[0]
-    draw.text((cx - tw / 2, cy + r * 0.28), "RR", fill=bc, font=font)
+    draw.text((cx, cy), "RR", fill=bc, font=font, anchor="mm")
 
 
 def draw_footer_rouen(cv, W, font_name="Montserrat", font_size=7, tracking=3, y_pos=14, alpha=0.12):
